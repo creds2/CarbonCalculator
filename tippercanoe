@@ -1,0 +1,23 @@
+Tippcanoe Instructions using WSL2
+
+cd /mnt/d/GitHub/creds2/CarbonCalculator/data
+tippecanoe -zg --output-to-directory=mytiles2 --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders LSOA_v1.geojson
+
+consider 
+--maximum-tile-bytes=1000K
+
+
+
+
+COVID
+cd /mnt/d/GitHub/ITSleeds/covid/data
+tippecanoe -z13 --output-to-directory=tiles --coalesce-smallest-as-needed --simplification=5 --detect-shared-borders covid.geojson
+
+
+ZOOM Level notes
+
+Zoom 12 is about 1:150000 and difference between full and generalised lsoa boundaires is very subtle
+
+Zoom 14 is 1:35000 all LSOA visible, difference between full and generalised boundaries is clear
+
+Zoom 16 is 1:8000 is about the maximum needed to let a single LSOA full most of the screen
