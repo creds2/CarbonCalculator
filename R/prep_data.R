@@ -5,8 +5,10 @@ library(dplyr)
 
 if(dir.exists("E:/Users/earmmor/OneDrive - University of Leeds/CREDS Data")){
   secure_path <- "E:/Users/earmmor/OneDrive - University of Leeds/CREDS Data"
-} else {
+} else if(dir.exists("E:/Users/earmmor/OneDrive - University of Leeds/CREDS Data")){
   secure_path <- "E:/OneDrive - University of Leeds/Data/CREDS Data"
+} else {
+  secure_path <- "D:/OneDrive - University of Leeds/Data/CREDS Data"
 }
 
 bounds <- st_read("../Excess-Data-Exploration/data-prepared/LSOA_full.gpkg")
@@ -128,13 +130,13 @@ all <- left_join(all, emissons_wide, by = c("LSOA11" = "LSOA"))
 all <- left_join(all, school, by = c("LSOA11" = "LSOA11"))
 rm(age, census, elec, gas, heating, mot, population, emissions, school, emissons_wide)
 
-all <- left_join(all, bounds, by = "LSOA11")
-all <- st_as_sf(all)
+#all <- left_join(all, bounds, by = "LSOA11")
+#all <- st_as_sf(all)
 
-library(tmap)
-tmap_mode("view")
-qtm(all[1:10,])
+#library(tmap)
+#tmap_mode("view")
+#qtm(all[1:10,])
 
-all <- st_transform(all, 4326)
-write_sf(all,"data/LSOA_v1.gpkg")
+#all <- st_transform(all, 4326)
+saveRDS(all,"data/base_data.Rds")
 

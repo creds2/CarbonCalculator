@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class="gr__wisemover_co_uk"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>CREDS - Place-based Carbon Calculator</title>
+<!-- Set Up Mapbox -->
+<script src="js/lib/mapbox-gl-js-1.13/mapbox-gl.js"></script>
+<link href="js/lib/mapbox-gl-js-1.13/mapbox-gl.css" rel="stylesheet" />
+  
+<!-- Set Up Other JS -->
+<script src="js/lib/chartjs/Chart.min.js"></script>
+
+<!-- Set Up CSS -->
+<link rel="stylesheet" href="css/main_carbon.css">
+<link rel="stylesheet" href="css/modal.css">
+<link rel="stylesheet" href="css/controls.css">
+
+<!-- Set Up Icons -->
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+</head>
+<body>
+
+<div class="headrow">
+  <div class="headcol headleft">
+     <a href="https://www.wisemover.co.uk/creds/carbon"><img src="/images/CREDS-logo.svg" alt="CREDS Logo" height="46"></a>   
+  </div>
+  <div class="headcol headright">
+    <div class="topnav">
+		<a href="/creds/carbon">Place-based carbon calculator</a>
+		<a href="about.html">About</a>
+		<a href="sources.html">Data Sources</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="content">
+  <div class="middle">
+    <div id="map">
+      
+    </div>
+  </div>
+  <div class="right">
+    <p>An estimate of GHG emissions per capita of each LSOA in      England and Wales based on Domestic Gas consumption, Domestic Electricity consumption, miles driven per year, and estimate of non-gas heating energy consumption. Note that this excludes flights and material consumption.</p>
+  </div>
+</div>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Area Summary</h2>
+	  <h3 id="data_LSOA">foo<h3>
+    </div>
+    <div class="modal-body">
+	
+	
+		<table>
+		  <tr>
+			<th>Name</th>
+			<th>Value</th>
+			<th>Grade</th>
+			<th>Source</th>
+		  </tr>
+		  <tr>
+			<td>Total CO2 per person</td>
+			<td id="data_total_emissions_percap">NA</td>
+			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_total_emissions_grade"></img></td>
+			<td>Source</td>
+		  </tr>
+		  <tr>
+			<td>Electricity CO2 per person</td>
+			<td id="data_elec_emissions_household">NA</td>
+			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_elec_emissions_grade"></img></td>
+			<td>Source</td>
+		  </tr>
+		  <tr>
+			<td>Gas CO2 per person</td>
+			<td id="data_gas_emissions_household">NA</td>
+			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_gas_emissions_grade"></img></td>
+			<td>Source</td>
+		  </tr>
+		</table>
+		
+		<h4>Transport</h4>
+		
+		<div class="chart-container" style="position: relative; height:40vh; width:80vw">
+			<canvas id="t2wChart"></canvas>
+		</div>
+		
+		
+		
+		<h4>Housing</h4>
+		
+		
+		
+		
+		<h4>Historical Gas Usage</h4>
+		<div class="chart-container" style="position: relative; height:40vh; width:80vw">
+			<canvas id="gasChart"></canvas>
+		</div>
+		
+		<h4>Historical Electricity Usage</h4>
+		<div class="chart-container" style="position: relative; height:40vh; width:80vw">
+			<canvas id="elecChart"></canvas>
+		</div>
+		<!-- <canvas id="elecChart" max-width="800" min-width="300" height="400"></canvas> -->
+		
+		
+    </div>
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+
+
+</div>
+<script type="text/javascript" src="js/modal.js"></script>
+<script type="text/javascript" src="js/map_carbon.js"></script>
+</body>
+</html>

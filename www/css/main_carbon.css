@@ -1,0 +1,188 @@
+/* Main Layout */
+body, html{
+    padding:0;
+    margin:0;
+    position:relative;
+    height:100%;
+	
+}
+.header{
+    width:100%;
+	height:55px;
+    background:#ffffff ;
+	padding:0;
+	font-size: 30px;
+}
+.footer{
+    width:100%;
+	height:15px;
+    background:#DAF7A6;
+	padding:0;
+	margin-top:0px;
+	margin-bottom:0px;
+	-webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.content{
+    width:calc(100% - 1px);
+    height:calc(100% - 55px);
+}
+.left{
+	float: left;
+	width:1px;
+  height:100%;
+}
+.middle{
+    float: left;
+    max-width:calc(100% - 122px);
+    min-width:calc(100% - 338px);
+	  width:62%;
+    height:100%;
+}
+.right{
+	float: right;
+	max-width:337px;
+	min-width:121px ;
+	width:37%;
+  height:100%;
+}
+
+
+
+/* Text */
+h1{
+	font-family:Helvetica;
+	font-size:45px;
+	padding:0px;
+	line-height: 1;
+	margin:0px;
+	
+}
+
+/* Sliders */
+.slidecontainer {
+    width: 90%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+/* The Menu Bar */
+/* Add a black background color to the top navigation */
+.topnav {
+	background-color: #333;
+	overflow: hidden;
+	margin:0;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+	background-color: #ddd;
+	color: black;
+}
+  
+/* Add a color to the active/current link */
+.topnav a.active {
+	background-color: #4CAF50;
+	color: white;
+}
+
+/* Clear floats after the columns */
+.headrow:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.headcol {
+  float: left;
+}
+
+.headleft {
+  width: 142px;
+}
+
+.headright {
+  width: calc(100% - 142px);
+}
+
+/* The Mapbox map */
+#map {
+  position: relative;
+  top: 1px;
+  bottom: 1px;
+  width:100%;
+  height:100%;
+}
+
+

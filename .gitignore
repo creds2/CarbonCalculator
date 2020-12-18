@@ -38,3 +38,6 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 *.pbf
+data/data_with_grades.Rds
+*.Rds
+*.geojson

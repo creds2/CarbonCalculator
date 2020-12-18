@@ -1,7 +1,14 @@
 Tippcanoe Instructions using WSL2
 
 cd /mnt/d/GitHub/creds2/CarbonCalculator/data
-tippecanoe -zg --output-to-directory=mytiles2 --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders LSOA_v1.geojson
+
+tippecanoe --name=carbon --attribution=MALCOLMMORGAN --maximum-zoom=12 --minimum-zoom=5 --output-to-directory=tiles_general --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --force carbon_general.geojson
+
+tippecanoe --name=carbon --attribution=MALCOLMMORGAN --maximum-zoom=16 --minimum-zoom=13 --output-to-directory=tiles_full --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --force carbon_full.geojson
+
+
+
+#### tippecanoe -zg --output-to-directory=mytiles2 --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders LSOA_v1.geojson
 
 consider 
 --maximum-tile-bytes=1000K

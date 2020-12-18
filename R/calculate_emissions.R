@@ -1,16 +1,14 @@
 library(sf)
 library(dplyr)
-library(tmap)
-tmap_mode("view")
 
-all <- read_sf("data/LSOA_v1.gpkg")
+all <- readRDS("data/base_data.Rds")
 #TODO: calculate gas electric per cap, and fix total calc
 all$elec_emissions_household <- all$MeanDomElec_17_kWh * 0.2556
 all$gas_emissions_household <- all$MeanDomGas_17_kWh * 0.20428
 all$car_emissions_percap <- all$miles_percap * 0.24603
-all$total_emissions_percap <- rowSums(st_drop_geometry(all[,c("gas_emissions_household",
+all$total_emissions_percap <- rowSums(all[,c("gas_emissions_household",
                                              "elec_emissions_household",
-                                             "car_emissions_percap")]),na.rm = TRUE)
+                                             "car_emissions_percap")],na.rm = TRUE)
 
 # Make Grades
 percentile <- function(dat){
@@ -75,6 +73,4 @@ all$car_emissions_grade <- value2grade(all$car_emissions_percap)
 all$total_emissions_grade <- value2grade(all$total_emissions_percap)
 
 
-all <- st_transform(all, 4326)
-qtm(all[1:10,])
-write_sf(all, "data/LSOA_v1.geojson", delete_dsn  = TRUE)
+saveRDS(all, "data/data_with_grades.Rds")
