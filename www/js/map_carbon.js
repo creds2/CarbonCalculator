@@ -2,7 +2,7 @@
 mapboxgl.accessToken = "NotNeeded";
 var map = new mapboxgl.Map({
 container: 'map', // container id
-style: 'carbon/tiles/carbon/style.json', // stylesheet location
+style: 'tiles/style.json', // stylesheet location
 center: [-1.548, 53.795], // starting position [lng, lat]
 zoom: 10 // starting zoom
 });
@@ -16,7 +16,7 @@ map.on('load', function() {
 map.addSource('carbon', {
 	'type': 'vector',
 	'tiles': [
-	'https://www.wisemover.co.uk/tiles/carbon_v2/{z}/{x}/{y}.pbf'
+	'https://www.wisemover.co.uk/carbon/tiles/carbon/{z}/{x}/{y}.pbf'
 	],
 	'minzoom': 6,
 	'maxzoom': 14
