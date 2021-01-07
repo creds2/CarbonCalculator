@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="gr__wisemover_co_uk"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>MSOA Covid Cases Map</title>
+<!-- Set Up Mapbox -->
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
+
+<!-- Set Up WiseMover -->
+<link rel="stylesheet" href="/css/main_covid.css">
+<link rel="stylesheet" href="/css/controls.css">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<link rel="stylesheet" href="/css/modal.css">
+
+<script src="/js/lib/chartjs/Chart.min.js"></script>
+<script src="/js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+
+<style>
+.legend {
+background-color: #fff;
+border-radius: 3px;
+bottom: 30px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+padding: 10px;
+position: absolute;
+left: 10px;
+z-index: 1;
+}
+
+.legend h4 {
+margin: 0 0 10px;
+}
+
+.legend div span {
+border-radius: 50%;
+display: inline-block;
+height: 10px;
+margin-right: 5px;
+width: 10px;
+}
+</style>
+
+<div class="headrow">
+  <div class="headcol headleft">
+     <a href="https://www.wisemover.co.uk/creds/covid"></a>
+  </div>
+  <div class="headcol headright">
+    <div class="topnav">
+		<a href="/creds/covid">Malcolm's MSOA Covid Cases Map</a>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="content">
+
+  <div id="covid-legend" class="legend">
+      <h4>Cases</h4>
+      <div><span style="background-color: #D3D3D3"></span>0-2</div>
+      <div><span style="background-color: #313695"></span>5</div>
+      <div><span style="background-color: #4575b4"></span>10</div>
+      <div><span style="background-color: #74add1"></span>20</div>
+      <div><span style="background-color: #abd9e9"></span>30</div>
+      <div><span style="background-color: #e0f3f8"></span>40</div>
+      <div><span style="background-color: #ffffbf"></span>50</div>
+      <div><span style="background-color: #fee090"></span>75</div>
+      <div><span style="background-color: #fdae61"></span>100</div>
+      <div><span style="background-color: #f46d43"></span>200</div>
+      <div><span style="background-color: #d73027"></span>500</div>
+      <div><span style="background-color: #a50026"></span>1000+</div>
+  </div>
+
+  <div class="middle">
+    <div id="map">
+
+    </div>
+  </div>
+  <div class="right">
+    <p>A map of the number of positive covid cases, by <a href="https://www.creds.ac.uk/people/malcolm-morgan/">Malcolm Morgan</a></p>
+    <p><b>Note</b> Weekly case numbers of 0,1,2 are suppressed to 0, this also affects the total case count.
+    The data comes from
+    <a href="https://coronavirus.data.gov.uk/">here</a>.</p>
+    <p>Last Updated: 2/1/2021</p>
+
+
+
+
+    <div id="menu">
+      <select id="input" name="input" onchange="switchLayer()">
+        <option value="rolling" selected>Last 4 weeks rolling total</option>
+        <option value="total">total cases (wk11 - present)</option>
+        <option value="change_lastwk">% Change with last week</option>
+        <option value="change_lastmt">% change with 4 weeks ago</option>
+        <option value="wk_52">Week 52 - 3rd January</option>
+        <option value="wk_51">Week 51 - 27th December</option>
+        <option value="wk_50">Week 50 - 20th December</option>
+        <option value="wk_49">Week 49 - 6th December</option>
+        <option value="wk_48">Week 48 - 29th November</option>
+        <option value="wk_47">Week 47 - 22nd November</option>
+        <option value="wk_46">Week 46 - 15th November</option>
+        <option value="wk_45">Week 45 - 8th November</option>
+        <option value="wk_44">Week 44 - 1st November</option>
+        <option value="wk_43">Week 43 - 25th October</option>
+        <option value="wk_42">Week 42 - 18th October</option>
+        <option value="wk_41">Week 41 - 11th October</option>
+        <option value="wk_40">Week 40 - 4th October</option>
+        <option value="wk_39">Week 39 - 27th September</option>
+        <option value="wk_38">Week 38 - 20th September</option>
+        <option value="wk_37">Week 37 - 13th September</option>
+        <option value="wk_36">Week 36 - 6th September</option>
+        <option value="wk_35">Week 35 - 30th August</option>
+        <option value="wk_34">Week 34 - 23rd August</option>
+        <option value="wk_33">Week 33 - 16th August</option>
+        <option value="wk_32">Week 32 - 9th August</option>
+        <option value="wk_31">Week 31 - 2nd August</option>
+        <option value="wk_30">Week 30 - 26td July</option>
+        <option value="wk_29">Week 29 - 20th July</option>
+        <option value="wk_28">Week 28 - 12th July</option>
+        <option value="wk_27">Week 27 - 5nd July</option>
+        <option value="wk_26">Week 26 - 28th June</option>
+        <option value="wk_25">Week 25 - 21st June</option>
+        <option value="wk_24">Week 24 - 14th June</option>
+        <option value="wk_23">Week 23 - 7th June</option>
+        <option value="wk_22">Week 22 - 31st May</option>
+        <option value="wk_21">Week 21 - 24st May</option>
+        <option value="wk_20">Week 20 - 17th May</option>
+        <option value="wk_19">Week 19 - 10th May</option>
+        <option value="wk_18">Week 18 - 3rd May</option>
+        <option value="wk_17">Week 17 - 26rd April</option>
+        <option value="wk_16">Week 16 - 19th April</option>
+        <option value="wk_15">Week 15 - 12th April</option>
+        <option value="wk_14">Week 14 - 5nd April</option>
+        <option value="wk_13">Week 13 - 29th March</option>
+        <option value="wk_12">Week 12 - 22nd March</option>
+        <option value="wk_11">Week 11 - 15th March</option>
+      </select>
+    </div>
+  </div>
+
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Weekly Chart</h2>
+    </div>
+    <div class="modal-body">
+      <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+		  	<canvas id="covidChart"></canvas>
+		  </div>
+		  <p>Note: Weekly case numbers of 0,1,2 are suppressed to 0, so this chart may under-count cases.</p>
+		  <p>The grey line show Q1, Mean, and Q3 values for the whole of England, while the pink bars are for the selected MSOA.</p>
+    </div>
+  </div>
+
+
+</div>
+
+<script type="text/javascript" src="/js/modal.js"></script>
+<script type="text/javascript" src="/js/map_covid.js"></script>
+</body>
+</html>

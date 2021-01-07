@@ -1,13 +1,12 @@
 // Setup Map
-mapboxgl.accessToken = "NotNeeded";
+mapboxgl.accessToken = "NotNeeded"
 var map = new mapboxgl.Map({
 container: 'map', // container id
-style: 'tiles/style.json', // stylesheet location
+style: '/tiles/style_carbon_backonly.json', // stylesheet location
 center: [-1.548, 53.795], // starting position [lng, lat]
 zoom: 10 // starting zoom
 });
-
-
+ 
 // Declare Chart Values
 var elecChart;
 var gasChart;
@@ -17,60 +16,48 @@ map.on('load', function() {
 map.addSource('carbon', {
 	'type': 'vector',
 	'tiles': [
-	'https://www.wisemover.co.uk/carbon/tiles/carbon/{z}/{x}/{y}.pbf'
+	'https://www.wisemover.co.uk/tiles/carbon_v2/{z}/{x}/{y}.pbf'
 	],
-	'minzoom': 4,
-	'maxzoom': 13
+	'minzoom': 6,
+	'maxzoom': 14
+});
+map.addLayer(
+{
+'id': 'carbon',
+'type': 'fill',
+'source': 'carbon',
+'source-layer': 'LSOA_v1',
+"paint": {
+        "fill-color": [
+			'match',
+			['get', 'total_emissions_grade'],
+			'A+','#006837',
+			'A','#1a9850',
+			'A-','#1a9850',
+			'B+','#91cf60',
+			'B','#91cf60',
+			'B-','#91cf60',
+			'C+','#d9ef8b',
+			'C','#d9ef8b',
+			'C-','#d9ef8b',
+			'D+','#fee08b',
+			'D','#fee08b',
+			'D-','#fee08b',
+			'E+','#fc8d59',
+			'E','#fc8d59',
+			'E-','#fc8d59',
+			'F+','#d73027',
+			'F','#d73027',
+			'F-','#a50026',
+			/* other */ '#e0e0e0'
+			],
+        "fill-opacity": 0.7
+      }
+}
+);
 });
 
 map.addControl(new mapboxgl.NavigationControl());
-
-});
-
-
-function switchLayer(layer) {
-  var layerId = document.getElementById("layerinput").value;
-  //console.log(layerId);
-  
-  if (map.getLayer('carbon')) map.removeLayer('carbon');
-  
-  map.addLayer(
-  {
-  'id': 'carbon',
-  'type': 'fill',
-  'source': 'carbon',
-  'source-layer': 'carbon',
-  "paint": {
-          "fill-color": [
-  			'match',
-  			['get', layerId],
-  			'A+','#006837',
-  			'A','#1a9850',
-  			'A-','#1a9850',
-  			'B+','#91cf60',
-  			'B','#91cf60',
-  			'B-','#91cf60',
-  			'C+','#d9ef8b',
-  			'C','#d9ef8b',
-  			'C-','#d9ef8b',
-  			'D+','#fee08b',
-  			'D','#fee08b',
-  			'D-','#fee08b',
-  			'E+','#fc8d59',
-  			'E','#fc8d59',
-  			'E-','#fc8d59',
-  			'F+','#d73027',
-  			'F','#d73027',
-  			'F-','#a50026',
-  			/* other */ '#e0e0e0'
-  			],
-          "fill-opacity": 0.7
-        }
-  }
-  );
-  
-
-}
 
 // On click open modal
 map.on('click', 'carbon', function(e) {
