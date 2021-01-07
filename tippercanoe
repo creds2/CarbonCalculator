@@ -2,10 +2,17 @@ Tippcanoe Instructions using WSL2
 
 cd /mnt/d/GitHub/creds2/CarbonCalculator/data
 
-tippecanoe --name=carbon --attribution=MALCOLMMORGAN --maximum-zoom=12 --minimum-zoom=5 --output-to-directory=tiles_general --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --force carbon_general.geojson
 
-tippecanoe --name=carbon --attribution=MALCOLMMORGAN --maximum-zoom=16 --minimum-zoom=13 --output-to-directory=tiles_full --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --force carbon_full.geojson
+tippecanoe --output-to-directory=carbon_super_gen --name=carbon --layer=carbon --attribution=MALCOLMMORGAN --maximum-zoom=8 --minimum-zoom=4  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --no-tile-size-limit --force  carbon_super_general.geojson
 
+tippecanoe --output-to-directory=carbon_gen --name=carbon --layer=carbon --attribution=MALCOLMMORGAN --maximum-zoom=11 --minimum-zoom=9  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --no-tile-size-limit --force  carbon_general.geojson
+
+tippecanoe --output-to-directory=carbon_full --name=carbon --layer=carbon --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=12  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --no-tile-size-limit --force  carbon_full.geojson
+
+
+tile-join --output-to-directory=LSOA_gen_and_sup_gen lsoa_super_general.mbtiles lsoa_general.mbtiles --attribution=MALCOLMMORGAN --name=lsoa
+
+tile-join --output-to-directory=lsoa lsoa_super_general.mbtiles lsoa_general.mbtiles lsoa_full.mbtiles --attribution=MALCOLMMORGAN --name=LSOA
 
 
 #### tippecanoe -zg --output-to-directory=mytiles2 --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders LSOA_v1.geojson
@@ -27,4 +34,4 @@ Zoom 12 is about 1:150000 and difference between full and generalised lsoa bound
 
 Zoom 14 is 1:35000 all LSOA visible, difference between full and generalised boundaries is clear
 
-Zoom 16 is 1:8000 is about the maximum needed to let a single LSOA full most of the screen
+Zoom 16 is 1:8000 is about the maximum needed to let a single LSOA full most of the screen, but uses too much data

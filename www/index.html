@@ -2,6 +2,11 @@
 <html class="gr__wisemover_co_uk"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>CREDS - Place-based Carbon Calculator</title>
+
+<!-- Before Anything Else, Get the Massive JSON File
+<script src="js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+<script src="js/get_json.js"></script> -->
+
 <!-- Set Up Mapbox -->
 <script src="js/lib/mapbox-gl-js-1.13/mapbox-gl.js"></script>
 <link href="js/lib/mapbox-gl-js-1.13/mapbox-gl.css" rel="stylesheet" />
@@ -21,6 +26,9 @@
 
 </head>
 <body>
+  
+<!-- Loading Spinner 
+<div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.gif"/></div> -->
 
 <div class="headrow">
   <div class="headcol headleft">
@@ -35,8 +43,15 @@
   </div>
 </div>
 
+<!-- Welcome Splash 
+<div id="welcome" style="position: fixed;top: 10%; left: 10%; width: 80%; height: 80%; background-color: lightblue; z-index: 1001;">
+    <p>Hi</p>
+    <button type="button" onclick="hidewelcome()">View Map</button> 
+</div> -->
 
 <div class="content">
+
+  
   <div class="middle">
     <div id="map">
       
@@ -44,6 +59,21 @@
   </div>
   <div class="right">
     <p>An estimate of GHG emissions per capita of each LSOA in      England and Wales based on Domestic Gas consumption, Domestic Electricity consumption, miles driven per year, and estimate of non-gas heating energy consumption. Note that this excludes flights and material consumption.</p>
+    
+    <select id="layerinput" name="layerinput" onchange="switchLayer()">
+        <option value="total_emissions_grade" selected>Total Emission Grade</option>
+        <option value="car_emissions_grade">Car Emissions Grade</option>
+        <option value="gas_emissions_grade">Gas Emissions Grade</option>
+        <option value="elec_emissions_grade">Electricity Emissions Grade</option>
+        <option value="cars_percap_grade">Cars per person Grade</option>
+        <option value="miles_percap_grade">Miles per person Grade</option>
+        <option value="T2W_Car_grade">Travel to Work (Car) Grade</option>
+        <option value="T2W_Cycle_grade">Travel to Work (Bicycle) Grade</option>
+        <option value="T2W_Bus_grade">Travel to Work (Bus) Grade</option>
+        <option value="T2W_Train_grade">Travel to Work (Train) Grade</option>
+        <option value="T2W_Foot_grade">Travel to Work (Foot) Grade</option>
+      </select>
+    
   </div>
 </div>
 
@@ -121,6 +151,12 @@
 
 
 </div>
+<!-- The JSOn Way 
+<script type="text/javascript" src="js/map_start.js"></script>
+<script type="text/javascript" src="js/welcome.js"></script>
+<script type="text/javascript" src="js/map_switchlayer.js"></script>
+<script type="text/javascript" src="js/map_onclick.js"></script>
+-->
 <script type="text/javascript" src="js/modal.js"></script>
 <script type="text/javascript" src="js/map_carbon.js"></script>
 </body>

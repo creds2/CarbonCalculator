@@ -41,3 +41,6 @@ vignettes/*.pdf
 data/data_with_grades.Rds
 *.Rds
 *.geojson
+*.zip
+
+data/
