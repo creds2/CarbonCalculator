@@ -59,12 +59,24 @@
   color: white;
 }
 
-.modalrow {
+/*.modalrow {
   display: flex;
 }
 
 .modalcolumn {
-  flex: 50%;
+  flex: 49%;
+} */
+
+.modalcolumn {
+  float: left;
+  width: 49%;
+}
+
+/* Clear floats after the columns */
+.modalrow:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /* Add Animation */

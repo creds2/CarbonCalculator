@@ -21,18 +21,7 @@ census <- readRDS("../Excess-Data-Exploration/data-prepared/census_lsoa.Rds") # 
 names(census) <- gsub("[.]","",names(census))
 school <- readRDS("../Excess-Data-Exploration/data-prepared/Trave2School.Rds")
 
-dir.create("tmp")
-unzip(paste0(secure_path,"/github-secure-data/Historical_Car_Emissions_LSOA_public.zip"),
-      exdir = "tmp")
-emissions <- read.csv("tmp/Historical_Car_Emissions_LSOA_public.csv")
-unlink("tmp")
-
-emissions <- emissions[emissions$year == 2018,]
-emissions <- emissions[,c("LSOA","fuel","AllCars","AvgCO2")]
-names(emissions) <- c("LSOA","fuel","ncars","AvgCO2")
-emissons_wide <- tidyr::pivot_wider(emissions, id_cols = "LSOA", 
-                                    names_from = c("fuel"),
-                                    values_from = c("ncars","AvgCO2"))
+emissions_wide <- readRDS("data-prepared/car_historical_emissions.Rds")
 
 
 bounds <- bounds[bounds$LSOA11 %in% census$CODE,]
