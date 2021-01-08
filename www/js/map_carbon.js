@@ -12,6 +12,7 @@ zoom: 10 // starting zoom
 var elecChart;
 var gasChart;
 var t2wChart;
+var overallChart;
  
 map.on('load', function() {
 map.addSource('carbon', {
@@ -138,6 +139,17 @@ map.on('click', 'carbon', function(e) {
 		e.features[0].properties.T2W_Taxi,
 		e.features[0].properties.T2W_Train
     ];
+    
+  var overallshare = [
+		10,
+		15,
+		20,
+		0,
+		0,
+		0,
+		0,
+		0
+    ];
 	 
 	document.getElementById("data_total_emissions_percap").innerHTML = e.features[0].properties.total_emissions_percap;
 	document.getElementById("data_elec_emissions_household").innerHTML = e.features[0].properties.elec_emissions_household;
@@ -247,6 +259,45 @@ map.on('click', 'carbon', function(e) {
 			},
 			responsive: true,
 			maintainAspectRatio: false
+		}
+	});
+	
+	
+	// Overall Chart
+	
+	if(overallChart){
+		overallChart.destroy();
+	}
+	
+	var overallctx = document.getElementById('overallChart').getContext('2d');
+	overallChart = new Chart(overallctx, {
+		type: 'pie',
+		data: {
+			datasets: [{
+				label: 'Total Carbon Footprint',
+				data: overallshare,
+				backgroundColor: [
+				'rgba(166,206,227, 1)',
+				'rgba(31,120,180, 1)',
+				'rgba(178,223,138, 1)',
+				'rgba(51,160,44, 1)',
+				'rgba(251,154,153, 1)',
+				'rgba(227,26,28, 1)',
+				'rgba(253,191,111, 1)',
+				'rgba(255,127,0, 1)'
+				]
+				
+			}],
+			
+			labels: ['Gas','Electricity','Driving (cars)','Driving (vans)','Public Transport',
+			'Flights','Other Heating','Food and Goods']
+		},
+		options: {
+			responsive: true,
+			maintainAspectRatio: false,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
 	

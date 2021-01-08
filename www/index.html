@@ -47,7 +47,7 @@
     <h2>Welcome to the CREDS Place-based Carbon Calculator</h2>
     <p><b>This tool is currently under development</b></p>
     <p>This tool helps show how and why people’s carbon footprint varies across England. It was developed at the  University of Leeds in partnership with Transport for the South East and funding from the Centre for Research into Energy Demand Solutions</p>
-    <p>We have used a wise range of data to estimate the carbon footprint of each Lower Super Output Area (LSOA) in England. LSOAs are statistical areas with about 1,500 people. Although the estimate are based on the best aviaible data for each area, they are averages for areas and so may not be an accurate representation of any particular indervidual.</p>
+    <p>We have used a wide range of data to estimate the carbon footprint of each Lower Super Output Area (LSOA) in England. LSOAs are statistical areas with about 1,500 people. Although the estimates are based on the best aviaible data for each area, they are averages for areas and so may not be an accurate representation of any particular indervidual.</p>
  <p>A placed-based tool, like this, is best for understanding structural issues that affect whole communities. For example, people in a certain area may drive a lot becuase they don't have access to public transport.</p>
  <p>Use the drop-down menu to view different datasets or click on an area to get a detailed report card.</p>
 
@@ -98,35 +98,53 @@
     </div>
     <div class="modal-body">
 	
+	  <h3>Area Description</h3>
+	  
+	  
+	  <h3>Overall Carbon Footprint</h3>
+	  
+	  <div class=modalrow>
+	    <div class=modalcol>
+	      <table>
+    		  <tr>
+    			<th>Name</th>
+    			<th>Value</th>
+    			<th>Grade</th>
+    			<th>Source</th>
+    		  </tr>
+    		  <tr>
+    			<td>Total CO2 per person</td>
+    			<td id="data_total_emissions_percap">NA</td>
+    			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_total_emissions_grade"></td>
+    			<td>Source</td>
+    		  </tr>
+    		  <tr>
+    			<td>Electricity CO2 per person</td>
+    			<td id="data_elec_emissions_household">NA</td>
+    			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_elec_emissions_grade"></td>
+    			<td>Source</td>
+    		  </tr>
+    		  <tr>
+    			<td>Gas CO2 per person</td>
+    			<td id="data_gas_emissions_household">NA</td>
+    			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_gas_emissions_grade"></td>
+    			<td>Source</td>
+    		  </tr>
+    		</table>
+	    </div>
+	  
+	    <div class=modalcol>
+	      <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+    			<canvas id="overallChart"></canvas>
+    		</div>
+	    </div>
+	  </div>
+	  
+	  
 	
-		<table>
-		  <tr>
-			<th>Name</th>
-			<th>Value</th>
-			<th>Grade</th>
-			<th>Source</th>
-		  </tr>
-		  <tr>
-			<td>Total CO2 per person</td>
-			<td id="data_total_emissions_percap">NA</td>
-			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_total_emissions_grade"></img></td>
-			<td>Source</td>
-		  </tr>
-		  <tr>
-			<td>Electricity CO2 per person</td>
-			<td id="data_elec_emissions_household">NA</td>
-			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_elec_emissions_grade"></img></td>
-			<td>Source</td>
-		  </tr>
-		  <tr>
-			<td>Gas CO2 per person</td>
-			<td id="data_gas_emissions_household">NA</td>
-			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_gas_emissions_grade"></img></td>
-			<td>Source</td>
-		  </tr>
-		</table>
 		
-		<h4>Transport</h4>
+		
+		<h3>Transport</h3>
 		
 		<div class="chart-container" style="position: relative; height:40vh; width:80vw">
 			<canvas id="t2wChart"></canvas>
@@ -134,7 +152,7 @@
 		
 		
 		
-		<h4>Housing</h4>
+		<h3>Housing</h3>
 		
 		
 		

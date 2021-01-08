@@ -59,6 +59,14 @@
   color: white;
 }
 
+.modalrow {
+  display: flex;
+}
+
+.modalcolumn {
+  flex: 50%;
+}
+
 /* Add Animation */
 @-webkit-keyframes slideIn {
   from {bottom: -300px; opacity: 0} 
