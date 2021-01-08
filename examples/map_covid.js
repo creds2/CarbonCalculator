@@ -154,7 +154,7 @@ function switchLayer(layer) {
                 1000,'#a50026'
                 ],
             "fill-opacity": 0.7,
-            'fill-outline-color': 'rgba(0, 0, 0, 0.5)'
+            'fill-outline-color': 'rgba(169, 169, 169, 0.5)'
           }
     }, firstSymbolId
     );

@@ -17,13 +17,12 @@
 <!-- Set Up CSS -->
 <link rel="stylesheet" href="css/main_carbon.css">
 <link rel="stylesheet" href="css/modal.css">
-<link rel="stylesheet" href="css/controls.css">
+<link rel="stylesheet" href="css/welcome.css">
+<link rel="stylesheet" href="css/map_ledgend.css">
 
 <!-- Set Up Icons -->
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-
 </head>
 <body>
   
@@ -43,38 +42,47 @@
   </div>
 </div>
 
-<!-- Welcome Splash 
-<div id="welcome" style="position: fixed;top: 10%; left: 10%; width: 80%; height: 80%; background-color: lightblue; z-index: 1001;">
-    <p>Hi</p>
-    <button type="button" onclick="hidewelcome()">View Map</button> 
-</div> -->
+<!-- Welcome Splash -->
+<div id="welcome" class="welcome">
+    <h2>Welcome to the CREDS Place-based Carbon Calculator</h2>
+    <p><b>This tool is currently under development</b></p>
+    <p>This tool helps show how and why people’s carbon footprint varies across England. It was developed at the  University of Leeds in partnership with Transport for the South East and funding from the Centre for Research into Energy Demand Solutions</p>
+    <p>We have used a wise range of data to estimate the carbon footprint of each Lower Super Output Area (LSOA) in England. LSOAs are statistical areas with about 1,500 people. Although the estimate are based on the best aviaible data for each area, they are averages for areas and so may not be an accurate representation of any particular indervidual.</p>
+ <p>A placed-based tool, like this, is best for understanding structural issues that affect whole communities. For example, people in a certain area may drive a lot becuase they don't have access to public transport.</p>
+ <p>Use the drop-down menu to view different datasets or click on an area to get a detailed report card.</p>
+
+
+    <button type="button" onclick="hidewelcome()">Get Started</button> 
+</div>
+
+<!-- Floating Objects -->
+<div id="legend" class="legend"></div>
+
+<div id="rightbox" class="rightbox">
+<p>Select a variable to show on the map</p>
+
+<select id="layerinput" name="layerinput" onchange="switchLayer()">
+    <option value="total_emissions_grade" selected>Total Emission Grade</option>
+    <option value="car_emissions_grade">Car Emissions Grade</option>
+    <option value="gas_emissions_grade">Gas Emissions Grade</option>
+    <option value="elec_emissions_grade">Electricity Emissions Grade</option>
+    <option value="cars_percap_grade">Cars per person Grade</option>
+    <option value="miles_percap_grade">Miles per person Grade</option>
+    <option value="T2W_Car_grade">Travel to Work (Car) Grade</option>
+    <option value="T2W_Cycle_grade">Travel to Work (Bicycle) Grade</option>
+    <option value="T2W_Bus_grade">Travel to Work (Bus) Grade</option>
+    <option value="T2W_Train_grade">Travel to Work (Train) Grade</option>
+    <option value="T2W_Foot_grade">Travel to Work (Foot) Grade</option>
+</select>
+
+<div id="layerdesc"></div>
+    
+</div>
+
+<!-- Main Content -->
 
 <div class="content">
-
-  
-  <div class="middle">
-    <div id="map">
-      
-    </div>
-  </div>
-  <div class="right">
-    <p>An estimate of GHG emissions per capita of each LSOA in      England and Wales based on Domestic Gas consumption, Domestic Electricity consumption, miles driven per year, and estimate of non-gas heating energy consumption. Note that this excludes flights and material consumption.</p>
-    
-    <select id="layerinput" name="layerinput" onchange="switchLayer()">
-        <option value="total_emissions_grade" selected>Total Emission Grade</option>
-        <option value="car_emissions_grade">Car Emissions Grade</option>
-        <option value="gas_emissions_grade">Gas Emissions Grade</option>
-        <option value="elec_emissions_grade">Electricity Emissions Grade</option>
-        <option value="cars_percap_grade">Cars per person Grade</option>
-        <option value="miles_percap_grade">Miles per person Grade</option>
-        <option value="T2W_Car_grade">Travel to Work (Car) Grade</option>
-        <option value="T2W_Cycle_grade">Travel to Work (Bicycle) Grade</option>
-        <option value="T2W_Bus_grade">Travel to Work (Bus) Grade</option>
-        <option value="T2W_Train_grade">Travel to Work (Train) Grade</option>
-        <option value="T2W_Foot_grade">Travel to Work (Foot) Grade</option>
-      </select>
-    
-  </div>
+  <div id="map"></div>
 </div>
 
 
@@ -86,7 +94,7 @@
     <div class="modal-header">
       <span class="close">&times;</span>
       <h2>Area Summary</h2>
-	  <h3 id="data_LSOA">foo<h3>
+	  <h3 id="data_LSOA">foo</h3>
     </div>
     <div class="modal-body">
 	
@@ -153,11 +161,13 @@
 </div>
 <!-- The JSOn Way 
 <script type="text/javascript" src="js/map_start.js"></script>
-<script type="text/javascript" src="js/welcome.js"></script>
+
 <script type="text/javascript" src="js/map_switchlayer.js"></script>
 <script type="text/javascript" src="js/map_onclick.js"></script>
 -->
 <script type="text/javascript" src="js/modal.js"></script>
 <script type="text/javascript" src="js/map_carbon.js"></script>
+<script type="text/javascript" src="js/welcome.js"></script>
+<script type="text/javascript" src="js/map_layerdesc.js"></script>
 </body>
 </html>
