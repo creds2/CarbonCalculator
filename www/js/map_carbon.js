@@ -2,7 +2,7 @@
 mapboxgl.accessToken = "NotNeeded";
 var map = new mapboxgl.Map({
 container: 'map', // container id
-style: 'tiles/style.json', // stylesheet location
+style: 'tiles/style_ontop.json', // stylesheet location
 center: [-1.548, 53.795], // starting position [lng, lat]
 zoom: 10 // starting zoom
 });
@@ -27,7 +27,27 @@ map.addSource('carbon', {
 	'maxzoom': 13
 });
 
-map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+map.addSource('la', {
+	'type': 'vector',
+	'tiles': [
+	'https://www.wisemover.co.uk/carbon/tiles/la/{z}/{x}/{y}.pbf'
+	],
+	'minzoom': 4,
+	'maxzoom': 13
+});
+
+map.addLayer({
+    'id': 'la',
+    'type': 'line',
+    'source': 'la',
+    'source-layer': 'la',
+    'paint': {
+      'line-color': 'rgba(0, 0, 0, 1)',
+      'line-width': 2
+    }
+});  
+
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
 });
 
@@ -96,7 +116,7 @@ function switchLayer(layer) {
           "fill-opacity": 0.7,
           'fill-outline-color': 'rgba(0, 0, 0, 0.5)'
         }
-  }, 'housenumber'
+  },  'landcover_grass' /*'housenumber'*/
   );
   
 

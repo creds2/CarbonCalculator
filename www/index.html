@@ -58,25 +58,36 @@
 <!-- Floating Objects -->
 <div id="legend" class="legend"></div>
 
+<!-- Layer Selection Panel -->
 <div id="rightbox" class="rightbox">
 <p>Select a variable to show on the map</p>
 
-<select id="layerinput" name="layerinput" onchange="switchLayer()">
-    <option value="total_emissions_grade" selected>Total Emission Grade</option>
-    <option value="car_emissions_grade">Car Emissions Grade</option>
-    <option value="gas_emissions_grade">Gas Emissions Grade</option>
-    <option value="elec_emissions_grade">Electricity Emissions Grade</option>
-    <option value="cars_percap_grade">Cars per person Grade</option>
-    <option value="miles_percap_grade">Miles per person Grade</option>
-    <option value="T2W_Car_grade">Travel to Work (Car) Grade</option>
-    <option value="T2W_Cycle_grade">Travel to Work (Bicycle) Grade</option>
-    <option value="T2W_Bus_grade">Travel to Work (Bus) Grade</option>
-    <option value="T2W_Train_grade">Travel to Work (Train) Grade</option>
-    <option value="T2W_Foot_grade">Travel to Work (Foot) Grade</option>
-</select>
+<button class="accordion"><input type="checkbox" id="showlsoa" value="true"> Zonal Data</button>
+<div class="panel">
+  <select id="layerinput" name="layerinput" onchange="switchLayer()">
+      <option value="total_emissions_grade" selected>Total Emission Grade</option>
+      <option value="car_emissions_grade">Car Emissions Grade</option>
+      <option value="gas_emissions_grade">Gas Emissions Grade</option>
+      <option value="elec_emissions_grade">Electricity Emissions Grade</option>
+      <option value="cars_percap_grade">Cars per person Grade</option>
+      <option value="miles_percap_grade">Miles per person Grade</option>
+      <option value="T2W_Car_grade">Travel to Work (Car) Grade</option>
+      <option value="T2W_Cycle_grade">Travel to Work (Bicycle) Grade</option>
+      <option value="T2W_Bus_grade">Travel to Work (Bus) Grade</option>
+      <option value="T2W_Train_grade">Travel to Work (Train) Grade</option>
+      <option value="T2W_Foot_grade">Travel to Work (Foot) Grade</option>
+  </select>
+  <div id="layerdesc"></div>
+</div>
 
-<div id="layerdesc"></div>
-    
+<button class="accordion"><input type="checkbox" id="showla" value="true">Local Authorities </button>
+<div class="panel">
+  <p>Show Lower Tier/Unitary Local Authoirty Boundaires</p>
+</div>
+
+
+
+<script src="js/accordion.js"></script>
 </div>
 
 <!-- Main Content -->

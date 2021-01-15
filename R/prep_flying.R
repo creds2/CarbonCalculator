@@ -1,13 +1,79 @@
 # Estimate Flying Emissions
+library(tmap)
+library(dplyr)
+tmap_mode("view")
+
+secure_path <- "D:/OneDrive - University of Leeds/Data/CREDS Data/"
 
 pass_od <- sf::read_sf("../LDT/data/clean/od_flights_pass.gpkg")
 pass_od <- sf::st_drop_geometry(pass_od[,c("airport1","airport1_country","airport2","airport2_country","pass_km_2018")])
+pass_od <- pass_od[!is.na(pass_od$pass_km_2018),]
+
+airports <- sf::read_sf("../LDT/data/clean/airports_clean_second_pass.gpkg")
+#Drop flights not from England
+# Half flights between England and rest of UK
+airports_wsni <- c("Aberdeen","Alderney","Anglesey (Valley)","Barra",
+                   "Belfast",
+                   "Belfast City (George Best)", "Benbecula",
+                   "Campbeltown","Cardiff",
+                   "Coll","Colonsay","Cumbernauld",
+                   "Dornoch","Dundee",
+                   "Eday","Edinburgh",
+                   "Enniskillen","Fair Isle",
+                   "Fetlar",
+                   "Foula","Glasgow",
+                   "Glasgow Prestwick","Guernsey",
+                   "Hawarden",
+                   "Inverness","Islay","Isle of Man",
+                   "Jersey","Kinloss","Kirkwall",
+                   "Lerwick (Tingwall)","Leuchars",
+                   "Llanbedr","Londonderry",
+                   "North Ronaldsay","Oban (North Connel)","Out Skerries","Pembrey",
+                   "Scatsta",      
+                   "Stornoway","Stronsay",
+                   "Sumburgh","Tiree","Unst","Wick")
+
+airports_eng <- pass_od$airport1[!pass_od$airport1 %in% airports_wsni]
+
+qtm(airports[airports$airport %in% airports_wsni,]) +
+qtm(airports[airports$airport %in% airports_eng,], dots.col = "red")
+
+class_airport <- function(x){
+  if(x %in% airports_eng){
+    return("England")
+  }
+  if(x %in% airports_wsni){
+    return("UK - Not England")
+  }
+  return("Other COuntry")
+}
+
+
+pass_od$fromclass <- sapply(pass_od$airport1, class_airport)
+pass_od$toclass <- sapply(pass_od$airport2, class_airport)
+
+keeptable <- data.frame(fromclass = c("UK - Not England","UK - Not England","UK - Not England","England","England","England"),
+                        toclass = c("Other COuntry","UK - Not England","England","England","UK - Not England","Other COuntry"),
+                        keep = c("no","no","half","yes","half","yes"))
+
+pass_od <- left_join(pass_od, keeptable, by = c("fromclass","toclass"))
+
+pass_od <- pass_od[pass_od$keep != "no",]
+pass_od$pass_km_2018_mod <- ifelse(pass_od$keep == "yes", pass_od$pass_km_2018, pass_od$pass_km_2018 / 2)
 
 # Add Emissions
 # From Defra emissions factors 2020
+# Well to Trank emissions with radiative forcing
 # domestic     0.2443  kg CO2e per pass KM
 # short hall   0.15553 
 # long hall    0.19085 
+
+# CO2 (not e) wihtout RF
+# domestic   0.24298 
+# short haul   0.15475 
+# long haul   0.18989  
+
+
 
 emissions_factor <- data.frame(distance_band = c("domestic", "short haul","long haul"),
                                emissions_factor = c(0.2443, 0.15553, 0.19085),
@@ -40,9 +106,11 @@ distance_band <- pbapply::pbsapply(pass_od$airport2_country,
 
 pass_od$distance_band <- distance_band
 pass_od$emissions_factor <- emissions_factor$emissions_factor[match(pass_od$distance_band, emissions_factor$distance_band)] 
-pass_od$emissions <- pass_od$emissions_factor * pass_od$pass_km_2018
+pass_od$emissions <- pass_od$emissions_factor * pass_od$pass_km_2018_mod
 
 emissions_total <- sum(pass_od$emissions, na.rm = TRUE)
+
+emissions_total <- emissions_total * 0.66 #34% of passengers are foreign residents (2016)
 
 # put into context
 message("is ", (emissions_total / 1000) / 35e9 * 100," of global emissions")
@@ -78,11 +146,22 @@ income <- read.csv("tmp2/UKDA-5738-csv/csv/2011-experian-data.csv")
 names(income) <- income[4,]
 income <- income[5:nrow(income),]
 income <- income[,c("GeographyValue","Median_(H) Household Income Value")]
-names(income) <- c("LSOA","median_household_income")
+names(income) <- c("LSOA01","median_household_income")
 
 income <- income[substr(income$LSOA,1,1) == "E",]
 income$median_household_income <- as.numeric(income$median_household_income)
 income$centile <- percentile(income$median_household_income) / 100
+
+lsoa_lookup <- read.csv("data/bounds/lsoa_2001_2011_lookup.csv")
+lsoa_lookup <- lsoa_lookup[,c(1,3,5)]
+names(lsoa_lookup) <- c("LSOA01","LSOA11","Change")
+
+lsoa_lookup <- lsoa_lookup[lsoa_lookup$LSOA01 %in% income$LSOA01,]
+lsoa_lookup <- lsoa_lookup[!duplicated(lsoa_lookup$LSOA11),]
+income <- left_join(income, lsoa_lookup, by = c("LSOA01"))
+
+summary(duplicated(income$LSOA11))
+income <- income[!duplicated(income$LSOA11),]
 
 match_table <- data.frame(x, y, z)
 match_table$x <- round(match_table$x, 2)
@@ -92,7 +171,7 @@ income$flight_emissions <- income$emissions_share * emissions_total
 
 sum(income$flight_emissions)/emissions_total # Shoudl equal 1
 
-income <- income[,c("LSOA","flight_emissions")]
+income <- income[,c("LSOA11","flight_emissions")]
 
 population <- readRDS("../Excess-Data-Exploration/data-prepared/population.Rds")
 
@@ -101,7 +180,7 @@ population$pop2016 <- as.numeric(population$pop2016)
 population <- population[,c("LSOA11","pop2016")]
 
 
-income <- left_join(income, population, by = c("LSOA" = "LSOA11"))
+income <- left_join(income, population, by = c("LSOA11" = "LSOA11"))
 #income$pop2016[is.na(income$pop2016)] <- 0
 
 income$flight_emissions_percap <- income$flight_emissions / income$pop2016
@@ -112,11 +191,10 @@ saveRDS(income,"data-prepared/flight_emissions.Rds")
 # Quick plot
 
 bounds <- st_read("../Excess-Data-Exploration/data-prepared/LSOA_forplots.gpkg")
-bounds <- left_join(bounds,income, by = c("LSOA11" = "LSOA"))
+bounds <- left_join(bounds,income, by = c("LSOA11" = "LSOA11"))
 bounds <- bounds[!is.na(bounds$flight_emissions_percap),]
 
-library(tmap)
-tmap_mode("view")
+
 tm_shape(bounds) +
   tm_fill("flight_emissions_percap",
           n = 8)

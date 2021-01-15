@@ -2,14 +2,8 @@
 library(sf)
 library(dplyr)
 
+source("R/secure_path.R")
 
-if(dir.exists("E:/Users/earmmor/OneDrive - University of Leeds/CREDS Data")){
-  secure_path <- "E:/Users/earmmor/OneDrive - University of Leeds/CREDS Data"
-} else if(dir.exists("E:/Users/earmmor/OneDrive - University of Leeds/CREDS Data")){
-  secure_path <- "E:/OneDrive - University of Leeds/Data/CREDS Data"
-} else {
-  secure_path <- "D:/OneDrive - University of Leeds/Data/CREDS Data"
-}
 
 bounds <- st_read("../Excess-Data-Exploration/data-prepared/LSOA_full.gpkg")
 elec <- read.csv("../Excess-Data-Exploration/data-prepared/Electricty_2010-17.csv", stringsAsFactors = FALSE)

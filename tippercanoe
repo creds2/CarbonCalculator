@@ -20,7 +20,9 @@ tile-join --output-to-directory=lsoa lsoa_super_general.mbtiles lsoa_general.mbt
 consider 
 --maximum-tile-bytes=1000K
 
+### LAs
 
+tippecanoe --output-to-directory=la_tiles --name=la --layer=la --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=0  --drop-smallest-as-needed --simplification=10 --detect-shared-borders --force  bounds/la_bounds.geojson
 
 
 COVID
