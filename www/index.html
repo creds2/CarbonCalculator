@@ -62,7 +62,7 @@
 <div id="rightbox" class="rightbox">
 <p>Select a variable to show on the map</p>
 
-<button class="accordion"><input type="checkbox" id="showlsoa" value="true"> Zonal Data</button>
+<button class="accordion"><input type="checkbox" id="carboncheckbox" value="true" onclick="toggleLayer('carbon')"> Zonal Data</button>
 <div class="panel">
   <select id="layerinput" name="layerinput" onchange="switchLayer()">
       <option value="total_emissions_grade" selected>Total Emission Grade</option>
@@ -80,7 +80,7 @@
   <div id="layerdesc"></div>
 </div>
 
-<button class="accordion"><input type="checkbox" id="showla" value="true">Local Authorities </button>
+<button class="accordion"><input type="checkbox" id="lacheckbox" value="true" onclick="toggleLayer('la')">Local Authorities </button>
 <div class="panel">
   <p>Show Lower Tier/Unitary Local Authoirty Boundaires</p>
 </div>
@@ -246,5 +246,7 @@
 <script type="text/javascript" src="js/map_carbon.js"></script>
 <script type="text/javascript" src="js/welcome.js"></script>
 <script type="text/javascript" src="js/map_layerdesc.js"></script>
+<script type="text/javascript" src="js/layer_control.js"></script>
+
 </body>
 </html>
