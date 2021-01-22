@@ -70,6 +70,13 @@ mot_postcode <- mot_postcode[,c("postcodearea","X2012","X2013","X2014","X2015","
 
 mot_2011 <- left_join(mot_2011, mot_postcode, by = c("PC_AREA" = "postcodearea"))
 
+mot_2011$X2012[is.na(mot_2011$X2012)] <- 1
+mot_2011$X2013[is.na(mot_2011$X2013)] <- 1
+mot_2011$X2014[is.na(mot_2011$X2014)] <- 1
+mot_2011$X2015[is.na(mot_2011$X2015)] <- 1
+mot_2011$X2016[is.na(mot_2011$X2016)] <- 1
+mot_2011$X2017[is.na(mot_2011$X2017)] <- 1
+mot_2011$X2018[is.na(mot_2011$X2018)] <- 1
 
 mot_2011$car_km_12 <- mot_2011$car_km_11 * mot_2011$X2012
 mot_2011$car_km_13 <- mot_2011$car_km_11 * mot_2011$X2013
