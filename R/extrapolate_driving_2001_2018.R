@@ -17,41 +17,43 @@ summary(mot_2011$vans_total_10 / mot_2011$vans_total_11)
 summary(mot_postcode$X2010)
 
 # Make Postcode Area Boundaries
-dir.create("tmp")
-unzip("D:/OneDrive/Data/Code Point Polygons/Download_CodePointPolygons_1665983.zip",
-      exdir = "tmp")
+# dir.create("tmp")
+# unzip("D:/OneDrive/Data/Code Point Polygons/Download_CodePointPolygons_1665983.zip",
+#       exdir = "tmp")
 library(sf)
 library(dplyr)
 
-files <- list.files("tmp", recursive = TRUE, pattern = ".zip", full.names = TRUE)
-postcode_areas <- list()
-
-for(i in 1:length(files)){
-  file <- files[i]
-  message(i," of ",length(files))
-  dir.create("tmp2")
-  unzip(file, exdir = "tmp2")
-  file <- list.files("tmp2", pattern = ".shp", full.names = TRUE)
-  poly <- read_sf(file)
-  unlink("tmp2", recursive = TRUE)
-  poly <- poly %>%
-    group_by(PC_AREA) %>%
-    summarise()
-  postcode_areas[[i]] <- poly
-}
-unlink("tmp", recursive = TRUE)
-postcode_shapes <- bind_rows(postcode_areas)
+# files <- list.files("tmp", recursive = TRUE, pattern = ".zip", full.names = TRUE)
+# postcode_areas <- list()
+# 
+# for(i in 1:length(files)){
+#   file <- files[i]
+#   message(i," of ",length(files))
+#   dir.create("tmp2")
+#   unzip(file, exdir = "tmp2")
+#   file <- list.files("tmp2", pattern = ".shp", full.names = TRUE)
+#   poly <- read_sf(file)
+#   unlink("tmp2", recursive = TRUE)
+#   poly <- poly %>%
+#     group_by(PC_AREA) %>%
+#     summarise()
+#   postcode_areas[[i]] <- poly
+# }
+# unlink("tmp", recursive = TRUE)
+# postcode_shapes <- bind_rows(postcode_areas)
 
 library(tmap)
 tmap_mode("view")
 
-qtm(st_simplify(postcode_shapes, 100, preserveTopology = TRUE))
-saveRDS(postcode_shapes,"data/bounds/postcode_areas.Rds")
+# qtm(st_simplify(postcode_shapes, 100, preserveTopology = TRUE))
+# saveRDS(postcode_shapes,"data/bounds/postcode_areas.Rds")
+
+postcode_shapes <- readRDS("data/bounds/postcode_areas.Rds")
 
 dir.create("tmp")
-unzip("D:/OneDrive - University of Leeds/Data/OA Bounadries/",
+unzip("D:/OneDrive - University of Leeds/Data/OA Bounadries/EW_LSOA_2011_Centroids.zip",
       exdir = "tmp")
-cents <- read_sf("tmp/england_lsoa_2011_centroids.shp")
+cents <- read_sf("tmp/Lower_Layer_Super_Output_Areas__December_2011__Population_Weighted_Centroids.shp")
 unlink("tmp", recursive = TRUE)
 
 nrow(cents)
@@ -59,14 +61,15 @@ cents <- st_join(cents, postcode_shapes)
 nrow(cents)
 
 cents <- st_drop_geometry(cents)
-cents <- cents[,c("code","PC_AREA")]
+cents <- cents[,c("lsoa11cd","PC_AREA")]
 
-mot_2011 <- left_join(mot_2011, cents, by = c("LSOA11" = "code"))
+mot_2011 <- left_join(mot_2011, cents, by = c("LSOA11" = "lsoa11cd"))
 summary(is.na(mot_2011$PC_AREA))
 
 mot_postcode <- mot_postcode[,c("postcodearea","X2012","X2013","X2014","X2015","X2016","X2017","X2018")]
 
 mot_2011 <- left_join(mot_2011, mot_postcode, by = c("PC_AREA" = "postcodearea"))
+
 
 mot_2011$car_km_12 <- mot_2011$car_km_11 * mot_2011$X2012
 mot_2011$car_km_13 <- mot_2011$car_km_11 * mot_2011$X2013
@@ -89,7 +92,7 @@ names(mot_2011)
 
 mot_2011 <- mot_2011[,!grepl("X",names(mot_2011))]
 mot_2011 <- mot_2011[,c("LSOA11","vans_total_09","vans_total_10","vans_total_11",
-                        "van_km_09","van_km_10","van_km_12","van_km_13","van_km_14","van_km_15","van_km_16","van_km_17","van_km_18",
-                        "car_km_09","car_km_10","car_km_12","car_km_13","car_km_14","car_km_15","car_km_16","car_km_17","car_km_18")]
+                        "van_km_09","van_km_10","van_km_11","van_km_12","van_km_13","van_km_14","van_km_15","van_km_16","van_km_17","van_km_18",
+                        "car_km_09","car_km_10","car_km_11","car_km_12","car_km_13","car_km_14","car_km_15","car_km_16","car_km_17","car_km_18")]
 
 saveRDS(mot_2011,"data-prepared/car_van_km_09_18.Rds")

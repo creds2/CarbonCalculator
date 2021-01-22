@@ -53,26 +53,26 @@ map.on('click', 'carbon', function(e) {
 	
 	var sub = e.features[0].properties;
 	
-	var elecHistory = [
-		sub.MeanDomElec_10_kWh,
-		sub.MeanDomElec_11_kWh,
-		sub.MeanDomElec_12_kWh,
-		sub.MeanDomElec_13_kWh,
-		sub.MeanDomElec_14_kWh,
-		sub.MeanDomElec_15_kWh,
-		sub.MeanDomElec_16_kWh,
-		sub.MeanDomElec_17_kWh
+	var gasHistory = [
+		sub.gas_percap_2010,
+		sub.gas_percap_2011,
+		sub.gas_percap_2012,
+		sub.gas_percap_2013,
+		sub.gas_percap_2014,
+		sub.gas_percap_2015,
+		sub.gas_percap_2016,
+		sub.gas_percap_2017
     ];
 	
-	var gasHistory = [
-		sub.MeanDomGas_10_kWh,
-		sub.MeanDomGas_11_kWh,
-		sub.MeanDomGas_12_kWh,
-		sub.MeanDomGas_13_kWh,
-		sub.MeanDomGas_14_kWh,
-		sub.MeanDomGas_15_kWh,
-		sub.MeanDomGas_16_kWh,
-		sub.MeanDomGas_17_kWh
+	var elecHistory = [
+		sub.elec_percap_2010,
+		sub.elec_percap_2011,
+		sub.elec_percap_2012,
+		sub.elec_percap_2013,
+		sub.elec_percap_2014,
+		sub.elec_percap_2015,
+		sub.elec_percap_2016,
+		sub.elec_percap_2017
     ];
 	
 	var t2wshare = [
@@ -96,13 +96,13 @@ map.on('click', 'carbon', function(e) {
     ];
     
   var overallshare = [
-		sub.gas_emissions_household,
-		sub.elec_emissions_household,
-		sub.car_emissions_percap,
+		sub.gas_percap_2017,
+		sub.elec_percap_2017,
+		sub.car_percap_2018,
+		sub.van_percap_2018,
 		0,
-		0,
-		0,
-		0,
+		sub.flights_percap_2018,
+		sub.other_heat_percap_2011,
 		0
     ];
     
@@ -154,7 +154,7 @@ map.on('click', 'carbon', function(e) {
 		data: {
 			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
 			datasets: [{
-				label: 'Mean Electicity use per household (kWh)',
+				label: 'Mean CO2 emission from electricity use (kgCO2e / per person)',
 				data: elecHistory,
 				backgroundColor: 'rgba(255, 99, 132, 0.2)',
 				borderColor: 'rgba(255, 99, 132, 1)',
@@ -253,7 +253,7 @@ map.on('click', 'carbon', function(e) {
 		data: {
 			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
 			datasets: [{
-				label: 'Mean Gas use per household (kWh)',
+				label: 'Mean CO2 emission from gas use (kgCO2e / per person)',
 				data: gasHistory,
 				backgroundColor: 'rgba(255, 99, 132, 0.2)',
 				borderColor: 'rgba(255, 99, 132, 1)',
@@ -394,12 +394,12 @@ map.on('click', 'carbon', function(e) {
 				
 			}],
 			
-			labels: ['Whole_House_Detached',
-                'Whole_House_Semi',
-                'Whole_House_Terraced',
-                'Flat_PurposeBuilt',
-                'Flat_Converted',             
-                'Flat_Commercial',
+			labels: ['Detached house',
+                'Semi-detached house',
+                'Terraced house',
+                'Purpose built flat',
+                'Converted flat',             
+                'Flat above commercial property',
                 'Caravan']
 		},
 		options: {

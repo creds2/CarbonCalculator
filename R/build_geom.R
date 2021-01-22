@@ -11,15 +11,6 @@ library(dplyr)
 
 all <- readRDS("data/data_with_grades.Rds")
 
-# Round numeric data to save space
-all[] <- lapply(all, function(x){
-  if(is.numeric(x)){
-    x <- round(x, 1)
-  }
-  x
-})
-
-
 
 dir.create("tmp")
 unzip("data/bounds/England_lsoa_2011_clipped.zip", exdir = "tmp")

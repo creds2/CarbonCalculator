@@ -3,11 +3,11 @@ Tippcanoe Instructions using WSL2
 cd /mnt/d/GitHub/creds2/CarbonCalculator/data
 
 
-tippecanoe --output-to-directory=carbon_super_gen --name=carbon --layer=carbon --attribution=MALCOLMMORGAN --maximum-zoom=8 --minimum-zoom=4  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --no-tile-size-limit --force  carbon_super_general.geojson
+tippecanoe --output-to-directory=carbon_super_gen --name=carbon --layer=carbon --attribution=MALCOLMMORGAN --maximum-zoom=8 --minimum-zoom=4  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --maximum-tile-bytes=50000000 --buffer=5 --force  carbon_super_general.geojson
 
-tippecanoe --output-to-directory=carbon_gen --name=carbon --layer=carbon --attribution=MALCOLMMORGAN --maximum-zoom=11 --minimum-zoom=9  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --no-tile-size-limit --force  carbon_general.geojson
+tippecanoe --output-to-directory=carbon_gen --name=carbon --layer=carbon --attribution=MALCOLMMORGAN --maximum-zoom=11 --minimum-zoom=9  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --maximum-tile-bytes=5000000 --buffer=5 --force  carbon_general.geojson
 
-tippecanoe --output-to-directory=carbon_full --name=carbon --layer=carbon --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=12  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --no-tile-size-limit --force  carbon_full.geojson
+tippecanoe --output-to-directory=carbon_full --name=carbon --layer=carbon --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=12  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --maximum-tile-bytes=5000000 --buffer=5 --force  carbon_full.geojson
 
 
 tile-join --output-to-directory=LSOA_gen_and_sup_gen lsoa_super_general.mbtiles lsoa_general.mbtiles --attribution=MALCOLMMORGAN --name=lsoa
