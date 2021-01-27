@@ -17,11 +17,11 @@ jQuery.ajaxSetup({
 //    console.log(carbondata[0]);
 //});
 
-var carbondata;
-$.getJSON("data/attributes.json", function (json) {
+var ladata;
+$.getJSON("data/la_averages.json", function (json) {
     console.log( "downloaded json" );
-    carbondata = json;
-    console.log(carbondata[0]);
+    ladata = json;
+    //console.log(carbondata[0]);
 })
   .fail(function() {
     alert("Failed to get JSON");

@@ -52,6 +52,16 @@ map.on('click', 'carbon', function(e) {
 	modal.style.display = "block";
 	
 	var sub = e.features[0].properties;
+	//console.log(sub.LAD17NM);
+	//console.log(ladata);
+	var la = ladata.find(obj => {
+    return obj.LAD17NM === sub.LAD17NM;
+  });
+	//console.log(la);
+	
+	var england = ladata.find(obj => {
+    return obj.LAD17NM === "England";
+  });
 	
 	var gasHistory = [
 		sub.gas_percap_2010,
@@ -62,6 +72,28 @@ map.on('click', 'carbon', function(e) {
 		sub.gas_percap_2015,
 		sub.gas_percap_2016,
 		sub.gas_percap_2017
+    ];
+    
+  var lagasHistory = [
+		la.gas_percap_2010,
+		la.gas_percap_2011,
+		la.gas_percap_2012,
+		la.gas_percap_2013,
+		la.gas_percap_2014,
+		la.gas_percap_2015,
+		la.gas_percap_2016,
+		la.gas_percap_2017
+    ];
+    
+  var englandgasHistory = [
+		england.gas_percap_2010,
+		england.gas_percap_2011,
+		england.gas_percap_2012,
+		england.gas_percap_2013,
+		england.gas_percap_2014,
+		england.gas_percap_2015,
+		england.gas_percap_2016,
+		england.gas_percap_2017
     ];
 	
 	var elecHistory = [
@@ -253,10 +285,24 @@ map.on('click', 'carbon', function(e) {
 		data: {
 			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
 			datasets: [{
-				label: 'Mean CO2 emission from gas use (kgCO2e / per person)',
+				label: 'This LSOA',
 				data: gasHistory,
 				backgroundColor: 'rgba(255, 99, 132, 0.2)',
 				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Local Authoirty Average',
+				data: lagasHistory,
+				backgroundColor: 'rgba(132, 99, 255, 0.2)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'England Average',
+				data: englandgasHistory,
+				backgroundColor: 'rgba(99, 255, 13, 0.2)',
+				borderColor: 'rgba(99, 255, 132, 1)',
 				borderWidth: 1
 			}]
 		},
@@ -414,7 +460,29 @@ map.on('click', 'carbon', function(e) {
 });
 
 
+// Modal Tabs
+document.getElementById("defaultOpen").click();
 
+function openCity(evt, tabName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+} 
 
 
 

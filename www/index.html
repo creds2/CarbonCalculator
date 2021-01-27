@@ -3,9 +3,9 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>CREDS - Place-based Carbon Calculator</title>
 
-<!-- Before Anything Else, Get the Massive JSON File
+<!-- Before Anything Else, Get the Massive JSON File  -->
 <script src="js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
-<script src="js/get_json.js"></script> -->
+<script src="js/get_json.js"></script>
 
 <!-- Set Up Mapbox -->
 <script src="js/lib/mapbox-gl-js-1.13/mapbox-gl.js"></script>
@@ -26,8 +26,8 @@
 </head>
 <body>
   
-<!-- Loading Spinner 
-<div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.gif"/></div> -->
+<!-- Loading Spinner  -->
+<div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.gif"/></div>
 
 <div class="headrow">
   <div class="headcol headleft">
@@ -100,21 +100,25 @@
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2>Area Summary</h2>
-	  <h3 id="data_LSOA">foo</h3>
-    </div>
-    <div class="modal-body">
-	
-	  <h3>Area Description</h3>
-	  
-	  
-	  <h3>Overall Carbon Footprint</h3>
-	  
-	  <div class=modalrow>
+<!-- Modal content -->
+<div class="modal-content">
+<div class="modal-header">
+    <span class="close">&times;</span>
+    <h2>Area Summary</h2>
+  </div>
+<div class="modal-body">
+
+   <!-- Tab links -->
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Overview')" id="defaultOpen">Overview</button>
+    <button class="tablinks" onclick="openCity(event, 'Energy')">Domestic Energy</button>
+    <button class="tablinks" onclick="openCity(event, 'Transport')">Transport</button>
+  </div>
+  
+  <!-- Tab content -->
+  <div id="Overview" class="tabcontent">
+    <h3>Overall Carbon Footprint</h3>
+    <div class=modalrow>
 	    <div class=modalcolumn>
 	      <table>
     		  <tr>
@@ -150,92 +154,67 @@
     		</div>
 	    </div>
 	  </div>
-	  
-	  
-	
-		
-		
-		<h3>Transport</h3>
-		
-		<h4>Travel to Work Mode Share (2011 Cenus)</h4>
-		
-		<div class=modalrow>
-	    <div class=modalcolumn>
-	      
-	    </div>
-	  
-	    <div class=modalcolumn>
-	      <div class="chart-container" style="position: relative; height:100%; width:100%">
-    			<canvas id="t2wChart"></canvas>
-    		</div>
-	    </div>
-	  </div>
-	  
-	  <h4>Travel to School Mode Share (2011 Schools Cenus)</h4>
-		
-		<div class=modalrow>
-	    <div class=modalcolumn>
-	      
-	    </div>
-	  
-	    <div class=modalcolumn>
-	      <div class="chart-container" style="position: relative; height:100%; width:100%">
-    			<canvas id="t2sChart"></canvas>
-    		</div>
-	    </div>
-	  </div>
-	  
-		
-		<h3>Housing</h3>
-		
-		<h4>Building Age</h4>
-		
-		<div class=modalrow>
-	    <div class=modalcolumn>
-	      
-	    </div>
-	  
-	    <div class=modalcolumn>
-	      <div class="chart-container" style="position: relative; height:100%; width:100%">
-    			<canvas id="buildingageChart"></canvas>
-    		</div>
-	    </div>
-	  </div>
-	  
-		<h4>Building Type</h4>
-		
-		<div class=modalrow>
-	    <div class=modalcolumn>
-	      
-	    </div>
-	  
-	    <div class=modalcolumn>
-	      <div class="chart-container" style="position: relative; height:100%; width:100%">
-    			<canvas id="buildingtypeChart"></canvas>
-    		</div>
-	    </div>
-	  </div>
-		
-		<h4>Historical Gas Usage</h4>
-		<div class="chart-container" style="position: relative; height:40vh; width:80vw">
-			<canvas id="gasChart"></canvas>
-		</div>
-		
-		<h4>Historical Electricity Usage</h4>
-		<div class="chart-container" style="position: relative; height:40vh; width:80vw">
-			<canvas id="elecChart"></canvas>
-		</div>
-		<!-- <canvas id="elecChart" max-width="800" min-width="300" height="400"></canvas> -->
-		
-		
-    </div>
-    <div class="modal-footer">
-      <h3>Modal Footer</h3>
-    </div>
   </div>
+  
+  
+  <div id="Transport" class="tabcontent">
+    <h3>Transport</h3>
+	
+		<h4>Travel to Work Mode Share (2011 Cenus)</h4>
+		<div>
+		  <div class="chart-container" >
+  			<canvas id="t2wChart"></canvas>
+  		</div>
+  		
+  		<p>The main mode of travel to work from the 2011 Census. Although this data is now quite old its is very sptailly detailed and so still useful. Commuting makes up about 20% of trips in England, so it is a minority of trips and distnace travlled, yet ther is some evidence that how people choose to travel to work affects their general travel choices. Comparison with the 2001 Census sugges that commuter travel patterns are reasonably stable. However to meet climate change targets we need more people to travel by active travel (walking and cycling) and public transport.</p>
+		</div>
+		
+		
+		<h4>Travel to School Mode Share (2011 Schools Cenus)</h4>
+		<div class="chart-container" >
+			<canvas id="t2sChart"></canvas>
+		</div>
 
-
+	</div>
+	
+  <div id="Energy" class="tabcontent">
+    <h3>Housing</h3>
+	
+  	<h4>Building Age</h4>
+  	
+    <div class="chart-container" >
+  		<canvas id="buildingageChart"></canvas>
+  	</div>
+  
+    
+  	<h4>Building Type</h4>
+  	
+  	<div class="chart-container" >
+    			<canvas id="buildingtypeChart"></canvas>
+    </div>
+  
+  	
+  	<h4>Historical Gas Usage</h4>
+  	<div class="chart-container" >
+  		<canvas id="gasChart"></canvas>
+  	</div>
+  	
+  	<h4>Historical Electricity Usage</h4>
+  	<div class="chart-container" >
+  		<canvas id="elecChart"></canvas>
+  	</div>
+  </div>
 </div>
+      
+
+    
+<div class="modal-footer">
+  <h3>Modal Footer</h3>
+</div>
+</div>
+
+
+
 <!-- The JSOn Way 
 <script type="text/javascript" src="js/map_start.js"></script>
 

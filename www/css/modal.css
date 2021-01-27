@@ -100,3 +100,10 @@
   to {opacity: 1}
 }
 
+.chart-container{
+  position: relative;
+  float:right;
+  min-width: 50%;
+  max-width: 100%;
+  height: 200px;
+}
