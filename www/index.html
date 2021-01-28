@@ -29,6 +29,7 @@
 <!-- Loading Spinner  -->
 <div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.gif"/></div>
 
+<!-- Menu -->
 <div class="headrow">
   <div class="headcol headleft">
      <a href="https://www.wisemover.co.uk/creds/carbon"><img src="/images/CREDS-logo.svg" alt="CREDS Logo" height="46"></a>   
@@ -91,11 +92,9 @@
 </div>
 
 <!-- Main Content -->
-
 <div class="content">
   <div id="map"></div>
 </div>
-
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -118,9 +117,11 @@
   <!-- Tab content -->
   <div id="Overview" class="tabcontent">
     <h3>Overall Carbon Footprint</h3>
-    <div class=modalrow>
-	    <div class=modalcolumn>
-	      <table>
+    <div style="min-height:200px">
+      <div class="chart-container" style="height:300px">
+    			<canvas id="overallChart"></canvas>
+    	</div>
+      <table>
     		  <tr>
     			<th>Name</th>
     			<th>Value</th>
@@ -130,38 +131,54 @@
     		  <tr>
     			<td>Total CO2 per person</td>
     			<td id="data_total_emissions_percap">NA</td>
-    			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_total_emissions_grade"></td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_total_emissions_grade"></td>
     			<td>Source</td>
     		  </tr>
     		  <tr>
     			<td>Electricity CO2 per person</td>
     			<td id="data_elec_emissions_household">NA</td>
-    			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_elec_emissions_grade"></td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_elec_emissions_grade"></td>
     			<td>Source</td>
     		  </tr>
     		  <tr>
     			<td>Gas CO2 per person</td>
     			<td id="data_gas_emissions_household">NA</td>
-    			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_gas_emissions_grade"></td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_gas_emissions_grade"></td>
+    			<td>Source</td>
+    		  </tr>
+    		  <tr>
+    			<td>Other Heating CO2 per person</td>
+    			<td id="data_other_heating_emissions">NA</td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_other_heating_emissions_grade"></td>
+    			<td>Source</td>
+    		  </tr>
+    		  <tr>
+    			<td>Car Driving CO2 per person</td>
+    			<td id="data_car_emissions">NA</td>
+    			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_car_emissions_grade"></td>
+    			<td>Source</td>
+    		  </tr>
+    		  <tr>
+    			<td>Van Driving CO2 per person</td>
+    			<td id="data_van_emissions">NA</td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_van_emissions_grade"></td>
+    			<td>Source</td>
+    		  </tr>
+    		  <tr>
+    			<td>Flights CO2 per person</td>
+    			<td id="data_flights_emissions">NA</td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_flights_emissions_grade"></td>
     			<td>Source</td>
     		  </tr>
     		</table>
-	    </div>
-	  
-	    <div class=modalcolumn>
-	      <div class="chart-container" style="position: relative; height:100%; width:100%">
-    			<canvas id="overallChart"></canvas>
-    		</div>
-	    </div>
-	  </div>
+    </div>
   </div>
-  
   
   <div id="Transport" class="tabcontent">
     <h3>Transport</h3>
 	
 		<h4>Travel to Work Mode Share (2011 Cenus)</h4>
-		<div>
+		<div style="min-height:200px">
 		  <div class="chart-container" >
   			<canvas id="t2wChart"></canvas>
   		</div>
@@ -171,9 +188,13 @@
 		
 		
 		<h4>Travel to School Mode Share (2011 Schools Cenus)</h4>
-		<div class="chart-container" >
-			<canvas id="t2sChart"></canvas>
+		<div style="min-height:200px">
+		  <div class="chart-container" >
+  			<canvas id="t2sChart"></canvas>
+  		</div>
+		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		</div>
+		
 
 	</div>
 	
@@ -181,51 +202,55 @@
     <h3>Housing</h3>
 	
   	<h4>Building Age</h4>
-  	
-    <div class="chart-container" >
-  		<canvas id="buildingageChart"></canvas>
+  	<div style="min-height:200px">
+  	  <div class="chart-container" >
+    		<canvas id="buildingageChart"></canvas>
+    	</div>
+    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   	</div>
+    
   
     
   	<h4>Building Type</h4>
-  	
-  	<div class="chart-container" >
+  	<div style="min-height:200px">
+  	  <div class="chart-container" >
     			<canvas id="buildingtypeChart"></canvas>
-    </div>
-  
+      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  	</div>
   	
   	<h4>Historical Gas Usage</h4>
+  	<div style="min-height:200px">
   	<div class="chart-container" >
   		<canvas id="gasChart"></canvas>
   	</div>
+  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> 
+  	</div>
+  	
   	
   	<h4>Historical Electricity Usage</h4>
+  	<div style="min-height:200px">
   	<div class="chart-container" >
   		<canvas id="elecChart"></canvas>
   	</div>
+  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>  
+  	</div>
+  	
+  	
   </div>
+  
 </div>
-      
-
-    
 <div class="modal-footer">
-  <h3>Modal Footer</h3>
 </div>
 </div>
 
-
-
-<!-- The JSOn Way 
-<script type="text/javascript" src="js/map_start.js"></script>
-
-<script type="text/javascript" src="js/map_switchlayer.js"></script>
-<script type="text/javascript" src="js/map_onclick.js"></script>
--->
+<!-- Scripts -->
 <script type="text/javascript" src="js/modal.js"></script>
 <script type="text/javascript" src="js/map_carbon.js"></script>
 <script type="text/javascript" src="js/welcome.js"></script>
 <script type="text/javascript" src="js/map_layerdesc.js"></script>
 <script type="text/javascript" src="js/layer_control.js"></script>
 
+</div>
 </body>
 </html>

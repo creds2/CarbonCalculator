@@ -52,12 +52,9 @@ map.on('click', 'carbon', function(e) {
 	modal.style.display = "block";
 	
 	var sub = e.features[0].properties;
-	//console.log(sub.LAD17NM);
-	//console.log(ladata);
 	var la = ladata.find(obj => {
     return obj.LAD17NM === sub.LAD17NM;
   });
-	//console.log(la);
 	
 	var england = ladata.find(obj => {
     return obj.LAD17NM === "England";
@@ -106,6 +103,28 @@ map.on('click', 'carbon', function(e) {
 		sub.elec_percap_2016,
 		sub.elec_percap_2017
     ];
+    
+  var laelecHistory = [
+		la.elec_percap_2010,
+		la.elec_percap_2011,
+		la.elec_percap_2012,
+		la.elec_percap_2013,
+		la.elec_percap_2014,
+		la.elec_percap_2015,
+		la.elec_percap_2016,
+		la.elec_percap_2017
+    ];
+    
+  var englandelecHistory = [
+		england.elec_percap_2010,
+		england.elec_percap_2011,
+		england.elec_percap_2012,
+		england.elec_percap_2013,
+		england.elec_percap_2014,
+		england.elec_percap_2015,
+		england.elec_percap_2016,
+		england.elec_percap_2017
+    ];
 	
 	var t2wshare = [
 		sub.T2W_Bus,
@@ -127,18 +146,30 @@ map.on('click', 'carbon', function(e) {
 		sub.T2S_car
     ];
     
-  var overallshare = [
-		sub.gas_percap_2017,
-		sub.elec_percap_2017,
-		sub.car_percap_2018,
-		sub.van_percap_2018,
-		0,
-		sub.flights_percap_2018,
-		sub.other_heat_percap_2011,
-		0
-    ];
+  var overallgas = [
+    sub.gas_percap_2017, la.gas_percap_2017, england.gas_percap_2017,
+  ];
+  
+  var overallelec = [
+    sub.elec_percap_2017, la.elec_percap_2017, england.elec_percap_2017,
+  ];
+  
+  var overallcar = [
+    sub.car_percap_2018, la.car_percap_2018, england.car_percap_2018,
+  ];
+  
+  var overallvan = [
+    sub.van_percap_2018, la.van_percap_2018, england.van_percap_2018,
+  ];
+  
+  var overallflights = [
+    sub.flights_percap_2018, la.flights_percap_2018, england.flights_percap_2018,
+  ];
+  
+  var overallotherheat = [
+    sub.other_heat_percap_2011, la.other_heat_percap_2011, england.other_heat_percap_2011,
+  ];
     
-
   var buildingageshare = [
 		sub.pP1900,
     sub.p1900_18,
@@ -166,12 +197,22 @@ map.on('click', 'carbon', function(e) {
     ];
 	 
 	document.getElementById("data_total_emissions_percap").innerHTML = sub.total_emissions_percap;
-	document.getElementById("data_elec_emissions_household").innerHTML = sub.elec_emissions_household;
-	document.getElementById("data_gas_emissions_household").innerHTML = sub.gas_emissions_household;
+	document.getElementById("data_elec_emissions_household").innerHTML = sub.elec_percap_2017;
+	document.getElementById("data_gas_emissions_household").innerHTML = sub.gas_percap_2017;
 	
-	document.getElementById("data_total_emissions_grade").src = "/images/grades/" + sub.total_emissions_grade + ".jpg";
-	document.getElementById("data_elec_emissions_grade").src  = "/images/grades/" + sub.elec_emissions_grade + ".jpg";
-	document.getElementById("data_gas_emissions_grade").src   = "/images/grades/" + sub.gas_emissions_grade + ".jpg";
+	document.getElementById("data_other_heating_emissions").innerHTML = sub.other_heat_percap_2011;
+	document.getElementById("data_car_emissions").innerHTML = sub.car_percap_2018;
+	document.getElementById("data_van_emissions").innerHTML = sub.van_percap_2018;
+	document.getElementById("data_flights_emissions").innerHTML = sub.flights_percap_2018;
+	
+	document.getElementById("data_total_emissions_grade").src = "images/grades/" + sub.total_emissions_grade + ".jpg";
+	document.getElementById("data_elec_emissions_grade").src  = "images/grades/" + sub.elec_emissions_grade + ".jpg";
+	document.getElementById("data_gas_emissions_grade").src   = "images/grades/" + sub.gas_emissions_grade + ".jpg";
+	
+	document.getElementById("data_other_heating_emissions_grade").src   = "images/grades/" + sub.other_heating_emissions_grade + ".jpg";
+	document.getElementById("data_car_emissions_grade").src   = "images/grades/" + sub.car_emissions_grade + ".jpg";
+	document.getElementById("data_van_emissions_grade").src   = "images/grades/" + sub.van_emissions_grade + ".jpg";
+	document.getElementById("data_flights_emissions_grade").src   = "images/grades/" + sub.flights_grade + ".jpg";
 	
 	// Define Charts
 	// Electric Chart
@@ -186,10 +227,24 @@ map.on('click', 'carbon', function(e) {
 		data: {
 			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
 			datasets: [{
-				label: 'Mean CO2 emission from electricity use (kgCO2e / per person)',
+				label: 'This LSOA',
 				data: elecHistory,
 				backgroundColor: 'rgba(255, 99, 132, 0.2)',
 				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Local Authority Average',
+				data: laelecHistory,
+				backgroundColor: 'rgba(132, 99, 255, 0.2)',
+				borderColor: 'rgba(132, 99, 255, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'England Average',
+				data: englandelecHistory,
+				backgroundColor: 'rgba(99, 255, 13, 0.2)',
+				borderColor: 'rgba(99, 255, 13, 1)',
 				borderWidth: 1
 			}]
 		},
@@ -205,6 +260,7 @@ map.on('click', 'carbon', function(e) {
 			maintainAspectRatio: false
 		}
 	});
+	
 
 	// Travel to Work Modeshare
 	if(t2wChart){
@@ -292,7 +348,7 @@ map.on('click', 'carbon', function(e) {
 				borderWidth: 1
 			},
 			{
-				label: 'Local Authoirty Average',
+				label: 'Local Authority Average',
 				data: lagasHistory,
 				backgroundColor: 'rgba(132, 99, 255, 0.2)',
 				borderColor: 'rgba(255, 99, 132, 1)',
@@ -327,35 +383,69 @@ map.on('click', 'carbon', function(e) {
 	}
 	
 	var overallctx = document.getElementById('overallChart').getContext('2d');
-	//overallctx.height(100);
 	overallChart = new Chart(overallctx, {
-		type: 'pie',
+		type: 'bar',
 		data: {
+			labels: ['This LSOA','Local Authority Average','England Average'],
 			datasets: [{
-				label: 'Total Carbon Footprint',
-				data: overallshare,
-				backgroundColor: [
-				'rgba(166,206,227, 1)',
-				'rgba(31,120,180, 1)',
-				'rgba(178,223,138, 1)',
-				'rgba(51,160,44, 1)',
-				'rgba(251,154,153, 1)',
-				'rgba(227,26,28, 1)',
-				'rgba(253,191,111, 1)',
-				'rgba(255,127,0, 1)'
-				]
-				
-			}],
-			
-			labels: ['Gas','Electricity','Driving (cars)','Driving (vans)','Public Transport',
-			'Flights','Other Heating','Food and Goods']
+				label: 'Gas',
+				data: overallgas,
+				backgroundColor: 'rgba(228,26,28, 0.2)',
+				borderColor: 'rgba(228,26,28, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Electricity',
+				data: overallelec,
+				backgroundColor: 'rgba(55,126,184, 0.2)',
+				borderColor: 'rgba(55,126,184, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Other Heating',
+				data: overallotherheat,
+				backgroundColor: 'rgba(77,175,74, 0.2)',
+				borderColor: 'rgba(77,175,74, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Cars',
+				data: overallcar,
+				backgroundColor: 'rgba(152,78,163, 0.2)',
+				borderColor: 'rgba(152,78,163, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Vans',
+				data: overallvan,
+				backgroundColor: 'rgba(255,127,0, 0.2)',
+				borderColor: 'rgba(255,127,0, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Flights',
+				data: overallflights,
+				backgroundColor: 'rgba(255,255,51, 0.2)',
+				borderColor: 'rgba(255,255,51, 1)',
+				borderWidth: 1
+			},
+			]
 		},
 		options: {
+			scales: {
+				yAxes: [{
+				  stacked: true,
+					ticks: {
+						beginAtZero: true,
+						
+					}
+				}],
+				xAxes: [{
+				  stacked: true
+				}],
+			},
 			responsive: true,
-			maintainAspectRatio: false,
-			legend : {
-			  position: 'right'
-			}
+			maintainAspectRatio: false
 		}
 	});
 	
