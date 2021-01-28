@@ -16,6 +16,9 @@ var t2sChart;
 var overallChart;
 var buildingageChart;
 var buildingtypeChart;
+var carpercapChart;
+var co2perkmChart;
+var heatingChart;
  
 map.on('load', function() {
 map.addSource('carbon', {
@@ -195,28 +198,206 @@ map.on('click', 'carbon', function(e) {
     sub.Flat_Commercial,
     sub.Caravan
     ];
-	 
-	document.getElementById("data_total_emissions_percap").innerHTML = sub.total_emissions_percap;
+    
+    
+  var carpercapHistory = [
+		sub.cars_percap_2010,
+    sub.cars_percap_2011,
+    sub.cars_percap_2012,
+    sub.cars_percap_2013,
+    sub.cars_percap_2014,             
+    sub.cars_percap_2015,
+    sub.cars_percap_2016,
+    sub.cars_percap_2017,
+    sub.cars_percap_2018
+    ];
+    
+  var lacarpercapHistory = [
+		la.cars_percap_2010,
+    la.cars_percap_2011,
+    la.cars_percap_2012,
+    la.cars_percap_2013,
+    la.cars_percap_2014,             
+    la.cars_percap_2015,
+    la.cars_percap_2016,
+    la.cars_percap_2017,
+    la.cars_percap_2018
+    ];
+  
+  var englandcarpercapHistory = [
+		england.cars_percap_2010,
+    england.cars_percap_2011,
+    england.cars_percap_2012,
+    england.cars_percap_2013,
+    england.cars_percap_2014,             
+    england.cars_percap_2015,
+    england.cars_percap_2016,
+    england.cars_percap_2017,
+    england.cars_percap_2018
+    ];  
+    
+	var co2perkmHistory = [
+		sub.AvgCO2_cars_2010,
+    sub.AvgCO2_cars_2011,
+    sub.AvgCO2_cars_2012,
+    sub.AvgCO2_cars_2013,
+    sub.AvgCO2_cars_2014,             
+    sub.AvgCO2_cars_2015,
+    sub.AvgCO2_cars_2016,
+    sub.AvgCO2_cars_2017,
+    sub.AvgCO2_cars_2018
+    ];
+	
+	var laco2perkmHistory = [
+		la.AvgCO2_cars_2010,
+    la.AvgCO2_cars_2011,
+    la.AvgCO2_cars_2012,
+    la.AvgCO2_cars_2013,
+    la.AvgCO2_cars_2014,             
+    la.AvgCO2_cars_2015,
+    la.AvgCO2_cars_2016,
+    la.AvgCO2_cars_2017,
+    la.AvgCO2_cars_2018
+    ];
+    
+  var englandco2perkmHistory = [
+		england.AvgCO2_cars_2010,
+    england.AvgCO2_cars_2011,
+    england.AvgCO2_cars_2012,
+    england.AvgCO2_cars_2013,
+    england.AvgCO2_cars_2014,             
+    england.AvgCO2_cars_2015,
+    england.AvgCO2_cars_2016,
+    england.AvgCO2_cars_2017,
+    england.AvgCO2_cars_2018
+    ];
+    
+  var heatingShare = [
+		sub.pHeating_Gas,
+    sub.pHeating_Electric,
+    sub.pHeating_Oil,
+    sub.pHeating_Solid,
+    sub.pHeating_Other,             
+    sub.pHeating_None
+    ];
+	
+	document.getElementById("data_total_emissions_percap").innerHTML = sub.total_percap;
 	document.getElementById("data_elec_emissions_household").innerHTML = sub.elec_percap_2017;
 	document.getElementById("data_gas_emissions_household").innerHTML = sub.gas_percap_2017;
-	
 	document.getElementById("data_other_heating_emissions").innerHTML = sub.other_heat_percap_2011;
 	document.getElementById("data_car_emissions").innerHTML = sub.car_percap_2018;
 	document.getElementById("data_van_emissions").innerHTML = sub.van_percap_2018;
 	document.getElementById("data_flights_emissions").innerHTML = sub.flights_percap_2018;
 	
+	document.getElementById("data_LSOA11").innerHTML = sub.LSOA11;
+	document.getElementById("data_LSOA11NM").innerHTML = sub.LSOA11NM;
+	document.getElementById("data_SOAC11NM").innerHTML = sub.SOAC11NM;
+	document.getElementById("data_LAD17CD").innerHTML = sub.LAD17CD;
+	document.getElementById("data_LAD17NM").innerHTML = sub.LAD17NM;
+	
 	document.getElementById("data_total_emissions_grade").src = "images/grades/" + sub.total_emissions_grade + ".jpg";
 	document.getElementById("data_elec_emissions_grade").src  = "images/grades/" + sub.elec_emissions_grade + ".jpg";
 	document.getElementById("data_gas_emissions_grade").src   = "images/grades/" + sub.gas_emissions_grade + ".jpg";
-	
 	document.getElementById("data_other_heating_emissions_grade").src   = "images/grades/" + sub.other_heating_emissions_grade + ".jpg";
 	document.getElementById("data_car_emissions_grade").src   = "images/grades/" + sub.car_emissions_grade + ".jpg";
 	document.getElementById("data_van_emissions_grade").src   = "images/grades/" + sub.van_emissions_grade + ".jpg";
 	document.getElementById("data_flights_emissions_grade").src   = "images/grades/" + sub.flights_grade + ".jpg";
 	
 	// Define Charts
-	// Electric Chart
 	
+	// CO2 per km Chart
+	if(co2perkmChart){
+		co2perkmChart.destroy();
+	}
+		
+	var co2perkmctx = document.getElementById('co2perkmChart').getContext('2d');
+	co2perkmChart = new Chart(co2perkmctx, {
+		type: 'bar',
+		data: {
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
+			datasets: [{
+				label: 'This LSOA',
+				data: co2perkmHistory,
+				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Local Authority Average',
+				data: laco2perkmHistory,
+				backgroundColor: 'rgba(132, 99, 255, 0.2)',
+				borderColor: 'rgba(132, 99, 255, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'England Average',
+				data: englandco2perkmHistory,
+				backgroundColor: 'rgba(99, 255, 13, 0.2)',
+				borderColor: 'rgba(99, 255, 13, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			},
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+	
+	
+	// Cars Per Capita Chart
+	if(carpercapChart){
+		carpercapChart.destroy();
+	}
+		
+	var carpercapctx = document.getElementById('carpercapChart').getContext('2d');
+	carpercapChart = new Chart(carpercapctx, {
+		type: 'bar',
+		data: {
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
+			datasets: [{
+				label: 'This LSOA',
+				data: carpercapHistory,
+				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Local Authority Average',
+				data: lacarpercapHistory,
+				backgroundColor: 'rgba(132, 99, 255, 0.2)',
+				borderColor: 'rgba(132, 99, 255, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'England Average',
+				data: englandcarpercapHistory,
+				backgroundColor: 'rgba(99, 255, 13, 0.2)',
+				borderColor: 'rgba(99, 255, 13, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			},
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+	
+	
+	// Electric Chart
 	if(elecChart){
 		elecChart.destroy();
 	}
@@ -261,6 +442,37 @@ map.on('click', 'carbon', function(e) {
 		}
 	});
 	
+	
+	// Heating Share
+	if(heatingChart){
+		heatingChart.destroy();
+	}
+	
+	var heatingctx = document.getElementById('heatingChart').getContext('2d');
+	heatingChart = new Chart(heatingctx, {
+		type: 'pie',
+		data: {
+			datasets: [{
+				label: 'Main mode of travel to work',
+				data: heatingShare,
+				backgroundColor: [
+				'rgba(166,206,227, 1)',
+				'rgba(31,120,180, 1)',
+				'rgba(178,223,138, 1)',
+				'rgba(51,160,44, 1)',
+				'rgba(251,154,153, 1)',
+				'rgba(227,26,28, 1)'
+				]
+				
+			}],
+			
+			labels: ['Gas','Electricity','Oil','Soild Fuel','Other','None']
+		},
+		options: {
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
 
 	// Travel to Work Modeshare
 	if(t2wChart){

@@ -70,13 +70,15 @@
       <option value="car_emissions_grade">Car Emissions Grade</option>
       <option value="gas_emissions_grade">Gas Emissions Grade</option>
       <option value="elec_emissions_grade">Electricity Emissions Grade</option>
+      <option value="flights_grade">Flights Emissions Grade</option>
       <option value="cars_percap_grade">Cars per person Grade</option>
-      <option value="miles_percap_grade">Miles per person Grade</option>
+      <option value="km_percap_grade">km driven per person Grade</option>
       <option value="T2W_Car_grade">Travel to Work (Car) Grade</option>
       <option value="T2W_Cycle_grade">Travel to Work (Bicycle) Grade</option>
       <option value="T2W_Bus_grade">Travel to Work (Bus) Grade</option>
       <option value="T2W_Train_grade">Travel to Work (Train) Grade</option>
       <option value="T2W_Foot_grade">Travel to Work (Foot) Grade</option>
+      <option value="SOAC11NM">LSOA Area Classification</option>
   </select>
   <div id="layerdesc"></div>
 </div>
@@ -112,6 +114,7 @@
     <button class="tablinks" onclick="openCity(event, 'Overview')" id="defaultOpen">Overview</button>
     <button class="tablinks" onclick="openCity(event, 'Energy')">Domestic Energy</button>
     <button class="tablinks" onclick="openCity(event, 'Transport')">Transport</button>
+    <button class="tablinks" onclick="openCity(event, 'General')">General</button>
   </div>
   
   <!-- Tab content -->
@@ -155,7 +158,7 @@
     		  <tr>
     			<td>Car Driving CO2 per person</td>
     			<td id="data_car_emissions">NA</td>
-    			<td><img src="/images/grades/undefined.jpg" width = 50 id = "data_car_emissions_grade"></td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_car_emissions_grade"></td>
     			<td>Source</td>
     		  </tr>
     		  <tr>
@@ -195,6 +198,23 @@
 		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		</div>
 		
+		
+		<h4>Cars per capita</h4>
+		<div style="min-height:200px">
+		  <div class="chart-container" >
+  			<canvas id="carpercapChart"></canvas>
+  		</div>
+		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		
+		<h4>Average CO2 per km of cars</h4>
+		<div style="min-height:200px">
+		  <div class="chart-container" >
+  			<canvas id="co2perkmChart"></canvas>
+  		</div>
+		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		
 
 	</div>
 	
@@ -219,6 +239,15 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   	</div>
   	
+  	<h4>Heating Type</h4>
+  	<div style="min-height:200px">
+  	  <div class="chart-container" >
+    		<canvas id="heatingChart"></canvas>
+    	</div>
+    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  	</div>
+  	
+  	
   	<h4>Historical Gas Usage</h4>
   	<div style="min-height:200px">
   	<div class="chart-container" >
@@ -237,6 +266,38 @@
   	</div>
   	
   	
+  </div>
+  
+  <div id="General" class="tabcontent">
+    <h3>Context</h3>
+    <div style="min-height:200px">
+      <table>
+    		  <tr>
+    			<th>Name</th>
+    			<th>Value</th>
+    		  </tr>
+    		  <tr>
+    			<td>LSOA Code</td>
+    			<td id="data_LSOA11">NA</td>
+    		  </tr>
+    		  <tr>
+    			<td>LSOA Name</td>
+    			<td id="data_LSOA11NM">NA</td>
+    		  </tr>
+    		  <tr>
+    			<td>LSOA Classification</td>
+    			<td id="data_SOAC11NM">NA</td>
+    		  </tr>
+    		  <tr>
+    			<td>Local Authority Code</td>
+    			<td id="data_LAD17CD">NA</td>
+    		  </tr>
+    		  <tr>
+    			<td>Local Authority Name</td>
+    			<td id="data_LAD17NM">NA</td>
+    		  </tr>
+    		</table>
+    </div>
   </div>
   
 </div>
