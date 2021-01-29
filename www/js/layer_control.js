@@ -204,7 +204,7 @@ function switchLayer(layer) {
                   "fill-opacity": 0.7,
                   'fill-outline-color': 'rgba(0, 0, 0, 0.5)'
                 }
-          },  'housenumber' /*'landcover_grass'*/
+          },  'roads' /*'housenumber' /*'landcover_grass'*/
           );
     } 
   }

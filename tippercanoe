@@ -29,6 +29,10 @@ tippecanoe --output-to-directory=la_tiles --name=la --layer=la --attribution=MAL
 
 tippecanoe --output-to-directory=busstopstiles --name=busstops --layer=busstops --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=8  --drop-densest-as-needed --force  busstops/openbusdata.geojson
 
+### OS Zoomstack
+
+mb-util --image_format=pbf os_openzoomstack/OS_Open_Zoomstack.mbtiles OSzoomStack
+
 
 
 COVID

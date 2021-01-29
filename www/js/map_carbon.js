@@ -2,9 +2,9 @@
 mapboxgl.accessToken = "NotNeeded";
 var map = new mapboxgl.Map({
 container: 'map', // container id
-style: 'tiles/style_ontop.json', // stylesheet location
-center: [-1.548, 53.795], // starting position [lng, lat]
-zoom: 10 // starting zoom
+style: 'tiles/oszoomstack/OS Open Zoomstack - Night.json', // stylesheet location
+center: [-0.151, 51.482], // starting position [lng, lat]
+zoom: 7 // starting zoom
 });
 
 
