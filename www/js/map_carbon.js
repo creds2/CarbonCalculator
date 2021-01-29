@@ -41,10 +41,20 @@ map.addSource('la', {
 	'maxzoom': 13
 });
 
+map.addSource('busstops', {
+	'type': 'vector',
+	'tiles': [
+	'https://www.wisemover.co.uk/carbon/tiles/busstops/{z}/{x}/{y}.pbf'
+	],
+	'minzoom': 8,
+	'maxzoom': 13
+});
+
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
 toggleLayer('carbon');
 toggleLayer('la');
+toggleLayer('busstops');
 
 });
 

@@ -20,6 +20,41 @@ function toggleLayer(layerName){
             }
         });
         break;
+      case 'busstops':
+        // code block
+        map.addLayer({
+            'id': 'busstops',
+            'type': 'circle',
+            'source': 'busstops',
+            'source-layer': 'busstops',
+            'paint': {
+              // make circles larger as the user zooms from z12 to z22
+              'circle-radius': {
+                'base': 1.75,
+                'stops': [
+                  [10, 2],
+                  [22, 180]
+                ]
+              },
+              // color circles by ethnicity, using a match expression
+              // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-match
+              'circle-color': [
+              'interpolate',
+              ['linear'],
+              ['get', 'stops_per_week'],
+              0,'#F2F12D',
+              10,'#EED322',
+              30,'#E6B71E',
+              100,'#DA9C20',
+              200,'#CA8323',
+              400,'#B86B25',
+              1000,'#A25626',
+              10000,'#8B4225',
+              20000,'#723122'
+              ]
+            }
+        });
+        break;
       default:
         console.log('unknown layer selected');
     } 
