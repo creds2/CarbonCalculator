@@ -11,6 +11,8 @@ zoom: 10 // starting zoom
 // Declare Chart Values
 var elecChart;
 var gasChart;
+var carChart;
+var vanChart;
 var t2wChart;
 var t2sChart;
 var overallChart;
@@ -62,6 +64,78 @@ map.on('click', 'carbon', function(e) {
 	var england = ladata.find(obj => {
     return obj.LAD17NM === "England";
   });
+	
+	var carHistory = [
+		sub.car_percap_2010,
+		sub.car_percap_2011,
+		sub.car_percap_2012,
+		sub.car_percap_2013,
+		sub.car_percap_2014,
+		sub.car_percap_2015,
+		sub.car_percap_2016,
+		sub.car_percap_2017,
+		sub.car_percap_2018
+    ];
+	
+	var lacarHistory = [
+		la.car_percap_2010,
+		la.car_percap_2011,
+		la.car_percap_2012,
+		la.car_percap_2013,
+		la.car_percap_2014,
+		la.car_percap_2015,
+		la.car_percap_2016,
+		la.car_percap_2017,
+		la.car_percap_2018
+    ];
+    
+  var englandcarHistory = [
+		england.car_percap_2010,
+		england.car_percap_2011,
+		england.car_percap_2012,
+		england.car_percap_2013,
+		england.car_percap_2014,
+		england.car_percap_2015,
+		england.car_percap_2016,
+		england.car_percap_2017,
+		england.car_percap_2018
+    ];
+    
+  var vanHistory = [
+		sub.van_percap_2010,
+		sub.van_percap_2011,
+		sub.van_percap_2012,
+		sub.van_percap_2013,
+		sub.van_percap_2014,
+		sub.van_percap_2015,
+		sub.van_percap_2016,
+		sub.van_percap_2017,
+		sub.van_percap_2018
+    ];
+	
+	var lavanHistory = [
+		la.van_percap_2010,
+		la.van_percap_2011,
+		la.van_percap_2012,
+		la.van_percap_2013,
+		la.van_percap_2014,
+		la.van_percap_2015,
+		la.van_percap_2016,
+		la.van_percap_2017,
+		la.van_percap_2018
+    ];
+    
+  var englandvanHistory = [
+		england.van_percap_2010,
+		england.van_percap_2011,
+		england.van_percap_2012,
+		england.van_percap_2013,
+		england.van_percap_2014,
+		england.van_percap_2015,
+		england.van_percap_2016,
+		england.van_percap_2017,
+		england.van_percap_2018
+    ];
 	
 	var gasHistory = [
 		sub.gas_percap_2010,
@@ -305,6 +379,105 @@ map.on('click', 'carbon', function(e) {
 	
 	// Define Charts
 	
+	
+	// Cars Chart
+	if(carChart){
+		carChart.destroy();
+	}
+		
+	var carctx = document.getElementById('carChart').getContext('2d');
+	carChart = new Chart(carctx, {
+		type: 'bar',
+		data: {
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
+			datasets: [{
+				label: 'This LSOA',
+				data: carHistory,
+				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Local Authority Average',
+				data: lacarHistory,
+				backgroundColor: 'rgba(132, 99, 255, 0.2)',
+				borderColor: 'rgba(132, 99, 255, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'England Average',
+				data: englandcarHistory,
+				backgroundColor: 'rgba(99, 255, 13, 0.2)',
+				borderColor: 'rgba(99, 255, 13, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+				  scaleLabel: {
+            display: true,
+            labelString: 'kg CO\u2082e per person'
+          },
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			},
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+	
+	// van Chart
+	if(vanChart){
+		vanChart.destroy();
+	}
+		
+	var vanctx = document.getElementById('vanChart').getContext('2d');
+	vanChart = new Chart(vanctx, {
+		type: 'bar',
+		data: {
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
+			datasets: [{
+				label: 'This LSOA',
+				data: vanHistory,
+				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Local Authority Average',
+				data: lavanHistory,
+				backgroundColor: 'rgba(132, 99, 255, 0.2)',
+				borderColor: 'rgba(132, 99, 255, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'England Average',
+				data: englandvanHistory,
+				backgroundColor: 'rgba(99, 255, 13, 0.2)',
+				borderColor: 'rgba(99, 255, 13, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+				  scaleLabel: {
+            display: true,
+            labelString: 'kg CO\u2082e per person'
+          },
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			},
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+	
 	// CO2 per km Chart
 	if(co2perkmChart){
 		co2perkmChart.destroy();
@@ -340,6 +513,10 @@ map.on('click', 'carbon', function(e) {
 		options: {
 			scales: {
 				yAxes: [{
+				  scaleLabel: {
+            display: true,
+            labelString: 'g CO\u2082e per km'
+          },
 					ticks: {
 						beginAtZero: true
 					}
@@ -386,6 +563,10 @@ map.on('click', 'carbon', function(e) {
 		options: {
 			scales: {
 				yAxes: [{
+				  scaleLabel: {
+            display: true,
+            labelString: 'cars per person'
+          },
 					ticks: {
 						beginAtZero: true
 					}
@@ -432,6 +613,10 @@ map.on('click', 'carbon', function(e) {
 		options: {
 			scales: {
 				yAxes: [{
+				  scaleLabel: {
+            display: true,
+            labelString: 'kg CO\u2082e per person'
+          },
 					ticks: {
 						beginAtZero: true
 					}
@@ -577,6 +762,10 @@ map.on('click', 'carbon', function(e) {
 		options: {
 			scales: {
 				yAxes: [{
+				  scaleLabel: {
+            display: true,
+            labelString: 'kg CO\u2082e per person'
+          },
 					ticks: {
 						beginAtZero: true
 					}
@@ -647,6 +836,10 @@ map.on('click', 'carbon', function(e) {
 			scales: {
 				yAxes: [{
 				  stacked: true,
+				  scaleLabel: {
+            display: true,
+            labelString: 'kg CO\u2082e per person'
+          },
 					ticks: {
 						beginAtZero: true,
 						

@@ -112,7 +112,7 @@
    <!-- Tab links -->
   <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'Overview')" id="defaultOpen">Overview</button>
-    <button class="tablinks" onclick="openCity(event, 'Energy')">Domestic Energy</button>
+    <button class="tablinks" onclick="openCity(event, 'Housing')">Housing</button>
     <button class="tablinks" onclick="openCity(event, 'Transport')">Transport</button>
     <button class="tablinks" onclick="openCity(event, 'General')">General</button>
   </div>
@@ -179,6 +179,23 @@
   
   <div id="Transport" class="tabcontent">
     <h3>Transport</h3>
+    
+    <h4>Cars emissions</h4>
+		<div style="min-height:200px">
+		  <div class="chart-container" >
+  			<canvas id="carChart"></canvas>
+  		</div>
+		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		
+		
+		<h4>Van emissions</h4>
+		<div style="min-height:200px">
+		  <div class="chart-container" >
+  			<canvas id="vanChart"></canvas>
+  		</div>
+		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
 	
 		<h4>Travel to Work Mode Share (2011 Cenus)</h4>
 		<div style="min-height:200px">
@@ -218,7 +235,7 @@
 
 	</div>
 	
-  <div id="Energy" class="tabcontent">
+  <div id="Housing" class="tabcontent">
     <h3>Housing</h3>
 	
   	<h4>Building Age</h4>
