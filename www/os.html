@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Display a map</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="js/lib/mapbox-gl-js-1.13/mapbox-gl.js"></script>
+<link href="js/lib/mapbox-gl-js-1.13/mapbox-gl.css" rel="stylesheet" />
+<style>
+	body { margin: 0; padding: 0; }
+	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+	// Setup Map
+mapboxgl.accessToken = "NotNeeded";
+var map = new mapboxgl.Map({
+container: 'map', // container id
+style: 'tiles/oszoomstack/OS Open Zoomstack - Night.json' , // stylesheet location 
+center: [-0.151, 51.482], // starting position [lng, lat]
+zoom: 7 // starting zoom
+});
+</script>
+ 
+</body>
+</html>

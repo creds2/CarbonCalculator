@@ -2,36 +2,12 @@
     "version": 8,
     "name": "OS Open Zoomstack - Night",
     "metadata": {
-        "mapbox:autocomposite": true,
+        "mapbox:autocomposite": false,
         "mapbox:type": "template",
-        "mapbox:sdk-support": {
-            "js": "0.50.0",
-            "android": "6.7.0",
-            "ios": "4.6.0"
-        },
-        "mapbox:groups": {
-            "e196265c0e550aaddd2885dc32fdb674": {
-                "name": "Names Group",
-                "collapsed": true
-            },
-            "2a680f24b0d35061ed7d21fd33c9cf08": {
-                "name": "Road Level 0 Group",
-                "collapsed": true
-            },
-            "52c81d2ff926c87a0714f2697b2f3694": {
-                "name": "Road Level 1 Group",
-                "collapsed": true
-            },
-            "0845f59ef0d52359da6fd788b079f747": {
-                "name": "Road Level 2 Group",
-                "collapsed": true
-            },
-            "beaf4956fb8a63410ecf80abdebcdfb5": {
-                "name": "Road Names Group",
-                "collapsed": true
-            }
-        }
-    },
+        "maputnik:renderer": "mbgljs",
+        "openmaptiles:version": "3.x",
+        "openmaptiles:mapbox:owner": "openmaptiles"
+      },
     "center": [-1.4664639288325816, 50.937862220434056],
     "zoom": 12.962787205372374,
     "bearing": -0.02347356909285736,
@@ -39,11 +15,11 @@
     "light": {"intensity": 0.25, "color": "hsl(0, 0%, 100%)"},
     "sources": {
         "composite": {
-            "url": "https://www.wisemover.co.uk/carbon/tiles/oszoomstack/{z}/{x}/{y}.pbf",
+            "tiles": ["https://www.wisemover.co.uk/carbon/oszoom/{z}/{x}/{y}.pbf"],
             "type": "vector"
         }
     },
-    "sprite": "https://www.wisemover.co.uk/carbon/sprites/sprites.json",
+    "sprite": "https://www.wisemover.co.uk/carbon/sprites/sprites",
     "glyphs": "https://www.wisemover.co.uk/carbon/fonts/{fontstack}/{range}.pbf",
     "layers": [
         {
@@ -209,7 +185,7 @@
         {
             "id": "roads 0 Restricted Road",
             "type": "line",
-            "metadata": {"mapbox:group": "2a680f24b0d35061ed7d21fd33c9cf08"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -244,7 +220,7 @@
         {
             "id": "roads 0 Local Road",
             "type": "line",
-            "metadata": {"mapbox:group": "2a680f24b0d35061ed7d21fd33c9cf08"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -277,7 +253,7 @@
         {
             "id": "roads 0 Guided Busway Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "2a680f24b0d35061ed7d21fd33c9cf08"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -314,7 +290,7 @@
         {
             "id": "roads 0 Guided Busway Centreline",
             "type": "line",
-            "metadata": {"mapbox:group": "2a680f24b0d35061ed7d21fd33c9cf08"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -351,7 +327,7 @@
         {
             "id": "roads 0 Motorway",
             "type": "line",
-            "metadata": {"mapbox:group": "2a680f24b0d35061ed7d21fd33c9cf08"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -388,7 +364,7 @@
         {
             "id": "roads 0 Minor Road",
             "type": "line",
-            "metadata": {"mapbox:group": "2a680f24b0d35061ed7d21fd33c9cf08"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -425,7 +401,7 @@
         {
             "id": "roads 0 B Road",
             "type": "line",
-            "metadata": {"mapbox:group": "2a680f24b0d35061ed7d21fd33c9cf08"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -462,7 +438,7 @@
         {
             "id": "roads 0 A Road",
             "type": "line",
-            "metadata": {"mapbox:group": "2a680f24b0d35061ed7d21fd33c9cf08"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -499,7 +475,7 @@
         {
             "id": "roads 0 Primary Road",
             "type": "line",
-            "metadata": {"mapbox:group": "2a680f24b0d35061ed7d21fd33c9cf08"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -545,7 +521,7 @@
         {
             "id": "roads 1 Local Road Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -578,7 +554,7 @@
         {
             "id": "roads 1 Minor Road Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -615,7 +591,7 @@
         {
             "id": "roads 1 B Road Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -652,7 +628,7 @@
         {
             "id": "roads 1 A Road Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -689,7 +665,7 @@
         {
             "id": "roads 1 Primary Road Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -735,7 +711,7 @@
         {
             "id": "roads 1 Motorway Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -772,7 +748,7 @@
         {
             "id": "roads 1 Restricted Road",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -807,7 +783,7 @@
         {
             "id": "roads 1 Local Road",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -840,7 +816,7 @@
         {
             "id": "roads 1 Guided Busway Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -877,7 +853,7 @@
         {
             "id": "roads 1 Guided Busway Centreline",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -914,7 +890,7 @@
         {
             "id": "roads 1 Motorway",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -951,7 +927,7 @@
         {
             "id": "roads 1 Minor Road",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -988,7 +964,7 @@
         {
             "id": "roads 1 B Road",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1025,7 +1001,7 @@
         {
             "id": "roads 1 A Road",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1062,7 +1038,7 @@
         {
             "id": "roads 1 Primary Road",
             "type": "line",
-            "metadata": {"mapbox:group": "52c81d2ff926c87a0714f2697b2f3694"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1108,7 +1084,7 @@
         {
             "id": "roads 2 Local Road Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1141,7 +1117,7 @@
         {
             "id": "roads 2 Minor Road Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1178,7 +1154,7 @@
         {
             "id": "roads 2 B Road Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1215,7 +1191,7 @@
         {
             "id": "roads 2 A Road Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1252,7 +1228,7 @@
         {
             "id": "roads 2 Primary Road Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1298,7 +1274,7 @@
         {
             "id": "roads 2 Motorway Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1335,7 +1311,7 @@
         {
             "id": "roads 2 Restricted Road",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1370,7 +1346,7 @@
         {
             "id": "roads 2 Local Road",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1403,7 +1379,7 @@
         {
             "id": "roads 2 Guided Busway Casing",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1440,7 +1416,7 @@
         {
             "id": "roads 2 Guided Busway Centreline",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1477,7 +1453,7 @@
         {
             "id": "roads 2 Motorway",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1514,7 +1490,7 @@
         {
             "id": "roads 2 Minor Road",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1551,7 +1527,7 @@
         {
             "id": "roads 2 B Road",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1588,7 +1564,7 @@
         {
             "id": "roads 2 A Road",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1625,7 +1601,7 @@
         {
             "id": "roads 2 Primary Road",
             "type": "line",
-            "metadata": {"mapbox:group": "0845f59ef0d52359da6fd788b079f747"},
+            
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1800,7 +1776,7 @@
         {
             "id": "road numbers",
             "type": "symbol",
-            "metadata": {"mapbox:group": "beaf4956fb8a63410ecf80abdebcdfb5"},
+            
             "source": "composite",
             "source-layer": "roads",
             "minzoom": 10,
@@ -1826,10 +1802,7 @@
                     22,
                     28
                 ],
-                "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ]
+                "text-font": ["Source Sans Pro Regular"]
             },
             "paint": {
                 "text-halo-color": "#000000",
@@ -1841,7 +1814,7 @@
         {
             "id": "road names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "beaf4956fb8a63410ecf80abdebcdfb5"},
+            
             "source": "composite",
             "source-layer": "roads",
             "minzoom": 10,
@@ -1856,9 +1829,7 @@
                 "text-field": ["to-string", ["get", "name"]],
                 "symbol-placement": "line",
                 "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Regular"],
                 "text-size": [
                     "interpolate",
                     ["linear"],
@@ -1894,7 +1865,7 @@
         {
             "id": "primary road numbers",
             "type": "symbol",
-            "metadata": {"mapbox:group": "beaf4956fb8a63410ecf80abdebcdfb5"},
+            
             "source": "composite",
             "source-layer": "roads",
             "minzoom": 9,
@@ -1915,9 +1886,7 @@
                     28
                 ],
                 "text-font": [
-                    "Source Sans Pro SemiBold",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro SemiBold"],
                 "text-letter-spacing": 0.1,
                 "symbol-spacing": [
                     "interpolate",
@@ -1939,7 +1908,7 @@
         {
             "id": "motorway numbers",
             "type": "symbol",
-            "metadata": {"mapbox:group": "beaf4956fb8a63410ecf80abdebcdfb5"},
+            
             "source": "composite",
             "source-layer": "roads",
             "minzoom": 8,
@@ -1962,9 +1931,7 @@
                     28
                 ],
                 "text-font": [
-                    "Source Sans Pro SemiBold",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro SemiBold"],
                 "text-letter-spacing": 0.1,
                 "symbol-spacing": [
                     "interpolate",
@@ -1986,7 +1953,7 @@
         {
             "id": "motorway junction numbers",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 13,
@@ -2011,9 +1978,7 @@
                     30
                 ],
                 "text-font": [
-                    "Source Sans Pro Bold",
-                    "Arial Unicode MS Regular"
-                ]
+                    "Source Sans Pro Bold"]
             },
             "paint": {
                 "text-color": "#ffffff",
@@ -2024,7 +1989,7 @@
         {
             "id": "greenspace names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 13,
@@ -2041,9 +2006,7 @@
                     11
                 ],
                 "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Regular"],
                 "text-line-height": 1
             },
             "paint": {
@@ -2056,7 +2019,7 @@
         {
             "id": "sites names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 13,
@@ -2073,9 +2036,7 @@
                     11
                 ],
                 "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Regular"],
                 "text-line-height": 1
             },
             "paint": {
@@ -2088,7 +2049,7 @@
         {
             "id": "landform names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 5,
@@ -2105,9 +2066,7 @@
                     11
                 ],
                 "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Regular"],
                 "text-line-height": 1
             },
             "paint": {
@@ -2120,7 +2079,7 @@
         {
             "id": "landcover names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 5,
@@ -2137,9 +2096,7 @@
                     12
                 ],
                 "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Regular"],
                 "text-line-height": 1
             },
             "paint": {
@@ -2152,7 +2109,7 @@
         {
             "id": "water names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 12,
@@ -2169,9 +2126,7 @@
                     11
                 ],
                 "text-font": [
-                    "Source Sans Pro Italic",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Italic"],
                 "text-line-height": 1
             },
             "paint": {
@@ -2184,7 +2139,7 @@
         {
             "id": "woodland names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 5,
@@ -2201,9 +2156,7 @@
                     11.5
                 ],
                 "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Regular"],
                 "text-line-height": 1,
                 "text-padding": [
                     "interpolate",
@@ -2225,7 +2178,7 @@
         {
             "id": "small settlement names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 5,
@@ -2248,9 +2201,7 @@
                     11
                 ],
                 "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Regular"],
                 "text-line-height": 1
             },
             "paint": {
@@ -2263,7 +2214,7 @@
         {
             "id": "suburban area names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 10,
@@ -2286,9 +2237,7 @@
                     14
                 ],
                 "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Regular"],
                 "text-line-height": 1,
                 "text-padding": [
                     "interpolate",
@@ -2319,7 +2268,7 @@
         {
             "id": "railwaystations",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "railwaystations",
             "layout": {
@@ -2353,9 +2302,7 @@
                     ""
                 ],
                 "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Regular"],
                 "text-justify": "left",
                 "text-offset": [
                     "match",
@@ -2398,7 +2345,7 @@
         {
             "id": "airports",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "airports",
             "layout": {
@@ -2414,9 +2361,7 @@
                 ],
                 "text-field": ["to-string", ["get", "name"]],
                 "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Regular"],
                 "text-size": [
                     "interpolate",
                     ["linear"],
@@ -2440,7 +2385,7 @@
         {
             "id": "village and hamlet names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 5,
@@ -2463,9 +2408,7 @@
                     15
                 ],
                 "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Regular"],
                 "text-line-height": 1,
                 "text-padding": 2
             },
@@ -2480,7 +2423,7 @@
         {
             "id": "town names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 5,
@@ -2497,9 +2440,7 @@
                     18
                 ],
                 "text-font": [
-                    "Source Sans Pro Regular",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro Regular"],
                 "text-line-height": 1,
                 "text-padding": 2
             },
@@ -2514,7 +2455,7 @@
         {
             "id": "city names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 5,
@@ -2531,9 +2472,7 @@
                     20
                 ],
                 "text-font": [
-                    "Source Sans Pro SemiBold",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro SemiBold"],
                 "text-line-height": 1,
                 "text-padding": 2,
                 "text-letter-spacing": 0.05
@@ -2549,7 +2488,7 @@
         {
             "id": "national park names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 5,
@@ -2572,9 +2511,7 @@
                     15
                 ],
                 "text-font": [
-                    "Source Sans Pro SemiBold",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro SemiBold"],
                 "text-line-height": 1,
                 "text-padding": 2,
                 "text-letter-spacing": 0.06
@@ -2590,7 +2527,7 @@
         {
             "id": "capital city names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 5,
@@ -2607,9 +2544,7 @@
                     22
                 ],
                 "text-font": [
-                    "Source Sans Pro SemiBold",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro SemiBold"],
                 "text-line-height": 1,
                 "text-padding": 2,
                 "text-letter-spacing": 0.1,
@@ -2626,7 +2561,7 @@
         {
             "id": "country names",
             "type": "symbol",
-            "metadata": {"mapbox:group": "e196265c0e550aaddd2885dc32fdb674"},
+            
             "source": "composite",
             "source-layer": "names",
             "minzoom": 5,
@@ -2644,9 +2579,7 @@
                     35
                 ],
                 "text-font": [
-                    "Source Sans Pro SemiBold",
-                    "Arial Unicode MS Regular"
-                ],
+                    "Source Sans Pro SemiBold"],
                 "text-line-height": 1,
                 "text-padding": 2,
                 "text-letter-spacing": 0.3,

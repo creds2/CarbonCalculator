@@ -33,6 +33,10 @@ tippecanoe --output-to-directory=busstopstiles --name=busstops --layer=busstops 
 
 mb-util --image_format=pbf os_openzoomstack/OS_Open_Zoomstack.mbtiles OSzoomStack
 
+tile-join --output-to-directory=OSzoomStack4 os_openzoomstack/OS_Open_Zoomstack.mbtiles
+
+tippecanoe --output-to-directory=OSzoomStack6  --attribution=MALCOLMMORGAN --maximum-zoom=8 --minimum-zoom=4  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --maximum-tile-bytes=50000000 --buffer=5 --force  carbon_super_general.geojson
+
 
 
 COVID

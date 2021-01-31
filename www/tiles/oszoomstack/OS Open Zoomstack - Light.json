@@ -39,12 +39,12 @@
     "light": {"intensity": 0.25, "color": "hsl(0, 0%, 100%)"},
     "sources": {
         "composite": {
-            "url": "mapbox://ADD-SOURCE-URL-HERE",
+            "tiles": ["https://www.wisemover.co.uk/carbon/tiles/oszoomstack3/{z}/{x}/{y}.pbf"],
             "type": "vector"
         }
     },
-    "sprite": "mapbox://sprites/ordnancesurvey/cjr2jbmg63wtu2rp9uyq82fkb",
-    "glyphs": "mapbox://fonts/ordnancesurvey/{fontstack}/{range}.pbf",
+    "sprite": "https://www.wisemover.co.uk/carbon/sprites/sprites",
+    "glyphs": "https://www.wisemover.co.uk/carbon/fonts/{fontstack}/{range}.pbf",
     "layers": [
         {
             "id": "background",
