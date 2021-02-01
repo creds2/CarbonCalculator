@@ -15,12 +15,12 @@
     "light": {"intensity": 0.25, "color": "hsl(0, 0%, 100%)"},
     "sources": {
         "composite": {
-            "tiles": ["https://www.wisemover.co.uk/carbon/oszoom/{z}/{x}/{y}.pbf"],
+            "tiles": ["https://www.wisemover.co.uk/carbon/oszoom/tiles/{z}/{x}/{y}.pbf"],
             "type": "vector"
         }
     },
-    "sprite": "https://www.wisemover.co.uk/carbon/sprites/sprites",
-    "glyphs": "https://www.wisemover.co.uk/carbon/fonts/{fontstack}/{range}.pbf",
+    "sprite": "https://www.wisemover.co.uk/carbon/oszoom/sprites/sprites",
+    "glyphs": "https://www.wisemover.co.uk/carbon/oszoom/fonts/{fontstack}/{range}.pbf",
     "layers": [
         {
             "id": "background",
