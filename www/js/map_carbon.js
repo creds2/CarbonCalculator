@@ -256,7 +256,27 @@ map.on('click', 'carbon', function(e) {
   var overallotherheat = [
     sub.other_heat_percap_2011, la.other_heat_percap_2011, england.other_heat_percap_2011,
   ];
-    
+  
+  var overallnutrition = [
+    sub.nutrition_kgco2e_percap, la.nutrition_kgco2e_percap, england.nutrition_kgco2e_percap,
+  ];
+  var overallothershelter = [
+    sub.other_shelter_kgco2e_percap, la.other_shelter_kgco2e_percap, england.other_shelter_kgco2e_percap,
+  ];
+  var overallconsumables = [
+    sub.consumables_kgco2e_percap, la.consumables_kgco2e_percap, england.consumables_kgco2e_percap,
+  ];
+  var overallrecreation = [
+    sub.recreation_kgco2e_percap, la.recreation_kgco2e_percap, england.recreation_kgco2e_percap,
+  ];
+  var overallservices = [
+    sub.services_kgco2e_percap, la.services_kgco2e_percap, england.services_kgco2e_percap,
+  ];
+  var overallcommutenoncar = [
+    sub.commute_noncar_percap, la.commute_noncar_percap, england.commute_noncar_percap,
+  ];
+  
+  
   var buildingageshare = [
 		sub.pP1900,
     sub.p1900_18,
@@ -403,21 +423,21 @@ map.on('click', 'carbon', function(e) {
 			datasets: [{
 				label: 'This LSOA',
 				data: carHistory,
-				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				backgroundColor: 'rgba(255, 99, 132, 0.8)',
 				borderColor: 'rgba(255, 99, 132, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'Local Authority Average',
 				data: lacarHistory,
-				backgroundColor: 'rgba(132, 99, 255, 0.2)',
+				backgroundColor: 'rgba(132, 99, 255, 0.8)',
 				borderColor: 'rgba(132, 99, 255, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'England Average',
 				data: englandcarHistory,
-				backgroundColor: 'rgba(99, 255, 13, 0.2)',
+				backgroundColor: 'rgba(99, 255, 13, 0.8)',
 				borderColor: 'rgba(99, 255, 13, 1)',
 				borderWidth: 1
 			}]
@@ -452,21 +472,21 @@ map.on('click', 'carbon', function(e) {
 			datasets: [{
 				label: 'This LSOA',
 				data: vanHistory,
-				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				backgroundColor: 'rgba(255, 99, 132, 0.8)',
 				borderColor: 'rgba(255, 99, 132, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'Local Authority Average',
 				data: lavanHistory,
-				backgroundColor: 'rgba(132, 99, 255, 0.2)',
+				backgroundColor: 'rgba(132, 99, 255, 0.8)',
 				borderColor: 'rgba(132, 99, 255, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'England Average',
 				data: englandvanHistory,
-				backgroundColor: 'rgba(99, 255, 13, 0.2)',
+				backgroundColor: 'rgba(99, 255, 13, 0.8)',
 				borderColor: 'rgba(99, 255, 13, 1)',
 				borderWidth: 1
 			}]
@@ -501,21 +521,21 @@ map.on('click', 'carbon', function(e) {
 			datasets: [{
 				label: 'This LSOA',
 				data: co2perkmHistory,
-				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				backgroundColor: 'rgba(255, 99, 132, 0.8)',
 				borderColor: 'rgba(255, 99, 132, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'Local Authority Average',
 				data: laco2perkmHistory,
-				backgroundColor: 'rgba(132, 99, 255, 0.2)',
+				backgroundColor: 'rgba(132, 99, 255, 0.8)',
 				borderColor: 'rgba(132, 99, 255, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'England Average',
 				data: englandco2perkmHistory,
-				backgroundColor: 'rgba(99, 255, 13, 0.2)',
+				backgroundColor: 'rgba(99, 255, 13, 0.8)',
 				borderColor: 'rgba(99, 255, 13, 1)',
 				borderWidth: 1
 			}]
@@ -551,21 +571,21 @@ map.on('click', 'carbon', function(e) {
 			datasets: [{
 				label: 'This LSOA',
 				data: carpercapHistory,
-				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				backgroundColor: 'rgba(255, 99, 132, 0.8)',
 				borderColor: 'rgba(255, 99, 132, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'Local Authority Average',
 				data: lacarpercapHistory,
-				backgroundColor: 'rgba(132, 99, 255, 0.2)',
+				backgroundColor: 'rgba(132, 99, 255, 0.8)',
 				borderColor: 'rgba(132, 99, 255, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'England Average',
 				data: englandcarpercapHistory,
-				backgroundColor: 'rgba(99, 255, 13, 0.2)',
+				backgroundColor: 'rgba(99, 255, 13, 0.8)',
 				borderColor: 'rgba(99, 255, 13, 1)',
 				borderWidth: 1
 			}]
@@ -601,21 +621,21 @@ map.on('click', 'carbon', function(e) {
 			datasets: [{
 				label: 'This LSOA',
 				data: elecHistory,
-				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				backgroundColor: 'rgba(255, 99, 132, 0.8)',
 				borderColor: 'rgba(255, 99, 132, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'Local Authority Average',
 				data: laelecHistory,
-				backgroundColor: 'rgba(132, 99, 255, 0.2)',
+				backgroundColor: 'rgba(132, 99, 255, 0.8)',
 				borderColor: 'rgba(132, 99, 255, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'England Average',
 				data: englandelecHistory,
-				backgroundColor: 'rgba(99, 255, 13, 0.2)',
+				backgroundColor: 'rgba(99, 255, 13, 0.8)',
 				borderColor: 'rgba(99, 255, 13, 1)',
 				borderWidth: 1
 			}]
@@ -750,21 +770,21 @@ map.on('click', 'carbon', function(e) {
 			datasets: [{
 				label: 'This LSOA',
 				data: gasHistory,
-				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				backgroundColor: 'rgba(255, 99, 132, 0.8)',
 				borderColor: 'rgba(255, 99, 132, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'Local Authority Average',
 				data: lagasHistory,
-				backgroundColor: 'rgba(132, 99, 255, 0.2)',
+				backgroundColor: 'rgba(132, 99, 255, 0.8)',
 				borderColor: 'rgba(255, 99, 132, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'England Average',
 				data: englandgasHistory,
-				backgroundColor: 'rgba(99, 255, 13, 0.2)',
+				backgroundColor: 'rgba(99, 255, 13, 0.8)',
 				borderColor: 'rgba(99, 255, 132, 1)',
 				borderWidth: 1
 			}]
@@ -801,43 +821,85 @@ map.on('click', 'carbon', function(e) {
 			datasets: [{
 				label: 'Gas',
 				data: overallgas,
-				backgroundColor: 'rgba(228,26,28, 0.2)',
-				borderColor: 'rgba(228,26,28, 1)',
+				backgroundColor: 'rgba(166,206,227, 0.8)',
+				borderColor: 'rgba(166,206,227, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'Electricity',
 				data: overallelec,
-				backgroundColor: 'rgba(55,126,184, 0.2)',
-				borderColor: 'rgba(55,126,184, 1)',
+				backgroundColor: 'rgba(31,120,180, 0.8)',
+				borderColor: 'rgba(31,120,180, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'Other Heating',
 				data: overallotherheat,
-				backgroundColor: 'rgba(77,175,74, 0.2)',
-				borderColor: 'rgba(77,175,74, 1)',
+				backgroundColor: 'rgba(178,223,138, 0.8)',
+				borderColor: 'rgba(178,223,138, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Other Housing',
+				data: overallothershelter ,
+				backgroundColor: 'rgba(51,160,44, 0.8)',
+				borderColor: 'rgba(51,160,44, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'Cars',
 				data: overallcar,
-				backgroundColor: 'rgba(152,78,163, 0.2)',
-				borderColor: 'rgba(152,78,163, 1)',
+				backgroundColor: 'rgba(251,154,153, 0.8)',
+				borderColor: 'rgba(251,154,153, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'Vans',
 				data: overallvan,
-				backgroundColor: 'rgba(255,127,0, 0.2)',
-				borderColor: 'rgba(255,127,0, 1)',
+				backgroundColor: 'rgba(227,26,28, 0.8)',
+				borderColor: 'rgba(227,26,28, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Public Transport',
+				data: overallcommutenoncar,
+				backgroundColor: 'rgba(253,191,111, 0.8)',
+				borderColor: 'rgba(253,191,111, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'Flights',
 				data: overallflights,
-				backgroundColor: 'rgba(255,255,51, 0.2)',
-				borderColor: 'rgba(255,255,51, 1)',
+				backgroundColor: 'rgba(255,127,0, 0.8)',
+				borderColor: 'rgba(255,127,0, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Food & Drink',
+				data: overallnutrition,
+				backgroundColor: 'rgba(202,178,214, 0.8)',
+				borderColor: 'rgba(202,178,214, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Consumable Goods',
+				data: overallconsumables ,
+				backgroundColor: 'rgba(106,61,154, 0.8)',
+				borderColor: 'rgba(106,61,154, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Recreation',
+				data: overallrecreation,
+				backgroundColor: 'rgba(255,255,153, 0.8)',
+				borderColor: 'rgba(255,255,153, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'Services',
+				data: overallservices,
+				backgroundColor: 'rgba(177,89,40, 0.8)',
+				borderColor: 'rgba(177,89,40, 1)',
 				borderWidth: 1
 			},
 			]
