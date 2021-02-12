@@ -4,8 +4,6 @@ library(dplyr)
 
 source("R/secure_path.R")
 
-
-
 elec <- read.csv("../Excess-Data-Exploration/data-prepared/Electricty_2010-17.csv", stringsAsFactors = FALSE)
 elec <- elec[!duplicated(elec$LSOA11),] 
 gas <- read.csv("../Excess-Data-Exploration/data-prepared/Gas_2010-17.csv", stringsAsFactors = FALSE)
@@ -13,6 +11,8 @@ cars_km <- readRDS("data-prepared/car_van_km_09_18.Rds")
 cars_emissions <- readRDS("data-prepared/car_historical_emissions.Rds")
 population <- readRDS("data-prepared/LSOA_population_2011_2019.Rds")
 flights <- readRDS("data-prepared/flight_emissions.Rds")
+flights$pop_2018 <- NULL
+
 lsoa_classif <- read.csv(paste0(substr(secure_path,1,39),"OA Bounadries/GB_OA_LSOA_MSOA_LAD_Classifications_2017.csv"))
 
 # mot <- read.csv(paste0(secure_path,"/Tim Share/From Tim/MOT Data RACv9.3/MOT Data RACv9.3 LSOAoutputs_2011.csv"), stringsAsFactors = FALSE)
@@ -22,24 +22,24 @@ names(census) <- gsub("[.]","",names(census))
 school <- readRDS("../Excess-Data-Exploration/data-prepared/Trave2School.Rds")
 
 elec <- elec[, c("LSOA11",
-                                               "TotDomElec_10_kWh",
-                                               "TotDomElec_11_kWh",
-                                               "TotDomElec_12_kWh",
-                                               "TotDomElec_13_kWh",
-                                               "TotDomElec_14_kWh",
-                                               "TotDomElec_15_kWh",
-                                               "TotDomElec_16_kWh",
-                                               "TotDomElec_17_kWh")]
+                           "TotDomElec_10_kWh",
+                           "TotDomElec_11_kWh",
+                           "TotDomElec_12_kWh",
+                           "TotDomElec_13_kWh",
+                           "TotDomElec_14_kWh",
+                           "TotDomElec_15_kWh",
+                           "TotDomElec_16_kWh",
+                           "TotDomElec_17_kWh")]
 
 gas <- gas[, c("LSOA11",
-                                            "TotDomGas_10_kWh",
-                                            "TotDomGas_11_kWh",
-                                            "TotDomGas_12_kWh",
-                                            "TotDomGas_13_kWh",
-                                            "TotDomGas_14_kWh",
-                                            "TotDomGas_15_kWh",
-                                            "TotDomGas_16_kWh",
-                                            "TotDomGas_17_kWh")]
+                          "TotDomGas_10_kWh",
+                          "TotDomGas_11_kWh",
+                          "TotDomGas_12_kWh",
+                          "TotDomGas_13_kWh",
+                          "TotDomGas_14_kWh",
+                          "TotDomGas_15_kWh",
+                          "TotDomGas_16_kWh",
+                          "TotDomGas_17_kWh")]
 
 lsoa_classif <- lsoa_classif[,c("LSOA11CD","LSOA11NM","SOAC11NM","LAD17CD","LAD17NM")]
 lsoa_classif <- lsoa_classif[!duplicated(lsoa_classif$LSOA11CD),]
@@ -67,11 +67,67 @@ heating$pHeating_Other <- (heating$`Two or more` + heating$Other)
 
 heating <- heating[,c("LSOA11","pHeating_None","pHeating_Gas","pHeating_Electric","pHeating_Oil","pHeating_Solid","pHeating_Other")]
 
-
+census$All_Dwelllings_2011 <- rowSums(census[,c("Whole_House_Detached","Whole_House_Semi",
+                                                "Whole_House_Terraced","Flat_PurposeBuilt",
+                                                "Flat_Converted","Flat_Commercial","Caravan")], 
+                                      na.rm = TRUE)
 census <- census[,c("CODE","Whole_House_Detached","Whole_House_Semi","Whole_House_Terraced","Flat_PurposeBuilt",
-                    "Flat_Converted","Flat_Commercial","Caravan","All_T2W","T2W_Home",
-                    "T2W_Metro","T2W_Train","T2W_Bus","T2W_Taxi","T2W_Mbike","T2W_Car","T2W_Passenger",
-                    "T2W_Cycle","T2W_Foot","T2W_Other","T2W_NoEmp")]
+                    "Flat_Converted","Flat_Commercial","Caravan",
+                    "T2W_Car","T2W_Cycle","T2W_Bus","T2W_Train","T2W_Foot")]
+
+epc <- readRDS("../../creds2/EPC/epc_lsoa_summary.Rds")
+epc <- epc[!is.na(epc$LSOA11),]
+epc <- epc[substr(epc$LSOA11,1,1) == "E",]
+
+epc <- epc[,c("LSOA11","epc_total","epc_newbuild",
+              "epc_A","epc_B","epc_C","epc_D","epc_E","epc_F","epc_G",
+              "epc_score_avg",
+              "type_house_semi","type_house_midterrace","type_house_endterrace",
+              "type_house_detached","type_flat","type_bungalow_semi","type_bungalow_midterrace",
+              "type_bungalow_endterrace","type_bungalow_detached","type_maisonette","type_parkhome",
+              "type_other","floor_area_avg","low_energy_light",
+              "floor_verygood","floor_good","floor_average","floor_poor","floor_verypoor","floor_other",
+              "window_verygood","window_good","window_average","window_poor","window_verypoor","window_other",
+              "wall_verygood","wall_good","wall_average","wall_poor","wall_verypoor","wall_other",
+              "roof_verygood","roof_good","roof_average","roof_poor","roof_verypoor","roof_other",
+              "mainheat_verygood","mainheat_good","mainheat_average","mainheat_poor","mainheat_verypoor","mainheat_other",
+              "mainheatdesc_gasboiler","mainheatdesc_oilboiler","mainheatdesc_storageheater",
+              "mainheatdesc_portableheater","mainheatdesc_roomheater","mainheatdesc_heatpump",
+              "mainheatdesc_community","mainheatdesc_other",
+              "mainfuel_mainsgas","mainfuel_electric","mainfuel_oil","mainfuel_coal","mainfuel_lpg","mainfuel_biomass",
+              "mainheatcontrol_verygood","mainheatcontrol_good","mainheatcontrol_average",
+              "mainheatcontrol_poor","mainheatcontrol_verypoor","mainheatcontrol_other",
+              "has_solarpv","has_solarthermal")]
+
+epc$type_bungalow <- rowSums(epc[,c("type_bungalow_midterrace",
+                                    "type_bungalow_endterrace",
+                                    "type_bungalow_detached",
+                                    "type_bungalow_semi")], na.rm = TRUE)
+
+epc$type_bungalow_midterrace <- NULL
+epc$type_bungalow_endterrace <- NULL
+epc$type_bungalow_detached <- NULL
+epc$type_bungalow_semi <- NULL
+
+t2w <- readRDS("data-prepared/travel2work_total_km_emissions.Rds")
+t2w <- t2w[,c("LSOA_from","km_Underground",
+              "km_Train","km_Bus","km_Taxi","km_Motorcycle","km_CarOrVan",
+              "km_Passenger","km_Bicycle","km_OnFoot","km_OtherMethod","kgco2e_Underground",
+              "kgco2e_Train","kgco2e_Bus","kgco2e_Taxi","kgco2e_Motorcycle","kgco2e_CarOrVan",
+              "kgco2e_OtherMethod")]
+t2w$kgco2e_commute_noncar_total <- t2w$kgco2e_Underground +
+  t2w$kgco2e_Train +
+  t2w$kgco2e_Bus +
+  t2w$kgco2e_Motorcycle +
+  t2w$kgco2e_OtherMethod
+
+t2w <- t2w[,c("LSOA_from","km_Underground",
+              "km_Train","km_Bus","km_Taxi","km_Motorcycle","km_CarOrVan",
+              "km_Passenger","km_Bicycle","km_OnFoot","km_OtherMethod",
+              "kgco2e_commute_noncar_total")]
+
+consumption <- readRDS("data-prepared/consumption_footprint.Rds")
+
 
 # Join Togther
 all <- left_join(elec, gas, by = "LSOA11")
@@ -86,9 +142,20 @@ all <- left_join(all, non_gas, by = c("LSOA11" = "LSOA11"))
 all <- left_join(all, flights, by = c("LSOA11" = "LSOA11"))
 all <- left_join(all, lsoa_classif, by = c("LSOA11" = "LSOA11CD"))
 
-rm(elec, gas, age, census, heating, population, school, cars_emissions, cars_km, non_gas, flights, lsoa_classif)
+all <- left_join(all, epc, by = c("LSOA11" = "LSOA11"))
+all <- left_join(all, t2w, by = c("LSOA11" = "LSOA_from"))
+all <- left_join(all, consumption, by = c("LSOA11" = "LSOA11"))
 
 all <- all[substr(all$LSOA11,1,1) == "E",]
+
+all$kgco2e_commute_noncar_percap <- all$kgco2e_commute_noncar_total / all$pop_2018
+all$kgco2e_commute_noncar_total <- NULL
+
+
+rm(elec, gas, age, census, heating, population, school, cars_emissions, 
+   cars_km, non_gas, flights, lsoa_classif, epc, t2w, consumption)
+
+
 
 #all <- left_join(all, bounds, by = "LSOA11")
 #all <- st_as_sf(all)
@@ -98,5 +165,5 @@ all <- all[substr(all$LSOA11,1,1) == "E",]
 #qtm(all[1:10,])
 
 #all <- st_transform(all, 4326)
-saveRDS(all,"data/base_data_v2.Rds")
+saveRDS(all,"data/base_data_v3.Rds")
 

@@ -121,19 +121,41 @@ names(pop17) <- c("code","pop_2017")
 names(pop18) <- c("code","pop_2018")
 names(pop19) <- c("code","pop_2019")
 
-pop_all <- left_join(pop11, pop12, by = "code")
+
+pop11 <- pop11[substr(pop11$code,1,1) == "E",]
+pop12 <- pop12[substr(pop12$code,1,1) == "E",]
+pop13 <- pop13[substr(pop13$code,1,1) == "E",]
+pop14 <- pop14[substr(pop14$code,1,1) == "E",]
+pop15 <- pop15[substr(pop15$code,1,1) == "E",]
+pop16 <- pop16[substr(pop16$code,1,1) == "E",]
+pop17 <- pop17[substr(pop17$code,1,1) == "E",]
+pop18 <- pop18[substr(pop18$code,1,1) == "E",]
+pop19 <- pop19[substr(pop19$code,1,1) == "E",]
+
+pop_all <- pop19
+pop_all <- left_join(pop_all, pop11, by = "code")
+pop_all <- left_join(pop_all, pop12, by = "code")
 pop_all <- left_join(pop_all, pop13, by = "code")
 pop_all <- left_join(pop_all, pop14, by = "code")
 pop_all <- left_join(pop_all, pop15, by = "code")
 pop_all <- left_join(pop_all, pop16, by = "code")
 pop_all <- left_join(pop_all, pop17, by = "code")
 pop_all <- left_join(pop_all, pop18, by = "code")
-pop_all <- left_join(pop_all, pop19, by = "code")
 
-lsoa_ew <- read.csv("data/bounds/lsoa_2001_2011_lookup.csv")
 
-pop_all <- pop_all[pop_all$code %in% lsoa_ew$LSOA11CD,]
 pop_all[2:10] <- lapply(pop_all[2:10], as.numeric)
 summary(pop_all)
+
+# lsoa_ew <- read.csv("data/bounds/lsoa_2001_2011_lookup.csv")
+# names(lsoa_ew)[1] <- "LSOA01CD"
+# summary(lsoa_ew$LSOA01CD %in% pop13$code)
+# summary(lsoa_ew$LSOA11CD %in% pop13$code)
+# summary(pop13$code  %in% lsoa_ew$LSOA11CD)
+# 
+# pop_all <- pop_all[substr(pop_all$code,1,1) == "E",]
+# 
+# pop_all <- pop_all[pop_all$code %in% lsoa_ew$LSOA11CD,]
+
+
 
 saveRDS(pop_all, "data-prepared/LSOA_population_2011_2019.Rds")

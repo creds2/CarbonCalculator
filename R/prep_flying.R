@@ -139,29 +139,33 @@ percentile <- function(dat){
                    datp = datp)
 }
 
-dir.create("tmp2")
-unzip(file.path(secure_path,"/Tim Share/From Malcolm/Experian.zip"),
-      exdir = "tmp2")
-income <- read.csv("tmp2/UKDA-5738-csv/csv/2011-experian-data.csv")
-names(income) <- income[4,]
-income <- income[5:nrow(income),]
-income <- income[,c("GeographyValue","Median_(H) Household Income Value")]
-names(income) <- c("LSOA01","median_household_income")
+# dir.create("tmp2")
+# unzip(file.path(secure_path,"/Tim Share/From Malcolm/Experian.zip"),
+#       exdir = "tmp2")
+# income <- read.csv("tmp2/UKDA-5738-csv/csv/2011-experian-data.csv")
+# names(income) <- income[4,]
+# income <- income[5:nrow(income),]
+# income <- income[,c("GeographyValue","Median_(H) Household Income Value")]
+# names(income) <- c("LSOA01","median_household_income")
+# 
+# income <- income[substr(income$LSOA,1,1) == "E",]
+# income$median_household_income <- as.numeric(income$median_household_income)
+# income$centile <- percentile(income$median_household_income) / 100
+# 
+# lsoa_lookup <- read.csv("data/bounds/lsoa_2001_2011_lookup.csv")
+# lsoa_lookup <- lsoa_lookup[,c(1,3,5)]
+# names(lsoa_lookup) <- c("LSOA01","LSOA11","Change")
+# 
+# lsoa_lookup <- lsoa_lookup[lsoa_lookup$LSOA01 %in% income$LSOA01,]
+# lsoa_lookup <- lsoa_lookup[!duplicated(lsoa_lookup$LSOA11),]
+# income <- left_join(income, lsoa_lookup, by = c("LSOA01"))
+# 
+# summary(duplicated(income$LSOA11))
+# income <- income[!duplicated(income$LSOA11),]
 
-income <- income[substr(income$LSOA,1,1) == "E",]
-income$median_household_income <- as.numeric(income$median_household_income)
-income$centile <- percentile(income$median_household_income) / 100
-
-lsoa_lookup <- read.csv("data/bounds/lsoa_2001_2011_lookup.csv")
-lsoa_lookup <- lsoa_lookup[,c(1,3,5)]
-names(lsoa_lookup) <- c("LSOA01","LSOA11","Change")
-
-lsoa_lookup <- lsoa_lookup[lsoa_lookup$LSOA01 %in% income$LSOA01,]
-lsoa_lookup <- lsoa_lookup[!duplicated(lsoa_lookup$LSOA11),]
-income <- left_join(income, lsoa_lookup, by = c("LSOA01"))
-
-summary(duplicated(income$LSOA11))
-income <- income[!duplicated(income$LSOA11),]
+income <- readRDS("data/income/lsoa_income_estimates.Rds")
+income$centile <- percentile(income$income_lsoa) / 100
+names(income)[1] <- "LSOA11"
 
 match_table <- data.frame(x, y, z)
 match_table$x <- round(match_table$x, 2)
@@ -171,19 +175,22 @@ income$flight_emissions <- income$emissions_share * emissions_total
 
 sum(income$flight_emissions)/emissions_total # Shoudl equal 1
 
-income <- income[,c("LSOA11","flight_emissions")]
-
-population <- readRDS("../Excess-Data-Exploration/data-prepared/population.Rds")
-
-population <- population[population$LSOA11 %in% income$LSOA,]
-population$pop2016 <- as.numeric(population$pop2016)
-population <- population[,c("LSOA11","pop2016")]
+income <- income[,c("LSOA11","flight_emissions","centile")]
+income <- income[!is.na(income$LSOA11),]
 
 
-income <- left_join(income, population, by = c("LSOA11" = "LSOA11"))
-#income$pop2016[is.na(income$pop2016)] <- 0
+population <- readRDS("data-prepared/LSOA_population_2011_2019.Rds")
+population <- population[substr(population$code,1,1) == "E",]
 
-income$flight_emissions_percap <- income$flight_emissions / income$pop2016
+population <- population[population$code %in% income$LSOA11,]
+population$pop_2018 <- as.numeric(population$pop_2018)
+population <- population[,c("code","pop_2018")]
+
+
+income <- left_join(income, population, by = c("LSOA11" = "code"))
+#income$pop_2018[is.na(income$pop_2018)] <- 0
+
+income$flight_emissions_percap <- income$flight_emissions / income$pop_2018
 summary(income$flight_emissions_percap)
 
 saveRDS(income,"data-prepared/flight_emissions.Rds")
@@ -196,6 +203,6 @@ bounds <- bounds[!is.na(bounds$flight_emissions_percap),]
 
 
 tm_shape(bounds) +
-  tm_fill("flight_emissions_percap",
-          n = 8)
+  tm_fill("centile",
+          n = 20)
 

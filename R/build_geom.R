@@ -9,7 +9,7 @@
 library(sf)
 library(dplyr)
 
-all <- readRDS("data/data_with_grades.Rds")
+all <- readRDS("data/data_with_grades_v3.Rds")
 
 
 dir.create("tmp")

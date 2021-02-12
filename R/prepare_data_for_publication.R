@@ -1,7 +1,7 @@
 library(sf)
 library(dplyr)
 
-all <- readRDS("data/base_data_v2.Rds")
+all <- readRDS("data/base_data_v3.Rds")
 
 #TODO: get population for 2010
 #TODO: gas emsison factors seem suspect
@@ -81,7 +81,7 @@ all$vans_percap_2011 <- all$vans_total_11 / all$pop_2011
 # flights 
 all$flights_percap_2018 <- all$flight_emissions / all$pop_2018
 
-
+all$commute_noncar_percap <- all$kgco2e_commute_noncar_percap
 # Subset and order variables
 
 all <- all[,c("LSOA11","LSOA11NM","SOAC11NM","LAD17CD","LAD17NM",
@@ -89,17 +89,46 @@ paste0("gas_percap_",  2010:2018),
 paste0("elec_percap_", 2010:2018),
 "other_heat_percap_2011",
 "flights_percap_2018",
+"nutrition_kgco2e_percap",
+"other_shelter_kgco2e_percap",
+"consumables_kgco2e_percap",
+"recreation_kgco2e_percap",
+"services_kgco2e_percap",
+"commute_noncar_percap",
 paste0("car_percap_",  2010:2018),
 paste0("van_percap_",  2010:2018),
 paste0("cars_percap_", 2010:2018),
 paste0("AvgCO2_cars_", 2010:2018),
+"car_km_18",
 "pP1900","p1900_18","p1919_29","p1930_39","p1945_54","p1955_64","p1965_72",
 "p1973_82","p1983_92","p1993_99","p2000_09","p2010_15","pUNKNOWN",
 "Whole_House_Detached","Whole_House_Semi","Whole_House_Terraced",
 "Flat_PurposeBuilt","Flat_Converted","Flat_Commercial","Caravan",
-"T2W_Home","T2W_Metro","T2W_Train","T2W_Bus","T2W_Taxi","T2W_Mbike",
-"T2W_Car","T2W_Passenger","T2W_Cycle","T2W_Foot",
-"T2W_Other","T2W_NoEmp",
+"epc_total","epc_newbuild","epc_A",
+"epc_B","epc_C","epc_D",
+"epc_E","epc_F","epc_G",
+"epc_score_avg","type_house_semi","type_house_midterrace",
+"type_house_endterrace","type_house_detached","type_flat",
+"type_maisonette","type_parkhome","type_other",  "type_bungalow",
+"floor_area_avg","low_energy_light",
+paste0("floor_",  c("verygood","good","average","poor","verypoor","other")),
+paste0("window_",  c("verygood","good","average","poor","verypoor","other")),
+paste0("wall_",  c("verygood","good","average","poor","verypoor","other")),
+paste0("roof_",  c("verygood","good","average","poor","verypoor","other")),
+paste0("mainheat_",  c("verygood","good","average","poor","verypoor","other")),
+paste0("mainheatcontrol_",  c("verygood","good","average","poor","verypoor","other")),
+"mainheatdesc_gasboiler",
+"mainheatdesc_oilboiler","mainheatdesc_storageheater","mainheatdesc_portableheater",
+"mainheatdesc_roomheater","mainheatdesc_heatpump","mainheatdesc_community",
+"mainheatdesc_other","mainfuel_mainsgas","mainfuel_electric",
+"mainfuel_oil","mainfuel_coal","mainfuel_lpg",
+"mainfuel_biomass",
+"has_solarpv","has_solarthermal",
+"T2W_Car","T2W_Cycle","T2W_Bus","T2W_Train","T2W_Foot",
+"km_Underground","km_Train",
+"km_Bus","km_Taxi","km_Motorcycle",
+"km_CarOrVan","km_Passenger","km_Bicycle",
+"km_OnFoot","km_OtherMethod",
 "pHeating_None","pHeating_Gas","pHeating_Electric","pHeating_Oil","pHeating_Solid","pHeating_Other",
 "T2S_bicycle","T2S_foot","T2S_car",
 "no_heating","gas","electric","oil","solid_fuel","other_heating","two_types"
@@ -109,7 +138,13 @@ paste0("AvgCO2_cars_", 2010:2018),
 
 all$total_percap <- rowSums(all[,c("gas_percap_2017", "elec_percap_2017",
                                   "car_percap_2018", "van_percap_2018",
-                                  "flights_percap_2018", "other_heat_percap_2011")],
+                                  "flights_percap_2018", "other_heat_percap_2011",
+                                  "nutrition_kgco2e_percap",
+                                  "other_shelter_kgco2e_percap",
+                                  "consumables_kgco2e_percap",
+                                  "recreation_kgco2e_percap",
+                                  "services_kgco2e_percap",
+                                  "commute_noncar_percap")],
                            na.rm = TRUE) 
 # foo = all[all$total_percap > 8000, ]
 # foo = foo[,c("total_percap","van_km_11","gas_percap_2017", "elec_percap_2017",
@@ -180,6 +215,8 @@ all$car_emissions_grade <- value2grade(all$car_percap_2018)
 all$total_emissions_grade <- value2grade(all$total_percap)
 all$flights_grade <- value2grade(all$flights_percap_2018)
 
+all$car_km_18 <- NULL
+
 all_old = all
 
 # Round data
@@ -198,5 +235,13 @@ all_old_unique <- unique(unlist(lapply(all_old, as.character)))
 all_unique <- unique(unlist(lapply(all, as.character)))
 message("Compression to ",round(length(all_unique) / length(all_old_unique) * 100, 3)," % of original values")
 
+for(i in 1:ncol(all)){
+  sub <- all[,i]
+  if(sum(is.na(sub)) > 0){
+    message(names(all)[i]," has ",sum(is.na(sub))," na values")
+  }
+  
+}
 
-saveRDS(all, "data/data_with_grades.Rds")
+
+saveRDS(all, "data/data_with_grades_v3.Rds")
