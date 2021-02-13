@@ -21,11 +21,6 @@ var buildingtypeChart;
 var carpercapChart;
 var co2perkmChart;
 var heatingChart;
-/* var epcscoreChart;
-var epcfloorChart;
-var epcwallChart;
-var epcroofChart; 
-var epcwindowChart; */
  
 map.on('load', function() {
 map.addSource('carbon', {
@@ -282,34 +277,7 @@ map.on('click', 'carbon', function(e) {
   ];
   
   
-  var buildingageshare = [
-		sub.pP1900,
-    sub.p1900_18,
-    sub.p1919_29,
-    sub.p1930_39,
-    sub.p1945_54,             
-    sub.p1955_64,
-    sub.p1965_72,
-    sub.p1973_82,
-    sub.p1983_92,
-    sub.p1993_99,
-    sub.p2000_09,
-    sub.p2010_15,
-    sub.pUNKNOWN
-    ];
-    
-  var buildingtypeshare = [
-		sub.Whole_House_Detached,
-    sub.Whole_House_Semi,
-    sub.Whole_House_Terraced,
-    sub.Flat_PurposeBuilt,
-    sub.Flat_Converted,             
-    sub.Flat_Commercial,
-    sub.Caravan
-    ];
-    
-    
-  var carpercapHistory = [
+    var carpercapHistory = [
 		sub.cars_percap_2010,
     sub.cars_percap_2011,
     sub.cars_percap_2012,
@@ -381,43 +349,9 @@ map.on('click', 'carbon', function(e) {
     england.AvgCO2_cars_2018
     ];
     
-  var heatingShare = [
-		sub.pHeating_Gas,
-    sub.pHeating_Electric,
-    sub.pHeating_Oil,
-    sub.pHeating_Solid,
-    sub.pHeating_Other,             
-    sub.pHeating_None
-    ];
-	
-	document.getElementById("modal-title").innerHTML = "<h2>" + sub.LSOA11 + " a '" +
-	sub.SOAC11NM + "' LSOA in " +  sub.LAD17NM +"</h2>";
-	
-	document.getElementById("data_total_emissions_percap").innerHTML = sub.total_percap;
-	document.getElementById("data_elec_emissions_household").innerHTML = sub.elec_percap_2017;
-	document.getElementById("data_gas_emissions_household").innerHTML = sub.gas_percap_2017;
-	document.getElementById("data_other_heating_emissions").innerHTML = sub.other_heat_percap_2011;
-	document.getElementById("data_car_emissions").innerHTML = sub.car_percap_2018;
-	document.getElementById("data_van_emissions").innerHTML = sub.van_percap_2018;
-	document.getElementById("data_flights_emissions").innerHTML = sub.flights_percap_2018;
-	
-	document.getElementById("data_LSOA11").innerHTML = sub.LSOA11;
-	document.getElementById("data_LSOA11NM").innerHTML = sub.LSOA11NM;
-	document.getElementById("data_SOAC11NM").innerHTML = sub.SOAC11NM;
-	document.getElementById("data_LAD17CD").innerHTML = sub.LAD17CD;
-	document.getElementById("data_LAD17NM").innerHTML = sub.LAD17NM;
-	
-	document.getElementById("data_total_emissions_grade").src = "images/grades/" + sub.total_emissions_grade + ".jpg";
-	document.getElementById("data_elec_emissions_grade").src  = "images/grades/" + sub.elec_emissions_grade + ".jpg";
-	document.getElementById("data_gas_emissions_grade").src   = "images/grades/" + sub.gas_emissions_grade + ".jpg";
-	document.getElementById("data_other_heating_emissions_grade").src   = "images/grades/" + sub.other_heating_emissions_grade + ".jpg";
-	document.getElementById("data_car_emissions_grade").src   = "images/grades/" + sub.car_emissions_grade + ".jpg";
-	document.getElementById("data_van_emissions_grade").src   = "images/grades/" + sub.van_emissions_grade + ".jpg";
-	document.getElementById("data_flights_emissions_grade").src   = "images/grades/" + sub.flights_grade + ".jpg";
-	
+  
 	// Define Charts
-	// EPC Score Chart
-	makeChartsEPC(sub);
+	
 	
 	// Cars Chart
 	if(carChart){

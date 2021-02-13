@@ -21,11 +21,6 @@ var buildingtypeChart;
 var carpercapChart;
 var co2perkmChart;
 var heatingChart;
-/* var epcscoreChart;
-var epcfloorChart;
-var epcwallChart;
-var epcroofChart; 
-var epcwindowChart; */
  
 map.on('load', function() {
 map.addSource('carbon', {
@@ -416,8 +411,7 @@ map.on('click', 'carbon', function(e) {
 	document.getElementById("data_flights_emissions_grade").src   = "images/grades/" + sub.flights_grade + ".jpg";
 	
 	// Define Charts
-	// EPC Score Chart
-	makeChartsEPC(sub);
+	
 	
 	// Cars Chart
 	if(carChart){

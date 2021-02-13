@@ -111,15 +111,17 @@
 <div class="modal-content">
 <div class="modal-header">
     <span class="close">&times;</span>
-    <h2>Area Summary</h2>
-  </div>
+    <div id="modal-title"><h2>Area Summary</h2></div>
+</div>
 <div class="modal-body">
 
    <!-- Tab links -->
   <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'Overview')" id="defaultOpen">Overview</button>
     <button class="tablinks" onclick="openCity(event, 'Housing')">Housing</button>
+    <button class="tablinks" onclick="openCity(event, 'EPC')">EPCs</button>
     <button class="tablinks" onclick="openCity(event, 'Transport')">Transport</button>
+    <button class="tablinks" onclick="openCity(event, 'Consumption')">Consumption</button>
     <button class="tablinks" onclick="openCity(event, 'General')">General</button>
   </div>
   
@@ -291,6 +293,58 @@
   	
   </div>
   
+  <div id="EPC" class="tabcontent">
+    <h3>Energy Performance Certificates</h3>
+    <h4>EPC Score</h4>
+  	<div style="min-height:200px">
+  	  <div class="chart-container" >
+    		<canvas id="epcscoreChart"></canvas>
+    	</div>
+    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  	</div>
+  	
+  	<h4>Walls Raiting</h4>
+  	<div style="min-height:200px">
+  	  <div class="chart-container" >
+    		<canvas id="wallscoreChart"></canvas>
+    	</div>
+    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  	</div>
+  	
+  	<h4>Roof Raiting</h4>
+  	<div style="min-height:200px">
+  	  <div class="chart-container" >
+    		<canvas id="roofscoreChart"></canvas>
+    	</div>
+    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  	</div>
+  	
+  	<h4>Floors Raiting</h4>
+  	<div style="min-height:200px">
+  	  <div class="chart-container" >
+    		<canvas id="roofscoreChart"></canvas>
+    	</div>
+    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  	</div>
+  	
+  	<h4>Windows Raiting</h4>
+  	<div style="min-height:200px">
+  	  <div class="chart-container" >
+    		<canvas id="roofscoreChart"></canvas>
+    	</div>
+    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  	</div>
+  	
+  	
+  </div>
+  
+  <div id="Consumption" class="tabcontent">
+    <h3>Consumption</h3>
+    <div style="min-height:200px">
+      
+    </div>
+  </div>
+  
   <div id="General" class="tabcontent">
     <h3>Context</h3>
     <div style="min-height:200px">
@@ -331,6 +385,7 @@
 <!-- Scripts -->
 <script type="text/javascript" src="js/modal.js"></script>
 <script type="text/javascript" src="js/map_carbon.js"></script>
+<script type="text/javascript" src="js/modal_epc.js"></script>
 <script type="text/javascript" src="js/welcome.js"></script>
 <script type="text/javascript" src="js/map_layerdesc.js"></script>
 <script type="text/javascript" src="js/layer_control.js"></script>
