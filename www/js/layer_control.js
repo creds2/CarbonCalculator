@@ -148,6 +148,45 @@ function switchLayer(layer) {
           },  'housenumber' /*'landcover_grass'*/
           );
         break;
+      case 'EPCScore':
+        // code block
+        
+        document.getElementById("legend").innerHTML = `<h4>EPC Scores</h4>
+        <div><span style="background-color: #0e7e58"></span>A 92-100</div>
+  			<div><span style="background-color: #2aa45b"></span>B 81-91</div>
+  			<div><span style="background-color: #8cbc42"></span>C 69-80</div>
+  			<div><span style="background-color: #f6cc15"></span>D 55-86</div>
+  			<div><span style="background-color: #f2a867"></span>E 39-54</div>
+  			<div><span style="background-color: #f17e23"></span>F 21-38</div>
+  			<div><span style="background-color: #e31d3e"></span>G 1-20</div>`;
+    		
+    		
+        
+        map.addLayer(
+          {
+          'id': 'carbon',
+          'type': 'fill',
+          'source': 'carbon',
+          'source-layer': 'carbon',
+          "paint": {
+                  'fill-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'epc_score_avg'],
+                        0,'#e31d3e',
+                        21,'#f17e23',
+                        39,'#f2a867',
+                        55,'#f6cc15',
+                        69,'#8cbc42',
+                        81,'#2aa45b',
+                        92,'#0e7e58'
+                        ],
+                  "fill-opacity": 0.7,
+                  'fill-outline-color': 'rgba(0, 0, 0, 0.2)'
+                }
+          },  'housenumber' /*'landcover_grass'*/
+          );
+        break;
       default:
         // One of the grades layers 
         document.getElementById("legend").innerHTML = `<h4>Grades</h4>
