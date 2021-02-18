@@ -7,7 +7,7 @@ var windowscoreChart;
 var mainheatscoreChart; 
 var heatingcontrolscoreChart;
 var mainheatdescscoreChart;
-
+var epcbuildingtypeChart;
 
 
 makeChartsEPC = function(sub){
@@ -279,14 +279,13 @@ makeChartsEPC = function(sub){
 				label: 'mainheatdescs Rating',
 				data: mainheatdescscore,
 				backgroundColor: [
-				'rgba(44,123,182, 1)',
-				'rgba(171,217,233, 1)',
-				'rgba(255,255,191, 1)',
-				'rgba(253,174,97, 1)',
-				'rgba(215,25,28, 1)',
-				'rgba(255,255,191, 1)',
-				'rgba(253,174,97, 1)',
-				'rgba(215,25,28, 1)',
+				'rgba(166,86,40, 1)',
+				'rgba(255,255,51, 1)',
+				'rgba(255,127,0, 1)',
+				'rgba(152,78,163, 1)',
+				'rgba(228,26,28, 1)',
+				'rgba(77,175,74, 1)',
+				'rgba(55,126,184, 1)',
 				'rgba(192,192,192, 1)'
 				]
 				
@@ -294,6 +293,52 @@ makeChartsEPC = function(sub){
 			
 			labels: ['Gas Boiler','Oil Boiler','Storage Heater','Portable Heater','Room Heater',
 			'Heat Pump','Community Heating','Other/Missing']
+		},
+		options: {
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+	
+		// EPC mainheatdesc Chart
+  var epcbuildingtype = [
+    sub.type_house_semi,
+    sub.type_house_midterrace,
+    sub.type_house_endterrace,
+		sub.type_house_detached,
+		sub.type_flat,
+		sub.type_maisonette,
+		sub.type_parkhome,
+		sub.type_other,
+		sub.type_bungalow];
+
+	if(epcbuildingtypeChart){
+		epcbuildingtypeChart.destroy();
+	}
+	
+	var epcbuildingtypectx = document.getElementById('epcbuildingtypeChart').getContext('2d');
+	epcbuildingtypeChart = new Chart(epcbuildingtypectx, {
+		type: 'pie',
+		data: {
+			datasets: [{
+				label: 'epcbuildingtype Rating',
+				data: epcbuildingtype,
+				backgroundColor: [
+				'rgba(166,86,40, 1)',
+				'rgba(255,255,51, 1)',
+				'rgba(255,127,0, 1)',
+				'rgba(152,78,163, 1)',
+				'rgba(228,26,28, 1)',
+				'rgba(77,175,74, 1)',
+				'rgba(55,126,184, 1)',
+				'rgba(192,192,192, 1)',
+				'rgba(247,129,191, 1)',
+				]
+				
+			}],
+			
+			labels: ['Semi-Detached','Mid Terrace','End Terrace','Detached','Flat',
+			'Maisonette','Park home','Other/Missing','Bungalow']
 		},
 		options: {
 			responsive: true,
