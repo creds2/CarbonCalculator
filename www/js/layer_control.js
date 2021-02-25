@@ -1,3 +1,5 @@
+
+
 function toggleLayer(layerName){
   var checkBox = document.getElementById(layerName.concat('checkbox'));
   // If the checkbox is checked add the layer to the map
@@ -55,13 +57,37 @@ function toggleLayer(layerName){
             }
         });
         break;
+      case 'centroids':
+        // code block
+        map.addLayer({
+            'id': 'centroids',
+            'type': 'circle',
+            'source': 'centroids',
+            'source-layer': 'centroids',
+            'paint': {
+              // make circles larger as the user zooms from z12 to z22
+              'circle-radius': {
+                'base': 3,
+                'stops': [
+                  [10, 5],
+                  [22, 180]
+                ]
+              },
+              // color circles by ethnicity, using a match expression
+              // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-match
+              'circle-color': '#000000'
+            }
+        });
+        break;
       default:
         console.log('unknown layer selected');
     } 
   } else {
     if (map.getLayer(layerName)) map.removeLayer(layerName);
   }
-} 
+}
+
+
 
 function switchLayer(layer) {
   
@@ -181,8 +207,8 @@ function switchLayer(layer) {
                         81,'#2aa45b',
                         92,'#0e7e58'
                         ],
-                  "fill-opacity": 0.7,
-                  'fill-outline-color': 'rgba(0, 0, 0, 0.2)'
+                  'fill-outline-color': 'rgba(0, 0, 0, 0.2)',
+                  'fill-opacity': 0.7
                 }
           },  'housenumber' /*'landcover_grass'*/
           );
@@ -245,7 +271,9 @@ function switchLayer(layer) {
                 }
           },  'housenumber'/*'roads' /* /*'landcover_grass'*/
           );
-    } 
+    }
+    
+    
   }
 }
 

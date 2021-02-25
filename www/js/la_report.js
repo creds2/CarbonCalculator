@@ -1,12 +1,3 @@
-// Setup Map
-mapboxgl.accessToken = "NotNeeded";
-var map = new mapboxgl.Map({
-container: 'map', // container id
-style: 'tiles/style_ontop.json' , // stylesheet location 'tiles/oszoomstack/OS Open Zoomstack - Night.json'
-center: [-0.151, 51.482], // starting position [lng, lat]
-zoom: 7 // starting zoom
-});
-
 
 // Declare Chart Values
 var elecChart;
@@ -17,204 +8,20 @@ var buildingtypeChart;
 var carpercapChart;
 var heatingChart;
 
-// Highlight variable
-//var hoveredStateId = null;
 
- 
-map.on('load', function() {
-map.addSource('carbon', {
-	'type': 'vector',
-	'tiles': [
-	'https://www.wisemover.co.uk/carbon/tiles/carbon/{z}/{x}/{y}.pbf'
-	],
-	'minzoom': 4,
-	'maxzoom': 13
-});
-
-map.addSource('la', {
-	'type': 'vector',
-	'tiles': [
-	'https://www.wisemover.co.uk/carbon/tiles/la/{z}/{x}/{y}.pbf'
-	],
-	'minzoom': 4,
-	'maxzoom': 13
-});
-
-map.addSource('busstops', {
-	'type': 'vector',
-	'tiles': [
-	'https://www.wisemover.co.uk/carbon/tiles/busstops/{z}/{x}/{y}.pbf'
-	],
-	'minzoom': 8,
-	'maxzoom': 13
-});
-
-map.addSource('centroids', {
-	'type': 'vector',
-	'tiles': [
-	'https://www.wisemover.co.uk/carbon/tiles/centroids/{z}/{x}/{y}.pbf'
-	],
-	'minzoom': 6,
-	'maxzoom': 13
-});
-
-map.addControl(new mapboxgl.NavigationControl(), 'top-left');
-
-toggleLayer('carbon');
-toggleLayer('la');
-toggleLayer('busstops');
-toggleLayer('centroids');
-
-// Highlight LSOA on mouse over
-    
-//map.on('mousemove', 'carbon', function (e) {
-//  if (e.features.length > 0) {
-//  if (hoveredStateId) {
-//  map.setFeatureState(
-//  { source: 'carbon', id: hoveredStateId },
-//  { hover: false }
-//  );
-//  }
-//  hoveredStateId = e.features[0].id;
-//  console.log(hoveredStateId);
-//  map.setFeatureState(
-//  { source: 'carbon', id: hoveredStateId },
-//  { hover: true }
-//  );
-//  }
-//});
-
-
-//map.on('mouseleave', 'carbon', function () {
-//  if (hoveredStateId) {
-//  map.setFeatureState(
-//  { source: 'carbon', id: hoveredStateId },
-//  { hover: false }
-//  );
-//  }
-//  hoveredStateId = null;
-//});
-
-});
-
-// Show Isochrones
-map.on('click', 'centroids', function (e) {
-  var lsoacode = e.features[0].properties.code;
-  var lsoaurl = 'https://www.wisemover.co.uk/carbon/data/isochrones/' + lsoacode + '.geojson';
+function switchLALayer() {
+  var layerId = document.getElementById("lainput").value;
   
-  if (map.getLayer('isochrones')){
-    console.log("removed layer");
-    map.removeLayer('isochrones');
-    
-  }
-  
-  if(map.getSource('isochrones')){
-    console.log("removed source");
-    map.removeSource('isochrones');
-  }
-  
-  map.addSource('isochrones', {
-    type: 'geojson',
-    data: lsoaurl
-  });
-  console.log("add source");
-  
-  map.on('sourcedata', function(e) {
-  if (e.isSourceLoaded) {
-  // Do something when the source has finished loading
-  if (map.getLayer('isochrones')){
-    console.log("removed layer");
-    map.removeLayer('isochrones');
-    
-  } 
-  map.addLayer(
-          {
-          'id': 'isochrones',
-          'type': 'fill',
-          'source': 'isochrones',
-          "paint": {
-                  "fill-color": [
-          			'match',
-          			['get', 'mode'],
-          			'WALK','#4daf4a',
-          			'BIKE','#377eb8',
-          			'TRANSIT','#984ea3',
-          			'BIKETRANSIT','#e41a1c',
-          			/* other */ '#e0e0e0'
-          			],
-                  "fill-opacity": 0.9,
-                  'fill-outline-color': 'rgba(0, 0, 0, 0.9)'
-                }
-          },  'housenumber' /*'landcover_grass'*/
-          );
-  }
-  });
-
-});
-
-
-/*
-function sourceCallback() {
-    // assuming 'map' is defined globally, or you can use 'this'
-    if (map.getSource('isochrones') && map.isSourceLoaded('isochrones')) {
-        console.log('source loaded!');
-        map.addLayer(
-          {
-          'id': 'isochrones',
-          'type': 'fill',
-          'source': 'isochrones',
-          'source-layer': 'isochrones',
-          "paint": {
-                  "fill-color": [
-          			'match',
-          			['get', 'mode'],
-          			'WALK','#313695',
-          			'BIKE','#4575b4',
-          			'TRANSIT','#4575b4'
-          			],
-                  "fill-opacity": 0.7,
-                  'fill-outline-color': 'rgba(0, 0, 0, 0.5)'
-                }
-          },  'housenumber'
-          );
-    }
-}
-*/
-
-//map.once('sourcedata', sourceCallback);
-
-
-// On click open modal
-map.on('click', 'carbon', function(e) {
-
-	modal.style.display = "block";
-	
-	var sub = e.features[0].properties;
 	var la = ladata.find(obj => {
-    return obj.LAD17NM === sub.LAD17NM;
+    return obj.LAD17NM === layerId;
   });
 	
 	var england = ladata.find(obj => {
     return obj.LAD17NM === "England";
   });
   
-  var oac = oacdata.find(obj => {
-    return obj.SOAC11NM === sub.SOAC11NM;
-  });
 	
-
 	
-	var gasHistory = [
-		sub.gas_percap_2010,
-		sub.gas_percap_2011,
-		sub.gas_percap_2012,
-		sub.gas_percap_2013,
-		sub.gas_percap_2014,
-		sub.gas_percap_2015,
-		sub.gas_percap_2016,
-		sub.gas_percap_2017
-    ];
-    
   var lagasHistory = [
 		la.gas_percap_2010,
 		la.gas_percap_2011,
@@ -237,17 +44,7 @@ map.on('click', 'carbon', function(e) {
 		england.gas_percap_2017
     ];
 	
-	var elecHistory = [
-		sub.elec_percap_2010,
-		sub.elec_percap_2011,
-		sub.elec_percap_2012,
-		sub.elec_percap_2013,
-		sub.elec_percap_2014,
-		sub.elec_percap_2015,
-		sub.elec_percap_2016,
-		sub.elec_percap_2017
-    ];
-    
+
   var laelecHistory = [
 		la.elec_percap_2010,
 		la.elec_percap_2011,
@@ -272,115 +69,106 @@ map.on('click', 'carbon', function(e) {
 	
 
   var overallgas = [
-    sub.gas_percap_2017, la.gas_percap_2017, england.gas_percap_2017, oac.gas_percap_2017
+    la.gas_percap_2017, england.gas_percap_2017
   ];
   
   var overallelec = [
-    sub.elec_percap_2017, la.elec_percap_2017, england.elec_percap_2017, oac.elec_percap_2017
+    la.elec_percap_2017, england.elec_percap_2017
   ];
   
   var overallcar = [
-    sub.car_percap_2018, la.car_percap_2018, england.car_percap_2018, oac.car_percap_2018
+    la.car_percap_2018, england.car_percap_2018
   ];
   
   var overallvan = [
-    sub.van_percap_2018, la.van_percap_2018, england.van_percap_2018, oac.van_percap_2018
+    la.van_percap_2018, england.van_percap_2018
   ];
   
   var overallflights = [
-    sub.flights_percap_2018, la.flights_percap_2018, england.flights_percap_2018, oac.flights_percap_2018
+    la.flights_percap_2018, england.flights_percap_2018
   ];
   
   var overallotherheat = [
-    sub.other_heat_percap_2011, la.other_heat_percap_2011, england.other_heat_percap_2011, oac.other_heat_percap_2011
+    la.other_heat_percap_2011, england.other_heat_percap_2011
   ];
   
   var overallnutrition = [
-    sub.nutrition_kgco2e_percap, la.nutrition_kgco2e_percap, england.nutrition_kgco2e_percap, oac.nutrition_kgco2e_percap
+    la.nutrition_kgco2e_percap, england.nutrition_kgco2e_percap
   ];
   var overallothershelter = [
-    sub.other_shelter_kgco2e_percap, la.other_shelter_kgco2e_percap, england.other_shelter_kgco2e_percap, oac.other_shelter_kgco2e_percap
+    la.other_shelter_kgco2e_percap, england.other_shelter_kgco2e_percap
   ];
   var overallconsumables = [
-    sub.consumables_kgco2e_percap, la.consumables_kgco2e_percap, england.consumables_kgco2e_percap,oac.consumables_kgco2e_percap
+    la.consumables_kgco2e_percap, england.consumables_kgco2e_percap
   ];
   var overallrecreation = [
-    sub.recreation_kgco2e_percap, la.recreation_kgco2e_percap, england.recreation_kgco2e_percap, oac.recreation_kgco2e_percap
+    la.recreation_kgco2e_percap, england.recreation_kgco2e_percap
   ];
   var overallservices = [
-    sub.services_kgco2e_percap, la.services_kgco2e_percap, england.services_kgco2e_percap, oac.services_kgco2e_percap
+    la.services_kgco2e_percap, england.services_kgco2e_percap
   ];
   var overallcommutenoncar = [
-    sub.commute_noncar_percap, la.commute_noncar_percap, england.commute_noncar_percap, oac.commute_noncar_percap
+    la.commute_noncar_percap, england.commute_noncar_percap
   ];
   
   
   var buildingageshare = [
-		sub.pP1900,
-    sub.p1900_18,
-    sub.p1919_29,
-    sub.p1930_39,
-    sub.p1945_54,             
-    sub.p1955_64,
-    sub.p1965_72,
-    sub.p1973_82,
-    sub.p1983_92,
-    sub.p1993_99,
-    sub.p2000_09,
-    sub.p2010_15,
-    sub.pUNKNOWN
+		la.pP1900,
+    la.p1900_18,
+    la.p1919_29,
+    la.p1930_39,
+    la.p1945_54,             
+    la.p1955_64,
+    la.p1965_72,
+    la.p1973_82,
+    la.p1983_92,
+    la.p1993_99,
+    la.p2000_09,
+    la.p2010_15,
+    la.pUNKNOWN
     ];
     
   var buildingtypeshare = [
-		sub.Whole_House_Detached,
-    sub.Whole_House_Semi,
-    sub.Whole_House_Terraced,
-    sub.Flat_PurposeBuilt,
-    sub.Flat_Converted,             
-    sub.Flat_Commercial,
-    sub.Caravan
+		la.Whole_House_Detached,
+    la.Whole_House_Semi,
+    la.Whole_House_Terraced,
+    la.Flat_PurposeBuilt,
+    la.Flat_Converted,             
+    la.Flat_Commercial,
+    la.Caravan
     ];
     
   var heatingShare = [
-		sub.pHeating_Gas,
-    sub.pHeating_Electric,
-    sub.pHeating_Oil,
-    sub.pHeating_Solid,
-    sub.pHeating_Other,             
-    sub.pHeating_None
+		la.pHeating_Gas,
+    la.pHeating_Electric,
+    la.pHeating_Oil,
+    la.pHeating_Solid,
+    la.pHeating_Other,             
+    la.pHeating_None
     ];
 	
-	document.getElementById("modal-title").innerHTML = "<h2>" + sub.LSOA11 + " a '" +
-	sub.SOAC11NM + "' LSOA in " +  sub.LAD17NM +"</h2>";
+	document.getElementById("data_total_emissions_percap").innerHTML = la.total_percap;
+	document.getElementById("data_elec_emissions_household").innerHTML = la.elec_percap_2017;
+	document.getElementById("data_gas_emissions_household").innerHTML = la.gas_percap_2017;
+	document.getElementById("data_other_heating_emissions").innerHTML = la.other_heat_percap_2011;
+	document.getElementById("data_car_emissions").innerHTML = la.car_percap_2018;
+	document.getElementById("data_van_emissions").innerHTML = la.van_percap_2018;
+	document.getElementById("data_flights_emissions").innerHTML = la.flights_percap_2018;
 	
-	document.getElementById("data_total_emissions_percap").innerHTML = sub.total_percap;
-	document.getElementById("data_elec_emissions_household").innerHTML = sub.elec_percap_2017;
-	document.getElementById("data_gas_emissions_household").innerHTML = sub.gas_percap_2017;
-	document.getElementById("data_other_heating_emissions").innerHTML = sub.other_heat_percap_2011;
-	document.getElementById("data_car_emissions").innerHTML = sub.car_percap_2018;
-	document.getElementById("data_van_emissions").innerHTML = sub.van_percap_2018;
-	document.getElementById("data_flights_emissions").innerHTML = sub.flights_percap_2018;
-	
-	document.getElementById("data_LSOA11").innerHTML = sub.LSOA11;
-	document.getElementById("data_LSOA11NM").innerHTML = sub.LSOA11NM;
-	document.getElementById("data_SOAC11NM").innerHTML = sub.SOAC11NM;
-	document.getElementById("data_LAD17CD").innerHTML = sub.LAD17CD;
-	document.getElementById("data_LAD17NM").innerHTML = sub.LAD17NM;
-	
-	document.getElementById("data_total_emissions_grade").src = "images/grades/" + sub.total_emissions_grade + ".jpg";
-	document.getElementById("data_elec_emissions_grade").src  = "images/grades/" + sub.elec_emissions_grade + ".jpg";
-	document.getElementById("data_gas_emissions_grade").src   = "images/grades/" + sub.gas_emissions_grade + ".jpg";
-	document.getElementById("data_other_heating_emissions_grade").src   = "images/grades/" + sub.other_heating_emissions_grade + ".jpg";
-	document.getElementById("data_car_emissions_grade").src   = "images/grades/" + sub.car_emissions_grade + ".jpg";
-	document.getElementById("data_van_emissions_grade").src   = "images/grades/" + sub.van_emissions_grade + ".jpg";
-	document.getElementById("data_flights_emissions_grade").src   = "images/grades/" + sub.flights_grade + ".jpg";
+	document.getElementById("data_total_emissions_grade").src = "images/grades/" + la.total_emissions_grade + ".jpg";
+	document.getElementById("data_elec_emissions_grade").src  = "images/grades/" + la.elec_emissions_grade + ".jpg";
+	document.getElementById("data_gas_emissions_grade").src   = "images/grades/" + la.gas_emissions_grade + ".jpg";
+	document.getElementById("data_other_heating_emissions_grade").src   = "images/grades/" + la.other_heating_emissions_grade + ".jpg";
+	document.getElementById("data_car_emissions_grade").src   = "images/grades/" + la.car_emissions_grade + ".jpg";
+	document.getElementById("data_van_emissions_grade").src   = "images/grades/" + la.van_emissions_grade + ".jpg";
+	document.getElementById("data_flights_emissions_grade").src   = "images/grades/" + la.flights_grade + ".jpg";
 	
 	// Define Charts
 	// EPC Score Chart
-	makeChartsEPC(sub);
+	makeChartsEPC(la);
 	
 	// Transport Charts
-	makeChartsTransport(sub, la, england);
+	makeChartsTransport(la, la, england);
 	
 	// Electric Chart
 	if(elecChart){
@@ -393,13 +181,6 @@ map.on('click', 'carbon', function(e) {
 		data: {
 			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
 			datasets: [{
-				label: 'This LSOA',
-				data: elecHistory,
-				backgroundColor: 'rgba(255, 99, 132, 0.8)',
-				borderColor: 'rgba(255, 99, 132, 1)',
-				borderWidth: 1
-			},
-			{
 				label: 'Local Authority Average',
 				data: laelecHistory,
 				backgroundColor: 'rgba(132, 99, 255, 0.8)',
@@ -476,13 +257,7 @@ map.on('click', 'carbon', function(e) {
 		type: 'bar',
 		data: {
 			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
-			datasets: [{
-				label: 'This LSOA',
-				data: gasHistory,
-				backgroundColor: 'rgba(255, 99, 132, 0.8)',
-				borderColor: 'rgba(255, 99, 132, 1)',
-				borderWidth: 1
-			},
+			datasets: [
 			{
 				label: 'Local Authority Average',
 				data: lagasHistory,
@@ -526,7 +301,7 @@ map.on('click', 'carbon', function(e) {
 	overallChart = new Chart(overallctx, {
 		type: 'bar',
 		data: {
-			labels: ['This LSOA','Local Authority Average','England Average','Similar LSOAs'],
+			labels: ['Local Authority Average','England Average'],
 			datasets: [{
 				label: 'Gas',
 				data: overallgas,
@@ -733,7 +508,7 @@ map.on('click', 'carbon', function(e) {
 		}
 	});
 	
-});
+}
 
 
 // Modal Tabs

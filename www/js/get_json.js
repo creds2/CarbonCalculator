@@ -2,63 +2,39 @@ jQuery.ajaxSetup({
   beforeSend: function() {
      $('#loader').show();
   },
-  complete: function(){
-     $('#loader').hide();
-  },
+  //complete: function(){
+  //   $('#loader').hide();
+  //},
   success: function() {}
 });
 
 
-//var carbondata = [];
-//$.getJSON("data/attributes_gzip.json", function (json) {
-//    carbondata.push(json);
-//   //carbondata = json;
-//    console.log("v3");
-//    console.log(carbondata[0]);
-//});
+
 
 var ladata;
 $.getJSON("data/la_averages.json", function (json) {
-    console.log( "downloaded json" );
+    console.log( "downloaded la json" );
     ladata = json;
-    //console.log(carbondata[0]);
 })
+  .done(function() {
+    $('#loader').hide();
+  })
   .fail(function() {
-    alert("Failed to get JSON");
+    alert("Failed to LA get JSON");
+  });
+
+var oacdata;
+$.getJSON("data/oac_averages.json", function (json) {
+    console.log( "downloaded oac json" );
+    oacdata = json;
+})
+  .done(function() {
+    $('#loader').hide();
+  })
+  .fail(function() {
+    alert("Failed to OAC get JSON");
   });
 
 
-//var carbondata = $.getJSON("data/attributes.json", function() {
-//  console.log( "downloaded json" );
-//})
-//  .fail(function() {
-//    alert("Failed to get JSON");
-//  });
-
-
-//var getJSON = function(url, callback) {
-//    var xhr = new XMLHttpRequest();
-//    xhr.open('GET', url, true);
-//    xhr.responseType = 'json';
-//    xhr.onload = function() {
-//      var status = xhr.status;
-//      if (status === 200) {
-//        callback(null, xhr.response);
-//      } else {
-//        callback(status, xhr.response);
-//      }
-//    };
-//    xhr.send();
-//};
-
-//var carbondata = getJSON('data/attributes_gzip.json',
-//function(err, data) {
-//  if (err !== null) {
-//    alert('Something went wrong: ' + err);
-//  } else {
-//    // Takes time to get so much json
-//    //alert('Your query count: ' + carbondata.query.count);
-//  }
-//});
 
 

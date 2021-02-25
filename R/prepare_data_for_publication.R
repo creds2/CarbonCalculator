@@ -202,7 +202,7 @@ value2grade <- function(x, high_good = FALSE){
  return(x_grade)
 }
 
-all$cars_percap_grade <- value2grade(all$car_percap_2018)
+all$cars_percap_grade <- value2grade(all$cars_percap_2018)
 all$km_percap_grade <- value2grade(all$car_km_18)
 all$T2W_Car_grade <- value2grade(all$T2W_Car)
 all$T2W_Cycle_grade <- value2grade(all$T2W_Cycle, high_good = TRUE)
