@@ -532,85 +532,105 @@ map.on('click', 'carbon', function(e) {
 				data: overallgas,
 				backgroundColor: 'rgba(166,206,227, 0.8)',
 				borderColor: 'rgba(166,206,227, 1)',
-				borderWidth: 1
+				borderWidth: 1,
+				order: 2
 			},
 			{
 				label: 'Electricity',
 				data: overallelec,
 				backgroundColor: 'rgba(31,120,180, 0.8)',
 				borderColor: 'rgba(31,120,180, 1)',
-				borderWidth: 1
+				borderWidth: 1,
+				order: 3
 			},
 			{
 				label: 'Other Heating',
 				data: overallotherheat,
 				backgroundColor: 'rgba(178,223,138, 0.8)',
 				borderColor: 'rgba(178,223,138, 1)',
-				borderWidth: 1
+				borderWidth: 1,
+				order: 4
 			},
 			{
 				label: 'Other Housing',
 				data: overallothershelter ,
 				backgroundColor: 'rgba(51,160,44, 0.8)',
 				borderColor: 'rgba(51,160,44, 1)',
-				borderWidth: 1
+				borderWidth: 1,
+				order: 5
 			},
 			{
 				label: 'Cars',
 				data: overallcar,
 				backgroundColor: 'rgba(251,154,153, 0.8)',
 				borderColor: 'rgba(251,154,153, 1)',
-				borderWidth: 1
+				borderWidth: 1,
+				order: 6
 			},
 			{
 				label: 'Vans',
 				data: overallvan,
 				backgroundColor: 'rgba(227,26,28, 0.8)',
 				borderColor: 'rgba(227,26,28, 1)',
-				borderWidth: 1
+				borderWidth: 1,
+				order: 7
 			},
 			{
 				label: 'Public Transport',
 				data: overallcommutenoncar,
 				backgroundColor: 'rgba(253,191,111, 0.8)',
 				borderColor: 'rgba(253,191,111, 1)',
-				borderWidth: 1
+				borderWidth: 1,
+				order: 8
 			},
 			{
 				label: 'Flights',
 				data: overallflights,
 				backgroundColor: 'rgba(255,127,0, 0.8)',
 				borderColor: 'rgba(255,127,0, 1)',
-				borderWidth: 1
+				borderWidth: 1,
+				order: 9
 			},
 			{
 				label: 'Food & Drink',
 				data: overallnutrition,
 				backgroundColor: 'rgba(202,178,214, 0.8)',
 				borderColor: 'rgba(202,178,214, 1)',
-				borderWidth: 1
+				borderWidth: 1,
+				order: 10
 			},
 			{
 				label: 'Consumable Goods',
 				data: overallconsumables ,
 				backgroundColor: 'rgba(106,61,154, 0.8)',
 				borderColor: 'rgba(106,61,154, 1)',
-				borderWidth: 1
+				borderWidth: 1,
+				order: 11
 			},
 			{
 				label: 'Recreation',
 				data: overallrecreation,
 				backgroundColor: 'rgba(255,255,153, 0.8)',
 				borderColor: 'rgba(255,255,153, 1)',
-				borderWidth: 1
+				borderWidth: 1,
+				order: 12
 			},
 			{
 				label: 'Services',
 				data: overallservices,
 				backgroundColor: 'rgba(177,89,40, 0.8)',
 				borderColor: 'rgba(177,89,40, 1)',
-				borderWidth: 1
+				borderWidth: 1,
+				order: 13
 			},
+			{
+				label: '2032 Target',
+				data: [2849, 2849, 2849, 2849],
+				type: 'line',
+				order: 1,
+				borderColor : 'rgba(0,0,0, 0.8)'
+			},
+			
 			]
 		},
 		options: {

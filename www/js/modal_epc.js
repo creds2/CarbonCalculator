@@ -8,13 +8,48 @@ var mainheatscoreChart;
 var heatingcontrolscoreChart;
 var mainheatdescscoreChart;
 var epcbuildingtypeChart;
+var epcoverviewChart;
 
 
 makeChartsEPC = function(sub){
   
+  // EPC Overview Chart
+  var totalhouses = sub.Whole_House_Detached + sub.Whole_House_Semi + sub.Whole_House_Terraced + sub.Flat_PurposeBuilt +
+  sub.Flat_Converted + sub.Flat_Commercial;
+  
+  var epcoverview = [sub.epc_total,sub.epc_newbuild,totalhouses];
+	
+	if(epcoverviewChart){
+		epcoverviewChart.destroy();
+	}
+	
+	var epcoverviewctx = document.getElementById('epcoverviewChart').getContext('2d');
+	epcoverviewChart = new Chart(epcoverviewctx, {
+		type: 'horizontalBar',
+		data: {
+			datasets: [{
+				label: 'Number of Dwellings',
+				data: epcoverview,
+				backgroundColor: [
+				'rgba(102,194,165, 1)',
+				'rgba(252,141,98, 1)',
+				'rgba(141,160,203, 1)',
+				]
+				
+			}],
+			
+			labels: ['All properties with EPC','Newbuilds with EPC','Dwellings in 2011 Census']
+		},
+		options: {
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+  
+  
   // EPC Score Chart
   var epcscore = [sub.epc_A,sub.epc_B,sub.epc_C,
-		sub.epc_D,sub.epc_E,sub.epc_F,sub.epc_G,sub.epc_other];
+		sub.epc_D,sub.epc_E,sub.epc_F,sub.epc_G];
 	
 	if(epcscoreChart){
 		epcscoreChart.destroy();
@@ -34,13 +69,12 @@ makeChartsEPC = function(sub){
 				'rgba(246,204,21, 1)',
 				'rgba(242,168,103, 1)',
 				'rgba(241,126,35, 1)',
-				'rgba(227,29,62, 1)',
-				'rgba(192,192,192, 1)'
+				'rgba(227,29,62, 1)'
 				]
 				
 			}],
 			
-			labels: ['A','B','C','D','E','F','G','Other/Missing']
+			labels: ['A','B','C','D','E','F','G']
 		},
 		options: {
 			responsive: true,
