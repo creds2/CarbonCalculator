@@ -42,6 +42,13 @@ tile-join --output-to-directory=OSzoomStack4 os_openzoomstack/OS_Open_Zoomstack.
 
 tippecanoe --output-to-directory=OSzoomStack6  --attribution=MALCOLMMORGAN --maximum-zoom=8 --minimum-zoom=4  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --maximum-tile-bytes=50000000 --buffer=5 --force  carbon_super_general.geojson
 
+### OS Zoomstack - Custom build
+
+cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson
+
+tippecanoe --output-to-directory=OSzoomStackCustom  --attribution=OS --maximum-zoom=13 --drop-smallest-as-needed --simplification=10 --force  airports.geojson boundaries.geojson district_buildings.geojson foreshore.geojson greenspace.geojson land.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads_local.geojson roads_national.geojson roads_regional.geojson sites.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+
+
 ### Travel to Work Lines
 cd /mnt/d/GitHub/creds2/CarbonCalculator/data
 

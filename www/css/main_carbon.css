@@ -1,9 +1,16 @@
+@font-face {
+  font-family: Raleway;
+  src: url(../fonts/Raleway/Raleway-VariableFont_wght.ttf);
+}
+
+
 /* Main Layout */
 body, html{
     padding:0;
     margin:0;
     position:relative;
     height:100%;
+    font-family: Raleway;
 	
 }
 .header{
@@ -53,7 +60,6 @@ body, html{
 
 /* Text */
 h1{
-	font-family:Helvetica;
 	font-size:45px;
 	padding:0px;
 	line-height: 1;
@@ -182,12 +188,12 @@ h1{
   top: 60px;
   bottom:20px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
   padding: 10px;
   position: absolute;
   right: 10px;
   z-index: 1;
   width: 250px;
+  overflow:auto;
 }
 
 /* The Mapbox map */

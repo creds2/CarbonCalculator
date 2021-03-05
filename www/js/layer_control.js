@@ -104,7 +104,7 @@ function switchLayer(layer) {
       case 'SOAC11NM':
         // code block
         
-        document.getElementById("legend").innerHTML = `<h4>Area Classification</h4>
+        document.getElementById("legend").innerHTML = `<h4>Office for National Statistics Area Classifications</h4>
         <div><span style="background-color: #955123"></span>Cosmopolitan student neighbourhoods</div>
   			<div><span style="background-color: #007f42"></span>Ageing rural neighbourhoods</div>
   			<div><span style="background-color: #3ea456"></span>Prospering countryside life</div>
