@@ -1,33 +1,18 @@
 <!DOCTYPE html>
 <html class="gr__wisemover_co_uk"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>CREDS - Place-based Carbon Calculator</title>
-
-<!-- Before Anything Else, Get the Massive JSON File  -->
-<script src="js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
-<script src="js/get_json.js"></script>
-
+<title>Coming Soon | ONCE</title>
 <!-- Set Up Mapbox -->
-<script src="js/lib/mapbox-gl-js-1.13/mapbox-gl.js"></script>
-<link href="js/lib/mapbox-gl-js-1.13/mapbox-gl.css" rel="stylesheet" />
+
   
-<!-- Set Up Other JS -->
-<script src="js/lib/chartjs/Chart.min.js"></script>
-
-<!-- Set Up CSS -->
+<!-- Set Up WiseMover -->
 <link rel="stylesheet" href="css/main_carbon.css">
-<link rel="stylesheet" href="css/modal.css">
-<link rel="stylesheet" href="css/welcome.css">
-<link rel="stylesheet" href="css/map_ledgend.css">
-
-<!-- Set Up Icons -->
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
 </head>
 <body>
-  
-<!-- Loading Spinner  -->
-<div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.gif"/></div>
 
 <!-- Menu -->
 <div class="headrow">
@@ -36,441 +21,34 @@
   </div>
   <div class="headcol headright">
     <div class="topnav">
-		<a href="index.html">MAP</a>
+		<a href="index.html">COMING SOON</a>
 		<a href="about.html">ABOUT</a>
-		<a href="sources.html">DATA</a>
-		<a href="la.html">LA REPORTS</a>
+		<a href="data.html">DATA</a>
+		<!-- <a href="la.html">LA REPORTS</a> -->
     </div>
   </div>
 </div>
 
-<!-- Welcome Splash -->
-<div id="welcome" class="welcome">
-    <span class="closewelcome">&times;</span>
-    <h2>Welcome to the Online Neighbourhood Carbon Explorer (ONCE)</h2>
-    <p><b>This tool is currently under development</b></p>
-    <p>Our carbon footprint is the total amount of greenhouse gasses (such as Carbon Dioxide) that we release into the atmosphere each year. Greenhouse gasses (GHG) contribute to climate change, which is harming people and ecosystems around the world. At the moment, almost everything we do contributes to our carbon footprint. But to avoid catastrophic climate change, we all need to reduce our carbon footprint to zero as quickly as possible.</p>
+
+<div class="content">
+<img src="images/taster2.jpg" alt="ONCE Demo 2" style="height:300px; float:right">
+<h2>Welcome to the Online Neighbourhood Carbon Explorer (ONCE)</h2>
+
+<p><b>This tool is currently under development</b></p>
+<p>Our carbon footprint is the total amount of greenhouse gasses (such as Carbon Dioxide) that we release into the atmosphere each year. Greenhouse gasses (GHG) contribute to climate change, which is harming people and ecosystems around the world. At the moment, almost everything we do contributes to our carbon footprint. But to avoid catastrophic climate change, we all need to reduce our carbon footprint to zero as quickly as possible.</p>
+
     
 <p>While we all need to reduce our carbon footprint, we are not all starting from the same position. Some people have a much larger footprint than others. Some of this variation is due to individual choices, but some is due to circumstances. Everything from what kind of house we live in, to where we go to work affects our carbon footprint.</p>
-<p>This tool takes a place-based approach to carbon footprints. That means that rather than thinking about individual decisions, we look at the structural issues that determine a community’s carbon footprint as a whole. For example, people may drive a long way to work because they do not have reliable public transport or good jobs in their local area.</p> 
+<p>This tool takes a place-based approach to carbon footprints. That means that rather than thinking about individual decisions, we look at the structural issues that determine a community’s carbon footprint as a whole. For example, people may drive a long way to work because they do not have reliable public transport or good jobs in their local area.</p>
+
+<img src="images/taster3.jpg" alt="ONCE Demo 3" style="height:300px; float:right">
 <p>This tool estimates the per-person carbon footprint for every Lower Super Output Area (LSOA) in England. LSOAs are small statistical areas with a population of about 1,500. As these are averages of areas, they may not reflect every individual person. But by highlighting the differences in carbon footprint across the country, this tool can help explain where our carbon footprint comes from and how we can reduce it.</p>
-    
-     <img src="images/creds-logo.jpg" alt="CREDS Logo" style="height:40px">
-     <img src="images/leeds-logo.jpg" alt="Leeds Logo" style="height:40px">
-     <img src="images/manchester-logo.jpg" alt="Manchester Logo" style="height:40px">
-     <img src="images/tfse-logo.jpg" alt="TFSE Logo" style="height:40px">
-     <img src="images/steer-logo.jpg" alt="Steer Logo" style="height:40px">
-    
-    <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></p>
-    
-    <p><b>This website uses cookies from Google Analytics. <a href="https://developers.google.com/analytics/devguides/collection/gajs/#disable">Click here to opt-out</a></b></p>
-    
-    
-</div>
 
-<!-- Floating Objects -->
-<div id="legend" class="legend"></div>
-
-<!-- Layer Selection Panel -->
-<div id="rightbox" class="rightbox">
-<p>Select a variable to show on the map</p>
-
-<button class="accordion"><input type="checkbox" id="carboncheckbox" value="true" onclick="toggleLayer('carbon')" checked> Zonal Data</button>
-<div class="panel">
-  <select id="layerinput" name="layerinput" onchange="switchLayer()">
-      <option value="total_emissions_grade" selected>Total Emission Grade</option>
-      <option value="car_emissions_grade">Car Emissions Grade</option>
-      <option value="gas_emissions_grade">Gas Emissions Grade</option>
-      <option value="elec_emissions_grade">Electricity Emissions Grade</option>
-      <option value="flights_grade">Flights Emissions Grade</option>
-      <option value="cars_percap_grade">Cars per person Grade</option>
-      <option value="km_percap_grade">km driven per person Grade</option>
-      <option value="T2W_Car_grade">Travel to Work (Car) Grade</option>
-      <option value="T2W_Cycle_grade">Travel to Work (Bicycle) Grade</option>
-      <option value="T2W_Bus_grade">Travel to Work (Bus) Grade</option>
-      <option value="T2W_Train_grade">Travel to Work (Train) Grade</option>
-      <option value="T2W_Foot_grade">Travel to Work (Foot) Grade</option>
-      <option value="EPCScore">EPC Average Score</option>
-      <option value="SOAC11NM">LSOA Area Classification</option>
-  </select>
-  <div id="layerdesc"></div>
-</div>
-
-<button class="accordion"><input type="checkbox" id="lacheckbox" value="true" onclick="toggleLayer('la')">Local Authorities </button>
-<div class="panel">
-  <p>Show Lower Tier/Unitary Local Authoirty Boundaires</p>
-</div>
+<p><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=qO3qvR3IzkWGPlIypTW3ywVZfmO0bwdAhK0UztpneQtURDY3TDhVQVlKOUtYT1VCSEZNVzg0WFUxQy4u"><b>Sign up to our mailing list</b></a></p>
 
 
-<button class="accordion"><input type="checkbox" id="busstopscheckbox" value="true" onclick="toggleLayer('busstops')">Bus Stops </button>
-<div class="panel">
-  <p>Show Bus Stops and Frequency</p>
-</div>
-
-<button class="accordion"><input type="checkbox" id="centroidscheckbox" value="true" onclick="toggleLayer('centroids')">15-minute neighbourhoods</button>
-<div class="panel">
-  <p>Click on a point to show 15 minute isochrones for different modes of travel</p>
-  <div>
-    <div><span style="background-color: #4daf4a; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>Walking</div>
-	  <div><span style="background-color: #377eb8; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>Bicycle</div>
-	  <div><span style="background-color: #984ea3; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>Walk + Transit</div>
-	  <div><span style="background-color: #e41a1c; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>Bike + Transit</div>
-  </div>
-  <p>Travel time isochrones has been calcualted based on Weekday AM peak-time timetables.
-  Bike + Transit assumes you can board the transit service with your bike and then use it 
-  at the other end of your journey.
-  </p>
-  
-</div>
-
-
-<script src="js/accordion.js"></script>
-</div>
-
-<!-- Main Content -->
-<div class="content">
-  <div id="map"></div>
-</div>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-<!-- Modal content -->
-<div class="modal-content">
-<div class="modal-header">
-    <span class="close">&times;</span>
-    <div id="modal-title"><h2>Area Summary</h2></div>
-</div>
-<div class="modal-body">
-
-   <!-- Tab links -->
-  <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'Overview')" id="defaultOpen">Overview</button>
-    <button class="tablinks" onclick="openCity(event, 'Housing')">Housing</button>
-    <button class="tablinks" onclick="openCity(event, 'EPC')">EPCs</button>
-    <button class="tablinks" onclick="openCity(event, 'Transport')">Transport</button>
-    <button class="tablinks" onclick="openCity(event, 'Consumption')">Consumption</button>
-    <button class="tablinks" onclick="openCity(event, 'General')">General</button>
-  </div>
-  
-  <!-- Tab content -->
-  <div id="Overview" class="tabcontent">
-    <h3>Overall Carbon Footprint</h3>
-    <div style="min-height:200px">
-      <div class="chart-container" style="height:400px">
-    			<canvas id="overallChart"></canvas>
-    	</div>
-      <table>
-    		  <tr>
-    			<th>Name</th>
-    			<th>Value</th>
-    			<th>Grade</th>
-    			</tr>
-    		  <tr>
-    			<td>Total CO2 per person</td>
-    			<td id="data_total_emissions_percap">NA</td>
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_total_emissions_grade"></td>
-    			
-    		  </tr>
-    		  <tr>
-    			<td>Electricity CO2 per person</td>
-    			<td id="data_elec_emissions_household">NA</td>
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_elec_emissions_grade"></td>
-    			
-    		  </tr>
-    		  <tr>
-    			<td>Gas CO2 per person</td>
-    			<td id="data_gas_emissions_household">NA</td>
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_gas_emissions_grade"></td>
-    			
-    		  </tr>
-    		  <tr>
-    			<td>Other Heating CO2 per person</td>
-    			<td id="data_other_heating_emissions">NA</td>
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_other_heating_emissions_grade"></td>
-    			
-    		  </tr>
-    		  <tr>
-    			<td>Car Driving CO2 per person</td>
-    			<td id="data_car_emissions">NA</td>
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_car_emissions_grade"></td>
-    			
-    		  </tr>
-    		  <tr>
-    			<td>Van Driving CO2 per person</td>
-    			<td id="data_van_emissions">NA</td>
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_van_emissions_grade"></td>
-    			
-    		  </tr>
-    		  <tr>
-    			<td>Flights CO2 per person</td>
-    			<td id="data_flights_emissions">NA</td>
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_flights_emissions_grade"></td>
-    			
-    		  </tr>
-    		</table>
-    </div>
-  </div>
-  
-  <div id="Transport" class="tabcontent">
-    <h3>Transport</h3>
-    
-    <h4>Cars emissions</h4>
-		<div style="min-height:200px">
-		  <div class="chart-container" >
-  			<canvas id="carChart"></canvas>
-  		</div>
-		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>
-		
-		
-		<h4>Van emissions</h4>
-		<div style="min-height:200px">
-		  <div class="chart-container" >
-  			<canvas id="vanChart"></canvas>
-  		</div>
-		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>
-	
-		<h4>Travel to Work Trips Share (2011 Cenus)</h4>
-		<div style="min-height:200px">
-		  <div class="chart-container" >
-  			<canvas id="t2wChart"></canvas>
-  		</div>
-  		
-  		<p>The main mode of travel to work from the 2011 Census. Although this data is now quite old its is very sptailly detailed and so still useful. Commuting makes up about 20% of trips in England, so it is a minority of trips and distnace travlled, yet ther is some evidence that how people choose to travel to work affects their general travel choices. Comparison with the 2001 Census sugges that commuter travel patterns are reasonably stable. However to meet climate change targets we need more people to travel by active travel (walking and cycling) and public transport.</p>
-		</div>
-		
-		
-		<h4>Travel to Work Distance Share (2011 Cenus)</h4>
-		<div style="min-height:200px">
-		  <div class="chart-container" >
-  			<canvas id="t2wDistChart"></canvas>
-  		</div>
-  		
-  		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>
-		
-		
-		<h4>Travel to School Mode Share (2011 Schools Cenus)</h4>
-		<div style="min-height:200px">
-		  <div class="chart-container" >
-  			<canvas id="t2sChart"></canvas>
-  		</div>
-		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>
-		
-		
-		<h4>Cars per capita</h4>
-		<div style="min-height:200px">
-		  <div class="chart-container" >
-  			<canvas id="carpercapChart"></canvas>
-  		</div>
-		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>
-		
-		<h4>Average CO2 per km of cars</h4>
-		<div style="min-height:200px">
-		  <div class="chart-container" >
-  			<canvas id="co2perkmChart"></canvas>
-  		</div>
-		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>
-		
-
-	</div>
-	
-  <div id="Housing" class="tabcontent">
-    <h3>Housing</h3>
-	
-  	<h4>Building Age</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    		<canvas id="buildingageChart"></canvas>
-    	</div>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-    
-  
-    
-  	<h4>Building Type</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    			<canvas id="buildingtypeChart"></canvas>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-  	
-  	<h4>Heating Type</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    		<canvas id="heatingChart"></canvas>
-    	</div>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-  	
-  	
-  	<h4>Historical Gas Usage</h4>
-  	<div style="min-height:200px">
-  	<div class="chart-container" >
-  		<canvas id="gasChart"></canvas>
-  	</div>
-  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> 
-  	</div>
-  	
-  	
-  	<h4>Historical Electricity Usage</h4>
-  	<div style="min-height:200px">
-  	<div class="chart-container" >
-  		<canvas id="elecChart"></canvas>
-  	</div>
-  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>  
-  	</div>
-  	
-  	
-  </div>
-  
-  <div id="EPC" class="tabcontent">
-    <h3>Energy Performance Certificates</h3>
-    
-    <h4>EPC Overview</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    		<canvas id="epcoverviewChart"></canvas>
-    	</div>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-    
-    
-    <h4>EPC Score</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    		<canvas id="epcscoreChart"></canvas>
-    	</div>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-  	
-  	<h4>Walls Raiting</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    		<canvas id="wallscoreChart"></canvas>
-    	</div>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-  	
-  	<h4>Roof Raiting</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    		<canvas id="roofscoreChart"></canvas>
-    	</div>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-  	
-  	<h4>Floors Raiting</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    		<canvas id="floorscoreChart"></canvas>
-    	</div>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-  	
-  	<h4>Windows Raiting</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    		<canvas id="windowscoreChart"></canvas>
-    	</div>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-  	
-  	<h4>Main Heating System Rating</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    		<canvas id="mainheatscoreChart"></canvas>
-    	</div>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-  	
-  	<h4>Main Heating Type</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    		<canvas id="mainheatdescscoreChart"></canvas>
-    	</div>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-  	
-  	<h4>Heating Controls Rating</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    		<canvas id="heatingcontrolscoreChart"></canvas>
-    	</div>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-  	
-  	
-  	<h4>Building Types</h4>
-  	<div style="min-height:200px">
-  	  <div class="chart-container" >
-    		<canvas id="epcbuildingtypeChart"></canvas>
-    	</div>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  	</div>
-  	
-  	
-  </div>
-  
-  <div id="Consumption" class="tabcontent">
-    <h3>Consumption</h3>
-    <div style="min-height:200px">
-      
-    </div>
-  </div>
-  
-  <div id="General" class="tabcontent">
-    <h3>Context</h3>
-    <div style="min-height:200px">
-      <table>
-    		  <tr>
-    			<th>Name</th>
-    			<th>Value</th>
-    		  </tr>
-    		  <tr>
-    			<td>LSOA Code</td>
-    			<td id="data_LSOA11">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>LSOA Name</td>
-    			<td id="data_LSOA11NM">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>LSOA Classification</td>
-    			<td id="data_SOAC11NM">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>Local Authority Code</td>
-    			<td id="data_LAD17CD">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>Local Authority Name</td>
-    			<td id="data_LAD17NM">NA</td>
-    		  </tr>
-    		</table>
-    </div>
-  </div>
-  
-</div>
-<div class="modal-footer">
-</div>
-</div>
-
-<!-- Scripts -->
-<script type="text/javascript" src="js/modal.js"></script>
-<script type="text/javascript" src="js/map_carbon.js"></script>
-<script type="text/javascript" src="js/modal_epc.js"></script>
-<script type="text/javascript" src="js/modal_transport.js"></script>
-<script type="text/javascript" src="js/welcome.js"></script>
-<script type="text/javascript" src="js/map_layerdesc.js"></script>
-<script type="text/javascript" src="js/layer_control.js"></script>
 
 </div>
+
 </body>
 </html>
