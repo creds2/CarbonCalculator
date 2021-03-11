@@ -25,7 +25,7 @@ map.on('load', function() {
 map.addSource('carbon', {
 	'type': 'vector',
 	'tiles': [
-	'https://www.wisemover.co.uk/carbon/tiles/carbon/{z}/{x}/{y}.pbf'
+	'https://www.carbon.place/tiles/carbon/{z}/{x}/{y}.pbf'
 	],
 	'minzoom': 4,
 	'maxzoom': 13
@@ -34,7 +34,7 @@ map.addSource('carbon', {
 map.addSource('la', {
 	'type': 'vector',
 	'tiles': [
-	'https://www.wisemover.co.uk/carbon/tiles/la/{z}/{x}/{y}.pbf'
+	'https://www.carbon.place/tiles/la/{z}/{x}/{y}.pbf'
 	],
 	'minzoom': 4,
 	'maxzoom': 13
@@ -43,7 +43,7 @@ map.addSource('la', {
 map.addSource('busstops', {
 	'type': 'vector',
 	'tiles': [
-	'https://www.wisemover.co.uk/carbon/tiles/busstops/{z}/{x}/{y}.pbf'
+	'https://www.carbon.place/tiles/busstops/{z}/{x}/{y}.pbf'
 	],
 	'minzoom': 8,
 	'maxzoom': 13
@@ -52,7 +52,7 @@ map.addSource('busstops', {
 map.addSource('centroids', {
 	'type': 'vector',
 	'tiles': [
-	'https://www.wisemover.co.uk/carbon/tiles/centroids/{z}/{x}/{y}.pbf'
+	'https://www.carbon.place/tiles/centroids/{z}/{x}/{y}.pbf'
 	],
 	'minzoom': 6,
 	'maxzoom': 13
@@ -100,7 +100,7 @@ toggleLayer('centroids');
 // Show Isochrones
 map.on('click', 'centroids', function (e) {
   var lsoacode = e.features[0].properties.code;
-  var lsoaurl = 'https://www.wisemover.co.uk/carbon/data/isochrones/' + lsoacode + '.geojson';
+  var lsoaurl = 'https://www.carbon.place/carbon/data/isochrones/' + lsoacode + '.geojson';
   
   if (map.getLayer('isochrones')){
     console.log("removed layer");

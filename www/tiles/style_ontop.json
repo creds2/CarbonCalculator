@@ -12,11 +12,11 @@
     "openmaptiles": {
       "type": "vector",
       "tiles": [
-        "https://www.wisemover.co.uk/tiles/basemap/{z}/{x}/{y}.pbf"
+        "https://www.carbon.place/tiles/basemap/{z}/{x}/{y}.pbf"
       ]
     }
   },
-  "glyphs": "https://www.wisemover.co.uk/carbon/fonts/{fontstack}/{range}.pbf",
+  "glyphs": "https://www.carbon.place/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
