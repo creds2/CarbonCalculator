@@ -269,11 +269,61 @@ function switchLayer(layer) {
                   "fill-opacity": 0.7,
                   'fill-outline-color': 'rgba(0, 0, 0, 0.5)'
                 }
-          },  'housenumber'/*'roads' /* /*'landcover_grass'*/
+          },  'waterlines'/*'roads' /* /*'landcover_grass'*/
           );
     }
     
     
   }
 }
+
+// Swtich the basemap
+/*
+function switchBase(layer) {
+  var layerId = document.getElementById("basemapinput").value;
+  map.setStyle('tiles/oszoom/' + layerId + '.json');
+  
+  map.addSource('carbon', {
+  	'type': 'vector',
+  	'tiles': [
+  	'https://www.carbon.place/tiles/carbon/{z}/{x}/{y}.pbf'
+  	],
+  	'minzoom': 4,
+  	'maxzoom': 13
+  });
+  
+  map.addSource('la', {
+  	'type': 'vector',
+  	'tiles': [
+  	'https://www.carbon.place/tiles/la/{z}/{x}/{y}.pbf'
+  	],
+  	'minzoom': 4,
+  	'maxzoom': 13
+  });
+  
+  map.addSource('busstops', {
+  	'type': 'vector',
+  	'tiles': [
+  	'https://www.carbon.place/tiles/busstops/{z}/{x}/{y}.pbf'
+  	],
+  	'minzoom': 8,
+  	'maxzoom': 13
+  });
+  
+  map.addSource('centroids', {
+  	'type': 'vector',
+  	'tiles': [
+  	'https://www.carbon.place/tiles/centroids/{z}/{x}/{y}.pbf'
+  	],
+  	'minzoom': 6,
+  	'maxzoom': 13
+  });
+  
+  
+  toggleLayer('carbon');
+  toggleLayer('la');
+  toggleLayer('busstops');
+  toggleLayer('centroids');
+}
+*/
 

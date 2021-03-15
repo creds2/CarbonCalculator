@@ -91,11 +91,11 @@ surfacewater <- st_transform(surfacewater, 4326)
 write_sf(surfacewater, "data/zoomstackgeojson/surfacewater.geojson", delete_dsn = TRUE)
 
 urban_areas <- read_sf("D:/OneDrive - University of Leeds/Data/OS/ZoomStack/OSOpen_ZoomStack_GPKG/OSOpen_ZoomStack_v0_3.gpkg",
-                        layer = "surfacewater")
+                        layer = "urban_areas")
 urban_areas <- st_transform(urban_areas, 4326)
 write_sf(urban_areas, "data/zoomstackgeojson/urban_areas.geojson", delete_dsn = TRUE)
 
 woodland <- read_sf("D:/OneDrive - University of Leeds/Data/OS/ZoomStack/OSOpen_ZoomStack_GPKG/OSOpen_ZoomStack_v0_3.gpkg",
-                       layer = "surfacewater")
+                       layer = "woodland")
 woodland <- st_transform(woodland, 4326)
 write_sf(woodland, "data/zoomstackgeojson/woodland.geojson", delete_dsn = TRUE)

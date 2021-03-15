@@ -2,15 +2,12 @@
     "version": 8,
     "name": "OS Open Zoomstack - Night",
     "metadata": {
-        "mapbox:autocomposite": false,
-        "mapbox:type": "template",
-        "maputnik:renderer": "mbgljs",
-        "openmaptiles:version": "3.x",
-        "openmaptiles:mapbox:owner": "openmaptiles"
-      },
-    "center": [-1.4664639288325816, 50.937862220434056],
-    "zoom": 12.962787205372374,
-    "bearing": -0.02347356909285736,
+        "mapbox:autocomposite": true,
+        "mapbox:type": "template"
+    },
+    "center": [-1.6116775017445661, 60.250689361310066],
+    "zoom": 13.336684971142715,
+    "bearing": 24.00002486533299,
     "pitch": 0,
     "light": {"intensity": 0.25, "color": "hsl(0, 0%, 100%)"},
     "sources": {

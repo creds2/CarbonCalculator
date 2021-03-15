@@ -48,6 +48,20 @@ cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson
 
 tippecanoe --output-to-directory=OSzoomStackCustom  --attribution=OS --maximum-zoom=13 --drop-smallest-as-needed --simplification=10 --force  airports.geojson boundaries.geojson district_buildings.geojson foreshore.geojson greenspace.geojson land.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads_local.geojson roads_national.geojson roads_regional.geojson sites.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
 
+### OS Zoomstack low
+
+cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson/low
+
+tippecanoe --output-to-directory=OSzoomStackCustomLow  --attribution=OS --maximum-zoom=8 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson land.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+
+cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson/med
+
+tippecanoe --output-to-directory=OSzoomStackCustomMed  --attribution=OS --minimum-zoom=9 --maximum-zoom=11 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson land.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+
+cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson/high
+
+tippecanoe --output-to-directory=OSzoomStackCustomHigh  --attribution=OS --minimum-zoom=12 --maximum-zoom=14 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson land.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+
 
 ### Travel to Work Lines
 cd /mnt/d/GitHub/creds2/CarbonCalculator/data

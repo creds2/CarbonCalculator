@@ -2,9 +2,11 @@
 mapboxgl.accessToken = "NotNeeded";
 var map = new mapboxgl.Map({
 container: 'map', // container id
-style: 'tiles/style_ontop.json' , // stylesheet location 'tiles/oszoomstack/OS Open Zoomstack - Night.json'
+style: 'tiles/oszoom/style_light.json' , // stylesheet location 'tiles/oszoomstack/OS Open Zoomstack - Night.json'
 center: [-0.151, 51.482], // starting position [lng, lat]
-zoom: 7 // starting zoom
+zoom: 7, // starting zoom
+maxZoom: 13,
+minZoom: 5
 });
 
 
@@ -100,7 +102,7 @@ toggleLayer('centroids');
 // Show Isochrones
 map.on('click', 'centroids', function (e) {
   var lsoacode = e.features[0].properties.code;
-  var lsoaurl = 'https://www.carbon.place/carbon/data/isochrones/' + lsoacode + '.geojson';
+  var lsoaurl = 'https://www.carbon.place/data/isochrones/' + lsoacode + '.geojson';
   
   if (map.getLayer('isochrones')){
     console.log("removed layer");
@@ -145,7 +147,7 @@ map.on('click', 'centroids', function (e) {
                   "fill-opacity": 0.9,
                   'fill-outline-color': 'rgba(0, 0, 0, 0.9)'
                 }
-          },  'housenumber' /*'landcover_grass'*/
+          },  'waterlines' /*'landcover_grass'*/
           );
   }
   });
