@@ -1,7 +1,7 @@
 library(opentripplanner)
 library(tmap)
 tmap_mode("view")
-otpcon <- otp_connect(router = "great-britain2")
+otpcon <- otp_connect(router = "great-britain2", port = 8091)
 
 lsoa <- read_sf("data-prepared/lsoa_centroids.geojson")
 

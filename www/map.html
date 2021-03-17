@@ -63,8 +63,8 @@
      <a href="https://transportforthesoutheast.org.uk/" target="_blank"><img src="images/tfse-logo.jpg" alt="TFSE Logo" style="height:40px"></a>
      <a href="https://uk.steergroup.com/" target="_blank"><img src="images/steer-logo.jpg" alt="Steer Logo" style="height:40px"></a>
     
-    <p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></p>
-    <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+    <p><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></p>
+    <p>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
     </div>
     </div>
     
@@ -112,6 +112,40 @@
       <option value="SOAC11NM">LSOA Area Classification</option>
   </select>
   <div id="layerdesc"></div>
+  
+</div>
+
+<button class="accordion">Filter Areas</button>
+<div class="panel">
+  <p>Filter <abbr title="Lower Super Output Areas">LSOAs</abbr> by <abbr title="Office for National Statistics">ONS</abbr> classification</p>
+  <select id="layerfilter" name="layerfilter" onchange="switchLayer()">
+      <option value="all" selected>All</option>
+      <option value="Cosmopolitan student neighbourhoods">Cosmopolitan student nbhd.</option>
+      <option value="Ageing rural neighbourhoods">Ageing rural neighbourhoods</option>
+      <option value="Prospering countryside life">Prospering countryside life</option>
+      <option value="Remoter communities">Remoter communities</option>
+      <option value="Rural traits">Rural traits</option>
+      <option value="Achieving neighbourhoods">Achieving neighbourhoods</option>
+      <option value="Asian traits">Asian traits</option>
+      <option value="Highly qualified professionals">Highly qualified professionals</option>
+      <option value="Households in terraces and flats">Households in terraces and flats</option>
+      <option value="Challenged white communities">Challenged white communities</option>
+      <option value="Constrained renters">Constrained renters</option>
+      <option value="Hampered neighbourhoods">Hampered neighbourhoods</option>
+      <option value="Hard-pressed flat dwellers">Hard-pressed flat dwellers</option>
+      <option value="Ageing urban communities">Ageing urban communities</option>
+      <option value="Aspiring urban households">Aspiring urban households</option>
+      <option value="Comfortable neighbourhoods">Comfortable neighbourhoods</option>
+      <option value="Endeavouring social renters">Endeavouring social renters</option>
+      <option value="Primary sector workers">Primary sector workers</option>
+      <option value="Inner city cosmopolitan">Inner city cosmopolitan</option>
+      <option value="Urban cultural mix">Urban cultural mix</option>
+      <option value="Young ethnic communities">Young ethnic communities</option>
+      <option value="Affluent communities">Affluent communities</option>
+      <option value="Ageing suburbanites">Ageing suburbanites</option>
+      <option value="Comfortable suburbia">Comfortable suburbia</option>
+  </select>
+  
 </div>
 
 <button class="accordion"><input type="checkbox" id="lacheckbox" value="true" onclick="toggleLayer('la')">Local Authorities </button>
@@ -120,9 +154,10 @@
 </div>
 
 
-<button class="accordion"><input type="checkbox" id="busstopscheckbox" value="true" onclick="toggleLayer('busstops')">Bus Stops </button>
+<button class="accordion"><input type="checkbox" id="transitstopscheckbox" value="true" onclick="toggleLayer('transitstops')">Transport Stops </button>
 <div class="panel">
-  <p>Show Bus Stops and Frequency</p>
+  <p>Shows public transport stops and frequency of service. Stops are coloured using the A+ (most) to F- (least) frequent grades. Click on stops for more details, and zoom in to see more stops.</p>
+  
 </div>
 
 <button class="accordion"><input type="checkbox" id="centroidscheckbox" value="true" onclick="toggleLayer('centroids')">15-minute neighbourhoods</button>
@@ -138,6 +173,7 @@
   Bike + Transit assumes you can board the transit service with your bike and then use it 
   at the other end of your journey.
   </p>
+  <button onclick="removeisochrones()">Clear Map</button>
   
 </div>
 
@@ -170,6 +206,8 @@
     <button class="tablinks" onclick="openCity(event, 'Consumption')">Consumption</button>
     <button class="tablinks" onclick="openCity(event, 'General')">General</button>
   </div>
+  
+  <div id="datawarning" style="background-color: LightCoral;"></div>
   
   <!-- Tab content -->
   <div id="Overview" class="tabcontent">

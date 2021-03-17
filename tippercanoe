@@ -29,6 +29,11 @@ tippecanoe --output-to-directory=la_tiles --name=la --layer=la --attribution=MAL
 
 tippecanoe --output-to-directory=busstopstiles --name=busstops --layer=busstops --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=8  --drop-densest-as-needed --force  busstops/openbusdata.geojson
 
+### Bus Stops v2
+
+tippecanoe --output-to-directory=transitstops --name=transitstops --layer=transitstops --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=4  --drop-densest-as-needed -rg4 --force  transit_stop_frequency_v2.geojson 
+
+
 ### LSOA cents
 
 tippecanoe --output-to-directory=tiles/centroids --name=centroids --layer=centroids --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=6  --drop-densest-as-needed --force  data-prepared/lsoa_centroids.geojson

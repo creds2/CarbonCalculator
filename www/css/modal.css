@@ -21,8 +21,9 @@
   position: fixed;
   bottom: 0;
   background-color: #fefefe;
-  height: 80%;
-  width: 100%;
+  height: calc(100% - 60px);
+  width: 98%;
+  left: 1%;
   overflow: scroll;
   -webkit-animation-name: slideIn;
   -webkit-animation-duration: 0.4s;
@@ -47,15 +48,17 @@
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: #38b6ab;
   color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+  padding: 2px 16px;
+}
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: #38b6ab;
   color: white;
 }
 

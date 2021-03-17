@@ -26,6 +26,7 @@ iso_all <- iso_all %>%
 
 for(i in 1:length(iso_all)){
   sub <- iso_all[[i]]
+  sub <- nngeo::st_remove_holes(sub)
   st_write(sub, 
            paste0("www/data/isochrones/",sub$fromPlace[1],".geojson"),
            quiet = TRUE,
@@ -35,5 +36,11 @@ for(i in 1:length(iso_all)){
   }
 }
 
+miss_bike <- lsoa$code[!lsoa$code %in% iso_bike$fromPlace] 
+miss_bike <- lsoa[lsoa$code %in% miss_bike,]
+
 foo <- st_drop_geometry(iso_biketransit)
 foo <- foo[order(foo$area, decreasing = TRUE),]
+
+tm_shape(nngeo::st_remove_holes(sub)) +
+  tm_borders()

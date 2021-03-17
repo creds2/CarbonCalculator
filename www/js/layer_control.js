@@ -22,38 +22,48 @@ function toggleLayer(layerName){
             }
         });
         break;
-      case 'busstops':
+      case 'transitstops':
         // code block
         map.addLayer({
-            'id': 'busstops',
+            'id': 'transitstops',
             'type': 'circle',
-            'source': 'busstops',
-            'source-layer': 'busstops',
+            'source': 'transitstops',
+            'source-layer': 'transitstops',
             'paint': {
               // make circles larger as the user zooms from z12 to z22
               'circle-radius': {
-                'base': 1.75,
+                'base': 2.5,
                 'stops': [
-                  [10, 2],
+                  [8, 3],
                   [22, 180]
                 ]
               },
               // color circles by ethnicity, using a match expression
               // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-match
-              'circle-color': [
-              'interpolate',
-              ['linear'],
-              ['get', 'stops_per_week'],
-              0,'#F2F12D',
-              10,'#EED322',
-              30,'#E6B71E',
-              100,'#DA9C20',
-              200,'#CA8323',
-              400,'#B86B25',
-              1000,'#A25626',
-              10000,'#8B4225',
-              20000,'#723122'
-              ]
+              'circle-stroke-width': 1,
+              "circle-color": [
+          			'match',
+          			['get', 'grade'],
+          			'A+','#313695',
+          			'A','#4575b4',
+          			'A-','#4575b4',
+          			'B+','#74add1',
+          			'B','#abd9e9',
+          			'B-','#abd9e9',
+          			'C+','#e0f3f8',
+          			'C','#e0f3f8',
+          			'C-','#ffffbf',
+          			'D+','#ffffbf',
+          			'D','#fee090',
+          			'D-','#fee090',
+          			'E+','#fdae61',
+          			'E','#fdae61',
+          			'E-','#f46d43',
+          			'F+','#d73027',
+          			'F','#d73027',
+          			'F-','#a50026',
+          			/* other */ '#e0e0e0'
+          			]
             }
         });
         break;
@@ -84,15 +94,30 @@ function toggleLayer(layerName){
     } 
   } else {
     if (map.getLayer(layerName)) map.removeLayer(layerName);
+    if(layerName == 'carbon'){
+      document.getElementById("legend").innerHTML = ``;
+    }
   }
 }
 
-
+function removeisochrones(){
+  if (map.getLayer('isochrones')){
+    console.log("removed layer");
+    map.removeLayer('isochrones');
+    
+  }
+  
+  if(map.getSource('isochrones')){
+    console.log("removed source");
+    map.removeSource('isochrones');
+  }
+}
 
 function switchLayer(layer) {
   
   var checkBox = document.getElementById('carboncheckbox');
   var layerId = document.getElementById("layerinput").value;
+  var filterid = document.getElementById("layerfilter").value;
   var layers = map.getStyle().layers;
   
   if (checkBox.checked === true){
@@ -131,8 +156,8 @@ function switchLayer(layer) {
   			<div><span style="background-color: #e5e4e3"></span>Comfortable suburbia</div>`;
     		
     		
-        
-        map.addLayer(
+        if(filterid == 'all'){
+          map.addLayer(
           {
           'id': 'carbon',
           'type': 'fill',
@@ -171,8 +196,53 @@ function switchLayer(layer) {
                   "fill-opacity": 0.7,
                   'fill-outline-color': 'rgba(0, 0, 0, 0.2)'
                 }
-          },  'housenumber' /*'landcover_grass'*/
+          },  'waterlines' /*'landcover_grass'*/
           );
+        } else {
+          map.addLayer(
+          {
+          'id': 'carbon',
+          'type': 'fill',
+          'source': 'carbon',
+          'source-layer': 'carbon',
+          'filter': ['==', 'SOAC11NM', filterid],
+          "paint": {
+                  "fill-color": [
+          			'match',
+          			['get', layerId],
+          			"Cosmopolitan student neighbourhoods",'#955123',
+          			"Ageing rural neighbourhoods",'#007f42',
+          			"Prospering countryside life",'#3ea456',
+          			"Remoter communities",'#8aca8e',
+          			"Rural traits",'#cfe8d1',
+          			"Achieving neighbourhoods",'#00498d',
+          			"Asian traits",'#2967ad',
+          			"Highly qualified professionals",'#7b99c7',
+          			"Households in terraces and flats",'#b9c8e1',
+          			"Challenged white communities",'#e3ac20',
+          			"Constrained renters",'#edca1a',
+          			"Hampered neighbourhoods",'#f6e896',
+          			"Hard-pressed flat dwellers",'#fcf5d8',
+          			"Ageing urban communities",'#e64c2b',
+          			"Aspiring urban households",'#ec773c',
+          			"Comfortable neighbourhoods",'#faa460',
+          			"Endeavouring social renters",'#fcc9a0',
+          			"Primary sector workers",'#fee4ce',
+          			"Inner city cosmopolitan",'#f79ff0',
+          			"Urban cultural mix",'#6a339a',
+          			"Young ethnic communities",'#9f84bd',
+          			"Affluent communities",'#576362',
+          			"Ageing suburbanites",'#a1a2a1',
+          			"Comfortable suburbia",'#e5e4e3',
+                /* other */ '#ffffff'
+          			],
+                  "fill-opacity": 0.7,
+                  'fill-outline-color': 'rgba(0, 0, 0, 0.2)'
+                }
+          },  'waterlines' /*'landcover_grass'*/
+          );
+        }
+        
         break;
       case 'EPCScore':
         // code block
@@ -187,8 +257,8 @@ function switchLayer(layer) {
   			<div><span style="background-color: #e31d3e"></span>G 1-20</div>`;
     		
     		
-        
-        map.addLayer(
+        if(filterid == 'all'){
+          map.addLayer(
           {
           'id': 'carbon',
           'type': 'fill',
@@ -210,8 +280,36 @@ function switchLayer(layer) {
                   'fill-outline-color': 'rgba(0, 0, 0, 0.2)',
                   'fill-opacity': 0.7
                 }
-          },  'housenumber' /*'landcover_grass'*/
+          },  'waterlines'
           );
+        } else {
+          map.addLayer(
+          {
+          'id': 'carbon',
+          'type': 'fill',
+          'source': 'carbon',
+          'source-layer': 'carbon',
+          'filter': ['==', 'SOAC11NM', filterid],
+          "paint": {
+                  'fill-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'epc_score_avg'],
+                        0,'#e31d3e',
+                        21,'#f17e23',
+                        39,'#f2a867',
+                        55,'#f6cc15',
+                        69,'#8cbc42',
+                        81,'#2aa45b',
+                        92,'#0e7e58'
+                        ],
+                  'fill-outline-color': 'rgba(0, 0, 0, 0.2)',
+                  'fill-opacity': 0.7
+                }
+          },  'waterlines'
+          );
+        }
+        
         break;
       default:
         // One of the grades layers 
@@ -236,7 +334,8 @@ function switchLayer(layer) {
     		<div><span style="background-color: #a50026"></span>F- (worst 1%)</div>
     		<div><span style="background-color: #e0e0e0"></span>No Data</div>`;
         
-        map.addLayer(
+        if(filterid == 'all'){
+          map.addLayer(
           {
           'id': 'carbon',
           'type': 'fill',
@@ -271,9 +370,51 @@ function switchLayer(layer) {
                 }
           },  'waterlines'/*'roads' /* /*'landcover_grass'*/
           );
+        } else {
+          map.addLayer(
+          {
+          'id': 'carbon',
+          'type': 'fill',
+          'source': 'carbon',
+          'source-layer': 'carbon',
+          'filter': ['==', 'SOAC11NM', filterid],
+          "paint": {
+                  "fill-color": [
+          			'match',
+          			['get', layerId],
+          			'A+','#313695',
+          			'A','#4575b4',
+          			'A-','#4575b4',
+          			'B+','#74add1',
+          			'B','#abd9e9',
+          			'B-','#abd9e9',
+          			'C+','#e0f3f8',
+          			'C','#e0f3f8',
+          			'C-','#ffffbf',
+          			'D+','#ffffbf',
+          			'D','#fee090',
+          			'D-','#fee090',
+          			'E+','#fdae61',
+          			'E','#fdae61',
+          			'E-','#f46d43',
+          			'F+','#d73027',
+          			'F','#d73027',
+          			'F-','#a50026',
+          			/* other */ '#e0e0e0'
+          			],
+                  "fill-opacity": 0.7,
+                  'fill-outline-color': 'rgba(0, 0, 0, 0.5)'
+                }
+          },  'waterlines'/*'roads' /* /*'landcover_grass'*/
+          );
+        }
+        
+        
     }
     
     
+  } else {
+    document.getElementById("legend").innerHTML = ``;
   }
 }
 
