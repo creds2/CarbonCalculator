@@ -9,7 +9,29 @@
 library(sf)
 library(dplyr)
 
-all <- readRDS("data/data_with_grades_v3.Rds")
+all <- readRDS("data/data_with_grades_v4.Rds")
+
+# Split data from geom
+nms <- c("LSOA11","SOAC11NM","LAD17NM","cars_percap_grade","km_percap_grade","T2W_Car_grade",
+         "T2W_Cycle_grade","T2W_Bus_grade","T2W_Train_grade",
+         "T2W_Foot_grade","T2W_Underground_grade","elec_emissions_grade",
+          "gas_emissions_grade","car_emissions_grade","total_emissions_grade",
+         "flights_grade","other_heating_grade","van_grade",
+         "consumption_grade","epc_score_avg","floor_area_avg")
+
+
+all_map <- all[,nms]
+all_json <- all
+all_json <- split(all_json, all$LSOA11)
+
+for(i in seq(1,length(all_json))){
+  if(i %% 1000 == 0){
+    message(i)
+  }
+  sub <- all_json[[i]]
+  jsonlite::write_json(sub, paste0("data/LSOA_JSON/",sub$LSOA11,".json"))
+}
+
 
 
 dir.create("tmp")
@@ -47,9 +69,9 @@ bounds_full <- st_transform(bounds_full, 4326)
 bounds_general <- st_transform(bounds_general, 4326)
 bounds_super_gen <- st_transform(bounds_super_gen, 4326)
 
-bounds_full <- left_join(bounds_full, all, by = "LSOA11")
-bounds_general <- left_join(bounds_general, all, by = "LSOA11")
-bounds_super_gen <- left_join(bounds_super_gen, all, by = "LSOA11")
+bounds_full <- left_join(bounds_full, all_map, by = "LSOA11")
+bounds_general <- left_join(bounds_general, all_map, by = "LSOA11")
+bounds_super_gen <- left_join(bounds_super_gen, all_map, by = "LSOA11")
 
 write_sf(bounds_full, "data/carbon_full.geojson", delete_dsn = TRUE)
 write_sf(bounds_general, "data/carbon_general.geojson", delete_dsn = TRUE)

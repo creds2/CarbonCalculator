@@ -3,17 +3,6 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>PBCC</title>
 
-<!-- Before Anything Else, Get the Massive JSON File  -->
-<script src="js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
-<script src="js/get_json.js"></script>
-
-<!-- Set Up Mapbox -->
-<script src="js/lib/mapbox-gl-js-1.13/mapbox-gl.js"></script>
-<link href="js/lib/mapbox-gl-js-1.13/mapbox-gl.css" rel="stylesheet" />
-  
-<!-- Set Up Other JS -->
-<script src="js/lib/chartjs/Chart.min.js"></script>
-
 <!-- Set Up CSS -->
 <link rel="stylesheet" href="css/main_carbon.css">
 <link rel="stylesheet" href="css/modal.css">
@@ -27,12 +16,12 @@
 <body>
   
 <!-- Loading Spinner  -->
-<div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.gif"/></div>
+<div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.svg"/></div>
 
 <!-- Menu -->
 <div class="headrow">
   <div class="headcol headleft">
-     <a href="index.html"><img src="images/pbcc-logo.jpg" alt="PBCC Logo" height="46" style="padding-left:10px; padding-right:10px;"></a>   
+     <a href="index.html"><img src="images/pbcc-logo.webp" alt="PBCC Logo" height="46" style="padding-left:10px; padding-right:10px;"></a>   
   </div>
   <div class="headcol headright">
     <div class="topnav">
@@ -49,19 +38,20 @@
     <span class="closewelcome">&times;</span>
     <h2>Welcome to the Place-Based Carbon Calculator</h2>
     <div style="min-height:320px">
+      <!--
       <div style="max-width:560px; float:right; width:50%; padding:10px"><div class="videoWrapper"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/EtW2rrLHs08" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
-      
+      -->
       <div style="max-width:calc(85% -561px)">
       <p><b>This tool is currently under development</b></p>
       <p>PBCC is a free tool which estimates the per-person carbon footprint for every Lower Super Output Area (LSOA) in England. LSOAs are small statistical areas with a population of about 1,500.  It draws on a wide range of data and research to give a representative view of how carbon footprints vary across the country. PBCC is intended to help communities and policy makers understand where their carbon footprints come from and what we need to do to reduce them.</p>
       
       <p><b>PBCC was produced with support from:</b></p>
     
-     <a href="https://www.creds.ac.uk/" target="_blank"><img src="images/creds-logo.jpg" alt="CREDS Logo" style="height:40px"></a>
-     <a href="https://www.leeds.ac.uk/" target="_blank"><img src="images/leeds-logo.jpg" alt="Leeds Logo" style="height:40px"></a>
-     <a href="https://www.manchester.ac.uk/" target="_blank"><img src="images/manchester-logo.jpg" alt="Manchester Logo" style="height:40px"></a>
-     <a href="https://transportforthesoutheast.org.uk/" target="_blank"><img src="images/tfse-logo.jpg" alt="TFSE Logo" style="height:40px"></a>
-     <a href="https://uk.steergroup.com/" target="_blank"><img src="images/steer-logo.jpg" alt="Steer Logo" style="height:40px"></a>
+     <a href="https://www.creds.ac.uk/" target="_blank"><img src="images/creds-logo.webp" alt="CREDS Logo" style="height:40px"></a>
+     <a href="https://www.leeds.ac.uk/" target="_blank"><img src="images/leeds-logo.webp" alt="Leeds Logo" style="height:40px"></a>
+     <a href="https://www.manchester.ac.uk/" target="_blank"><img src="images/manchester-logo.webp" alt="Manchester Logo" style="height:40px"></a>
+     <a href="https://transportforthesoutheast.org.uk/" target="_blank"><img src="images/tfse-logo.webp" alt="TFSE Logo" style="height:40px"></a>
+     <a href="https://uk.steergroup.com/" target="_blank"><img src="images/steer-logo.webp" alt="Steer Logo" style="height:40px"></a>
     
     <p><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></p>
     <p>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
@@ -74,6 +64,14 @@
     
     
 </div>
+
+<!-- Set Up Mapbox -->
+<script src="js/lib/mapbox-gl-js-1.13/mapbox-gl.js"></script>
+<link href="js/lib/mapbox-gl-js-1.13/mapbox-gl.css" rel="stylesheet" />
+  
+<!-- Set Up Other JS -->
+<script src="js/lib/chartjs/Chart.min.js"></script>
+<script src="js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
 
 <!-- Floating Objects -->
 <div id="legend" class="legend"></div>
@@ -519,10 +517,13 @@
 </div>
 
 <!-- Scripts -->
+<script src="js/get_json.js"></script>
 <script type="text/javascript" src="js/modal.js"></script>
 <script type="text/javascript" src="js/map_carbon.js"></script>
+<script type="text/javascript" src="js/modal_overview.js"></script>
 <script type="text/javascript" src="js/modal_epc.js"></script>
 <script type="text/javascript" src="js/modal_transport.js"></script>
+<script type="text/javascript" src="js/modal_housing.js"></script>
 <script type="text/javascript" src="js/welcome.js"></script>
 <script type="text/javascript" src="js/map_layerdesc.js"></script>
 <script type="text/javascript" src="js/layer_control.js"></script>

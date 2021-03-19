@@ -11,7 +11,7 @@
   border-width: 1px;
   border-color: black;
   border-radius: 25px;
-  z-index: 1001;
+  z-index: 1003;
   padding: 20px;
   overflow: auto; /* Enable scroll
   if needed */

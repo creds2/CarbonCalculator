@@ -1,7 +1,7 @@
 library(sf)
 library(dplyr)
 
-all <- readRDS("data/base_data_v3.Rds")
+all <- readRDS("data/base_data_v4.Rds")
 
 #TODO: get population for 2010
 #TODO: gas emsison factors seem suspect
@@ -23,8 +23,7 @@ all$gas_percap_2014 <- all$TotDomGas_14_kWh * 0.20444 / all$pop_2014
 all$gas_percap_2015 <- all$TotDomGas_15_kWh * 0.20444 / all$pop_2015
 all$gas_percap_2016 <- all$TotDomGas_16_kWh * 0.20444 / all$pop_2016
 all$gas_percap_2017 <- all$TotDomGas_17_kWh * 0.20463 / all$pop_2017
-all$gas_percap_2018 <- NA
-#all$gas_percap_2018 <- all$TotDomGas_18_kWh * 0.20437 / all$pop_2018
+all$gas_percap_2018 <- all$TotDomGas_18_kWh * 0.20437 / all$pop_2018
 
 # elec
 all$elec_percap_2010 <- all$TotDomElec_10_kWh * 0.48531  / all$pop_2011 
@@ -35,8 +34,7 @@ all$elec_percap_2014 <- all$TotDomElec_14_kWh * 0.49426  / all$pop_2014
 all$elec_percap_2015 <- all$TotDomElec_15_kWh * 0.46219  / all$pop_2015 
 all$elec_percap_2016 <- all$TotDomElec_16_kWh * 0.41205  / all$pop_2016 
 all$elec_percap_2017 <- all$TotDomElec_17_kWh * 0.35156  / all$pop_2017
-all$elec_percap_2018 <- NA
-#all$elec_percap_2018 <- all$TotDomElec_18_kWh * 0.28307  / all$pop_2018
+all$elec_percap_2018 <- all$TotDomElec_18_kWh * 0.28307  / all$pop_2018
 
 # Other heating
 
@@ -84,7 +82,7 @@ all$flights_percap_2018 <- all$flight_emissions / all$pop_2018
 all$commute_noncar_percap <- all$kgco2e_commute_noncar_percap
 # Subset and order variables
 
-all <- all[,c("LSOA11","LSOA11NM","SOAC11NM","LAD17CD","LAD17NM",
+all <- all[,c("LSOA11","LSOA11NM","SOAC11NM","LAD17CD","LAD17NM","WD18NM",
 paste0("gas_percap_",  2010:2018),
 paste0("elec_percap_", 2010:2018),
 "other_heat_percap_2011",
@@ -99,7 +97,6 @@ paste0("car_percap_",  2010:2018),
 paste0("van_percap_",  2010:2018),
 paste0("cars_percap_", 2010:2018),
 paste0("AvgCO2_cars_", 2010:2018),
-"car_km_18",
 "pP1900","p1900_18","p1919_29","p1930_39","p1945_54","p1955_64","p1965_72",
 "p1973_82","p1983_92","p1993_99","p2000_09","p2010_15","pUNKNOWN",
 "Whole_House_Detached","Whole_House_Semi","Whole_House_Terraced",
@@ -124,19 +121,22 @@ paste0("mainheatcontrol_",  c("verygood","good","average","poor","verypoor","oth
 "mainfuel_oil","mainfuel_coal","mainfuel_lpg",
 "mainfuel_biomass",
 "has_solarpv","has_solarthermal",
-"T2W_Car","T2W_Cycle","T2W_Bus","T2W_Train","T2W_Foot",
+"T2W_WorkAtHome","T2W_Underground","T2W_Train","T2W_Bus",
+"T2W_Taxi","T2W_Motorcycle","T2W_CarOrVan","T2W_Passenger",
+"T2W_Bicycle","T2W_OnFoot","T2W_OtherMethod","T2W_pct",
 "km_Underground","km_Train",
 "km_Bus","km_Taxi","km_Motorcycle",
 "km_CarOrVan","km_Passenger","km_Bicycle",
 "km_OnFoot","km_OtherMethod",
 "pHeating_None","pHeating_Gas","pHeating_Electric","pHeating_Oil","pHeating_Solid","pHeating_Other",
-"T2S_bicycle","T2S_foot","T2S_car",
-"no_heating","gas","electric","oil","solid_fuel","other_heating","two_types"
+"T2S_bike", "T2S_foot","T2S_car","T2S_other","T2S_pct",
+#"no_heating","gas","electric","oil","solid_fuel","other_heating","two_types"
+"car_km_18"
 )]
 
 
 
-all$total_percap <- rowSums(all[,c("gas_percap_2017", "elec_percap_2017",
+all$total_percap <- rowSums(all[,c("gas_percap_2018", "elec_percap_2018",
                                   "car_percap_2018", "van_percap_2018",
                                   "flights_percap_2018", "other_heat_percap_2011",
                                   "nutrition_kgco2e_percap",
@@ -204,18 +204,27 @@ value2grade <- function(x, high_good = FALSE){
 
 all$cars_percap_grade <- value2grade(all$cars_percap_2018)
 all$km_percap_grade <- value2grade(all$car_km_18)
-all$T2W_Car_grade <- value2grade(all$T2W_Car)
-all$T2W_Cycle_grade <- value2grade(all$T2W_Cycle, high_good = TRUE)
+all$T2W_Car_grade <- value2grade(all$T2W_CarOrVan)
+all$T2W_Cycle_grade <- value2grade(all$T2W_Bicycle, high_good = TRUE)
 all$T2W_Bus_grade <- value2grade(all$T2W_Bus, high_good = TRUE)
 all$T2W_Train_grade <- value2grade(all$T2W_Train, high_good = TRUE)
-all$T2W_Foot_grade <- value2grade(all$T2W_Foot, high_good = TRUE)
+all$T2W_Foot_grade <- value2grade(all$T2W_OnFoot, high_good = TRUE)
+all$T2W_Underground_grade <- value2grade(all$T2W_Underground, high_good = TRUE)
 all$elec_emissions_grade <- value2grade(all$elec_percap_2017)
 all$gas_emissions_grade <- value2grade(all$gas_percap_2017)
 all$car_emissions_grade <- value2grade(all$car_percap_2018)
 all$total_emissions_grade <- value2grade(all$total_percap)
 all$flights_grade <- value2grade(all$flights_percap_2018)
 
-all$car_km_18 <- NULL
+all$other_heating_grade <- value2grade(all$other_heat_percap_2011)
+all$van_grade <- value2grade(all$van_percap_2018)
+all$consumption_grade <- value2grade(rowSums(all[,c("nutrition_kgco2e_percap",
+                                                    "other_shelter_kgco2e_percap",
+                                                    "consumables_kgco2e_percap",
+                                                    "recreation_kgco2e_percap",
+                                                    "services_kgco2e_percap")]))
+
+all$car_km_18  <- NULL # Only Grade needed
 
 all_old = all
 
@@ -244,4 +253,4 @@ for(i in 1:ncol(all)){
 }
 
 
-saveRDS(all, "data/data_with_grades_v3.Rds")
+saveRDS(all, "data/data_with_grades_v4.Rds")

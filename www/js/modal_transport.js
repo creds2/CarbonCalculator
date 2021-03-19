@@ -5,6 +5,7 @@ var t2wChart;
 var t2sChart;
 var co2perkmChart;
 var t2wDistChart;
+var carpercapChart;
 
 makeChartsTransport = function(sub, la, england){
   

@@ -4,9 +4,10 @@ library(dplyr)
 
 source("R/secure_path.R")
 
-elec <- read.csv("../Excess-Data-Exploration/data-prepared/Electricty_2010-17.csv", stringsAsFactors = FALSE)
-elec <- elec[!duplicated(elec$LSOA11),] 
-gas <- read.csv("../Excess-Data-Exploration/data-prepared/Gas_2010-17.csv", stringsAsFactors = FALSE)
+
+elec <- readRDS("data/electric/elec_total_2010_2019.Rds")
+gas <- readRDS("data/gas/gas_total_2010_2019.Rds")
+
 cars_km <- readRDS("data-prepared/car_van_km_09_18.Rds")
 cars_emissions <- readRDS("data-prepared/car_historical_emissions.Rds")
 population <- readRDS("data-prepared/LSOA_population_2011_2019.Rds")
@@ -17,29 +18,15 @@ lsoa_classif <- read.csv(paste0(substr(secure_path,1,39),"OA Bounadries/GB_OA_LS
 
 # mot <- read.csv(paste0(secure_path,"/Tim Share/From Tim/MOT Data RACv9.3/MOT Data RACv9.3 LSOAoutputs_2011.csv"), stringsAsFactors = FALSE)
 age <- readRDS("../Excess-Data-Exploration/data-prepared/age.Rds") # Not full UK
-census <- readRDS("../Excess-Data-Exploration/data-prepared/census_lsoa.Rds") # Not full UK
-names(census) <- gsub("[.]","",names(census))
-school <- readRDS("../Excess-Data-Exploration/data-prepared/Trave2School.Rds")
+#census <- readRDS("../Excess-Data-Exploration/data-prepared/census_lsoa.Rds") # Not full UK
+#names(census) <- gsub("[.]","",names(census))
 
-elec <- elec[, c("LSOA11",
-                           "TotDomElec_10_kWh",
-                           "TotDomElec_11_kWh",
-                           "TotDomElec_12_kWh",
-                           "TotDomElec_13_kWh",
-                           "TotDomElec_14_kWh",
-                           "TotDomElec_15_kWh",
-                           "TotDomElec_16_kWh",
-                           "TotDomElec_17_kWh")]
 
-gas <- gas[, c("LSOA11",
-                          "TotDomGas_10_kWh",
-                          "TotDomGas_11_kWh",
-                          "TotDomGas_12_kWh",
-                          "TotDomGas_13_kWh",
-                          "TotDomGas_14_kWh",
-                          "TotDomGas_15_kWh",
-                          "TotDomGas_16_kWh",
-                          "TotDomGas_17_kWh")]
+school <- readRDS("data/travel2school.Rds")
+t2wpct <- readRDS("data/travel2workPCT.Rds")
+btype <- readRDS("data/building type/building_type.Rds")
+t2w_trip <- readRDS("data/travel2workcenus.Rds")
+wards <- readRDS("data/wards.Rds")
 
 lsoa_classif <- lsoa_classif[,c("LSOA11CD","LSOA11NM","SOAC11NM","LAD17CD","LAD17NM")]
 lsoa_classif <- lsoa_classif[!duplicated(lsoa_classif$LSOA11CD),]
@@ -67,13 +54,13 @@ heating$pHeating_Other <- (heating$`Two or more` + heating$Other)
 
 heating <- heating[,c("LSOA11","pHeating_None","pHeating_Gas","pHeating_Electric","pHeating_Oil","pHeating_Solid","pHeating_Other")]
 
-census$All_Dwelllings_2011 <- rowSums(census[,c("Whole_House_Detached","Whole_House_Semi",
-                                                "Whole_House_Terraced","Flat_PurposeBuilt",
-                                                "Flat_Converted","Flat_Commercial","Caravan")], 
-                                      na.rm = TRUE)
-census <- census[,c("CODE","Whole_House_Detached","Whole_House_Semi","Whole_House_Terraced","Flat_PurposeBuilt",
-                    "Flat_Converted","Flat_Commercial","Caravan",
-                    "T2W_Car","T2W_Cycle","T2W_Bus","T2W_Train","T2W_Foot")]
+# census$All_Dwelllings_2011 <- rowSums(census[,c("Whole_House_Detached","Whole_House_Semi",
+#                                                 "Whole_House_Terraced","Flat_PurposeBuilt",
+#                                                 "Flat_Converted","Flat_Commercial","Caravan")], 
+#                                       na.rm = TRUE)
+# census <- census[,c("CODE","Whole_House_Detached","Whole_House_Semi","Whole_House_Terraced","Flat_PurposeBuilt",
+#                     "Flat_Converted","Flat_Commercial","Caravan",
+#                     "T2W_Car","T2W_Cycle","T2W_Bus","T2W_Train","T2W_Foot")]
 
 epc <- readRDS("../../creds2/EPC/epc_lsoa_summary.Rds")
 epc <- epc[!is.na(epc$LSOA11),]
@@ -132,10 +119,16 @@ consumption <- readRDS("data-prepared/consumption_footprint.Rds")
 # Join Togther
 all <- left_join(elec, gas, by = "LSOA11")
 all <- left_join(all, age, by = c("LSOA11" = "lsoa"))
-all <- left_join(all, census, by = c("LSOA11" = "CODE"))
+#all <- left_join(all, census, by = c("LSOA11" = "CODE"))
+all <- left_join(all, btype, by = c("LSOA11" = "LSOA11"))
+all <- left_join(all, t2w_trip, by = c("LSOA11" = "LSOA11"))
+all <- left_join(all, school, by = c("LSOA11" = "geo_code"))
+all <- left_join(all, t2wpct, by = c("LSOA11" = "geo_code"))
+all <- left_join(all, wards, by = c("LSOA11" = "LSOA11"))
+
 all <- left_join(all, heating, by = c("LSOA11" = "LSOA11"))
 all <- left_join(all, population, by = c("LSOA11" = "code"))
-all <- left_join(all, school, by = c("LSOA11" = "LSOA11"))
+
 all <- left_join(all, cars_emissions, by = c("LSOA11" = "LSOA"))
 all <- left_join(all, cars_km, by = c("LSOA11" = "LSOA11"))
 all <- left_join(all, non_gas, by = c("LSOA11" = "LSOA11"))
@@ -152,18 +145,9 @@ all$kgco2e_commute_noncar_percap <- all$kgco2e_commute_noncar_total / all$pop_20
 all$kgco2e_commute_noncar_total <- NULL
 
 
-rm(elec, gas, age, census, heating, population, school, cars_emissions, 
-   cars_km, non_gas, flights, lsoa_classif, epc, t2w, consumption)
+rm(elec, gas, age, heating, population, school, cars_emissions, 
+   cars_km, non_gas, flights, lsoa_classif, epc, t2w, consumption,
+   btype, t2w_trip, t2wpct, wards)
 
-
-
-#all <- left_join(all, bounds, by = "LSOA11")
-#all <- st_as_sf(all)
-
-#library(tmap)
-#tmap_mode("view")
-#qtm(all[1:10,])
-
-#all <- st_transform(all, 4326)
-saveRDS(all,"data/base_data_v3.Rds")
+saveRDS(all,"data/base_data_v4.Rds")
 
