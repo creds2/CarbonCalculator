@@ -22,6 +22,10 @@ function toggleLayer(layerName){
             }
         });
         break;
+      case 'pct':
+        // code block
+        switchPCT();
+        break;
       case 'transitstops':
         // code block
         map.addLayer({
@@ -112,6 +116,36 @@ function removeisochrones(){
     map.removeSource('isochrones');
   }
 }
+
+function switchPCT(){
+  var checkBox = document.getElementById('pctcheckbox');
+  var layerId = document.getElementById("pctinput").value;
+  if (checkBox.checked === true){
+    if (map.getLayer('pct')) map.removeLayer('pct');
+            map.addLayer({
+            'id': 'pct',
+            'type': 'line',
+            'source': 'pct',
+            'source-layer': 'pct',
+            'paint': {
+              'line-color': ["step",["get",layerId],
+              "rgba(0,0,0,0)",
+              1,
+              "#9C9C9C",10,
+              "#FFFF73",50,
+              "#AFFF00",100,
+              "#00FFFF",250,
+              "#30B0FF",500,
+              "#2E5FFF",1000,
+              "#0000FF",2000,
+              "#FF00C5"],
+              'line-width': 2
+            }
+        });
+  }
+}
+
+
 
 function switchLayer(layer) {
   

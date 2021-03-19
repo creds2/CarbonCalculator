@@ -68,6 +68,16 @@ cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson/high
 tippecanoe --output-to-directory=OSzoomStackCustomHigh  --attribution=OS --minimum-zoom=12 --maximum-zoom=14 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson land.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
 
 
+### PCT route network
+
+tippecanoe --output-to-directory=pctroutenetwork --name=pct --layer=pct --attribution=PCT --maximum-zoom=8 --minimum-zoom=4  --drop-smallest-as-needed --simplification=10 --buffer=5 --force  pct/rnet_low.geojson
+
+tippecanoe --output-to-directory=pctroutenetwork --name=pct --layer=pct --attribution=PCT --maximum-zoom=11 --minimum-zoom=9  --drop-smallest-as-needed --simplification=10 --buffer=5 --force  pct/rnet_med.geojson
+
+tippecanoe --output-to-directory=pctroutenetwork --name=pct --layer=pct --attribution=PCT --maximum-zoom=13 --minimum-zoom=12  --drop-smallest-as-needed --simplification=10 --buffer=5 --force  pct/rnet_high.geojson
+
+
+
 ### Travel to Work Lines
 cd /mnt/d/GitHub/creds2/CarbonCalculator/data
 

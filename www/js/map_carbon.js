@@ -54,6 +54,16 @@ map.addSource('centroids', {
 	'maxzoom': 13
 });
 
+map.addSource('pct', {
+	'type': 'vector',
+	'tiles': [
+	'https://www.carbon.place/tiles/pct/{z}/{x}/{y}.pbf'
+	],
+	'minzoom': 6,
+	'maxzoom': 13
+});
+
+
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 map.addControl(new mapboxgl.AttributionControl({
 customAttribution: 'Contains OS data © Crown copyright 2021'

@@ -175,6 +175,29 @@
   
 </div>
 
+<button class="accordion"><input type="checkbox" id="pctcheckbox" value="true" onclick="toggleLayer('pct')">PCT Route Network </button>
+<div class="panel">
+  <p>The <abbr title="Propensity to Cycle Tool">PCT</abbr> shows roads where there could be more cycling in the future. For full details see the <a href="https://www.pct.bike">PCT website</a> or <a href="https://www.jtlu.org/index.php/jtlu/article/view/862">Lovelace et al 2017</a></p>
+  
+  <select id="pctinput" name="pctinput" onchange="switchPCT()">
+      <option value="bicycle" selected>Baseline (2011)</option>
+      <option value="govtarget_slc">Government Target (2025)</option>
+      <option value="dutch_slc">Go Dutch</option>
+  </select>
+  
+  <div>
+    <div><span style="background-color: #9C9C9C; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>1-9</div>
+	  <div><span style="background-color: #FFFF73; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>10-49</div>
+	  <div><span style="background-color: #AFFF00; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>50-99</div>
+	  <div><span style="background-color: #00FFFF; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>100-249</div>
+	  <div><span style="background-color: #30B0FF; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>250-499</div>
+	  <div><span style="background-color: #2E5FFF; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>500-999</div>
+	  <div><span style="background-color: #0000FF; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>1000-1999</div>
+	  <div><span style="background-color: #FF00C5; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>2000+</div>
+  </div>
+  
+</div>
+
 
 <script src="js/accordion.js"></script>
 </div>

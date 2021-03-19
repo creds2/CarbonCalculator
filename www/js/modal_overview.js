@@ -47,7 +47,7 @@ makeChartsOverview = function(lsoadata, la, england, oac){
   ];
   
   document.getElementById("modal-title").innerHTML = "<h2>" + lsoadata.LSOA11 + " a '" +
-	lsoadata.SOAC11NM + "' LSOA in " +  lsoadata.LAD17NM +"</h2>";
+	lsoadata.SOAC11NM + "' LSOA in " +  lsoadata.WD18NM +"</h2>";
 	
 	document.getElementById("data_total_emissions_percap").innerHTML = lsoadata.total_percap;
 	document.getElementById("data_elec_emissions_household").innerHTML = lsoadata.elec_percap_2017;
