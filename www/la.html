@@ -12,12 +12,16 @@
   gtag('config', 'G-Q11V10CDRV');
 </script>
 
+<!-- Third Party Scrips -->
+<script src="https://kit.fontawesome.com/1f7357bc14.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <!-- Before Anything Else, Get the Massive JSON File  -->
-<script src="js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+
 <script src="js/get_json.js"></script>
 
 <!-- Set Up Other JS -->
-<script src="js/lib/chartjs/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <!-- Set Up CSS -->
 <link rel="stylesheet" href="css/main_carbon.css">
@@ -35,17 +39,14 @@
 <div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.gif"/></div>
 
 <!-- Menu -->
-<div class="headrow">
-  <div class="headcol headleft">
-     <a href="index.html"><img src="images/pbcc-logo.webp" alt="PBCC Logo" height="46" style="padding-left:10px; padding-right:10px;"></a>
-  </div>
-  <div class="headcol headright">
-    <div class="topnav">
-		<a href="about.html">ABOUT</a>
-		<a href="data.html">DATA</a>
-		<a href="la.html">LA REPORTS</a>
-    </div>
-  </div>
+<div class="topnav" id="topnav">
+  <a href="map.html" class="active" style="padding: 0px 0px;"><img src="images/pbcc-logo.webp" alt="PBCC Logo" height="46"></a>
+	<a href="about.html">ABOUT</a>
+	<a href="data.html">DATA</a>
+	<a href="la.html">LA REPORTS</a>
+  <a href="javascript:void(0);" class="icon" onclick="expandtopnav()">
+    <i class="fa fa-bars"></i>
+  </a>
 </div>
 
 

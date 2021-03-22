@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html class="gr__wisemover_co_uk"><head>
+<html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=4">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Description" content="An iterative map showing the carbon footprint of each neighbourhood in England">
 <title>PBCC</title>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script type="text/javascript" src="js/ga_optout.js"></script>
@@ -16,6 +17,7 @@
 
 <!-- Third Party Scrips -->
 <script src="https://kit.fontawesome.com/1f7357bc14.js" crossorigin="anonymous"></script>
+
 
 <!-- Set Up CSS -->
 <link rel="stylesheet" href="css/main_carbon.css">
@@ -33,19 +35,16 @@
 <div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.svg"/></div>
 
 <!-- Menu -->
-<div class="headrow">
-  <div class="headcol headleft">
-     <a href="index.html"><img src="images/pbcc-logo.webp" alt="PBCC Logo" height="46" style="padding-left:10px; padding-right:10px;"></a>   
-  </div>
-  <div class="headcol headright">
-    <div class="topnav">
-		<a href="map.html">MAP</a>
-		<a href="about.html">ABOUT</a>
-		<a href="data.html">DATA</a>
-		<a href="la.html">LA REPORTS</a>
-    </div>
-  </div>
+<div class="topnav" id="topnav">
+  <a href="map.html" class="active" style="padding: 0px 0px;"><img src="images/pbcc-logo.webp" alt="PBCC Logo" height="46"></a>
+	<a href="about.html">ABOUT</a>
+	<a href="data.html">DATA</a>
+	<a href="la.html">LA REPORTS</a>
+  <a href="javascript:void(0);" class="icon" onclick="expandtopnav()" aria-label="Expand menu">
+    <i class="fa fa-bars"></i>
+  </a>
 </div>
+
 
 <!-- Welcome Splash -->
 <div id="welcome" class="welcome">
@@ -61,18 +60,18 @@
       
       <p><b>PBCC was produced with support from:</b></p>
     
-     <a href="https://www.creds.ac.uk/" target="_blank"><img src="images/creds-logo.webp" alt="CREDS Logo" style="height:40px"></a>
-     <a href="https://www.leeds.ac.uk/" target="_blank"><img src="images/leeds-logo.webp" alt="Leeds Logo" style="height:40px"></a>
-     <a href="https://www.manchester.ac.uk/" target="_blank"><img src="images/manchester-logo.webp" alt="Manchester Logo" style="height:40px"></a>
-     <a href="https://transportforthesoutheast.org.uk/" target="_blank"><img src="images/tfse-logo.webp" alt="TFSE Logo" style="height:40px"></a>
-     <a href="https://uk.steergroup.com/" target="_blank"><img src="images/steer-logo.webp" alt="Steer Logo" style="height:40px"></a>
+     <a href="https://www.creds.ac.uk/" target="_blank" rel="noopener"><img src="images/creds-logo.webp" alt="CREDS Logo" style="height:40px"></a>
+     <a href="https://www.leeds.ac.uk/" target="_blank" rel="noopener"><img src="images/leeds-logo.webp" alt="Leeds Logo" style="height:40px"></a>
+     <a href="https://www.manchester.ac.uk/" target="_blank" rel="noopener"><img src="images/manchester-logo.webp" alt="Manchester Logo" style="height:40px"></a>
+     <a href="https://transportforthesoutheast.org.uk/" target="_blank" rel="noopener"><img src="images/tfse-logo.webp" alt="TFSE Logo" style="height:40px"></a>
+     <a href="https://uk.steergroup.com/" target="_blank" rel="noopener"><img src="images/steer-logo.webp" alt="Steer Logo" style="height:40px"></a>
     
     <p><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></p>
     <p>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
     </div>
     </div>
     
-    <div><p><b>This website uses Google Analytics. Check here to opt-out <input type="checkbox" id="gacheckbox" value="false" onclick="gaOptout()"></b></p></div>
+    <div><p><b>This website uses Google Analytics. <label>Check here to opt-out <input type="checkbox" id="gacheckbox" value="false" onclick="gaOptout()"></label></b></p></div>
     
     
     
@@ -84,25 +83,25 @@
 <link href="js/lib/mapbox-gl-js-1.13/mapbox-gl.css" rel="stylesheet" />
   
 <!-- Set Up Other JS -->
-<script src="js/lib/chartjs/Chart.min.js"></script>
-<script src="js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- Floating Objects -->
 <div id="legend" class="legend"></div>
 
 <!-- Show Layer Selection Panel -->
 <div id="showlegend" class="showlegend">
-  <button onclick="showlegend(true)"><i class="fas fa-ellipsis-v"></i></button>
+  <button onclick="showlegend(true)" aria-label="Hide legend"><i class="fas fa-ellipsis-v"></i></button>
 </div>
 
 <!-- Show Layer Selection Panel -->
 <div id="showrightbox" class="showrightbox">
-  <button onclick="showrighbox(true)"><i class="fa fa-bars"></i></button>
+  <button onclick="showrighbox(true)" aria-label="Show layers"><i class="fa fa-bars"></i></button>
 </div>
 
 <!-- Layer Selection Panel -->
 <div id="rightbox" class="rightbox">
-  <button onclick="showrighbox(false)" style="float:right"><i class="fas fa-times"></i></button>
+  <button onclick="showrighbox(false)" style="float:right" aria-label="Hide layers"><i class="fas fa-times"></i></button>
 
 
 <!-- 

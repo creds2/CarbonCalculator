@@ -163,7 +163,7 @@ function switchLayer(layer) {
       case 'SOAC11NM':
         // code block
         
-        document.getElementById("legend").innerHTML = `<button onclick="showlegend(false)" style="float:right"><i class="fas fa-times"></i></button>
+        document.getElementById("legend").innerHTML = `<button onclick="showlegend(false)" style="float:right" aria-label="Hide legend"><i class="fas fa-times"></i></button>
         <h4>Office for National Statistics Area Classifications</h4>
         <div><span style="background-color: #955123"></span>Cosmopolitan student neighbourhoods</div>
   			<div><span style="background-color: #007f42"></span>Ageing rural neighbourhoods</div>
@@ -282,7 +282,7 @@ function switchLayer(layer) {
       case 'EPCScore':
         // code block
         
-        document.getElementById("legend").innerHTML = `<button onclick="showlegend(false)" style="float:right"><i class="fas fa-times"></i></button>
+        document.getElementById("legend").innerHTML = `<button onclick="showlegend(false)" style="float:right" aria-label="Hide legend"><i class="fas fa-times"></i></button>
         <h4>EPC Scores</h4>
         <div><span style="background-color: #0e7e58"></span>A 92-100</div>
   			<div><span style="background-color: #2aa45b"></span>B 81-91</div>
@@ -349,7 +349,7 @@ function switchLayer(layer) {
         break;
       default:
         // One of the grades layers 
-        document.getElementById("legend").innerHTML = `<button onclick="showlegend(false)" style="float:right"><i class="fas fa-times"></i></button>
+        document.getElementById("legend").innerHTML = `<button onclick="showlegend(false)" style="float:right" aria-label="Hide legend"><i class="fas fa-times"></i></button>
         <h4>Grades</h4>
         <div><span style="background-color: #313695"></span>A+ (best 1%)</div>
     		<div><span style="background-color: #4575b4"></span>A</div>

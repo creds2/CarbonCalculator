@@ -17,6 +17,8 @@ for (i = 0; i < acc.length; i++) {
     });
 }
 
+
+/* Show and hid UI */
 function showrighbox(show){
     var box = document.getElementById("rightbox");
     var boxbutton = document.getElementById("showrightbox");
@@ -40,3 +42,12 @@ function showlegend(show){
       boxbutton.style.display = "block"; 
     }
 }
+
+function expandtopnav() {
+  var x = document.getElementById("topnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+} 
