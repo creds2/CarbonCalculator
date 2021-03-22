@@ -1,7 +1,21 @@
 <!DOCTYPE html>
 <html class="gr__wisemover_co_uk"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=4">
 <title>PBCC</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="text/javascript" src="js/ga_optout.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q11V10CDRV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q11V10CDRV');
+</script>
+
+<!-- Third Party Scrips -->
+<script src="https://kit.fontawesome.com/1f7357bc14.js" crossorigin="anonymous"></script>
 
 <!-- Set Up CSS -->
 <link rel="stylesheet" href="css/main_carbon.css">
@@ -58,7 +72,7 @@
     </div>
     </div>
     
-    <div><p><b>This website uses cookies from Google Analytics. <a href="https://developers.google.com/analytics/devguides/collection/gajs/#disable">Click here to opt-out</a></b></p></div>
+    <div><p><b>This website uses Google Analytics. Check here to opt-out <input type="checkbox" id="gacheckbox" value="false" onclick="gaOptout()"></b></p></div>
     
     
     
@@ -76,8 +90,20 @@
 <!-- Floating Objects -->
 <div id="legend" class="legend"></div>
 
+<!-- Show Layer Selection Panel -->
+<div id="showlegend" class="showlegend">
+  <button onclick="showlegend(true)"><i class="fas fa-ellipsis-v"></i></button>
+</div>
+
+<!-- Show Layer Selection Panel -->
+<div id="showrightbox" class="showrightbox">
+  <button onclick="showrighbox(true)"><i class="fa fa-bars"></i></button>
+</div>
+
 <!-- Layer Selection Panel -->
 <div id="rightbox" class="rightbox">
+  <button onclick="showrighbox(false)" style="float:right"><i class="fas fa-times"></i></button>
+
 
 <!-- 
 <p>Base map style:
@@ -89,10 +115,11 @@
   </select>
 </p>  
  -->
-<p>Select a variable to show on the map</p>
+<p>Select map layers</p>
 
-<button class="accordion"><input type="checkbox" id="carboncheckbox" value="true" onclick="toggleLayer('carbon')" checked> Zonal Data</button>
+<button class="accordion">Areas</button>
 <div class="panel">
+  <p><input type="checkbox" id="carboncheckbox" value="true" onclick="toggleLayer('carbon')" checked> Show Layer</p>
   <select id="layerinput" name="layerinput" onchange="switchLayer()">
       <option value="total_emissions_grade" selected>Total Emission Grade</option>
       <option value="car_emissions_grade">Car Emissions Grade</option>
@@ -146,20 +173,23 @@
   
 </div>
 
-<button class="accordion"><input type="checkbox" id="lacheckbox" value="true" onclick="toggleLayer('la')">Local Authorities </button>
+<button class="accordion">Local Authorities </button>
 <div class="panel">
+  <p><input type="checkbox" id="lacheckbox" value="true" onclick="toggleLayer('la')"> Show Layer</p>
   <p>Show Lower Tier/Unitary Local Authoirty Boundaires</p>
 </div>
 
 
-<button class="accordion"><input type="checkbox" id="transitstopscheckbox" value="true" onclick="toggleLayer('transitstops')">Transport Stops </button>
+<button class="accordion">Transport Stops </button>
 <div class="panel">
+  <p><input type="checkbox" id="transitstopscheckbox" value="true" onclick="toggleLayer('transitstops')"> Show Layer</p>
   <p>Shows public transport stops and frequency of service. Stops are coloured using the A+ (most) to F- (least) frequent grades. Click on stops for more details, and zoom in to see more stops.</p>
   
 </div>
 
-<button class="accordion"><input type="checkbox" id="centroidscheckbox" value="true" onclick="toggleLayer('centroids')">15-minute neighbourhoods</button>
+<button class="accordion">15-minute neighbourhoods</button>
 <div class="panel">
+  <p><input type="checkbox" id="centroidscheckbox" value="true" onclick="toggleLayer('centroids')"> Show Layer</p>
   <p>Click on a point to show 15 minute isochrones for different modes of travel</p>
   <div>
     <div><span style="background-color: #4daf4a; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>Walking</div>
@@ -175,8 +205,9 @@
   
 </div>
 
-<button class="accordion"><input type="checkbox" id="pctcheckbox" value="true" onclick="toggleLayer('pct')">PCT Route Network </button>
+<button class="accordion">PCT Route Network </button>
 <div class="panel">
+  <p><input type="checkbox" id="pctcheckbox" value="true" onclick="toggleLayer('pct')"> Show Layer</p>
   <p>The <abbr title="Propensity to Cycle Tool">PCT</abbr> shows roads where there could be more cycling in the future. For full details see the <a href="https://www.pct.bike">PCT website</a> or <a href="https://www.jtlu.org/index.php/jtlu/article/view/862">Lovelace et al 2017</a></p>
   
   <select id="pctinput" name="pctinput" onchange="switchPCT()">

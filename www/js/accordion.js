@@ -16,3 +16,27 @@ for (i = 0; i < acc.length; i++) {
         }
     });
 }
+
+function showrighbox(show){
+    var box = document.getElementById("rightbox");
+    var boxbutton = document.getElementById("showrightbox");
+    if(show){
+      box.style.display = "block";
+      boxbutton.style.display = "none";
+    } else {
+      box.style.display = "none";
+      boxbutton.style.display = "block"; 
+    }
+}
+    
+function showlegend(show){
+    var box = document.getElementById("legend");
+    var boxbutton = document.getElementById("showlegend");
+    if(show){
+      box.style.display = "block";
+      boxbutton.style.display = "none";
+    } else {
+      box.style.display = "none";
+      boxbutton.style.display = "block"; 
+    }
+}

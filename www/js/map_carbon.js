@@ -10,8 +10,9 @@ minZoom: 5
 });
 
 
-// Declare Chart Values
-
+// Setup other part of the website
+showrighbox(true); // Show the accordion hide the button 
+showlegend(true); // Show the legend hide the button 
 
 // Highlight variable
 //var hoveredStateId = null;

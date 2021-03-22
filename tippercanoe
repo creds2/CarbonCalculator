@@ -70,11 +70,11 @@ tippecanoe --output-to-directory=OSzoomStackCustomHigh  --attribution=OS --minim
 
 ### PCT route network
 
-tippecanoe --output-to-directory=pctroutenetwork --name=pct --layer=pct --attribution=PCT --maximum-zoom=8 --minimum-zoom=4  --drop-smallest-as-needed --simplification=10 --buffer=5 --force  pct/rnet_low.geojson
+tippecanoe --output-to-directory=pctroutenetwork/low --name=pct --layer=pct --attribution=PCT --maximum-zoom=8 --minimum-zoom=4  --drop-smallest-as-needed --simplification=10 --buffer=5 --force  pct/rnet_low.geojson
 
-tippecanoe --output-to-directory=pctroutenetwork --name=pct --layer=pct --attribution=PCT --maximum-zoom=11 --minimum-zoom=9  --drop-smallest-as-needed --simplification=10 --buffer=5 --force  pct/rnet_med.geojson
+tippecanoe --output-to-directory=pctroutenetwork/med --name=pct --layer=pct --attribution=PCT --maximum-zoom=11 --minimum-zoom=9  --drop-smallest-as-needed --simplification=10 --buffer=5 --force  pct/rnet_med.geojson
 
-tippecanoe --output-to-directory=pctroutenetwork --name=pct --layer=pct --attribution=PCT --maximum-zoom=13 --minimum-zoom=12  --drop-smallest-as-needed --simplification=10 --buffer=5 --force  pct/rnet_high.geojson
+tippecanoe --output-to-directory=pctroutenetwork/high --name=pct --layer=pct --attribution=PCT --maximum-zoom=13 --minimum-zoom=12  --drop-smallest-as-needed --simplification=10 --buffer=5 --force  pct/rnet_high.geojson
 
 
 
