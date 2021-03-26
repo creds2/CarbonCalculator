@@ -3,7 +3,7 @@ library(sf)
 library(tmap)
 tmap_mode("view")
 
-# read in files 
+# read in files
 
 land <- read_sf("data/zoomstackgeojson/land.geojson")
 names <- read_sf("data/zoomstackgeojson/names.geojson")
@@ -20,6 +20,19 @@ roads_regional <- read_sf("data/zoomstackgeojson/roads_regional.geojson")
 surfacewater <- read_sf("data/zoomstackgeojson/surfacewater.geojson")
 woodland <- read_sf("data/zoomstackgeojson/woodland.geojson")
 urban_areas <- read_sf("data/zoomstackgeojson/urban_areas.geojson")
+
+# Europe Boarders
+dir.create("tmp")
+unzip("data/europe bounds/countries_shp.zip", exdir = "tmp")
+bounds <- read_sf("tmp/countries.shp")
+unlink("tmp", recursive = TRUE)
+
+box = c(xmin = -13, ymin = 47, xmax = 10, ymax = 63)
+bounds <- st_crop(bounds, box)
+bounds <- bounds[,c("OBJECTID")]
+bounds <- st_cast(bounds$geometry, "POLYGON")
+st_write(bounds, "data/zoomstackgeojson/europe.geojson")
+
 
 
 greenspace$area <- as.numeric(st_area(greenspace))

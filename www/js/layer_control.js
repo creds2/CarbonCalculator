@@ -347,6 +347,148 @@ function switchLayer(layer) {
         }
         
         break;
+      case 'floor_area_avg':
+        // code block
+        
+        document.getElementById("legend").innerHTML = `<button onclick="showlegend(false)" style="float:right" aria-label="Hide legend"><i class="fas fa-times"></i></button>
+        <h4>EPC Average floor areas</h4>
+        <div><span style="background-color: #4d9221"></span>30 m<sup>2</sup></div>
+  			<div><span style="background-color: #a1d76a"></span>60 m<sup>2</sup></div>
+  			<div><span style="background-color: #e6f5d0"></span>90 m<sup>2</sup></div>
+  			<div><span style="background-color: #f7f7f7"></span>120 m<sup>2</sup></div>
+  			<div><span style="background-color: #fde0ef"></span>150 m<sup>2</sup></div>
+  			<div><span style="background-color: #e9a3c9"></span>180 m<sup>2</sup></div>
+  			<div><span style="background-color: #c51b7d"></span>>200 m<sup>2</sup></div>`;
+    		
+    		
+        if(filterid == 'all'){
+          map.addLayer(
+          {
+          'id': 'carbon',
+          'type': 'fill',
+          'source': 'carbon',
+          'source-layer': 'carbon',
+          "paint": {
+                  'fill-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'floor_area_avg'],
+                        30,'#4d9221',
+                        60,'#a1d76a',
+                        90,'#e6f5d0',
+                        120,'#f7f7f7',
+                        150,'#fde0ef',
+                        180,'#e9a3c9',
+                        200,'#c51b7d'
+                        ],
+                  'fill-outline-color': 'rgba(0, 0, 0, 0.2)',
+                  'fill-opacity': 0.7
+                }
+          },  'waterlines'
+          );
+        } else {
+          map.addLayer(
+          {
+          'id': 'carbon',
+          'type': 'fill',
+          'source': 'carbon',
+          'source-layer': 'carbon',
+          'filter': ['==', 'SOAC11NM', filterid],
+          "paint": {
+                  'fill-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'floor_area_avg'],
+                        30,'#4d9221',
+                        60,'#a1d76a',
+                        90,'#e6f5d0',
+                        120,'#f7f7f7',
+                        150,'#fde0ef',
+                        180,'#e9a3c9',
+                        200,'#c51b7d'
+                        ],
+                  'fill-outline-color': 'rgba(0, 0, 0, 0.2)',
+                  'fill-opacity': 0.7
+                }
+          },  'waterlines'
+          );
+        }
+        
+        break;
+        case 'low_energy_light':
+        // code block
+        
+        document.getElementById("legend").innerHTML = `<button onclick="showlegend(false)" style="float:right" aria-label="Hide legend"><i class="fas fa-times"></i></button>
+        <h4>EPC Scores</h4>
+        <div><span style="background-color: #800026"></span>20% </div>
+  			<div><span style="background-color: #bd0026"></span>30% </div>
+  			<div><span style="background-color: #e31a1c"></span>40% </div>
+  			<div><span style="background-color: #fc4e2a"></span>50% </div>
+  			<div><span style="background-color: #fd8d3c"></span>60% </div>
+  			<div><span style="background-color: #feb24c"></span>70% </div>
+  			<div><span style="background-color: #fed976"></span>80% </div>
+  			<div><span style="background-color: #ffeda0"></span>90% </div>
+  			<div><span style="background-color: #ffffcc"></span>100% </div>`;
+    		
+    		
+        if(filterid == 'all'){
+          map.addLayer(
+          {
+          'id': 'carbon',
+          'type': 'fill',
+          'source': 'carbon',
+          'source-layer': 'carbon',
+          "paint": {
+                  'fill-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'low_energy_light'],
+                        20,'#800026',
+                        30,'#bd0026',
+                        40,'#e31a1c',
+                        50,'#fc4e2a',
+                        60,'#fd8d3c',
+                        70,'#feb24c',
+                        80,'#fed976',
+                        90,'#ffeda0',
+                        100,'#ffffcc'
+                        ],
+                  'fill-outline-color': 'rgba(0, 0, 0, 0.2)',
+                  'fill-opacity': 0.7
+                }
+          },  'waterlines'
+          );
+        } else {
+          map.addLayer(
+          {
+          'id': 'carbon',
+          'type': 'fill',
+          'source': 'carbon',
+          'source-layer': 'carbon',
+          'filter': ['==', 'SOAC11NM', filterid],
+          "paint": {
+                  'fill-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'low_energy_light'],
+                        20,'#800026',
+                        30,'#bd0026',
+                        40,'#e31a1c',
+                        50,'#fc4e2a',
+                        60,'#fd8d3c',
+                        70,'#feb24c',
+                        80,'#fed976',
+                        90,'#ffeda0',
+                        100,'#ffffcc'
+                        ],
+                  'fill-outline-color': 'rgba(0, 0, 0, 0.2)',
+                  'fill-opacity': 0.7
+                }
+          },  'waterlines'
+          );
+        }
+        
+        break;
       default:
         // One of the grades layers 
         document.getElementById("legend").innerHTML = `<button onclick="showlegend(false)" style="float:right" aria-label="Hide legend"><i class="fas fa-times"></i></button>

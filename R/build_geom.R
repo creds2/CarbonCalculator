@@ -17,7 +17,7 @@ nms <- c("LSOA11","SOAC11NM","LAD17NM","cars_percap_grade","km_percap_grade","T2
          "T2W_Foot_grade","T2W_Underground_grade","elec_emissions_grade",
           "gas_emissions_grade","car_emissions_grade","total_emissions_grade",
          "flights_grade","other_heating_grade","van_grade",
-         "consumption_grade","epc_score_avg","floor_area_avg")
+         "consumption_grade","epc_score_avg","floor_area_avg","low_energy_light")
 
 
 all_map <- all[,nms]

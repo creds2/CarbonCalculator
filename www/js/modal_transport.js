@@ -82,40 +82,53 @@ makeChartsTransport = function(sub, la, england){
     ];
   
   var t2wshare = [
+		sub.T2W_Bicycle,
+		sub.T2W_OnFoot,
 		sub.T2W_Bus,
-		sub.T2W_Car,
-		sub.T2W_Cycle,
-		sub.T2W_Foot,
-		sub.T2W_Home,
-		sub.T2W_Mbike,
-		sub.T2W_Metro,
-		sub.T2W_Other,
+		sub.T2W_Underground,
+		sub.T2W_Train,
+		sub.T2W_Motorcycle,
+		sub.T2W_CarOrVan,
 		sub.T2W_Passenger,
 		sub.T2W_Taxi,
-		sub.T2W_Train
+		sub.T2W_Other,
+		sub.T2W_WorkAtHome
     ];
     
   var t2wDistshare = [
-		sub.km_Bus,
-		sub.km_CarOrVan,
 		sub.km_Bicycle,
 		sub.km_OnFoot,
-		
-		sub.km_Motorcycle,
+		sub.km_Bus,
 		sub.km_Underground,
-		sub.km_OtherMethod,
+		sub.km_Train,
+		sub.km_Motorcycle,
+		sub.km_CarOrVan,
 		sub.km_Passenger,
 		sub.km_Taxi,
-		sub.km_Train
+		sub.km_OtherMethod
     ];
     
   var t2sshare = [
-		sub.T2S_bicycle,
+		sub.T2S_bike,
 		sub.T2S_foot,
-		sub.T2S_car
+		sub.T2S_car,
+		sub.T2S_other
     ];
+    
+  var t2spct = [
+    sub.T2S_pct,
+    0,0,
+    100 - sub.T2S_pct
+  ];
   
-    var carpercapHistory = [
+  var t2wpct = [
+    sub.T2W_pct,
+    0,0,0,0,0,0,0,0,
+    100 - sub.T2W_pct,
+    0
+  ];
+  
+  var carpercapHistory = [
 		sub.cars_percap_2010,
     sub.cars_percap_2011,
     sub.cars_percap_2012,
@@ -394,34 +407,54 @@ makeChartsTransport = function(sub, la, england){
 	
 	var t2wctx = document.getElementById('t2wChart').getContext('2d');
 	t2wChart = new Chart(t2wctx, {
-		type: 'pie',
+		type: 'doughnut',
 		data: {
 			datasets: [{
-				label: 'Main mode of travel to work',
-				data: t2wshare,
+				label: 'PCT Go Dutch',
+				data: t2wpct,
 				backgroundColor: [
-				'rgba(166,206,227, 1)',
-				'rgba(31,120,180, 1)',
 				'rgba(178,223,138, 1)',
 				'rgba(51,160,44, 1)',
+				'rgba(166,206,227, 1)',
+				'rgba(31,120,180, 1)',
+				'rgba(106,61,154, 1)',
 				'rgba(251,154,153, 1)',
 				'rgba(227,26,28, 1)',
 				'rgba(253,191,111, 1)',
 				'rgba(255,127,0, 1)',
-				'rgba(202,178,214, 1)',
+				'rgba(128,128,128, 1)',
+				'rgba(255,255,153, 1)'
+				],
+			  weight: 0.2
+			},{
+				label: 'Main mode of travel to work',
+				data: t2wshare,
+				backgroundColor: [
+				'rgba(178,223,138, 1)',
+				'rgba(51,160,44, 1)',
+				'rgba(166,206,227, 1)',
+				'rgba(31,120,180, 1)',
 				'rgba(106,61,154, 1)',
+				'rgba(251,154,153, 1)',
+				'rgba(227,26,28, 1)',
+				'rgba(253,191,111, 1)',
+				'rgba(255,127,0, 1)',
+				'rgba(128,128,128, 1)',
 				'rgba(255,255,153, 1)'
 				]
-				
 			}],
 			
-			labels: ['Bus','Car Driver','Cycle','Walk','Work from home',
-			'Motorbike','Metro','Other','Car passenger',
-			'Taxi','Train']
+			labels: ['Bicycle','Walk','Bus','Tram/Underground/Metro','Train',
+			'Motorbike','Car or Van','Car passenger','Taxi',
+			'Other','Work from home']
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			cutoutPercentage: 0,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
 	
@@ -439,28 +472,30 @@ makeChartsTransport = function(sub, la, england){
 				label: 'Main mode of travel to work',
 				data: t2wDistshare,
 				backgroundColor: [
-				'rgba(166,206,227, 1)',
-				'rgba(31,120,180, 1)',
 				'rgba(178,223,138, 1)',
 				'rgba(51,160,44, 1)',
-				
+				'rgba(166,206,227, 1)',
+				'rgba(31,120,180, 1)',
+				'rgba(106,61,154, 1)',
+				'rgba(251,154,153, 1)',
 				'rgba(227,26,28, 1)',
 				'rgba(253,191,111, 1)',
 				'rgba(255,127,0, 1)',
-				'rgba(202,178,214, 1)',
-				'rgba(106,61,154, 1)',
-				'rgba(255,255,153, 1)'
+				'rgba(128,128,128, 1)'
 				]
 				
 			}],
 			
-			labels: ['Bus','Car Driver','Cycle','Walk',
-			'Motorbike','Metro','Other','Car passenger',
-			'Taxi','Train']
+			labels: ['Bicycle','Walk','Bus','Tram/Underground/Metro','Train',
+			'Motorbike','Car or Van','Car passenger','Taxi',
+			'Other']
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
 
@@ -472,24 +507,40 @@ makeChartsTransport = function(sub, la, england){
 	
 	var t2sctx = document.getElementById('t2sChart').getContext('2d');
 	t2sChart = new Chart(t2sctx, {
-		type: 'pie',
+		type: 'doughnut',
 		data: {
 			datasets: [{
+				label: 'PCT Travel to School',
+				data: t2spct,
+				backgroundColor: [
+				'rgba(178,223,138, 1)',
+				'rgba(51,160,44, 1)',
+				'rgba(227,26,28, 1)',
+				'rgba(128,128,128, 1)'
+				],
+				weight: 0.2
+				
+			},{
 				label: 'Main mode of travel to School',
 				data: t2sshare,
 				backgroundColor: [
-				'rgba(166,206,227, 1)',
-				'rgba(31,120,180, 1)',
-				'rgba(178,223,138, 1)'
+				'rgba(178,223,138, 1)',
+				'rgba(51,160,44, 1)',
+				'rgba(227,26,28, 1)',
+				'rgba(128,128,128, 1)'
 				]
 				
 			}],
 			
-			labels: ['Cycle','Foot','Car']
+			labels: ['Bicycle','Foot','Car','Other']
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			cutoutPercentage: 0,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
 	

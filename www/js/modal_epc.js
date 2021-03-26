@@ -42,7 +42,15 @@ makeChartsEPC = function(sub){
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			scales: {
+        xAxes: [{
+            display: true,
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+      }
 		}
 	});
   
@@ -78,7 +86,10 @@ makeChartsEPC = function(sub){
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
 	
@@ -114,7 +125,10 @@ makeChartsEPC = function(sub){
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
 	
@@ -149,7 +163,10 @@ makeChartsEPC = function(sub){
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
 	
@@ -183,7 +200,10 @@ makeChartsEPC = function(sub){
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
   
@@ -217,7 +237,10 @@ makeChartsEPC = function(sub){
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
 	
@@ -251,7 +274,10 @@ makeChartsEPC = function(sub){
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
 	
@@ -285,7 +311,10 @@ makeChartsEPC = function(sub){
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
 	
@@ -330,7 +359,10 @@ makeChartsEPC = function(sub){
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
 	
@@ -376,7 +408,10 @@ makeChartsEPC = function(sub){
 		},
 		options: {
 			responsive: true,
-			maintainAspectRatio: false
+			maintainAspectRatio: false,
+			legend : {
+			  position: 'right'
+			}
 		}
 	});
   
