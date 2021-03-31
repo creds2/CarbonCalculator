@@ -57,15 +57,15 @@ tippecanoe --output-to-directory=OSzoomStackCustom  --attribution=OS --maximum-z
 
 cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson/low
 
-tippecanoe --output-to-directory=OSzoomStackCustomLow  --attribution=OS --maximum-zoom=8 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson land.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+tippecanoe --output-to-directory=OSzoomStackSeaLow  --attribution=OS --maximum-zoom=8 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
 
 cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson/med
 
-tippecanoe --output-to-directory=OSzoomStackCustomMed  --attribution=OS --minimum-zoom=9 --maximum-zoom=11 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson land.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+tippecanoe --output-to-directory=OSzoomStackSeamMed  --attribution=OS --minimum-zoom=9 --maximum-zoom=11 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
 
 cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson/high
 
-tippecanoe --output-to-directory=OSzoomStackCustomHigh  --attribution=OS --minimum-zoom=12 --maximum-zoom=14 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson land.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+tippecanoe --output-to-directory=OSzoomStackSeaHigh  --attribution=OS --minimum-zoom=12 --maximum-zoom=14 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
 
 
 ### PCT route network

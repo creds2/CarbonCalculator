@@ -22,15 +22,15 @@
         {
             "id": "background",
             "type": "background",
-            "paint": {"background-color": "#c5cdd0"}
+            "paint": {"background-color": "#f1efec"}
         },
         {
-            "id": "land",
+            "id": "sea",
             "type": "fill",
             "source": "composite",
-            "source-layer": "land",
+            "source-layer": "sea",
             "layout": {},
-            "paint": {"fill-color": "#f1efec"}
+            "paint": {"fill-color": "#c5cdd0"}
         },
         {
             "id": "national-parks",

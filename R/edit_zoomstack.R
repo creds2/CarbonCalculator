@@ -29,9 +29,29 @@ unlink("tmp", recursive = TRUE)
 
 box = c(xmin = -13, ymin = 47, xmax = 10, ymax = 63)
 bounds <- st_crop(bounds, box)
-bounds <- bounds[,c("OBJECTID")]
-bounds <- st_cast(bounds$geometry, "POLYGON")
-st_write(bounds, "data/zoomstackgeojson/europe.geojson")
+bounds_uk <- bounds[bounds$NAME == "United Kingdom",]
+bounds_eu <- bounds[bounds$NAME != "United Kingdom",]
+bounds_uk <- st_cast(bounds_uk, to = "POLYGON", do_split = TRUE, group_or_split = TRUE)
+bounds_uk$id <- 1:nrow(bounds_uk)
+bounds_uk <- bounds_uk[bounds_uk$id %in% c(246,251, 207:212),]
+bounds_uk$id <- NULL
+
+bounds_eu <- rbind(bounds_eu, bounds_uk)
+bounds_eu <- bounds_eu$geometry
+bounds_eu <- st_union(bounds_eu)
+
+land_all <- c(land$geometry, bounds_eu)
+land_all <- st_union(land_all)
+
+sea <- st_bbox(box)
+sea <- st_as_sfc(sea)
+st_crs(sea) <- 4326
+sea <- st_difference(sea, land_all)
+sea <- st_cast(sea, "POLYGON")
+sea <- st_sf(data.frame(geom = sea))
+sea$id <- 1:9
+sea <- sea$geometry[1]
+st_write(sea, "data/zoomstackgeojson/sea.geojson")
 
 
 
@@ -43,7 +63,7 @@ urban_areas$area <- as.numeric(st_area(urban_areas))
 
 
 # Low Zoom
-names_low <- names[names$type %in% c("Capital","City","Country","National Park"),]
+names_low <- names[names$type %in% c("Capital","City","Country","Town"),]
 greenspace_low <- greenspace[greenspace$area > 100000,]
 foreshore_low <- foreshore[foreshore$area > 100000,]
 surfacewater_low <- surfacewater[surfacewater$area > 1000000,]
@@ -93,6 +113,7 @@ write_sf(roads_national, "data/zoomstackgeojson/low/roads.geojson", delete_dsn =
 write_sf(surfacewater_low, "data/zoomstackgeojson/low/surfacewater.geojson", delete_dsn = TRUE)
 write_sf(woodland_low, "data/zoomstackgeojson/low/woodland.geojson", delete_dsn = TRUE)
 write_sf(urban_areas_low, "data/zoomstackgeojson/low/urban_areas.geojson", delete_dsn = TRUE)
+write_sf(sea, "data/zoomstackgeojson/low/sea.geojson", delete_dsn = TRUE)
 
 #Med Zoom
 write_sf(land, "data/zoomstackgeojson/med/land.geojson", delete_dsn = TRUE)
@@ -107,6 +128,7 @@ write_sf(roads_regional, "data/zoomstackgeojson/med/roads.geojson", delete_dsn =
 write_sf(surfacewater_med, "data/zoomstackgeojson/med/surfacewater.geojson", delete_dsn = TRUE)
 write_sf(woodland_med, "data/zoomstackgeojson/med/woodland.geojson", delete_dsn = TRUE)
 write_sf(urban_areas_med, "data/zoomstackgeojson/med/urban_areas.geojson", delete_dsn = TRUE)
+write_sf(sea, "data/zoomstackgeojson/med/sea.geojson", delete_dsn = TRUE)
 
 #high Zoom
 write_sf(land, "data/zoomstackgeojson/high/land.geojson", delete_dsn = TRUE)
@@ -121,3 +143,4 @@ write_sf(roads_local, "data/zoomstackgeojson/high/roads.geojson", delete_dsn = T
 write_sf(surfacewater, "data/zoomstackgeojson/high/surfacewater.geojson", delete_dsn = TRUE)
 write_sf(woodland, "data/zoomstackgeojson/high/woodland.geojson", delete_dsn = TRUE)
 write_sf(urban_areas, "data/zoomstackgeojson/high/urban_areas.geojson", delete_dsn = TRUE)
+write_sf(sea, "data/zoomstackgeojson/high/sea.geojson", delete_dsn = TRUE)
