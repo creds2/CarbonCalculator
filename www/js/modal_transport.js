@@ -9,19 +9,8 @@ var carpercapChart;
 
 makeChartsTransport = function(sub, la, england){
   
-  	var carHistory = [
-		sub.car_percap_2010,
-		sub.car_percap_2011,
-		sub.car_percap_2012,
-		sub.car_percap_2013,
-		sub.car_percap_2014,
-		sub.car_percap_2015,
-		sub.car_percap_2016,
-		sub.car_percap_2017,
-		sub.car_percap_2018
-    ];
-	
-	var lacarHistory = [
+  if(la !== null){
+    var lacarHistory = [
 		la.car_percap_2010,
 		la.car_percap_2011,
 		la.car_percap_2012,
@@ -32,6 +21,86 @@ makeChartsTransport = function(sub, la, england){
 		la.car_percap_2017,
 		la.car_percap_2018
     ];
+    
+    var lavanHistory = [
+		la.van_percap_2010,
+		la.van_percap_2011,
+		la.van_percap_2012,
+		la.van_percap_2013,
+		la.van_percap_2014,
+		la.van_percap_2015,
+		la.van_percap_2016,
+		la.van_percap_2017,
+		la.van_percap_2018
+    ];
+    
+    var lacarpercapHistory = [
+		la.cars_percap_2010,
+    la.cars_percap_2011,
+    la.cars_percap_2012,
+    la.cars_percap_2013,
+    la.cars_percap_2014,             
+    la.cars_percap_2015,
+    la.cars_percap_2016,
+    la.cars_percap_2017,
+    la.cars_percap_2018
+    ];
+    
+    var laco2perkmHistory = [
+		la.AvgCO2_cars_2010,
+    la.AvgCO2_cars_2011,
+    la.AvgCO2_cars_2012,
+    la.AvgCO2_cars_2013,
+    la.AvgCO2_cars_2014,             
+    la.AvgCO2_cars_2015,
+    la.AvgCO2_cars_2016,
+    la.AvgCO2_cars_2017,
+    la.AvgCO2_cars_2018
+    ];
+    
+  } 
+  
+  var carHistory = [
+		sub.car_percap_2010,
+		sub.car_percap_2011,
+		sub.car_percap_2012,
+		sub.car_percap_2013,
+		sub.car_percap_2014,
+		sub.car_percap_2015,
+		sub.car_percap_2016,
+		sub.car_percap_2017,
+		sub.car_percap_2018
+    ];
+    
+    var vanHistory = [
+		sub.van_percap_2010,
+		sub.van_percap_2011,
+		sub.van_percap_2012,
+		sub.van_percap_2013,
+		sub.van_percap_2014,
+		sub.van_percap_2015,
+		sub.van_percap_2016,
+		sub.van_percap_2017,
+		sub.van_percap_2018
+    ];
+    
+    var t2wshare = [
+		sub.T2W_Bicycle,
+		sub.T2W_OnFoot,
+		sub.T2W_Bus,
+		sub.T2W_Underground,
+		sub.T2W_Train,
+		sub.T2W_Motorcycle,
+		sub.T2W_CarOrVan,
+		sub.T2W_Passenger,
+		sub.T2W_Taxi,
+		sub.T2W_Other,
+		sub.T2W_WorkAtHome
+    ];
+  
+  
+	
+	
     
   var englandcarHistory = [
 		england.car_percap_2010,
@@ -45,29 +114,9 @@ makeChartsTransport = function(sub, la, england){
 		england.car_percap_2018
     ];
     
-  var vanHistory = [
-		sub.van_percap_2010,
-		sub.van_percap_2011,
-		sub.van_percap_2012,
-		sub.van_percap_2013,
-		sub.van_percap_2014,
-		sub.van_percap_2015,
-		sub.van_percap_2016,
-		sub.van_percap_2017,
-		sub.van_percap_2018
-    ];
+  
 	
-	var lavanHistory = [
-		la.van_percap_2010,
-		la.van_percap_2011,
-		la.van_percap_2012,
-		la.van_percap_2013,
-		la.van_percap_2014,
-		la.van_percap_2015,
-		la.van_percap_2016,
-		la.van_percap_2017,
-		la.van_percap_2018
-    ];
+	
     
   var englandvanHistory = [
 		england.van_percap_2010,
@@ -81,19 +130,7 @@ makeChartsTransport = function(sub, la, england){
 		england.van_percap_2018
     ];
   
-  var t2wshare = [
-		sub.T2W_Bicycle,
-		sub.T2W_OnFoot,
-		sub.T2W_Bus,
-		sub.T2W_Underground,
-		sub.T2W_Train,
-		sub.T2W_Motorcycle,
-		sub.T2W_CarOrVan,
-		sub.T2W_Passenger,
-		sub.T2W_Taxi,
-		sub.T2W_Other,
-		sub.T2W_WorkAtHome
-    ];
+  
     
   var t2wDistshare = [
 		sub.km_Bicycle,
@@ -140,17 +177,7 @@ makeChartsTransport = function(sub, la, england){
     sub.cars_percap_2018
     ];
     
-  var lacarpercapHistory = [
-		la.cars_percap_2010,
-    la.cars_percap_2011,
-    la.cars_percap_2012,
-    la.cars_percap_2013,
-    la.cars_percap_2014,             
-    la.cars_percap_2015,
-    la.cars_percap_2016,
-    la.cars_percap_2017,
-    la.cars_percap_2018
-    ];
+  
   
   var englandcarpercapHistory = [
 		england.cars_percap_2010,
@@ -176,17 +203,7 @@ makeChartsTransport = function(sub, la, england){
     sub.AvgCO2_cars_2018
     ];
 	
-	var laco2perkmHistory = [
-		la.AvgCO2_cars_2010,
-    la.AvgCO2_cars_2011,
-    la.AvgCO2_cars_2012,
-    la.AvgCO2_cars_2013,
-    la.AvgCO2_cars_2014,             
-    la.AvgCO2_cars_2015,
-    la.AvgCO2_cars_2016,
-    la.AvgCO2_cars_2017,
-    la.AvgCO2_cars_2018
-    ];
+	
     
   var englandco2perkmHistory = [
 		england.AvgCO2_cars_2010,

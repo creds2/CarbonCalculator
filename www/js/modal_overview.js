@@ -3,79 +3,129 @@ var overallChart;
 
 makeChartsOverview = function(lsoadata, la, england, oac){
   
-  	var overallgas = [
+  if(lsoadata === null){
+    var overallgas = [
+    la.gas_percap_2017, england.gas_percap_2017
+    ];
+    
+    var overallelec = [
+      la.elec_percap_2017, england.elec_percap_2017
+    ];
+    
+    var overallcar = [
+      la.car_percap_2018, england.car_percap_2018
+    ];
+    
+    var overallvan = [
+      la.van_percap_2018, england.van_percap_2018
+    ];
+    
+    var overallflights = [
+      la.flights_percap_2018, england.flights_percap_2018
+    ];
+    
+    var overallotherheat = [
+      la.other_heat_percap_2011, england.other_heat_percap_2011
+    ];
+    
+    var overallnutrition = [
+      la.nutrition_kgco2e_percap, england.nutrition_kgco2e_percap
+    ];
+    var overallothershelter = [
+      la.other_shelter_kgco2e_percap, england.other_shelter_kgco2e_percap
+    ];
+    var overallconsumables = [
+      la.consumables_kgco2e_percap, england.consumables_kgco2e_percap
+    ];
+    var overallrecreation = [
+      la.recreation_kgco2e_percap, england.recreation_kgco2e_percap
+    ];
+    var overallservices = [
+      la.services_kgco2e_percap, england.services_kgco2e_percap
+    ];
+    var overallcommutenoncar = [
+      la.commute_noncar_percap, england.commute_noncar_percap
+    ];
+  } else {
+    var overallgas = [
     lsoadata.gas_percap_2017, la.gas_percap_2017, england.gas_percap_2017, oac.gas_percap_2017
-  ];
+    ];
+    
+    var overallelec = [
+      lsoadata.elec_percap_2017, la.elec_percap_2017, england.elec_percap_2017, oac.elec_percap_2017
+    ];
+    
+    var overallcar = [
+      lsoadata.car_percap_2018, la.car_percap_2018, england.car_percap_2018, oac.car_percap_2018
+    ];
+    
+    var overallvan = [
+      lsoadata.van_percap_2018, la.van_percap_2018, england.van_percap_2018, oac.van_percap_2018
+    ];
+    
+    var overallflights = [
+      lsoadata.flights_percap_2018, la.flights_percap_2018, england.flights_percap_2018, oac.flights_percap_2018
+    ];
+    
+    var overallotherheat = [
+      lsoadata.other_heat_percap_2011, la.other_heat_percap_2011, england.other_heat_percap_2011, oac.other_heat_percap_2011
+    ];
+    
+    var overallnutrition = [
+      lsoadata.nutrition_kgco2e_percap, la.nutrition_kgco2e_percap, england.nutrition_kgco2e_percap, oac.nutrition_kgco2e_percap
+    ];
+    var overallothershelter = [
+      lsoadata.other_shelter_kgco2e_percap, la.other_shelter_kgco2e_percap, england.other_shelter_kgco2e_percap, oac.other_shelter_kgco2e_percap
+    ];
+    var overallconsumables = [
+      lsoadata.consumables_kgco2e_percap, la.consumables_kgco2e_percap, england.consumables_kgco2e_percap,oac.consumables_kgco2e_percap
+    ];
+    var overallrecreation = [
+      lsoadata.recreation_kgco2e_percap, la.recreation_kgco2e_percap, england.recreation_kgco2e_percap, oac.recreation_kgco2e_percap
+    ];
+    var overallservices = [
+      lsoadata.services_kgco2e_percap, la.services_kgco2e_percap, england.services_kgco2e_percap, oac.services_kgco2e_percap
+    ];
+    var overallcommutenoncar = [
+      lsoadata.commute_noncar_percap, la.commute_noncar_percap, england.commute_noncar_percap, oac.commute_noncar_percap
+    ];
+  }
   
-  var overallelec = [
-    lsoadata.elec_percap_2017, la.elec_percap_2017, england.elec_percap_2017, oac.elec_percap_2017
-  ];
   
-  var overallcar = [
-    lsoadata.car_percap_2018, la.car_percap_2018, england.car_percap_2018, oac.car_percap_2018
-  ];
+  	
   
-  var overallvan = [
-    lsoadata.van_percap_2018, la.van_percap_2018, england.van_percap_2018, oac.van_percap_2018
-  ];
+  if(lsoadata !== null){
+    document.getElementById("modal-title").innerHTML = "<h2>" + lsoadata.LSOA11 + " a '" +
+  	lsoadata.SOAC11NM + "' LSOA in " +  lsoadata.WD18NM +"</h2>";
+  	
+  	document.getElementById("data_total_emissions_percap").innerHTML = lsoadata.total_percap;
+  	document.getElementById("data_elec_emissions_household").innerHTML = lsoadata.elec_percap_2017;
+  	document.getElementById("data_gas_emissions_household").innerHTML = lsoadata.gas_percap_2017;
+  	document.getElementById("data_other_heating_emissions").innerHTML = lsoadata.other_heat_percap_2011;
+  	document.getElementById("data_car_emissions").innerHTML = lsoadata.car_percap_2018;
+  	document.getElementById("data_van_emissions").innerHTML = lsoadata.van_percap_2018;
+  	document.getElementById("data_flights_emissions").innerHTML = lsoadata.flights_percap_2018;
+  	document.getElementById("data_consumption_emissions").innerHTML = lsoadata.consumption_percap_2018;
+  	
+  	document.getElementById("data_LSOA11").innerHTML = lsoadata.LSOA11;
+  	document.getElementById("data_LSOA11NM").innerHTML = lsoadata.LSOA11NM;
+  	document.getElementById("data_SOAC11NM").innerHTML = lsoadata.SOAC11NM;
+  	document.getElementById("data_LAD17CD").innerHTML = lsoadata.LAD17CD;
+  	document.getElementById("data_LAD17NM").innerHTML = lsoadata.LAD17NM;
+  	
+  	document.getElementById("data_total_emissions_grade").src = "images/grades/" + lsoadata.total_emissions_grade + ".jpg";
+  	document.getElementById("data_elec_emissions_grade").src  = "images/grades/" + lsoadata.elec_emissions_grade + ".jpg";
+  	document.getElementById("data_gas_emissions_grade").src   = "images/grades/" + lsoadata.gas_emissions_grade + ".jpg";
+  	document.getElementById("data_other_heating_emissions_grade").src   = "images/grades/" + lsoadata.other_heating_grade + ".jpg";
+  	document.getElementById("data_car_emissions_grade").src   = "images/grades/" + lsoadata.car_emissions_grade + ".jpg";
+  	document.getElementById("data_van_emissions_grade").src   = "images/grades/" + lsoadata.van_grade + ".jpg";
+  	document.getElementById("data_flights_emissions_grade").src   = "images/grades/" + lsoadata.flights_grade + ".jpg";
+  	document.getElementById("data_consumption_emissions_grade").src   = "images/grades/" + lsoadata.consumption_grade + ".jpg";
+  	
+  	//Show waning Box
+	  showwarnbox(lsoadata.LSOA11);
+  }
   
-  var overallflights = [
-    lsoadata.flights_percap_2018, la.flights_percap_2018, england.flights_percap_2018, oac.flights_percap_2018
-  ];
-  
-  var overallotherheat = [
-    lsoadata.other_heat_percap_2011, la.other_heat_percap_2011, england.other_heat_percap_2011, oac.other_heat_percap_2011
-  ];
-  
-  var overallnutrition = [
-    lsoadata.nutrition_kgco2e_percap, la.nutrition_kgco2e_percap, england.nutrition_kgco2e_percap, oac.nutrition_kgco2e_percap
-  ];
-  var overallothershelter = [
-    lsoadata.other_shelter_kgco2e_percap, la.other_shelter_kgco2e_percap, england.other_shelter_kgco2e_percap, oac.other_shelter_kgco2e_percap
-  ];
-  var overallconsumables = [
-    lsoadata.consumables_kgco2e_percap, la.consumables_kgco2e_percap, england.consumables_kgco2e_percap,oac.consumables_kgco2e_percap
-  ];
-  var overallrecreation = [
-    lsoadata.recreation_kgco2e_percap, la.recreation_kgco2e_percap, england.recreation_kgco2e_percap, oac.recreation_kgco2e_percap
-  ];
-  var overallservices = [
-    lsoadata.services_kgco2e_percap, la.services_kgco2e_percap, england.services_kgco2e_percap, oac.services_kgco2e_percap
-  ];
-  var overallcommutenoncar = [
-    lsoadata.commute_noncar_percap, la.commute_noncar_percap, england.commute_noncar_percap, oac.commute_noncar_percap
-  ];
-  
-  document.getElementById("modal-title").innerHTML = "<h2>" + lsoadata.LSOA11 + " a '" +
-	lsoadata.SOAC11NM + "' LSOA in " +  lsoadata.WD18NM +"</h2>";
-	
-	document.getElementById("data_total_emissions_percap").innerHTML = lsoadata.total_percap;
-	document.getElementById("data_elec_emissions_household").innerHTML = lsoadata.elec_percap_2017;
-	document.getElementById("data_gas_emissions_household").innerHTML = lsoadata.gas_percap_2017;
-	document.getElementById("data_other_heating_emissions").innerHTML = lsoadata.other_heat_percap_2011;
-	document.getElementById("data_car_emissions").innerHTML = lsoadata.car_percap_2018;
-	document.getElementById("data_van_emissions").innerHTML = lsoadata.van_percap_2018;
-	document.getElementById("data_flights_emissions").innerHTML = lsoadata.flights_percap_2018;
-	document.getElementById("data_consumption_emissions").innerHTML = lsoadata.consumption_percap_2018;
-	
-	document.getElementById("data_LSOA11").innerHTML = lsoadata.LSOA11;
-	document.getElementById("data_LSOA11NM").innerHTML = lsoadata.LSOA11NM;
-	document.getElementById("data_SOAC11NM").innerHTML = lsoadata.SOAC11NM;
-	document.getElementById("data_LAD17CD").innerHTML = lsoadata.LAD17CD;
-	document.getElementById("data_LAD17NM").innerHTML = lsoadata.LAD17NM;
-	
-	document.getElementById("data_total_emissions_grade").src = "images/grades/" + lsoadata.total_emissions_grade + ".jpg";
-	document.getElementById("data_elec_emissions_grade").src  = "images/grades/" + lsoadata.elec_emissions_grade + ".jpg";
-	document.getElementById("data_gas_emissions_grade").src   = "images/grades/" + lsoadata.gas_emissions_grade + ".jpg";
-	document.getElementById("data_other_heating_emissions_grade").src   = "images/grades/" + lsoadata.other_heating_grade + ".jpg";
-	document.getElementById("data_car_emissions_grade").src   = "images/grades/" + lsoadata.car_emissions_grade + ".jpg";
-	document.getElementById("data_van_emissions_grade").src   = "images/grades/" + lsoadata.van_grade + ".jpg";
-	document.getElementById("data_flights_emissions_grade").src   = "images/grades/" + lsoadata.flights_grade + ".jpg";
-	document.getElementById("data_consumption_emissions_grade").src   = "images/grades/" + lsoadata.consumption_grade + ".jpg";
-	
-	//Show waning Box
-	showwarnbox(lsoadata.LSOA11);
-	
 	// Overall Chart
 	
 	if(overallChart){
