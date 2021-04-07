@@ -66,8 +66,9 @@ text-decoration: underline;
 
 .content{
     width:calc(100% - 1px);
-    height:calc(100% - 71px);
+    height:calc(100% - 75px);
 }
+
 .left{
 	float: left;
 	width:1px;
@@ -227,13 +228,14 @@ h1{
   background-color: #fff;
   border-radius: 3px;
   top: 60px;
-  bottom:25px;
+  max-height: calc(100% - 130px);
+  /* bottom:25px; */
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   padding: 10px;
   position: absolute;
   right: 10px;
   z-index: 1;
-  width: 265px;
+  width: 280px;
   overflow:auto;
 }
 
@@ -293,7 +295,7 @@ h1{
 /* Style the tab content */
 .tabcontent {
   display: none;
-  padding: 6px 12px;
+  padding: 6px 6px;
   border: 1px solid #ccc;
   border-top: none;
 } 
