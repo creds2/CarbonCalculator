@@ -88,7 +88,34 @@ a:hover {
   height:100%;
 }
 
+/**tab content wrapper**/
 
+.wrapper {
+	width: 100%;
+}
+.chart-container {
+	height: 400px;
+	width: 100%;
+}
+.chart-text {
+	width: 100%;
+	padding-right: 0;
+	}
+
+@media screen and (min-width: 56.25rem) /**900px**/ {
+	.chart-container {
+		position: relative;
+		float: right;
+		height: 400px;
+		width: 50%;
+	}
+	.chart-text {
+		position: relative;
+		float: left;
+		width: 50%;
+		padding-right: 4%;
+	}
+}
 
 /* Text */
 h1{
