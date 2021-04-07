@@ -98,10 +98,6 @@ makeChartsTransport = function(sub, la, england){
 		sub.T2W_WorkAtHome
     ];
   
-  
-	
-	
-    
   var englandcarHistory = [
 		england.car_percap_2010,
 		england.car_percap_2011,
@@ -115,9 +111,6 @@ makeChartsTransport = function(sub, la, england){
     ];
     
   
-	
-	
-    
   var englandvanHistory = [
 		england.van_percap_2010,
 		england.van_percap_2011,
@@ -226,7 +219,8 @@ makeChartsTransport = function(sub, la, england){
 	}
 		
 	var carctx = document.getElementById('carChart').getContext('2d');
-	carChart = new Chart(carctx, {
+	if(la !== null){
+	  carChart = new Chart(carctx, {
 		type: 'bar',
 		data: {
 			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
@@ -268,6 +262,46 @@ makeChartsTransport = function(sub, la, england){
 			maintainAspectRatio: false
 		}
 	});
+	} else {
+	  carChart = new Chart(carctx, {
+		type: 'bar',
+		data: {
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
+			datasets: [{
+				label: 'This Area',
+				data: carHistory,
+				backgroundColor: 'rgba(255, 99, 132, 0.8)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'England Average',
+				data: englandcarHistory,
+				backgroundColor: 'rgba(99, 255, 13, 0.8)',
+				borderColor: 'rgba(99, 255, 13, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+				  scaleLabel: {
+            display: true,
+            labelString: 'kg CO\u2082e per person'
+          },
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			},
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+	}
+	
+	
+	
 	
 	// van Chart
 	if(vanChart){
@@ -275,7 +309,8 @@ makeChartsTransport = function(sub, la, england){
 	}
 		
 	var vanctx = document.getElementById('vanChart').getContext('2d');
-	vanChart = new Chart(vanctx, {
+	if(la !== null){
+	  vanChart = new Chart(vanctx, {
 		type: 'bar',
 		data: {
 			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
@@ -317,6 +352,45 @@ makeChartsTransport = function(sub, la, england){
 			maintainAspectRatio: false
 		}
 	});
+	} else {
+	  vanChart = new Chart(vanctx, {
+		type: 'bar',
+		data: {
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
+			datasets: [{
+				label: 'This Area',
+				data: vanHistory,
+				backgroundColor: 'rgba(255, 99, 132, 0.8)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'England Average',
+				data: englandvanHistory,
+				backgroundColor: 'rgba(99, 255, 13, 0.8)',
+				borderColor: 'rgba(99, 255, 13, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+				  scaleLabel: {
+            display: true,
+            labelString: 'kg CO\u2082e per person'
+          },
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			},
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+	}
+	
+	
 	
 	// CO2 per km Chart
 	if(co2perkmChart){
@@ -324,7 +398,8 @@ makeChartsTransport = function(sub, la, england){
 	}
 		
 	var co2perkmctx = document.getElementById('co2perkmChart').getContext('2d');
-	co2perkmChart = new Chart(co2perkmctx, {
+	if(la !== null){
+	  co2perkmChart = new Chart(co2perkmctx, {
 		type: 'bar',
 		data: {
 			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
@@ -366,6 +441,45 @@ makeChartsTransport = function(sub, la, england){
 			maintainAspectRatio: false
 		}
 	});
+	} else {
+	  co2perkmChart = new Chart(co2perkmctx, {
+		type: 'bar',
+		data: {
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
+			datasets: [{
+				label: 'This Area',
+				data: co2perkmHistory,
+				backgroundColor: 'rgba(255, 99, 132, 0.8)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'England Average',
+				data: englandco2perkmHistory,
+				backgroundColor: 'rgba(99, 255, 13, 0.8)',
+				borderColor: 'rgba(99, 255, 13, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+				  scaleLabel: {
+            display: true,
+            labelString: 'g CO\u2082e per km'
+          },
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			},
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+	}
+	
+	
 	
 	
 	// Cars Per Capita Chart
@@ -374,7 +488,8 @@ makeChartsTransport = function(sub, la, england){
 	}
 		
 	var carpercapctx = document.getElementById('carpercapChart').getContext('2d');
-	carpercapChart = new Chart(carpercapctx, {
+	if(la !== null){
+	  carpercapChart = new Chart(carpercapctx, {
 		type: 'bar',
 		data: {
 			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
@@ -416,6 +531,45 @@ makeChartsTransport = function(sub, la, england){
 			maintainAspectRatio: false
 		}
 	});
+	} else {
+	  carpercapChart = new Chart(carpercapctx, {
+		type: 'bar',
+		data: {
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
+			datasets: [{
+				label: 'This Area',
+				data: carpercapHistory,
+				backgroundColor: 'rgba(255, 99, 132, 0.8)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'England Average',
+				data: englandcarpercapHistory,
+				backgroundColor: 'rgba(99, 255, 13, 0.8)',
+				borderColor: 'rgba(99, 255, 13, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+				  scaleLabel: {
+            display: true,
+            labelString: 'cars per person'
+          },
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			},
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+	}
+	
+	
 	
 	// Travel to Work Modeshare
 	if(t2wChart){

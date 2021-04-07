@@ -5,6 +5,34 @@ var buildingtypeChart;
 var heatingChart;
 
 function makeChartsHousing(lsoadata, la, england){
+  
+  if(la !== null){
+    var lagasHistory = [
+		la.gas_percap_2010,
+		la.gas_percap_2011,
+		la.gas_percap_2012,
+		la.gas_percap_2013,
+		la.gas_percap_2014,
+		la.gas_percap_2015,
+		la.gas_percap_2016,
+		la.gas_percap_2017
+    ];
+    
+    var laelecHistory = [
+		la.elec_percap_2010,
+		la.elec_percap_2011,
+		la.elec_percap_2012,
+		la.elec_percap_2013,
+		la.elec_percap_2014,
+		la.elec_percap_2015,
+		la.elec_percap_2016,
+		la.elec_percap_2017
+    ];
+    
+    
+    
+  }
+  
   var gasHistory = [
 		lsoadata.gas_percap_2010,
 		lsoadata.gas_percap_2011,
@@ -16,16 +44,7 @@ function makeChartsHousing(lsoadata, la, england){
 		lsoadata.gas_percap_2017
     ];
     
-  var lagasHistory = [
-		la.gas_percap_2010,
-		la.gas_percap_2011,
-		la.gas_percap_2012,
-		la.gas_percap_2013,
-		la.gas_percap_2014,
-		la.gas_percap_2015,
-		la.gas_percap_2016,
-		la.gas_percap_2017
-    ];
+  
     
   var englandgasHistory = [
 		england.gas_percap_2010,
@@ -49,16 +68,7 @@ function makeChartsHousing(lsoadata, la, england){
 		lsoadata.elec_percap_2017
     ];
     
-  var laelecHistory = [
-		la.elec_percap_2010,
-		la.elec_percap_2011,
-		la.elec_percap_2012,
-		la.elec_percap_2013,
-		la.elec_percap_2014,
-		la.elec_percap_2015,
-		la.elec_percap_2016,
-		la.elec_percap_2017
-    ];
+  
     
   var englandelecHistory = [
 		england.elec_percap_2010,
@@ -114,7 +124,8 @@ function makeChartsHousing(lsoadata, la, england){
 	}
 		
 	var elecctx = document.getElementById('elecChart').getContext('2d');
-	elecChart = new Chart(elecctx, {
+	if(la !== null) {
+	  elecChart = new Chart(elecctx, {
 		type: 'bar',
 		data: {
 			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
@@ -156,6 +167,45 @@ function makeChartsHousing(lsoadata, la, england){
 			maintainAspectRatio: false
 		}
 	});
+	} else {
+	  elecChart = new Chart(elecctx, {
+		type: 'bar',
+		data: {
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
+			datasets: [{
+				label: 'This Area',
+				data: elecHistory,
+				backgroundColor: 'rgba(255, 99, 132, 0.8)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'England Average',
+				data: englandelecHistory,
+				backgroundColor: 'rgba(99, 255, 13, 0.8)',
+				borderColor: 'rgba(99, 255, 13, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+				  scaleLabel: {
+            display: true,
+            labelString: 'kg CO\u2082e per person'
+          },
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			},
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+	}
+	
+	
 	
 	
 	// Heating Share
@@ -197,7 +247,9 @@ function makeChartsHousing(lsoadata, la, england){
 	}
 	
 	var gasctx = document.getElementById('gasChart').getContext('2d');
-	gasChart = new Chart(gasctx, {
+	
+	if(la !== null) {
+	  gasChart = new Chart(gasctx, {
 		type: 'bar',
 		data: {
 			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
@@ -239,6 +291,44 @@ function makeChartsHousing(lsoadata, la, england){
 			maintainAspectRatio: false
 		}
 	});
+	} else {
+	  gasChart = new Chart(gasctx, {
+		type: 'bar',
+		data: {
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
+			datasets: [{
+				label: 'This Area',
+				data: gasHistory,
+				backgroundColor: 'rgba(255, 99, 132, 0.8)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				borderWidth: 1
+			},
+			{
+				label: 'England Average',
+				data: englandgasHistory,
+				backgroundColor: 'rgba(99, 255, 13, 0.8)',
+				borderColor: 'rgba(99, 255, 132, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+				  scaleLabel: {
+            display: true,
+            labelString: 'kg CO\u2082e per person'
+          },
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			},
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+	}
+	
 	
 		// Building Age Chart
 	

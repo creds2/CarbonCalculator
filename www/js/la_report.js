@@ -17,10 +17,10 @@ function switchLALayer() {
 	makeChartsEPC(la);
 	
 	// Transport Charts
-	makeChartsTransport(null, la, england);
+	makeChartsTransport(la, null, england);
 	
 	// Housing Charts
-	makeChartsHousing(null, la, england);
+	makeChartsHousing(la, null, england);
 }
 
 
