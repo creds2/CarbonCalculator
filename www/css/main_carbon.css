@@ -11,8 +11,11 @@ body, html{
     margin:0;
     position:relative;
     height:100%;
-    font-family: Raleway;
-	
+    font-family: Raleway, sans-serif;
+}
+body {
+	line-height: 1.4;
+	color: #444;
 }
 .header{
   width:100%;
@@ -20,6 +23,15 @@ body, html{
   background:#ffffff ;
 	padding:0;
 	font-size: 30px;
+}
+a {
+	color: #717e82;
+	font-weight: 600;
+	text-decoration: none;
+}
+a:hover {
+	color: #AC1A40;
+	text-decoration: underline;
 }
 
 /* Footer Menu */
@@ -129,7 +141,7 @@ h1{
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-    background-color: #38b6ab;
+    background-color: #717e82;
     color: #fff;
     cursor: pointer;
     padding: 18px;
@@ -138,12 +150,14 @@ h1{
     border: none;
     outline: none;
     transition: 0.4s;
+    font-size: 1em;
+    font-family: Raleway, sans-serif;
 }
 
 .accordion:after {
   content: '\02795'; /* Unicode character for "plus" sign (+) */
   font-size: 13px;
-  color: #777;
+  color: #fff;
   float: right;
   margin-left: 5px;
 }
@@ -156,7 +170,7 @@ h1{
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
-    background-color: #e84860;
+    background-color: #AC1A40;
 }
 
 /* Style the accordion panel. Note: hidden by default */
@@ -303,6 +317,8 @@ h1{
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
+	font-family: Raleway, sans-serif;
+	font-size: 1em;
 }
 
 /* Change background color of buttons on hover */
@@ -337,4 +353,22 @@ h1{
   left: 0;
   width: 100%;
   height: 100%;
+}
+/**table styles**/
+
+table, th, td {
+    border: 1px solid #dedede;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-width: 1px 0 0 1px;
+    margin: 0 0 1.75em;
+    table-layout: fixed;
+    width: 100%;
+}
+td, th {
+	vertical-align: top;
+	font-size: 0.9em;
+	line-height: 1.4;
 }
