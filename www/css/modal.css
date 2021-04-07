@@ -23,12 +23,15 @@
   background-color: #fefefe;
   height: calc(100% - 60px);
   width: 98%;
+  max-width: 1240px;
   left: 1%;
   overflow: scroll;
   -webkit-animation-name: slideIn;
   -webkit-animation-duration: 0.4s;
   animation-name: slideIn;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 /* The Close Button */
@@ -47,9 +50,9 @@
 }
 
 .modal-header {
-  padding: 2px 16px;
-  background-color: #38b6ab;
-  color: white;
+ padding: 2px 16px;
+ background-color: #717e82;
+ color: white;
 }
 
 .modal-body {
@@ -57,9 +60,9 @@
 }
 
 .modal-footer {
-  padding: 2px 16px;
-  background-color: #38b6ab;
-  color: white;
+ padding: 2px 16px;
+ background-color: #AC1A40;
+ color: white;
 }
 
 /*.modalrow {
