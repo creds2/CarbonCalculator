@@ -15,7 +15,8 @@ function makeChartsHousing(lsoadata, la, england){
 		la.gas_percap_2014,
 		la.gas_percap_2015,
 		la.gas_percap_2016,
-		la.gas_percap_2017
+		la.gas_percap_2017,
+		la.gas_percap_2018
     ];
     
     var laelecHistory = [
@@ -26,7 +27,8 @@ function makeChartsHousing(lsoadata, la, england){
 		la.elec_percap_2014,
 		la.elec_percap_2015,
 		la.elec_percap_2016,
-		la.elec_percap_2017
+		la.elec_percap_2017,
+		la.elec_percap_2018
     ];
     
     
@@ -41,7 +43,8 @@ function makeChartsHousing(lsoadata, la, england){
 		lsoadata.gas_percap_2014,
 		lsoadata.gas_percap_2015,
 		lsoadata.gas_percap_2016,
-		lsoadata.gas_percap_2017
+		lsoadata.gas_percap_2017,
+		lsoadata.gas_percap_2018
     ];
     
   
@@ -54,7 +57,8 @@ function makeChartsHousing(lsoadata, la, england){
 		england.gas_percap_2014,
 		england.gas_percap_2015,
 		england.gas_percap_2016,
-		england.gas_percap_2017
+		england.gas_percap_2017,
+		england.gas_percap_2018
     ];
 	
 	var elecHistory = [
@@ -65,7 +69,8 @@ function makeChartsHousing(lsoadata, la, england){
 		lsoadata.elec_percap_2014,
 		lsoadata.elec_percap_2015,
 		lsoadata.elec_percap_2016,
-		lsoadata.elec_percap_2017
+		lsoadata.elec_percap_2017,
+		lsoadata.elec_percap_2018
     ];
     
   
@@ -78,7 +83,8 @@ function makeChartsHousing(lsoadata, la, england){
 		england.elec_percap_2014,
 		england.elec_percap_2015,
 		england.elec_percap_2016,
-		england.elec_percap_2017
+		england.elec_percap_2017,
+		england.elec_percap_2018
     ];
     
     
@@ -128,7 +134,7 @@ function makeChartsHousing(lsoadata, la, england){
 	  elecChart = new Chart(elecctx, {
 		type: 'bar',
 		data: {
-			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
 			datasets: [{
 				label: 'This LSOA',
 				data: elecHistory,
@@ -152,6 +158,7 @@ function makeChartsHousing(lsoadata, la, england){
 			}]
 		},
 		options: {
+		  legend: {position: 'bottom'},
 			scales: {
 				yAxes: [{
 				  scaleLabel: {
@@ -171,7 +178,7 @@ function makeChartsHousing(lsoadata, la, england){
 	  elecChart = new Chart(elecctx, {
 		type: 'bar',
 		data: {
-			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
 			datasets: [{
 				label: 'This Area',
 				data: elecHistory,
@@ -188,6 +195,7 @@ function makeChartsHousing(lsoadata, la, england){
 			}]
 		},
 		options: {
+		  legend: {position: 'bottom'},
 			scales: {
 				yAxes: [{
 				  scaleLabel: {
@@ -252,7 +260,7 @@ function makeChartsHousing(lsoadata, la, england){
 	  gasChart = new Chart(gasctx, {
 		type: 'bar',
 		data: {
-			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
 			datasets: [{
 				label: 'This LSOA',
 				data: gasHistory,
@@ -264,18 +272,19 @@ function makeChartsHousing(lsoadata, la, england){
 				label: 'Local Authority Average',
 				data: lagasHistory,
 				backgroundColor: 'rgba(132, 99, 255, 0.8)',
-				borderColor: 'rgba(255, 99, 132, 1)',
+				borderColor: 'rgba(132, 99, 255, 1)',
 				borderWidth: 1
 			},
 			{
 				label: 'England Average',
 				data: englandgasHistory,
 				backgroundColor: 'rgba(99, 255, 13, 0.8)',
-				borderColor: 'rgba(99, 255, 132, 1)',
+				borderColor: 'rgba(99, 255, 13, 1)',
 				borderWidth: 1
 			}]
 		},
 		options: {
+		  legend: {position: 'bottom'},
 			scales: {
 				yAxes: [{
 				  scaleLabel: {
@@ -295,7 +304,7 @@ function makeChartsHousing(lsoadata, la, england){
 	  gasChart = new Chart(gasctx, {
 		type: 'bar',
 		data: {
-			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017'],
+			labels: ['2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018'],
 			datasets: [{
 				label: 'This Area',
 				data: gasHistory,
@@ -307,11 +316,12 @@ function makeChartsHousing(lsoadata, la, england){
 				label: 'England Average',
 				data: englandgasHistory,
 				backgroundColor: 'rgba(99, 255, 13, 0.8)',
-				borderColor: 'rgba(99, 255, 132, 1)',
+				borderColor: 'rgba(99, 255, 13, 1)',
 				borderWidth: 1
 			}]
 		},
 		options: {
+		  legend: {position: 'bottom'},
 			scales: {
 				yAxes: [{
 				  scaleLabel: {
@@ -379,7 +389,8 @@ function makeChartsHousing(lsoadata, la, england){
 			responsive: true,
 			maintainAspectRatio: false,
 			legend : {
-			  position: 'right'
+			  position: 'right',
+        align: 'middle'
 			}
 		}
 	});
@@ -422,7 +433,8 @@ function makeChartsHousing(lsoadata, la, england){
 			responsive: true,
 			maintainAspectRatio: false,
 			legend : {
-			  position: 'right'
+			  position: 'right',
+        align: 'middle'
 			}
 		}
 	});
