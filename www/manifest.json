@@ -1,0 +1,23 @@
+{
+  "name": "Place-Based Carbon Calcualtor",
+  "short_name": "PBCC",
+  "start_url": "./map.html",
+  "scope": "./",
+  "icons": [
+    {
+      "src": "images/creds192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/creds512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#AC1A40",
+  "background_color": "#717e82",
+  "display": "standalone"
+}

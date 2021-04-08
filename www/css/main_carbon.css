@@ -63,11 +63,23 @@ a:hover {
 	color: white;
 }
 
+/* Link Style */
+a {
+  color: #717e82;
+  font-weight: 600;
+  text-decoration: none;
+}
+a:hover {
+  color: #AC1A40;
+  text-decoration: underline;
+}
+
 
 .content{
     width:calc(100% - 1px);
-    height:calc(100% - 71px);
+    height:calc(100% - 55px);
 }
+
 .left{
 	float: left;
 	width:1px;
@@ -126,46 +138,6 @@ h1{
 	
 }
 
-/* Sliders */
-.slidecontainer {
-    width: 90%; /* Width of the outside container */
-}
-
-/* The slider itself */
-.slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 100%; /* Full-width */
-    height: 25px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-}
-
-/* Mouse-over effects */
-.slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
-}
-
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-}
-
-.slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-}
-
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
     background-color: #717e82;
@@ -211,32 +183,67 @@ h1{
 /* The Menu Bar */
 /* Add a black background color to the top navigation */
 .topnav {
-	background-color: #fff;
+	background-color: #717e82;
 	overflow: hidden;
 	margin:0;
 	z-index: 2000;
+	width: 100%;
+	display: block;
+	padding: 0 16px;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-	float: left;
-	color: black;
-	text-align: center;
-	padding: 14px 16px;
+	color: #fff;
 	text-decoration: none;
-	font-size: 17px;
+}
+.main-title {
+	float: left;
+	padding-top: 6px;
+	font-size: 1.6em;
+}
+.nav-list {
+	width: calc(100% - 120px);
+	height: 48px;
+	float: left;
+}
+.nav-list a {
+	font-size: 0.9em;
+	font-weight: normal;
+}
+.nav-list ul {
+	list-style: none;
+	margin-left: 0;
+	text-align: right;
+}
+.nav-list li {
+	display: inline;
+	text-transform: uppercase;
+	padding: 18px 16px 12px 16px;
+	line-height: 1;
+}
+li.smaller {
+	font-size: 0.9em;
+	text-transform: none;
+	border-left: 1px solid #fff;
+}
+.logo {
+	width: 110px;
+	height: auto;
+	float: right;
+	padding-top: 8px;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-	background-color: #cc3353;
-	color: black;
+	background-color: #AC1A40;
+	color: #fff;
 }
   
 /* Add a color to the active/current link */
 .topnav a.active {
-	background-color: white;
-	color: white;
+	background-color: #717e82;
+	color: #fff;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
@@ -245,7 +252,7 @@ h1{
 }
 
  /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
     float: right;
@@ -254,7 +261,7 @@ h1{
 }
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive a.icon {
     position: absolute;
@@ -294,13 +301,14 @@ h1{
   background-color: #fff;
   border-radius: 3px;
   top: 60px;
-  bottom:25px;
+  max-height: calc(100% - 130px);
+  /* bottom:25px; */
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   padding: 10px;
   position: absolute;
   right: 10px;
   z-index: 1;
-  width: 265px;
+  width: 280px;
   overflow:auto;
 }
 
@@ -362,27 +370,18 @@ h1{
 /* Style the tab content */
 .tabcontent {
   display: none;
-  padding: 6px 12px;
+  padding: 0 16px 8px 16px;
   border: 1px solid #ccc;
   border-top: none;
 } 
 
-/* Youtube Video */
+.tabcontent:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
-.videoWrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
-}
-.videoWrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
 /**table styles**/
-
 table, th, td {
     border: 1px solid #dedede;
 }
@@ -399,3 +398,4 @@ td, th {
 	font-size: 0.9em;
 	line-height: 1.4;
 }
+

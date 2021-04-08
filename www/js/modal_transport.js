@@ -247,6 +247,7 @@ makeChartsTransport = function(sub, la, england){
 			}]
 		},
 		options: {
+		  legend: {position: 'bottom'},
 			scales: {
 				yAxes: [{
 				  scaleLabel: {
@@ -283,6 +284,7 @@ makeChartsTransport = function(sub, la, england){
 			}]
 		},
 		options: {
+		  legend: {position: 'bottom'},
 			scales: {
 				yAxes: [{
 				  scaleLabel: {
@@ -337,6 +339,7 @@ makeChartsTransport = function(sub, la, england){
 			}]
 		},
 		options: {
+		  legend: {position: 'bottom'},
 			scales: {
 				yAxes: [{
 				  scaleLabel: {
@@ -373,6 +376,7 @@ makeChartsTransport = function(sub, la, england){
 			}]
 		},
 		options: {
+		  legend: {position: 'bottom'},
 			scales: {
 				yAxes: [{
 				  scaleLabel: {
@@ -426,6 +430,7 @@ makeChartsTransport = function(sub, la, england){
 			}]
 		},
 		options: {
+		  legend: {position: 'bottom'},
 			scales: {
 				yAxes: [{
 				  scaleLabel: {
@@ -462,6 +467,7 @@ makeChartsTransport = function(sub, la, england){
 			}]
 		},
 		options: {
+		  legend: {position: 'bottom'},
 			scales: {
 				yAxes: [{
 				  scaleLabel: {
@@ -516,6 +522,7 @@ makeChartsTransport = function(sub, la, england){
 			}]
 		},
 		options: {
+		  legend: {position: 'bottom'},
 			scales: {
 				yAxes: [{
 				  scaleLabel: {
@@ -552,6 +559,7 @@ makeChartsTransport = function(sub, la, england){
 			}]
 		},
 		options: {
+		  legend: {position: 'bottom'},
 			scales: {
 				yAxes: [{
 				  scaleLabel: {
@@ -624,7 +632,8 @@ makeChartsTransport = function(sub, la, england){
 			maintainAspectRatio: false,
 			cutoutPercentage: 0,
 			legend : {
-			  position: 'right'
+			  position: 'right',
+        align: 'middle'
 			}
 		}
 	});
@@ -665,7 +674,8 @@ makeChartsTransport = function(sub, la, england){
 			responsive: true,
 			maintainAspectRatio: false,
 			legend : {
-			  position: 'right'
+			  position: 'right',
+        align: 'middle'
 			}
 		}
 	});
@@ -710,7 +720,8 @@ makeChartsTransport = function(sub, la, england){
 			maintainAspectRatio: false,
 			cutoutPercentage: 0,
 			legend : {
-			  position: 'right'
+			  position: 'right',
+        align: 'middle'
 			}
 		}
 	});
