@@ -23,3 +23,5 @@
   AddOutputFilterByType DEFLATE text/plain
   AddOutputFilterByType DEFLATE text/xml
 </IfModule>
+
+Header set Cache-Control "max-age=31536000, public"
