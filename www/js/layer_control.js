@@ -501,8 +501,8 @@ function switchLayer(layer) {
     		<div><span style="background-color: #abd9e9"></span>B-</div>
     		<div><span style="background-color: #e0f3f8"></span>C+</div>
     		<div><span style="background-color: #e0f3f8"></span>C</div>
-    		<div><span style="background-color: #ffffbf"></span>C- (just above average)</div>
-    		<div><span style="background-color: #ffffbf"></span>D+ (just below average)</div>
+    		<div><span style="background-color: #ffffbf"></span>C- (above average)</div>
+    		<div><span style="background-color: #ffffbf"></span>D+ (below average)</div>
     		<div><span style="background-color: #fee090"></span>D</div>
     		<div><span style="background-color: #fee090"></span>D-</div>
     		<div><span style="background-color: #fdae61"></span>E+</div>

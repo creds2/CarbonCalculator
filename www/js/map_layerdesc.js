@@ -38,6 +38,12 @@ function switchLayerDesc(layer) {
   case "EPCScore":
     document.getElementById("layerdesc").innerHTML = `<p>The average Energy Performance Certificate score (1 – 100) for domestic buildings. Note not all homes have an EPC certificate. See the popup report for more details.</p>`;
     break;
+  case "low_energy_light":
+    document.getElementById("layerdesc").innerHTML = `<p>The percentage of lights which have low energy bulbs such as LEDs based on Energy Performance Certificates</p>`;
+    break;
+  case "floor_area_avg":
+    document.getElementById("layerdesc").innerHTML = `<p>The average floor area of homes based on Energy Performance Certificates</p>`;
+    break;
   case "SOAC11NM":
     document.getElementById("layerdesc").innerHTML = `<p>The Office for National Statistics <a href="https://www.ons.gov.uk/methodology/geography/geographicalproducts/areaclassifications/2011areaclassifications" target="_blank"> Area Classifications</a>. These are based on the 2011 Census and group similar areas based on social, economic, and demographic factors. Each group has a <a href="https://www.ons.gov.uk/methodology/geography/geographicalproducts/areaclassifications/2011areaclassifications/penportraitsandradialplots" target="_blank">pen portrait</a>.</p>`;
     break;
