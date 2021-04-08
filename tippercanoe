@@ -31,7 +31,7 @@ tippecanoe --output-to-directory=busstopstiles --name=busstops --layer=busstops 
 
 ### Bus Stops v2
 
-tippecanoe --output-to-directory=transitstops --name=transitstops --layer=transitstops --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=4  --drop-densest-as-needed -rg4 --force  transit_stop_frequency_v2.geojson 
+tippecanoe --output-to-directory=transitstops --name=transitstops --layer=transitstops --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=4  --drop-densest-as-needed -rg4 --force  transit_stop_frequency_v3.geojson 
 
 
 ### LSOA cents

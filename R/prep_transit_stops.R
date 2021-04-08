@@ -63,8 +63,8 @@ countwd2 <- function(startdate, enddate, weekday){
 
 
 count_stops <- function(gtfs, 
-                        startdate = lubridate::ymd("2020-06-01"), 
-                        enddate = lubridate::ymd("2020-07-31")){
+                        startdate = lubridate::ymd("2020-03-01"), 
+                        enddate = lubridate::ymd("2020-04-30")){
   message("Only using stops between ",startdate," and ",enddate)
   stop_times <- gtfs$stop_times
   trips <- gtfs$trips
@@ -143,7 +143,6 @@ count_stops <- function(gtfs,
 }
 
 
-
 stops_with_count = count_stops(gtfs_all)
 summary(stops_with_count$stops_per_week)
 
@@ -214,4 +213,12 @@ Encoding(stops_with_count$stop_name) <- "latin1"
 stops_with_count$stop_name <- enc2utf8(stops_with_count$stop_name)
 all(validUTF8(stops_with_count$stop_name))
 
-st_write(stops_with_count,"data/transit_stop_frequency_v2.geojson", delete_dsn = TRUE)
+st_write(stops_with_count,"data/transit_stop_frequency_v3.geojson", delete_dsn = TRUE)
+
+if(FALSE){
+  miss <- stops_with_count$stop_id[is.na(stops_with_count$grade)]
+  foo <- unique(gtfs_bus$stop_times$trip_id[gtfs_bus$stop_times$stop_id %in% miss])
+  foo <- unique(gtfs_bus$trips$service_id[gtfs_bus$trips$trip_id %in% foo])
+  foo <- gtfs_bus$calendar[gtfs_bus$calendar$service_id %in% foo,]
+  foo$dur <- foo$end_date - foo$start_date
+}
