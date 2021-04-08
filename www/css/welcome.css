@@ -2,19 +2,20 @@
 .welcome {
   position: fixed;
   top: 10%; 
-  width: 80%;
   max-width: 800px;
   height: 80%;
   background-color: white;
-  border-style: solid;
-  border-width: 1px;
-  border-color: black;
+  border: solid 1px #444;
   border-radius: 25px;
   z-index: 1003;
   padding: 20px;
-  margin-left: 5%;
-  margin-right: 5%;
   overflow: auto; /* Enable scroll if needed */
+  margin-left: 10%; /**scalable on mobile / tablets **/
+  margin-right: 10%;
+}
+p.welcome-end {
+    font-size: 0.9em;
+    font-weight: normal;
 }
 
 /* The Close Button */
@@ -30,9 +31,4 @@
   color: #000;
   text-decoration: none;
   cursor: pointer;
-}
-
-p.welcome-end {
-font-size: 0.9em;
-font-weight: normal;
 }

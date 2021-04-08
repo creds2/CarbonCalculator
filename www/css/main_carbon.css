@@ -12,8 +12,10 @@ body, html{
     position:relative;
     height:100%;
     font-family: Raleway, sans-serif;
-    line-height: 1.4;
-    color: #444;
+}
+body {
+	line-height: 1.4;
+	color: #444;
 }
 .header{
   width:100%;
@@ -21,6 +23,15 @@ body, html{
   background:#ffffff ;
 	padding:0;
 	font-size: 30px;
+}
+a {
+	color: #717e82;
+	font-weight: 600;
+	text-decoration: none;
+}
+a:hover {
+	color: #AC1A40;
+	text-decoration: underline;
 }
 
 /* Footer Menu */
@@ -89,7 +100,34 @@ a:hover {
   height:100%;
 }
 
+/**tab content wrapper**/
 
+.wrapper {
+	width: 100%;
+}
+.chart-container {
+	height: 400px;
+	width: 100%;
+}
+.chart-text {
+	width: 100%;
+	padding-right: 0;
+	}
+
+@media screen and (min-width: 56.25rem) /**900px**/ {
+	.chart-container {
+		position: relative;
+		float: right;
+		height: 400px;
+		width: 50%;
+	}
+	.chart-text {
+		position: relative;
+		float: left;
+		width: 50%;
+		padding-right: 4%;
+	}
+}
 
 /* Text */
 h1{
@@ -118,7 +156,7 @@ h1{
 .accordion:after {
   content: '\02795'; /* Unicode character for "plus" sign (+) */
   font-size: 13px;
-  color: white;
+  color: #fff;
   float: right;
   margin-left: 5px;
 }
@@ -314,8 +352,8 @@ li.smaller {
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
-font-family: Raleway, sans-serif;
-font-size: 0.9em;
+	font-family: Raleway, sans-serif;
+	font-size: 1em;
 }
 
 /* Change background color of buttons on hover */
@@ -343,21 +381,21 @@ font-size: 0.9em;
   clear: both;
 }
 
-/* tables */
+/**table styles**/
 table, th, td {
-border: 1px solid #dedede;
+    border: 1px solid #dedede;
 }
 table {
-border-collapse: separate;
-border-spacing: 0;
-border-width: 1px 0 0 1px;
-margin: 0 0 1.75em;
-table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-width: 1px 0 0 1px;
+    margin: 0 0 1.75em;
+    table-layout: fixed;
+    width: 100%;
 }
 td, th {
-vertical-align: top;
-font-size: 0.9em;
-line-height: 1.4;
-padding: 8px;
-text-align: left;
+	vertical-align: top;
+	font-size: 0.9em;
+	line-height: 1.4;
 }
+
