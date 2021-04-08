@@ -1,0 +1,6 @@
+http://www.carbon.place/index.html
+http://www.carbon.place/map.html
+http://www.carbon.place/la.html
+http://www.carbon.place/data.html
+http://www.carbon.place/about.html
+http://www.carbon.place/datawarnings.html

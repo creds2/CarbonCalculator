@@ -1,0 +1,5 @@
+# Group 1
+User-agent: *
+Allow: /
+
+Sitemap: http://www.carbon.place/sitemap.txt

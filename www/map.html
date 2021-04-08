@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<title>PBCC</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="Description" content="An iterative map showing the carbon footprint of each neighbourhood in England">
-<title>PBCC</title>
+<!-- PWA support -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="/images/creds192.png">
+<meta name="apple-mobile-web-app-status-bar" content="#AC1A40">
+<meta name="theme-color" content="#AC1A40">
+<script src="/app.js"></script>
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script type="text/javascript" src="js/ga_optout.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q11V10CDRV"></script>
@@ -327,7 +335,7 @@
       </p>
       <h3>Understanding the grades</h3>
       <p>Many values have been given a grade from A+ to F- to help you understand how this LSOA compares to others. The         grades are relative to the average LSOA, so areas with an A+ to C- grade are better than average, while areas with a       D+ to F- grade are worse than average. Most areas are close to the average, so theses grade bands are wide,               representing 7% of LSOAs. Towards the extremes, the grade bands narrow, so only the best 1% of LSOAs get an A+ grade       . In some cases, it is not possible to calculate a grade due to missing data, so a NA value will be shown.</p>
-      <p><img src="images/grades.webp" width = 100%></p>
+      <p><img src="images/grades.webp" style="width:100%; max-width:700px" alt="How grades are calculated"></p>
       
     </div>
   </div>
