@@ -3,10 +3,10 @@ library(tmap)
 library(dplyr)
 tmap_mode("view")
 
-iso_bike <- readRDS("data-prepared/isochones_bike.Rds")
-iso_walk <- readRDS("data-prepared/isochones_walk.Rds")
-iso_transit <- readRDS("data-prepared/isochones_transit.Rds")
-iso_biketransit <- readRDS("data-prepared/isochones_biketransit.Rds")
+iso_bike <- readRDS("data-prepared/isochones_bike_v2.Rds")
+iso_walk <- readRDS("data-prepared/isochones_walk_v2.Rds")
+iso_transit <- readRDS("data-prepared/isochones_transit_v3.Rds")
+iso_biketransit <- readRDS("data-prepared/isochones_biketransit_v3.Rds")
 
 iso_bike$mode <- "BIKE"
 iso_walk$mode <- "WALK"
@@ -36,11 +36,15 @@ for(i in 1:length(iso_all)){
   }
 }
 
-miss_bike <- lsoa$code[!lsoa$code %in% iso_bike$fromPlace] 
-miss_bike <- lsoa[lsoa$code %in% miss_bike,]
+if(FALSE){
+  miss_bike <- lsoa$code[!lsoa$code %in% iso_bike$fromPlace] 
+  miss_bike <- lsoa[lsoa$code %in% miss_bike,]
+  
+  foo <- st_drop_geometry(iso_biketransit)
+  foo <- foo[order(foo$area, decreasing = TRUE),]
+  
+  tm_shape(nngeo::st_remove_holes(sub)) +
+    tm_borders()
+}
 
-foo <- st_drop_geometry(iso_biketransit)
-foo <- foo[order(foo$area, decreasing = TRUE),]
 
-tm_shape(nngeo::st_remove_holes(sub)) +
-  tm_borders()

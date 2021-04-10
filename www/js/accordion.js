@@ -43,6 +43,7 @@ function showlegend(show){
     }
 }
 
+/*
 function expandtopnav() {
   var x = document.getElementById("topnav");
   if (x.className === "topnav") {
@@ -50,4 +51,14 @@ function expandtopnav() {
   } else {
     x.className = "topnav";
   }
-} 
+}
+*/
+
+function expandtopnav() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}

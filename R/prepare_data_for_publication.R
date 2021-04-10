@@ -4,9 +4,6 @@ library(dplyr)
 all <- readRDS("data/base_data_v4.Rds")
 
 #TODO: get population for 2010
-#TODO: gas emsison factors seem suspect
-#TODO: gas and electric for 2018
-
 # gas
 # all$gas_percap_2010 <- all$TotDomGas_10_kWh * 0 / all$pop_2011 
 # all$gas_percap_2011 <- all$TotDomGas_11_kWh * 0.07518 / all$pop_2011
@@ -218,11 +215,29 @@ all$flights_grade <- value2grade(all$flights_percap_2018)
 
 all$other_heating_grade <- value2grade(all$other_heat_percap_2011)
 all$van_grade <- value2grade(all$van_percap_2018)
-all$consumption_grade <- value2grade(rowSums(all[,c("nutrition_kgco2e_percap",
-                                                    "other_shelter_kgco2e_percap",
-                                                    "consumables_kgco2e_percap",
-                                                    "recreation_kgco2e_percap",
-                                                    "services_kgco2e_percap")]))
+all$consumption_emissions <- rowSums(all[,c("nutrition_kgco2e_percap",
+                                            "other_shelter_kgco2e_percap",
+                                            "consumables_kgco2e_percap",
+                                            "recreation_kgco2e_percap",
+                                            "services_kgco2e_percap")])
+all$consumption_grade <- value2grade(all$consumption_emissions)
+
+# SUppress Grades on error LSOA
+#foo <- all[all$total_percap > 25000 | all$total_percap < 2000, ]
+supp_tot <- c("E01028521","E01025690","E01026860","E01013378","E01006747","E01033221",
+"E01011678","E01005210","E01033233","E01009635","E01033634","E01009642","E01017986",
+"E01008407","E01013816","E01017958","E01006513","E01009641","E01033197","E01006512",
+"E01017034","E01017032","E01005062","E01033583","E01013973","E01033553","E01008406",
+"E01033006","E01011229","E01005209","E01016899","E01033005","E01032797","E01008397",
+"E01008068","E01005284","E01005231","E01033554","E01025105","E01033762","E01033561",
+"E01011670","E01017140","E01033724","E01026133","E01009284","E01013648","E01033556")
+supp_van <- c("E01016281","E01016767","E01015503","E01019556","E01010151","E01033484",
+"E01009320")
+
+all$total_emissions_grade[all$LSOA11 %in% c(supp_tot,supp_van)] <- NA
+all$van_grade[all$LSOA11 %in% c(supp_van)] <- NA
+
+
 
 all$car_km_18  <- NULL # Only Grade needed
 
@@ -231,7 +246,7 @@ all_old = all
 # Round data
 all[] <- lapply(all[], function(x){
   if(is.numeric(x)){
-    x <- signif(x, digits = 3)
+    x <- signif(x, round = 3)
   }
   x
 })

@@ -298,7 +298,15 @@ function openCity(evt, tabName) {
 // Data Warning Box
 function showwarnbox(lsoaID){
   
-  var badlsoa = ['E01009320'];
+  var badlsoa = ["E01028521","E01025690","E01026860","E01013378","E01006747","E01033221",
+"E01011678","E01005210","E01033233","E01009635","E01033634","E01009642","E01017986",
+"E01008407","E01013816","E01017958","E01006513","E01009641","E01033197","E01006512",
+"E01017034","E01017032","E01005062","E01033583","E01013973","E01033553","E01008406",
+"E01033006","E01011229","E01005209","E01016899","E01033005","E01032797","E01008397",
+"E01008068","E01005284","E01005231","E01033554","E01025105","E01033762","E01033561",
+"E01011670","E01017140","E01033724","E01026133","E01009284","E01013648","E01033556",
+"E01016281","E01016767","E01015503","E01019556","E01010151","E01033484",
+"E01009320"];
   
   if(badlsoa.includes(lsoaID)){
     document.getElementById("datawarning").innerHTML = `<p><b>Warning</b>: This LSOA has been identifed by the PBCC team as having data issue <a href="datawarnings.html">click here for details</a></p>`;
