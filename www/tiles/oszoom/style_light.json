@@ -86,7 +86,7 @@
             "id": "greenspace",
             "type": "fill",
             "source": "composite",
-            "source-layer": "greenspaces",
+            "source-layer": "greenspace",
             "layout": {},
             "paint": {"fill-color": "#eaeee7", "fill-antialias": false}
         },
@@ -94,7 +94,7 @@
             "id": "greenspace outlines",
             "type": "line",
             "source": "composite",
-            "source-layer": "greenspaces",
+            "source-layer": "greenspace",
             "layout": {"line-join": "round"},
             "paint": {
                 "line-color": "#d5ddd0",
