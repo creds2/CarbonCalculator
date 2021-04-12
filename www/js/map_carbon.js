@@ -70,6 +70,16 @@ map.addControl(new mapboxgl.AttributionControl({
 customAttribution: 'Contains OS data © Crown copyright 2021'
 }));
 
+// Add geolocate control to the map.
+map.addControl(new mapboxgl.GeolocateControl({
+positionOptions: {
+enableHighAccuracy: true
+},
+trackUserLocation: true
+})
+,'top-left');
+
+
 toggleLayer('carbon');
 toggleLayer('la');
 toggleLayer('transitstops');
