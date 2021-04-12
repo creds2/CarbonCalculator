@@ -25,7 +25,7 @@ body {
 	font-size: 30px;
 }
 a {
-	color: #717e82;
+	color: #545454;
 	font-weight: 600;
 	text-decoration: none;
 }
@@ -65,7 +65,7 @@ a:hover {
 
 /* Link Style */
 a {
-  color: #717e82;
+  color: #545454;
   font-weight: 600;
   text-decoration: none;
 }
@@ -140,7 +140,7 @@ h1{
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-    background-color: #717e82;
+    background-color: #545454;
     color: #fff;
     cursor: pointer;
     padding: 18px;
@@ -169,7 +169,7 @@ h1{
 
 .topnav {
   overflow: hidden;
-  background-color: #717e82;
+  background-color: #545454;
   z-index: 1100;
 }
 
