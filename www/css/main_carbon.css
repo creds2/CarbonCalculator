@@ -397,3 +397,43 @@ td, th {
 	line-height: 1.4;
 }
 
+.cookiewarning{
+   position: fixed; 
+   bottom: 0; 
+   left:0;
+   padding:10px;
+   width: 100%; 
+   z-index:5000; 
+   background-color:#AC1A40; 
+   font-size: 12px; 
+   color:#fff;
+}
+
+.cookiewarning a.active{
+   color:#fff;
+}
+
+.cookiewarning button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+.button1 {
+  background-color: #4CAF50;
+  width:50%;
+  max-width: 500px;
+  
+}
+.button2 {
+  background-color: #f44336;
+  position: absolute;
+  right:10%;
+  width:20%;
+  max-width: 200px;
+}
