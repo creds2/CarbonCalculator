@@ -80,6 +80,14 @@ trackUserLocation: true
 ,'top-left');
 
 
+// Add Scale bar
+map.addControl(new mapboxgl.ScaleControl({
+  maxWidth: 80,
+  unit: 'metric'
+}),'bottom-right');
+
+
+
 toggleLayer('carbon');
 toggleLayer('la');
 toggleLayer('transitstops');
