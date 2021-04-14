@@ -241,41 +241,54 @@ map.on('click', 'centroids', function (e) {
 
 // On click open modal
 map.on('click', 'carbon', function(e) {
-
-	modal.style.display = "block";
-	
-  var sub = e.features[0].properties;
-	var la = ladata.find(obj => {
-    return obj.LAD17NM === sub.LAD17NM;
-  });
-	
-	var england = ladata.find(obj => {
-    return obj.LAD17NM === "England";
+  
+  // Block Modal when clicking on other layers
+  let f = map.queryRenderedFeatures(e.point);
+  f = f.filter(function (el) {
+    return el.source != 'composite';
   });
   
-  var oac = oacdata.find(obj => {
-    return obj.SOAC11NM === sub.SOAC11NM;
-  });
+  //console.log(f);
+  //console.log(f.length);
+  
+  if (f.length == 1) {
+    
+    modal.style.display = "block";
 	
-	var lsoadataurl = 'data/lsoa/' + sub.LSOA11 + '.json';
-  var lsoadata;
-  $.getJSON(lsoadataurl, function (json) {
-      console.log( "downloaded LSOA json" );
-      lsoadata = json[0];
-  })
-    .done(function() {
-      //Hide Spinner
-      $('#loader').hide();
-      // Define Charts
-		  makeChartsOverview(lsoadata,la, england, oac);
-		  makeChartsEPC(lsoadata);
-	    makeChartsTransport(lsoadata, la, england);
-	    makeChartsHousing(lsoadata, la, england);
-    })
-    .fail(function() {
-      alert("Failed to LSOA get JSON, please try refreshing the page");
+    var sub = e.features[0].properties;
+  	var la = ladata.find(obj => {
+      return obj.LAD17NM === sub.LAD17NM;
     });
-	
+  	
+  	var england = ladata.find(obj => {
+      return obj.LAD17NM === "England";
+    });
+    
+    var oac = oacdata.find(obj => {
+      return obj.SOAC11NM === sub.SOAC11NM;
+    });
+  	
+  	var lsoadataurl = 'data/lsoa/' + sub.LSOA11 + '.json';
+    var lsoadata;
+    $.getJSON(lsoadataurl, function (json) {
+        console.log( "downloaded LSOA json" );
+        lsoadata = json[0];
+    })
+      .done(function() {
+        //Hide Spinner
+        $('#loader').hide();
+        // Define Charts
+  		  makeChartsOverview(lsoadata,la, england, oac);
+  		  makeChartsEPC(lsoadata);
+  	    makeChartsTransport(lsoadata, la, england);
+  	    makeChartsHousing(lsoadata, la, england);
+      })
+      .fail(function() {
+        alert("Failed to get data for this LSOA, please try refreshing the page");
+      });
+    
+    //return;
+  } 
 	
 });
 
