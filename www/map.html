@@ -22,18 +22,6 @@
   gtag('config', 'G-Q11V10CDRV');
 </script>
 
-<!-- Hotjar Tracking Code for www.carbon.place -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:2339138,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-
 <!-- Third Party Scrips -->
 <script src="https://kit.fontawesome.com/1f7357bc14.js" crossorigin="anonymous"></script>
 
@@ -97,7 +85,11 @@
 <!-- Set Up Mapbox -->
 <script src="js/lib/mapbox-gl-js-1.13/mapbox-gl.js"></script>
 <link href="js/lib/mapbox-gl-js-1.13/mapbox-gl.css" rel="stylesheet" />
-  
+<!--
+<script src="js/lib/mapbox-gl-generic-geocoder/index.js"></script>
+<link href="js/lib/mapbox-gl-generic-geocoder/mapbox-gl-generic-geocoder.css" rel="stylesheet" />
+-->
+
 <!-- Set Up Other JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -190,14 +182,17 @@
   
 </div>
 
-<button class="accordion">Local Authorities </button>
+<button class="accordion">Administrative boundaries</button>
 <div class="panel">
-  <p><input type="checkbox" id="lacheckbox" value="true" onclick="toggleLayer('la')"> Show Layer</p>
-  <p>Show Lower Tier/Unitary Local Authority Boundaries</p>
+  <p>Show Administrative boundaries</p>
+  <p><input type="checkbox" id="lacheckbox" value="true" onclick="toggleLayer('la')"> Lower Tier/Unitary Local Authority</p>
+  <p><input type="checkbox" id="wardscheckbox" value="true" onclick="toggleLayer('wards')"> Wards</p>
+  <p><input type="checkbox" id="constituenciescheckbox" value="true" onclick="toggleLayer('constituencies')"> Westminster Constituencies</p>
+  <p><input type="checkbox" id="parishcheckbox" value="true" onclick="toggleLayer('parish')"> Parishes</p>
 </div>
 
 
-<button class="accordion">Transport Stops </button>
+<button class="accordion">Transport stops </button>
 <div class="panel">
   <p><input type="checkbox" id="transitstopscheckbox" value="true" onclick="toggleLayer('transitstops')"> Show Layer</p>
   <p>Shows public transport stops and frequency of service. Stops are coloured using the A+ (most) to F- (least) frequent grades. Click on stops for more details, and zoom in to see more stops.</p>

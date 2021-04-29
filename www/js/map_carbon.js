@@ -37,6 +37,33 @@ map.addSource('la', {
 	'maxzoom': 13
 });
 
+map.addSource('parish', {
+	'type': 'vector',
+	'tiles': [
+	'https://www.carbon.place/tiles/parish/{z}/{x}/{y}.pbf'
+	],
+	'minzoom': 4,
+	'maxzoom': 13
+});
+
+map.addSource('constituencies', {
+	'type': 'vector',
+	'tiles': [
+	'https://www.carbon.place/tiles/constituencies/{z}/{x}/{y}.pbf'
+	],
+	'minzoom': 4,
+	'maxzoom': 13
+});
+
+map.addSource('wards', {
+	'type': 'vector',
+	'tiles': [
+	'https://www.carbon.place/tiles/wards/{z}/{x}/{y}.pbf'
+	],
+	'minzoom': 4,
+	'maxzoom': 13
+});
+
 map.addSource('transitstops', {
 	'type': 'vector',
 	'tiles': [
@@ -86,7 +113,32 @@ map.addControl(new mapboxgl.ScaleControl({
   unit: 'metric'
 }),'bottom-right');
 
+// Add Geocoder
+/*
+var geocodeNominatimRequest = function(query, mapBounds, options) {
+	var params = { format: "json", q: query, limit: options.limit };
+	var urlParams = new URLSearchParams(Object.entries(params));
 
+	return fetch("http://nominatim.openstreetmap.org/search?" + urlParams).then(function(response) {
+		if(response.ok) {
+			return response.json();
+		} else {
+			return [];
+		}
+	}).then(function(json) {
+		return json.map(function(result) {
+			return {
+				name: result.display_name,
+				lat: result.lat,
+				lon: result.lon,
+				bbox: [result.boundingbox[2], result.boundingbox[0], result.boundingbox[3], result.boundingbox[1]]
+			};
+		});
+	});
+};
+
+map.addControl(new MapboxGenericGeocoder({}, geocodeNominatimRequest));
+*/
 
 toggleLayer('carbon');
 toggleLayer('la');

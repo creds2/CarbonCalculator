@@ -24,6 +24,14 @@ consider
 
 tippecanoe --output-to-directory=la_tiles --name=la --layer=la --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=0  --drop-smallest-as-needed --simplification=10 --detect-shared-borders --force  bounds/la_bounds.geojson
 
+### Admin boundaries
+
+tippecanoe --output-to-directory=parish_tiles --name=parish --layer=parish --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=0  --drop-smallest-as-needed --simplification=10 --detect-shared-borders --force  bounds/parish.geojson
+
+tippecanoe --output-to-directory=constituencies_tiles --name=constituencies --layer=constituencies --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=0  --drop-smallest-as-needed --simplification=10 --detect-shared-borders --force  bounds/constituencies.geojson
+
+tippecanoe --output-to-directory=wards_tiles --name=wards --layer=wards --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=0  --drop-smallest-as-needed --simplification=10 --detect-shared-borders --force  bounds/wards.geojson
+
 
 ### Bus Stops
 

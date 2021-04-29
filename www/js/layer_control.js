@@ -17,7 +17,46 @@ function toggleLayer(layerName){
             'source': 'la',
             'source-layer': 'la',
             'paint': {
-              'line-color': 'rgba(0, 0, 0, 1)',
+              'line-color': 'rgba(107, 7, 7, 1)',
+              'line-width': 2
+            }
+        });
+        break;
+      case 'wards':
+        // code block
+        map.addLayer({
+            'id': 'wards',
+            'type': 'line',
+            'source': 'wards',
+            'source-layer': 'wards',
+            'paint': {
+              'line-color': 'rgba(32, 107, 7, 1)',
+              'line-width': 2
+            }
+        });
+        break;
+      case 'constituencies':
+        // code block
+        map.addLayer({
+            'id': 'constituencies',
+            'type': 'line',
+            'source': 'constituencies',
+            'source-layer': 'constituencies',
+            'paint': {
+              'line-color': 'rgba(7, 54, 107, 1)',
+              'line-width': 2
+            }
+        });
+        break;
+      case 'parish':
+        // code block
+        map.addLayer({
+            'id': 'parish',
+            'type': 'line',
+            'source': 'parish',
+            'source-layer': 'parish',
+            'paint': {
+              'line-color': 'rgba(107, 7, 99, 1)',
               'line-width': 2
             }
         });
