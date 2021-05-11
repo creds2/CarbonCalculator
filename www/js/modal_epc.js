@@ -135,7 +135,7 @@ makeChartsEPC = function(sub){
 	
 	// EPC roof Chart
   var roofscore = [sub.roof_verygood,sub.roof_good,sub.roof_average,
-		sub.roof_poor,sub.roof_verypoor,sub.roof_other];
+		sub.roof_poor,sub.roof_verypoor,sub.roof_other,sub.roof_above];
 	
 	if(roofscoreChart){
 		roofscoreChart.destroy();
@@ -154,12 +154,13 @@ makeChartsEPC = function(sub){
 				'rgba(255,255,191, 1)',
 				'rgba(253,174,97, 1)',
 				'rgba(215,25,28, 1)',
-				'rgba(192,192,192, 1)'
+				'rgba(192,192,192, 1)',
+				'rgba(139, 33, 181, 1)'
 				]
 				
 			}],
 			
-			labels: ['Very Good','Good','Average','Poor','Very Poor','Other/Missing']
+			labels: ['Very Good','Good','Average','Poor','Very Poor','Other/Missing','Property Above']
 		},
 		options: {
 			responsive: true,
@@ -172,7 +173,7 @@ makeChartsEPC = function(sub){
 	
 	// EPC floor Chart
   var floorscore = [sub.floor_verygood,sub.floor_good,sub.floor_average,
-		sub.floor_poor,sub.floor_verypoor,sub.floor_other];
+		sub.floor_poor,sub.floor_verypoor,sub.floor_other,sub.floor_below];
 	
 	if(floorscoreChart){
 		floorscoreChart.destroy();
@@ -191,12 +192,13 @@ makeChartsEPC = function(sub){
 				'rgba(255,255,191, 1)',
 				'rgba(253,174,97, 1)',
 				'rgba(215,25,28, 1)',
-				'rgba(192,192,192, 1)'
+				'rgba(192,192,192, 1)',
+				'rgba(139, 33, 181, 1)'
 				]
 				
 			}],
 			
-			labels: ['Very Good','Good','Average','Poor','Very Poor','Other/Missing']
+			labels: ['Very Good','Good','Average','Poor','Very Poor','Other/Missing','Property Below']
 		},
 		options: {
 			responsive: true,

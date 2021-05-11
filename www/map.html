@@ -46,7 +46,7 @@
   <p>We use cookies to measure how you use our website so we can understand how you interact with it, which helps us to make improvements.<a href="privacy.html">Find out more.</a></p>
   <p>
     <button onclick="cookiebutton(true)" class="button button1">OK</button>
-    <button onclick="cookiebutton(false)"class="button button2">NO</button>
+    <button onclick="cookiebutton(false)" class="button button2">NO</button>
   </p>
 </div>
 <script type="text/javascript" src="js/ga_optout.js"></script>
@@ -197,12 +197,36 @@
   <p><input type="checkbox" id="transitstopscheckbox" value="true" onclick="toggleLayer('transitstops')"> Show Layer</p>
   <p>Shows public transport stops and frequency of service. Stops are coloured using the A+ (most) to F- (least) frequent grades. Click on stops for more details, and zoom in to see more stops.</p>
   
+  <div>
+  	  <div><span style="background-color: #313695; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>A+ (best 1%)</div>
+    		<div><span style="background-color: #4575b4; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>A</div>
+    		<div><span style="background-color: #4575b4; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>A- (best 10%)</div>
+    		<div><span style="background-color: #74add1; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>B+</div>
+    		<div><span style="background-color: #abd9e9; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>B</div>
+    		<div><span style="background-color: #abd9e9; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>B-</div>
+    		<div><span style="background-color: #e0f3f8; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>C+</div>
+    		<div><span style="background-color: #e0f3f8; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>C</div>
+    		<div><span style="background-color: #ffffbf; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>C- (above average)</div>
+    		<div><span style="background-color: #ffffbf; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>D+ (below average)</div>
+    		<div><span style="background-color: #fee090; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>D</div>
+    		<div><span style="background-color: #fee090; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>D-</div>
+    		<div><span style="background-color: #fdae61; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>E+</div>
+    		<div><span style="background-color: #fdae61; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>E</div>
+    		<div><span style="background-color: #f46d43; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>E-</div>
+    		<div><span style="background-color: #d73027; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>F+ (worst 10%)</div>
+    		<div><span style="background-color: #d73027; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>F</div>
+    		<div><span style="background-color: #a50026; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>F- (worst 1%)</div>
+    		<div><span style="background-color: #e0e0e0; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>No Data</div>
+  </div>
+  
+  
 </div>
 
 <button class="accordion">15-minute neighbourhoods</button>
 <div class="panel">
-  <p><input type="checkbox" id="centroidscheckbox" value="true" onclick="toggleLayer('centroids')"> Show Layer</p>
-  <p>Click on a point to show 15 minute isochrones for different modes of travel</p>
+  <p><input type="checkbox" id="centroidscheckbox" value="true" onclick="toggleLayer('centroids')"> Show centroids</p>
+  <button onclick="removeisochrones()">Clear isochrones</button>
+  <p>Click on the population weighted centroid of an LSOA to show 15-minute isochrones for different modes of travel</p>
   <div>
     <div><span style="background-color: #4daf4a; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>Walking</div>
 	  <div><span style="background-color: #377eb8; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>Bicycle</div>
@@ -213,7 +237,7 @@
   Bike + Transit assumes you can board the transit service with your bike and then use it 
   at the other end of your journey.
   </p>
-  <button onclick="removeisochrones()">Clear Map</button>
+  
   
 </div>
 
@@ -344,8 +368,9 @@
       The horizontal black line represents the UK’s target footprint per person set out in the Committee on Climate             Change’s <a href="https://www.theccc.org.uk/publication/sixth-carbon-budget/" target="_blank" rel="noopener">6th Carbon Budget</a>, covering 2032 to 2037. It is intended to provide an indication of how far we must go in the next ten years if we are to have any chance of reaching net-zero by 2050.
       </p>
       <h3>Understanding the grades</h3>
-      <p>Many values have been given a grade from A+ to F- to help you understand how this LSOA compares to others. The         grades are relative to the average LSOA, so areas with an A+ to C- grade are better than average, while areas with a       D+ to F- grade are worse than average. Most areas are close to the average, so theses grade bands are wide,               representing 7% of LSOAs. Towards the extremes, the grade bands narrow, so only the best 1% of LSOAs get an A+ grade       . In some cases, it is not possible to calculate a grade due to missing data, so a NA value will be shown.</p>
       <p><img src="images/grades.webp" style="width:100%; max-width:700px" alt="How grades are calculated"></p>
+      <p>Many values have been given a grade from A+ to F- to help you understand how this LSOA compares to others. The         grades are relative to the average LSOA, so areas with an A+ to C- grade are better than average, while areas with a       D+ to F- grade are worse than average. Most areas are close to the average, so theses grade bands are wide,               representing 7% of LSOAs. Towards the extremes, the grade bands narrow, so only the best 1% of LSOAs get an A+ grade       . In some cases, it is not possible to calculate a grade due to missing data, so a NA value will be shown.</p>
+      
       
     </div>
   </div>
@@ -619,7 +644,7 @@ For this tool, we took an extract of the EPC database from 2020 and summarised t
   	<div class="wrapper">
   	  <div class="chart-text">
   	    <h4>Main Heating System Rating</h4>
-  	    <p>TODO</p>
+  	    <p>This chart shows the efficiency rating of heating systems. An efficient heating system used less energy than an inefficient system to provide the same amount of heating. Note that a very efficient heating system may not be low carbon. For example a modern condensing gas boiler has an efficiency of over 90% yet is it still a high carbon heating source as it is fuelled by gas.  </p>
   	  </div>
   	  <div class="chart-container" >
     		<canvas id="mainheatscoreChart"></canvas>
@@ -664,7 +689,20 @@ As we have some data on how incomes vary around the country, we can fill in the 
   
   <div id="General" class="tabcontent">
     <h3>Context</h3>
+    
     <div class="wrapper">
+		  
+		  <div class="chart-text">
+		    <h4>Mid year population estimate</h4>
+		    <p>The Office for National Statistics mid-year population estimate for 2011 to 2018. These are used to convert total carbon emissions into average per-person carbon footprints. They help account for areas with significant changes in population over time. </p>
+		  </div>
+		  <div class="chart-container" >
+  			<canvas id="popChart"></canvas>
+  		</div>
+		</div>
+    
+    <div class="wrapper">
+      <h4>LSOA Characteristics</h4>
       <table>
     		  <tr>
     			<th>Name</th>
@@ -692,6 +730,17 @@ As we have some data on how incomes vary around the country, we can fill in the 
     		  </tr>
     		</table>
     </div>
+    
+    
+    <div>
+      <h4>ONS pen portrait</h4>
+    <p>The Office for National Statistics Area Classifications group LSOA based on sociodemographic characteristics. Each LSOA is grouped into a supergroup and some supergroups are further split into subgroups.</p>
+    <p><b>Supergroup Description</b></p>
+    <div id="penportsup"></div>
+    <p><b>Subgroup Description</b></p>
+    <div id="penportsub"></div>
+    </div>
+    
   </div>
   
 </div>
@@ -707,6 +756,7 @@ As we have some data on how incomes vary around the country, we can fill in the 
 <script type="text/javascript" src="js/modal_epc.js"></script>
 <script type="text/javascript" src="js/modal_transport.js"></script>
 <script type="text/javascript" src="js/modal_housing.js"></script>
+<script type="text/javascript" src="js/modal_general.js"></script>
 <script type="text/javascript" src="js/welcome.js"></script>
 <script type="text/javascript" src="js/map_layerdesc.js"></script>
 <script type="text/javascript" src="js/layer_control.js"></script>

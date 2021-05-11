@@ -120,9 +120,9 @@ function toggleLayer(layerName){
             'paint': {
               // make circles larger as the user zooms from z12 to z22
               'circle-radius': {
-                'base': 3,
+                'base': 5,
                 'stops': [
-                  [10, 5],
+                  [10, 7],
                   [22, 180]
                 ]
               },
@@ -458,7 +458,7 @@ function switchLayer(layer) {
         // code block
         
         document.getElementById("legend").innerHTML = `<button onclick="showlegend(false)" style="float:right" aria-label="Hide legend"><i class="fas fa-times"></i></button>
-        <h4>EPC Scores</h4>
+        <h4>% low energy lights</h4>
         <div><span style="background-color: #800026"></span>20% </div>
   			<div><span style="background-color: #bd0026"></span>30% </div>
   			<div><span style="background-color: #e31a1c"></span>40% </div>

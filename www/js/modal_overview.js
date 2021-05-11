@@ -105,7 +105,7 @@ makeChartsOverview = function(lsoadata, la, england, oac){
   	document.getElementById("data_car_emissions").innerHTML = lsoadata.car_percap_2018;
   	document.getElementById("data_van_emissions").innerHTML = lsoadata.van_percap_2018;
   	document.getElementById("data_flights_emissions").innerHTML = lsoadata.flights_percap_2018;
-  	document.getElementById("data_consumption_emissions").innerHTML = lsoadata.consumption_percap_2018;
+  	document.getElementById("data_consumption_emissions").innerHTML = lsoadata.consumption_emissions;
   	
   	document.getElementById("data_LSOA11").innerHTML = lsoadata.LSOA11;
   	document.getElementById("data_LSOA11NM").innerHTML = lsoadata.LSOA11NM;

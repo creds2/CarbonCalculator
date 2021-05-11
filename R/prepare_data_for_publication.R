@@ -94,6 +94,7 @@ paste0("car_percap_",  2010:2018),
 paste0("van_percap_",  2010:2018),
 paste0("cars_percap_", 2010:2018),
 paste0("AvgCO2_cars_", 2010:2018),
+paste0("pop_",  2011:2018),
 "pP1900","p1900_18","p1919_29","p1930_39","p1945_54","p1955_64","p1965_72",
 "p1973_82","p1983_92","p1993_99","p2000_09","p2010_15","pUNKNOWN",
 "Whole_House_Detached","Whole_House_Semi","Whole_House_Terraced",
@@ -106,9 +107,11 @@ paste0("AvgCO2_cars_", 2010:2018),
 "type_maisonette","type_parkhome","type_other",  "type_bungalow",
 "floor_area_avg","low_energy_light",
 paste0("floor_",  c("verygood","good","average","poor","verypoor","other")),
+"floor_below",
 paste0("window_",  c("verygood","good","average","poor","verypoor","other")),
 paste0("wall_",  c("verygood","good","average","poor","verypoor","other")),
 paste0("roof_",  c("verygood","good","average","poor","verypoor","other")),
+"roof_above",
 paste0("mainheat_",  c("verygood","good","average","poor","verypoor","other")),
 paste0("mainheatcontrol_",  c("verygood","good","average","poor","verypoor","other")),
 "mainheatdesc_gasboiler",
@@ -237,6 +240,26 @@ supp_van <- c("E01016281","E01016767","E01015503","E01019556","E01010151","E0103
 all$total_emissions_grade[all$LSOA11 %in% c(supp_tot,supp_van)] <- NA
 all$van_grade[all$LSOA11 %in% c(supp_van)] <- NA
 
+# summary(all$cars_percap_2018)
+# foo <- all[all$cars_percap_2018 > 2,]
+
+supp_car <- c("E01033484","E01013536","E01032868","E01014484","E01014868","E01015551",
+"E01015503","E01015686","E01016190","E01016281","E01016474","E01016508","E01016793",
+"E01016767","E01016763","E01016823","E01017053","E01017054","E01031931","E01017478",
+"E01017466","E01018138","E01019574","E01019579","E01019677","E01019970","E01021473",
+"E01032933","E01023142","E01023866","E01027131","E01027719","E01028506","E01028456",
+"E01028473","E01031207","E01033248","E01032403","E01004948","E01004951","E01007640",
+"E01009320","E01010109","E01010108","E01010151","E01011457","E01011325","E01011363",
+"E01011734","E01002520")
+
+
+all$car_emissions_grade[all$LSOA11 %in% c(supp_car)] <- NA
+all$cars_percap_grade[all$LSOA11 %in% c(supp_car)] <- NA
+
+supp_elec <- c('E01013973','E01016370','E01033500','E01031998','E01017958','E01021736',
+               'E01026860','E01029576','E01033749','E01007862','E01033561','E01010257','E01003016')
+
+all$elec_emissions_grade[all$LSOA11 %in% c(supp_elec)] <- NA
 
 
 all$car_km_18  <- NULL # Only Grade needed
@@ -246,7 +269,7 @@ all_old = all
 # Round data
 all[] <- lapply(all[], function(x){
   if(is.numeric(x)){
-    x <- signif(x, round = 3)
+    x <- signif(x, digits  = 3)
   }
   x
 })
@@ -265,6 +288,20 @@ for(i in 1:ncol(all)){
     message(names(all)[i]," has ",sum(is.na(sub))," na values")
   }
   
+}
+
+all <- as.data.frame(all)
+
+for(i in 1:ncol(all)){
+  sub <- all[,i]
+  if(class(sub) != "character"){
+    mx <- max(sub, na.rm = TRUE)
+    mn <- min(sub, na.rm = TRUE)
+    
+    if(mx > 10 * mn){
+      message(names(all)[i]," has a range of ",mn," to ",mx)
+    }
+  }
 }
 
 
