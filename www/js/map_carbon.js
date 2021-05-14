@@ -9,6 +9,66 @@ maxZoom: 13,
 minZoom: 5
 });
 
+const createButton = (text, onclick) => {
+    const button = document.createElement('button');
+    button.setAttribute('type', 'button');
+    button.appendChild(document.createTextNode(text));
+    button.addEventListener('click', onclick);
+    return button;
+};
+const returnButton = createButton('Search', (ev) => {
+    // map.setCenter(centerMarker.getLngLat());
+    //console.log(document.getElementById('searchid').value);
+    var OSMlocation = '';
+    var OSMurl = 'https://nominatim.openstreetmap.org/search?q=' +
+    document.getElementById('searchid').value + '&format=json&limit=1&countrycodes=gb';
+    $.getJSON(OSMurl, function (json) {
+      OSMlocation = json;
+      
+    })
+      .done(function() {
+        //Hide Spinner
+        
+        $('#loader').hide();
+        console.log("found " + OSMlocation[0].lon + " " + OSMlocation[0].lat);
+        //Move map
+        map.flyTo({
+          center: [OSMlocation[0].lon, OSMlocation[0].lat],
+          zoom: 11,
+          essential: true
+          });
+
+      })
+      .fail(function() {
+        alert("Failed to search for location, please try refreshing the page");
+      });
+    
+    
+});
+const mapboxglLatLngControl = {
+    onAdd: (map) => {
+        const seachbox = document.createElement('div');
+        seachbox.classList.add('custom-control', 'mapboxgl-ctrl');
+        seachbox.classList.add('custom-control-search');
+        const i = document.createElement('input');
+        i.type = 'text';
+        i.id = 'searchid';
+        i.className = 'custom-control-search-input';
+        seachbox.appendChild(i);
+        seachbox.appendChild(returnButton);
+        //map.on('moveend', updateLatLon);
+        //updateLatLon();
+        return seachbox;
+    },
+    getDefaultPosition: () => {
+        return 'top-left'
+    },
+    onRemove: () => {
+        map.off('moveend', updateLatLon);
+    }
+};
+map.addControl(mapboxglLatLngControl);
+
 
 // Setup other part of the website
 showrighbox(true); // Show the accordion hide the button 
