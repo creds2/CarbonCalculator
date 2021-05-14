@@ -381,7 +381,7 @@ function makeChartsHousing(lsoadata, la, england){
               '1973 to 1982',
               '1983 to 1992',
               '1993 to 1999',
-              '2000 to 1909',
+              '2000 to 2009',
               '2010 to 2015',
               'Unknown']
 		},

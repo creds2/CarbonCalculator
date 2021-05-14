@@ -1,53 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>PBCC</title>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="Description" content="An iterative map showing the carbon footprint of each neighbourhood in England">
-<!-- PWA support -->
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="/images/creds192.png">
-<meta name="apple-mobile-web-app-status-bar" content="#AC1A40">
-<meta name="theme-color" content="#AC1A40">
-<script src="/app.js"></script>
+  <title>PBCC</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="Description" content="An iterative map showing the carbon footprint of each neighbourhood in England">
+  <!-- PWA support -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="/images/creds192.png">
+  <meta name="apple-mobile-web-app-status-bar" content="#AC1A40">
+  <meta name="theme-color" content="#AC1A40">
+  <script src="/app.js"></script>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q11V10CDRV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-Q11V10CDRV');
+  </script>
+  
+  <!-- Third Party Scrips -->
+  <script src="https://kit.fontawesome.com/1f7357bc14.js" crossorigin="anonymous" async></script>
+  
+  <!-- Set Up CSS -->
+  <link rel="stylesheet" href="css/main_carbon.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/welcome.css">
+  <link rel="stylesheet" href="css/map_ledgend.css">
+  
+  <!-- Set Up Icon -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  
+  <!-- preload the map -->
+  <link rel="preload" href="tiles/oszoom/7/63/41.pbf" as="application/octet-stream">
+  <link rel="preload" href="tiles/oszoom/7/63/42.pbf" as="application/octet-stream">
+  <link rel="preload" href="tiles/oszoom/7/63/43.pbf" as="application/octet-stream">
+  <link rel="preload" href="tiles/oszoom/7/64/41.pbf" as="application/octet-stream">
+  <link rel="preload" href="tiles/oszoom/7/64/42.pbf" as="application/octet-stream">
+  <link rel="preload" href="tiles/oszoom/7/64/43.pbf" as="application/octet-stream">
+  <link rel="preload" href="tiles/carbon/7/63/41.pbf" as="application/octet-stream">
+  <link rel="preload" href="tiles/carbon/7/63/42.pbf" as="application/octet-stream">
+  <link rel="preload" href="tiles/carbon/7/63/43.pbf" as="application/octet-stream">
+  <link rel="preload" href="tiles/carbon/7/64/41.pbf" as="application/octet-stream">
+  <link rel="preload" href="tiles/carbon/7/64/42.pbf" as="application/octet-stream">
+  <link rel="preload" href="tiles/carbon/7/64/43.pbf" as="application/octet-stream">
+  <link rel="preload" href="fonts/Source%20Sans%20Pro%20Regular/0-255.pbf" as="application/octet-stream">
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q11V10CDRV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Q11V10CDRV');
-</script>
-
-<!-- Third Party Scrips -->
-<script src="https://kit.fontawesome.com/1f7357bc14.js" crossorigin="anonymous"></script>
-
-<!--
-<script src="js/lib/require.js"></script>
-<script src="js/lib/lodash.underscore.min.js"></script>
-
-
-<script src="js/lib/mapbox-gl-generic-geocoder/index.js"></script>
-<script src="js/lib/suggestions.js"></script>
--->
-
-<!-- Set Up CSS -->
-<link rel="stylesheet" href="css/main_carbon.css">
-<link rel="stylesheet" href="css/modal.css">
-<link rel="stylesheet" href="css/welcome.css">
-<link rel="stylesheet" href="css/map_ledgend.css">
-
-<!-- Set Up Icon -->
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-  
-<!-- Loading Spinner  -->
-<div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.svg"/></div>
+
 
 <!-- Cookies Warning  -->
 <div id='cookiewarning' class='cookiewarning'>
@@ -58,7 +63,6 @@
   </p>
 </div>
 <script type="text/javascript" src="js/ga_optout.js"></script>
-
 
 <!-- Menu -->
 <div class="nav-wrapper">
@@ -90,27 +94,23 @@
 </div>
 </div>
 
-<!-- Set Up Mapbox -->
-<script src="js/lib/mapbox-gl-js-1.13/mapbox-gl.js"></script>
-<link href="js/lib/mapbox-gl-js-1.13/mapbox-gl.css" rel="stylesheet" />
-<!--
-<script src="js/lib/mapbox-gl-generic-geocoder/index.js"></script>
-<link href="js/lib/mapbox-gl-generic-geocoder/mapbox-gl-generic-geocoder.css" rel="stylesheet" />
--->
+<!-- Loading Spinner  -->
+<div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.svg"/></div>
 
-<!-- Set Up Other JS -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Main Content -->
+<div class="content">
+  <div id="map"></div>
+</div>
 
 <!-- Floating Objects -->
 <div id="legend" class="legend"></div>
 
-<!-- Show Layer Selection Panel -->
+<!-- Show Legend Button  -->
 <div id="showlegend" class="showlegend">
   <button onclick="showlegend(true)" aria-label="Hide legend"><i class="fas fa-ellipsis-v"></i></button>
 </div>
 
-<!-- Show Layer Selection Panel -->
+<!-- Show Layer Selection Panel  Button-->
 <div id="showrightbox" class="showrightbox">
   <button onclick="showrighbox(true)" aria-label="Show layers"><i class="fa fa-bars"></i></button>
 </div>
@@ -119,17 +119,6 @@
 <div id="rightbox" class="rightbox">
   <button onclick="showrighbox(false)" style="float:right" aria-label="Hide layers"><i class="fas fa-times"></i></button>
 
-
-<!-- 
-<p>Base map style:
-<select id="basemapinput" name="basemapinput" onchange="switchBase()">
-      <option value="style_light" selected>Light</option>
-      <option value="style_road">Road</option>
-      <option value="style_outdoor">Outdoors</option>
-      <option value="style_night">Night</option>
-  </select>
-</p>  
- -->
 <p>Select map layers</p>
 
 <button class="accordion">Areas</button>
@@ -252,7 +241,7 @@
 <button class="accordion">PCT Route Network </button>
 <div class="panel">
   <p><input type="checkbox" id="pctcheckbox" value="true" onclick="toggleLayer('pct')"> Show Layer</p>
-  <p>The <abbr title="Propensity to Cycle Tool">PCT</abbr> shows roads where there could be more cycling in the future. For full details see the <a href="https://www.pct.bike" target="_blank" rel="noopener">PCT website</a> or <a href="https://www.jtlu.org/index.php/jtlu/article/view/862" target="_blank" rel="noopener">Lovelace et al 2017</a></p>
+  <p>The <abbr title="Propensity to Cycle Tool">PCT</abbr> shows roads where there could be more cycling in the future. This layer shows the combined peak number of daily cyclists for commuting and travel to school under three scenarios. <a href="https://www.pct.bike" target="_blank" rel="noopener">PCT website</a> or <a href="https://www.jtlu.org/index.php/jtlu/article/view/862" target="_blank" rel="noopener">Lovelace et al 2017</a></p>
   
   <select id="pctinput" name="pctinput" onchange="switchPCT()">
       <option value="bicycle" selected>Baseline (2011)</option>
@@ -274,13 +263,20 @@
 </div>
 
 
-<script src="js/accordion.js"></script>
+
 </div>
 
-<!-- Main Content -->
-<div class="content">
-  <div id="map"></div>
-</div>
+
+<!-- Set Up map -->
+<script src="js/lib/mapbox-gl-js-1.13/mapbox-gl.js"></script>
+<link href="js/lib/mapbox-gl-js-1.13/mapbox-gl.css" rel="stylesheet"/>
+<script type="text/javascript" src="js/welcome.js"></script>
+<script type="text/javascript" src="js/map_layerdesc.js"></script>
+<script type="text/javascript" src="js/layer_control.js"></script>
+<script src="js/accordion.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/get_json.js"></script>
+<script type="text/javascript" src="js/map_carbon.js"></script>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -321,49 +317,49 @@
     		  <tr>
     			<td>Total</td>
     			
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_total_emissions_grade" alt = "Grade Image"></td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_total_emissions_grade" alt = "Grade Image"></td>
     			<td align='right' id="data_total_emissions_percap">NA</td>
     		  </tr>
     		  <tr>
     			<td>Electricity</td>
     			
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_elec_emissions_grade" alt = "Grade Image"></td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_elec_emissions_grade" alt = "Grade Image"></td>
     			<td align='right' id="data_elec_emissions_household">NA</td>
     		  </tr>
     		  <tr>
     			<td>Gas</td>
     			
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_gas_emissions_grade" alt = "Grade Image"></td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_gas_emissions_grade" alt = "Grade Image"></td>
     			<td align='right' id="data_gas_emissions_household">NA</td>
     		  </tr>
     		  <tr>
     			<td>Other Heating</td>
     			
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_other_heating_emissions_grade" alt = "Grade Image"></td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_other_heating_emissions_grade" alt = "Grade Image"></td>
     			<td align='right' id="data_other_heating_emissions">NA</td>
     		  </tr>
     		  <tr>
     			<td>Car Driving</td>
     			
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_car_emissions_grade" alt = "Grade Image"></td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_car_emissions_grade" alt = "Grade Image"></td>
     			<td align='right' id="data_car_emissions">NA</td>
     		  </tr>
     		  <tr>
     			<td>Van Driving</td>
     			
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_van_emissions_grade" alt = "Grade Image"></td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_van_emissions_grade" alt = "Grade Image"></td>
     			<td align='right' id="data_van_emissions">NA</td>
     		  </tr>
     		  <tr>
     			<td>Flights</td>
     			
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_flights_emissions_grade" alt = "Grade Image"></td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_flights_emissions_grade" alt = "Grade Image"></td>
     			<td align='right' id="data_flights_emissions">NA</td>
     		  </tr>
     		  <tr>
     			<td>Consumption of goods and services</td>
     			
-    			<td><img src="images/grades/undefined.jpg" width = 50 id = "data_consumption_emissions_grade" alt = "Grade Image"></td>
+    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_consumption_emissions_grade" alt = "Grade Image"></td>
     			<td align='right' id="data_consumption_emissions">NA</td>
     		  </tr>
     		</table>
@@ -521,6 +517,7 @@ In the future, we expect electricity demand to increase as people replace gas he
   	    <h4>Building Type</h4>
   	    <p>Each neighbourhood has a different mix of house types. This affects both carbon emissions and the difficulty of energy efficient retrofit. Larger detached houses usually require more heating compared to smaller terraced houses and flats.
 This data comes from the 2011 Census.</p>
+        <p>Note that there is a similar chart on the EPC tab which is based on a less comprehensive but more up to date data source.</p>
   	  </div>
   	  <div class="chart-container" >
     			<canvas id="buildingtypeChart"></canvas>
@@ -546,7 +543,7 @@ This data comes from the 2011 Census.
   	<div class="wrapper">
   	  <div class="chart-text">
   	    <h4>Heating Type</h4>
-  	    <p>TODO</p>
+  	    <p>This chart shows the type of heating system recorded in the 2011 Census. This chart should be compared with the similar chart on the EPC tab. While the Energy Performance Certificate data is more up to date it does not cover all homes. Together the two charts should give a representative view of heating types, at least until the 2021 Census results are published.</p>
   	  </div>
   	  <div class="chart-container" >
     		<canvas id="heatingChart"></canvas>
@@ -677,7 +674,7 @@ For this tool, we took an extract of the EPC database from 2020 and summarised t
   	<div class="wrapper">
   	  <div class="chart-text">
   	    <h4>Building Types</h4>
-  	    <p>TODO</p>
+  	    <p>This chart shows the mix of building types based on the EPC data and should be compared with the similar chart based on the 2011 census in the housing tab. The EPC data is more up to date but does not cover all homes within an LSOA.</p>
   	  </div>
   	  <div class="chart-container" >
     		<canvas id="epcbuildingtypeChart"></canvas>
@@ -756,19 +753,14 @@ As we have some data on how incomes vary around the country, we can fill in the 
 </div>
 </div>
 
-<!-- Scripts -->
-<script src="js/get_json.js"></script>
+<!-- Set Up Other JS -->
 <script type="text/javascript" src="js/modal.js"></script>
-<script type="text/javascript" src="js/map_carbon.js"></script>
-<script type="text/javascript" src="js/modal_overview.js"></script>
-<script type="text/javascript" src="js/modal_epc.js"></script>
-<script type="text/javascript" src="js/modal_transport.js"></script>
-<script type="text/javascript" src="js/modal_housing.js"></script>
-<script type="text/javascript" src="js/modal_general.js"></script>
-<script type="text/javascript" src="js/welcome.js"></script>
-<script type="text/javascript" src="js/map_layerdesc.js"></script>
-<script type="text/javascript" src="js/layer_control.js"></script>
-
+<script type="text/javascript" src="js/modal_overview.js" async></script>
+<script type="text/javascript" src="js/modal_epc.js" async></script>
+<script type="text/javascript" src="js/modal_transport.js" async></script>
+<script type="text/javascript" src="js/modal_housing.js" async></script>
+<script type="text/javascript" src="js/modal_general.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4" async></script>
 </div>
 </body>
 </html>

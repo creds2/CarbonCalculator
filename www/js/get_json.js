@@ -8,11 +8,11 @@ jQuery.ajaxSetup({
   success: function() {}
 });
 
-
-
-
 var ladata;
-$.getJSON("data/la_averages.json", function (json) {
+var oacdata;
+
+get_json = function(){
+  $.getJSON("data/la_averages.json", function (json) {
     console.log( "downloaded la json" );
     ladata = json;
 })
@@ -23,7 +23,7 @@ $.getJSON("data/la_averages.json", function (json) {
     alert("Failed to LA get JSON");
   });
 
-var oacdata;
+
 $.getJSON("data/oac_averages.json", function (json) {
     console.log( "downloaded oac json" );
     oacdata = json;
@@ -34,6 +34,11 @@ $.getJSON("data/oac_averages.json", function (json) {
   .fail(function() {
     alert("Failed to OAC get JSON");
   });
+};
+
+
+
+
 
 
 

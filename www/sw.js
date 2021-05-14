@@ -92,7 +92,7 @@ self.addEventListener('fetch', evt => {
         return caches.open(dynamicCacheName).then(cache => {
           cache.put(evt.request.url, fetchRes.clone());
           return fetchRes;
-        })
+        });
       });
     })
   );

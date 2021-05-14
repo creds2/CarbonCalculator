@@ -437,3 +437,7 @@ td, th {
   width:20%;
   max-width: 200px;
 }
+
+#searchbutton {
+  background-color: white;
+}
