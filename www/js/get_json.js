@@ -36,7 +36,7 @@ $.getJSON("data/oac_averages.json", function (json) {
   });
 };
 
-
+get_json();
 
 
 

@@ -75,6 +75,14 @@
             }
         },
         {
+            "id": "sites",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "sites",
+            "layout": {},
+            "paint": {"fill-color": "#eee7dd", "fill-opacity": 0.7}
+        },
+        {
             "id": "greenspace",
             "type": "fill",
             "source": "composite",
@@ -158,6 +166,14 @@
                     1
                 ]
             }
+        },
+        {
+            "id": "buildings",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "buildings",
+            "layout": {},
+            "paint": {"fill-color": "#e1e0db", "fill-translate": [0, 0]}
         },
         {
             "id": "roads 0 Restricted Road",
@@ -1719,6 +1735,18 @@
             "paint": {"line-color": "#cfcfcf"}
         },
         {
+            "id": "etl",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "etl",
+            "layout": {"line-join": "round"},
+            "paint": {
+                "line-color": "#5b2f2f",
+                "line-opacity": 0.25,
+                "line-dasharray": [10, 5]
+            }
+        },
+        {
             "id": "road numbers",
             "type": "symbol",
             
@@ -2272,6 +2300,45 @@
                 "text-halo-width": 2,
                 "text-halo-blur": 1,
                 "text-color": "#232526" 
+            }
+        },
+        {
+            "id": "airports",
+            "type": "symbol",
+            
+            "source": "composite",
+            "source-layer": "airports",
+            "layout": {
+                "icon-image": "Airport",
+                "icon-size": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    10,
+                    0.8,
+                    15,
+                    1
+                ],
+                "text-field": ["to-string", ["get", "name"]],
+                "text-font": ["Source Sans Pro Regular"],
+                "text-size": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    10,
+                    9,
+                    15,
+                    13
+                ],
+                "text-justify": "left",
+                "text-anchor": "left",
+                "text-offset": [0.8, 0]
+            },
+            "paint": {
+                "text-color": "#232526" ,
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-width": 2,
+                "text-halo-blur": 1
             }
         },
         {

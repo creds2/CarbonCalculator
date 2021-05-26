@@ -62,13 +62,12 @@ const mapboxglLatLngControl = {
         return seachbox;
     },
     getDefaultPosition: () => {
-        return 'top-left';
+        return 'top-right';
     },
     onRemove: () => {
         map.off('moveend', updateLatLon);
     }
 };
-
 
 map.on('load', function() {
 map.addSource('carbon', {
@@ -79,6 +78,30 @@ map.addSource('carbon', {
 	'minzoom': 4,
 	'maxzoom': 13
 });
+
+toggleLayer('carbon');
+
+map.addControl(mapboxglLatLngControl);
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+map.addControl(new mapboxgl.AttributionControl({
+customAttribution: 'Contains OS data © Crown copyright 2021'
+}));
+
+// Add geolocate control to the map.
+map.addControl(new mapboxgl.GeolocateControl({
+positionOptions: {
+enableHighAccuracy: true
+},
+trackUserLocation: true
+})
+,'top-left');
+
+
+// Add Scale bar
+map.addControl(new mapboxgl.ScaleControl({
+  maxWidth: 80,
+  unit: 'metric'
+}),'bottom-right');
 
 map.addSource('la', {
 	'type': 'vector',
@@ -144,36 +167,8 @@ map.addSource('pct', {
 });
 
 
-toggleLayer('carbon');
-//toggleLayer('la');
-//toggleLayer('transitstops');
-//toggleLayer('centroids');
 
-map.addControl(mapboxglLatLngControl);
-map.addControl(new mapboxgl.NavigationControl(), 'top-left');
-map.addControl(new mapboxgl.AttributionControl({
-customAttribution: 'Contains OS data © Crown copyright 2021'
-}));
-
-// Add geolocate control to the map.
-map.addControl(new mapboxgl.GeolocateControl({
-positionOptions: {
-enableHighAccuracy: true
-},
-trackUserLocation: true
-})
-,'top-left');
-
-
-// Add Scale bar
-map.addControl(new mapboxgl.ScaleControl({
-  maxWidth: 80,
-  unit: 'metric'
-}),'bottom-right');
-
-get_json();
 });
-
 
 // Popup LSOA ID
 // Create a popup, but don't add it to the map yet.
@@ -285,7 +280,6 @@ map.on('click', 'centroids', function (e) {
   });
 
 });
-
 
 // Setup other part of the website
 showrighbox(true); // Show the accordion hide the button 
