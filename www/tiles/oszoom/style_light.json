@@ -484,7 +484,7 @@
         {
             "id": "roads 1 Local Road Casing",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -517,7 +517,7 @@
         {
             "id": "roads 1 Minor Road Casing",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -554,7 +554,7 @@
         {
             "id": "roads 1 B Road Casing",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -591,7 +591,7 @@
         {
             "id": "roads 1 A Road Casing",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -628,7 +628,7 @@
         {
             "id": "roads 1 Primary Road Casing",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -674,7 +674,7 @@
         {
             "id": "roads 1 Motorway Casing",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -711,7 +711,7 @@
         {
             "id": "roads 1 Restricted Road",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -746,7 +746,7 @@
         {
             "id": "roads 1 Local Road",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -779,7 +779,7 @@
         {
             "id": "roads 1 Guided Busway Casing",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -816,7 +816,7 @@
         {
             "id": "roads 1 Guided Busway Centreline",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -853,7 +853,7 @@
         {
             "id": "roads 1 Motorway",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -890,7 +890,7 @@
         {
             "id": "roads 1 Minor Road",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -927,7 +927,7 @@
         {
             "id": "roads 1 B Road",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -964,7 +964,7 @@
         {
             "id": "roads 1 A Road",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1001,7 +1001,7 @@
         {
             "id": "roads 1 Primary Road",
             "type": "line",
-            
+            "minzoom": 9,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1047,7 +1047,7 @@
         {
             "id": "roads 2 Local Road Casing",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1074,7 +1074,7 @@
         {
             "id": "roads 2 Minor Road Casing",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1111,7 +1111,7 @@
         {
             "id": "roads 2 B Road Casing",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1148,7 +1148,7 @@
         {
             "id": "roads 2 A Road Casing",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1185,7 +1185,7 @@
         {
             "id": "roads 2 Primary Road Casing",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1231,7 +1231,7 @@
         {
             "id": "roads 2 Motorway Casing",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1268,7 +1268,7 @@
         {
             "id": "roads 2 Restricted Road",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1303,7 +1303,7 @@
         {
             "id": "roads 2 Local Road",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1336,7 +1336,7 @@
         {
             "id": "roads 2 Guided Busway Casing",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1373,7 +1373,7 @@
         {
             "id": "roads 2 Guided Busway Centreline",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1410,7 +1410,7 @@
         {
             "id": "roads 2 Motorway",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1447,7 +1447,7 @@
         {
             "id": "roads 2 Minor Road",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1484,7 +1484,7 @@
         {
             "id": "roads 2 B Road",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1521,7 +1521,7 @@
         {
             "id": "roads 2 A Road",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1558,7 +1558,7 @@
         {
             "id": "roads 2 Primary Road",
             "type": "line",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "roads",
             "filter": [
@@ -1636,6 +1636,7 @@
             "type": "line",
             "source": "composite",
             "source-layer": "rail",
+            "minzoom": 12,
             "filter": ["match", ["get", "type"], ["Tunnel"], false, true],
             "layout": {"line-join": "round"},
             "paint": {
@@ -1685,6 +1686,7 @@
             "type": "line",
             "source": "composite",
             "source-layer": "rail",
+            "minzoom": 12,
             "filter": ["match", ["get", "type"], ["Tunnel"], true, false],
             "layout": {"line-join": "round"},
             "paint": {
@@ -1991,7 +1993,7 @@
             
             "source": "composite",
             "source-layer": "names",
-            "minzoom": 5,
+            "minzoom": 12,
             "filter": ["match", ["get", "type"], ["Landform"], true, false],
             "layout": {
                 "text-field": ["to-string", ["get", "name"]],
@@ -2020,7 +2022,7 @@
             
             "source": "composite",
             "source-layer": "names",
-            "minzoom": 5,
+            "minzoom": 12,
             "filter": ["match", ["get", "type"], ["Landcover"], true, false],
             "layout": {
                 "text-field": ["to-string", ["get", "name"]],
@@ -2078,7 +2080,7 @@
             
             "source": "composite",
             "source-layer": "names",
-            "minzoom": 5,
+            "minzoom": 12,
             "filter": ["match", ["get", "type"], ["Woodland"], true, false],
             "layout": {
                 "text-field": ["to-string", ["get", "name"]],
@@ -2113,10 +2115,9 @@
         {
             "id": "small settlement names",
             "type": "symbol",
-            
             "source": "composite",
             "source-layer": "names",
-            "minzoom": 5,
+            "minzoom": 12,
             "filter": [
                 "match",
                 ["get", "type"],
@@ -2201,7 +2202,7 @@
         {
             "id": "railwaystations",
             "type": "symbol",
-            
+            "minzoom": 12,
             "source": "composite",
             "source-layer": "railwaystations",
             "layout": {
@@ -2280,7 +2281,7 @@
             
             "source": "composite",
             "source-layer": "names",
-            "minzoom": 5,
+            "minzoom": 12,
             "filter": [
                 "match",
                 ["get", "type"],

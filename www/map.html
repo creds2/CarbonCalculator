@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="css/modal.css" async>
   <link rel="stylesheet" href="css/welcome.css">
   <link rel="stylesheet" href="css/map_ledgend.css" async>
+  <link rel="preload" href="fonts/Raleway/Raleway-VariableFont_wght.ttf" as="font">
   
   <!-- Set Up Icon -->
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -75,14 +76,14 @@
 <div id="welcome" class="welcome">
 <span class="closewelcome">&times;</span>
 <div>
-<h2>Welcome to the Place-Based Carbon Calculator</h2>
+<h3>Welcome to the Place-Based Carbon Calculator</h3>
 <p><abbr title="Place-Based Carbon Calculator">PBCC</abbr> is a free tool which estimates the per-person carbon footprint for every Lower Super Output Area (LSOA) in England. <abbr title="Lower Super Output Area">LSOAs</abbr> are small statistical areas with a population of about 1,500.  It draws on a wide range of data and research to give a representative view of how carbon footprints vary across the country. <abbr title="Place-Based Carbon Calculator">PBCC</abbr> is intended to help communities and policy makers understand where their carbon footprints come from and what we need to do to reduce them.</p>
 <p>Use the map to zoom to your area of interest then click on an <abbr title="Lower Super Output Area">LSOA</abbr> for more details.</p>
 </div>
 </div>
 
 <!-- Loading Spinner  -->
-<div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.svg"/></div>
+<div id='loader' style="position: fixed;top: 50%; left: 50%; margin-top: -100px;margin-left: -100px; z-index: 1002;"><img src="images/spinner.svg" alt="Loading" width="100" height="100"></div>
 
 <!-- Main Content -->
 <div class="content">
@@ -129,7 +130,7 @@
       <option value="floor_area_avg">Average home floor area (m2)</option>
       <option value="SOAC11NM">LSOA Area Classification</option>
   </select>
-  <div id="layerdesc"></div>
+  <div id="layerdesc"><p>Estimated average annual carbon footprint per person for each LSOA. Based on a mix of local and national data. Each area has a grade from A+ (low emissions) to F- (high emissions) in comparison to the England average. See the popup report for more details. </p></div>
   
 </div>
 
@@ -258,11 +259,7 @@
 <script src="js/lib/mapbox-gl-js-1.13/mapbox-gl.js"></script>
 <link href="js/lib/mapbox-gl-js-1.13/mapbox-gl.css" rel="stylesheet"/>
 <script type="text/javascript" src="js/welcome.js"></script>
-<script type="text/javascript" src="js/map_layerdesc.js"></script>
-<script type="text/javascript" src="js/layer_control.js"></script>
 <script src="js/accordion.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="js/get_json.js" async></script>
 <script type="text/javascript" src="js/map_carbon.js"></script>
 
 <!-- The Modal -->
@@ -741,7 +738,11 @@ As we have some data on how incomes vary around the country, we can fill in the 
 </div>
 
 <!-- Set Up Other JS -->
-<script type="text/javascript" src="js/modal.js"></script>
+<script type="text/javascript" src="js/map_layerdesc.js" async></script>
+<script type="text/javascript" src="js/layer_control.js" async></script>
+<script id="jquery" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" async></script>
+<script src="js/get_json.js" async></script>
+<script type="text/javascript" src="js/modal.js" async></script>
 <script type="text/javascript" src="js/modal_overview.js" async></script>
 <script type="text/javascript" src="js/modal_epc.js" async></script>
 <script type="text/javascript" src="js/modal_transport.js" async></script>

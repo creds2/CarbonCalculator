@@ -10,8 +10,8 @@
   z-index: 1003;
   padding: 20px;
   overflow: auto; /* Enable scroll if needed */
-  margin-left: 10%; /**scalable on mobile / tablets **/
-  margin-right: 10%;
+  margin-left: 5%; /**scalable on mobile / tablets **/
+  margin-right: 5%;
 }
 p.welcome-end {
     font-size: 0.9em;

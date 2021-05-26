@@ -1,13 +1,3 @@
-jQuery.ajaxSetup({
-  beforeSend: function() {
-     $('#loader').show();
-  },
-  //complete: function(){
-  //   $('#loader').hide();
-  //},
-  success: function() {}
-});
-
 var ladata;
 var oacdata;
 
@@ -36,7 +26,21 @@ $.getJSON("data/oac_averages.json", function (json) {
   });
 };
 
-get_json();
+document.getElementById('jquery').addEventListener('load', function () {
+  jQuery.ajaxSetup({
+    beforeSend: function() {
+       $('#loader').show();
+    },
+    //complete: function(){
+    //   $('#loader').hide();
+    //},
+    success: function() {}
+  });
+  get_json();
+});
+
+
+
 
 
 
