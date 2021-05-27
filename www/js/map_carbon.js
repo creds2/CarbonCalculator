@@ -224,8 +224,6 @@ map.addSource('pct', {
 	'maxzoom': 13
 });
 
-
-
 });
 
 // Popup LSOA ID
