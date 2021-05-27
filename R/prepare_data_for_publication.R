@@ -1,7 +1,7 @@
 library(sf)
 library(dplyr)
 
-all <- readRDS("data/base_data_v4.Rds")
+all <- readRDS("data/base_data_v5.Rds")
 
 #TODO: get population for 2010
 # gas
@@ -136,7 +136,7 @@ paste0("mainheatcontrol_",  c("verygood","good","average","poor","verypoor","oth
 
 
 
-all$total_percap <- rowSums(all[,c("gas_percap_2018", "elec_percap_2018",
+all$total_kgco2e_percap <- rowSums(all[,c("gas_percap_2018", "elec_percap_2018",
                                   "car_percap_2018", "van_percap_2018",
                                   "flights_percap_2018", "other_heat_percap_2011",
                                   "nutrition_kgco2e_percap",
@@ -146,8 +146,8 @@ all$total_percap <- rowSums(all[,c("gas_percap_2018", "elec_percap_2018",
                                   "services_kgco2e_percap",
                                   "commute_noncar_percap")],
                            na.rm = TRUE) 
-# foo = all[all$total_percap > 8000, ]
-# foo = foo[,c("total_percap","van_km_11","gas_percap_2017", "elec_percap_2017",
+# foo = all[all$total_kgco2e_percap > 8000, ]
+# foo = foo[,c("total_kgco2e_percap","van_km_11","gas_percap_2017", "elec_percap_2017",
 #              "car_percap_2018", "van_percap_2018",
 #              "flights_percap_2018", "other_heat_percap_2011")]
 
@@ -213,20 +213,20 @@ all$T2W_Underground_grade <- value2grade(all$T2W_Underground, high_good = TRUE)
 all$elec_emissions_grade <- value2grade(all$elec_percap_2017)
 all$gas_emissions_grade <- value2grade(all$gas_percap_2017)
 all$car_emissions_grade <- value2grade(all$car_percap_2018)
-all$total_emissions_grade <- value2grade(all$total_percap)
+all$total_emissions_grade <- value2grade(all$total_kgco2e_percap)
 all$flights_grade <- value2grade(all$flights_percap_2018)
 
 all$other_heating_grade <- value2grade(all$other_heat_percap_2011)
 all$van_grade <- value2grade(all$van_percap_2018)
-all$consumption_emissions <- rowSums(all[,c("nutrition_kgco2e_percap",
+all$consumption_all_kgco2e_percap <- rowSums(all[,c("nutrition_kgco2e_percap",
                                             "other_shelter_kgco2e_percap",
                                             "consumables_kgco2e_percap",
                                             "recreation_kgco2e_percap",
                                             "services_kgco2e_percap")])
-all$consumption_grade <- value2grade(all$consumption_emissions)
+all$consumption_grade <- value2grade(all$consumption_all_kgco2e_percap)
 
 # SUppress Grades on error LSOA
-#foo <- all[all$total_percap > 25000 | all$total_percap < 2000, ]
+#foo <- all[all$total_kgco2e_percap > 25000 | all$total_kgco2e_percap < 2000, ]
 supp_tot <- c("E01028521","E01025690","E01026860","E01013378","E01006747","E01033221",
 "E01011678","E01005210","E01033233","E01009635","E01033634","E01009642","E01017986",
 "E01008407","E01013816","E01017958","E01006513","E01009641","E01033197","E01006512",
@@ -274,8 +274,8 @@ all[] <- lapply(all[], function(x){
   x
 })
 
-head(all$total_percap)
-head(all_old$total_percap)
+head(all$total_kgco2e_percap)
+head(all_old$total_kgco2e_percap)
 
 
 all_old_unique <- unique(unlist(lapply(all_old, as.character)))
@@ -305,4 +305,4 @@ for(i in 1:ncol(all)){
 }
 
 
-saveRDS(all, "data/data_with_grades_v4.Rds")
+saveRDS(all, "data/data_with_grades_v5.Rds")

@@ -3,7 +3,7 @@ library(dplyr)
 # Consumption
 
 ukcarbon <- read.csv("data/consumption/uk_consumption_based_footprint.csv")
-ukcarbon <- ukcarbon[ukcarbon$year == 2017,] # most recent year
+ukcarbon <- ukcarbon[ukcarbon$year == 2018,] # most recent year
 
 income <- read.csv("data/consumption/income_energy_fooprint.csv")
 
