@@ -36,18 +36,16 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   
-  
-
 </head>
 <body>
 
 
 <!-- Cookies Warning  -->
 <div id='cookiewarning' class='cookiewarning'>
-  <p>We use cookies to measure how you use our website so we can understand how you interact with it, which helps us to make improvements.<a href="privacy.html">Find out more.</a></p>
+  <p>We use cookies to measure how you use our website so we can understand how you interact with it, which helps us to make improvements. <a href="privacy.html">Find out more.</a></p>
   <p>
-    <button onclick="cookiebutton(true)" class="button button1">OK</button>
-    <button onclick="cookiebutton(false)" class="button button2">NO</button>
+    <button onclick="cookiebutton(true)" class="button button1"><b>OK</b></button>
+    <button onclick="cookiebutton(false)" class="button button2"><b>No</b></button>
   </p>
 </div>
 <script type="text/javascript" src="js/ga_optout.js"></script>
@@ -211,7 +209,7 @@
 <div class="panel">
   <p><input type="checkbox" id="centroidscheckbox" value="true" onclick="toggleLayer('centroids')"> Show centroids</p>
   <button onclick="removeisochrones()">Clear isochrones</button>
-  <p>Click on the population weighted centroid of an LSOA to show 15-minute isochrones for different modes of travel</p>
+  <p>Click on the population weighted centroid of an <abbr title="Lower Super Output Area">LSOA</abbr> to show 15-minute isochrones for different modes of travel</p>
   <div>
     <div><span style="background-color: #4daf4a; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>Walking</div>
 	  <div><span style="background-color: #377eb8; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>Bicycle</div>
@@ -229,7 +227,7 @@
 <button class="accordion">PCT Route Network </button>
 <div class="panel">
   <p><input type="checkbox" id="pctcheckbox" value="true" onclick="toggleLayer('pct')"> Show Layer</p>
-  <p>The <abbr title="Propensity to Cycle Tool">PCT</abbr> shows roads where there could be more cycling in the future. This layer shows the combined peak number of daily cyclists for commuting and travel to school under three scenarios. <a href="https://www.pct.bike" target="_blank" rel="noopener">PCT website</a> or <a href="https://www.jtlu.org/index.php/jtlu/article/view/862" target="_blank" rel="noopener">Lovelace et al 2017</a></p>
+  <p>The <abbr title="Propensity to Cycle Tool">PCT</abbr> shows roads where there could be more cycling in the future. This layer shows the combined peak number of daily cyclists for commuting and travel to school under three scenarios. See <a href="https://www.pct.bike" target="_blank" rel="noopener">PCT website</a> or <a href="https://www.jtlu.org/index.php/jtlu/article/view/862" target="_blank" rel="noopener">Lovelace et al 2017</a> for details.</p>
   
   <select id="pctinput" name="pctinput" onchange="switchPCT()">
       <option value="bicycle" selected>Baseline (2011)</option>
@@ -247,6 +245,8 @@
 	  <div><span style="background-color: #0000FF; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>1000-1999</div>
 	  <div><span style="background-color: #FF00C5; border-radius: 50%; display: inline-block; height: 10px; margin-right: 5px; width: 10px;"></span>2000+</div>
   </div>
+  
+  <p> </p>
   
 </div>
 
@@ -349,15 +349,15 @@
     		</table>
     </div>
     <div>
-      <p>This report card is customised for each Lower Super Output Area (LSOA) on the map. The title at the top gives the       LSOA’s unique ID, the Office for National Statistics area classification, and the Ward name. Wards are usually            larger than LSOAs, but unlike LSOAs have recognisable local names.
-      This tab gives and overview of the LSOAs total carbon footprint, while other tabs give more detail and additional         context about parts of the carbon footprint.
+      <p>This report card is customised for each Lower Super Output Area (LSOA) on the map. The title at the top gives the       <abbr title="Lower Super Output Area">LSOA</abbr>’s unique ID, the Office for National Statistics area classification, and the Ward name. Wards are usually            larger than <abbr title="Lower Super Output Area">LSOA</abbr>s, but unlike <abbr title="Lower Super Output Area">LSOA</abbr>s have recognisable local names.
+      This tab gives and overview of the <abbr title="Lower Super Output Area">LSOA</abbr>s total carbon footprint, while other tabs give more detail and additional         context about parts of the carbon footprint.
       </p>
-      <p>The bar chart shows the total carbon footprint per person in units of kilogrammes of carbon dioxide equivalent.        The first column shows the footprint of the selected LSOA. The second column shows the average footprint of LSOAs in       the same local authority. The third column shows the average footprint of all LSOAs in England. The fourth column         shows the average footprint of LSOAs with the same area classification. The Office for National Statistics (ONS)          produced the area classifications which group areas into one of 24 categories based on social, economic, geographic,       and demographic factors.  Thus, this column represents the average of similar areas with similar people.
+      <p>The bar chart shows the total carbon footprint per person in units of kilogrammes of carbon dioxide equivalent.        The first column shows the footprint of the selected <abbr title="Lower Super Output Area">LSOA</abbr>. The second column shows the average footprint of <abbr title="Lower Super Output Area">LSOA</abbr>s in       the same local authority. The third column shows the average footprint of all <abbr title="Lower Super Output Area">LSOA</abbr>s in England. The fourth column         shows the average footprint of <abbr title="Lower Super Output Area">LSOA</abbr>s with the same area classification. The Office for National Statistics (ONS)          produced the area classifications which group areas into one of 24 categories based on social, economic, geographic,       and demographic factors.  Thus, this column represents the average of similar areas with similar people.
       The horizontal black line represents the UK’s target footprint per person set out in the Committee on Climate             Change’s <a href="https://www.theccc.org.uk/publication/sixth-carbon-budget/" target="_blank" rel="noopener">6th Carbon Budget</a>, covering 2032 to 2037. It is intended to provide an indication of how far we must go in the next ten years if we are to have any chance of reaching net-zero by 2050.
       </p>
       <h3>Understanding the grades</h3>
       <p><img src="images/grades.webp" style="width:100%; max-width:700px" alt="How grades are calculated"></p>
-      <p>Many values have been given a grade from A+ to F- to help you understand how this LSOA compares to others. The         grades are relative to the average LSOA, so areas with an A+ to C- grade are better than average, while areas with a       D+ to F- grade are worse than average. Most areas are close to the average, so theses grade bands are wide,               representing 7% of LSOAs. Towards the extremes, the grade bands narrow, so only the best 1% of LSOAs get an A+ grade       . In some cases, it is not possible to calculate a grade due to missing data, so a NA value will be shown.</p>
+      <p>Many values have been given a grade from A+ to F- to help you understand how this <abbr title="Lower Super Output Area">LSOA</abbr> compares to others. The         grades are relative to the average <abbr title="Lower Super Output Area">LSOA</abbr>, so areas with an A+ to C- grade are better than average, while areas with a       D+ to F- grade are worse than average. Most areas are close to the average, so theses grade bands are wide,               representing 7% of <abbr title="Lower Super Output Area">LSOA</abbr>s. Towards the extremes, the grade bands narrow, so only the best 1% of <abbr title="Lower Super Output Area">LSOA</abbr>s get an A+ grade       . In some cases, it is not possible to calculate a grade due to missing data, so a NA value will be shown.</p>
       
       
     </div>
@@ -383,7 +383,7 @@
 		<div class="wrapper">
 		  <div class="chart-text">
 		    <h4>Van emissions</h4>
-		    <p>Van use is a bit more complicated than car use as they are more likely to be used for work rather than personal transport. Some LSOAs have exceptionally high numbers of vans. This is because the data we have is based on the registered keeper’s address.  So, a company that reports all its vans to be at a single address will bias the results for the LSOA as a whole.</p></div>
+		    <p>Van use is a bit more complicated than car use as they are more likely to be used for work rather than personal transport. Some <abbr title="Lower Super Output Area">LSOA</abbr>s have exceptionally high numbers of vans. This is because the data we have is based on the registered keeper’s address.  So, a company that reports all its vans to be at a single address will bias the results for the <abbr title="Lower Super Output Area">LSOA</abbr> as a whole.</p></div>
 		  <div class="chart-container" >
   			<canvas id="vanChart"></canvas>
   		</div>
@@ -437,7 +437,7 @@ This data comes from the 2011 census.
 		    <p>The number of cars per person is strongly correlated with the amount people drive. Making new cars also has a large carbon footprint. 2% of the UK’s total carbon footprint comes from purchasing new cars and other vehicles. Cars are an extraordinarily inefficient form of transport. Private cars spend more than 95% of their time parked, and many are scrapped within ten years. So, the high carbon footprint of construction is distributed over relatively few useful journeys. In contrast, a train may be in operation for more than 12 hours a day and have a lifespan of over 40 years. High car ownership also creates other problems. The average car on the road only has one person in it, and there must be a safe distance between moving cars. This means that roads take up a lot of land. Think about the difference in the size of a typical six-lane motorway compared to a two-track railway. Yet the railway can move many more people per hour than the motorway. Once the cars reach their destination, they need parking spaces, which takes up even more land. All this paved over land for cars contributes to flooding and the urban heat island effect. It also creates land shortages and urban sprawl. </p>
 		  <p>To meet our carbon targets, we will need to move away from private car ownership. More people will use walking, cycling, and using public transport as their primary modes of transport. When people do need a car, they will hire one from a car club or get a rideshare with somebody travelling in the same direction.
 </p>
-<p>This data comes from the Department of Transport and is based on the location of the registered keeper of the vehicle. The number of cars has been divided by the ONS mid-year population estimates to give the number of cars per person.</p>
+<p>This data comes from the Department of Transport and is based on the location of the registered keeper of the vehicle. The number of cars has been divided by the <abbr title="Office for National Statistics">LSOA</abbr> mid-year population estimates to give the number of cars per person.</p>
 		  </div>
 		  <div class="chart-container" >
   			<canvas id="carpercapChart"></canvas>
@@ -542,13 +542,13 @@ This data comes from the 2011 Census.
     <h3>Energy Performance Certificates</h3>
     <p>Since 2008 houses in the UK have had to get an Energy Performance Certificate (EPC) when they are sold or rented. An EPC requires a qualified assessor to visit the dwelling and take measurements of the building’s construction and energy efficiency, which makes EPCs a valuable tool for understanding the energy use and carbon emissions from our homes. However, EPCs have significant problems. Research has shown that the EPC grades are not great at predicting real-world energy use and that as many as 80% of EPCs contain at least one error. EPCs are also not a representative sample of houses as they are only required under specific circumstances (e.g., when a house is sold). EPCs are likely to under-estimate the uptake of retrofit measures, as many people make home improvements just after buying a house. Thus, the EPC may be out of date shortly after it is issued.
 For all these reasons, EPC data should be treated with care. We have chosen to include it here as it is the best available data and helps draw attention to the low quality of housing data in the UK.
-For this tool, we took an extract of the EPC database from 2020 and summarised the results for each LSOA. In cases where a property had more than on EPC, only the most recent EPC was considered. Some of the data presented here are scraped from the text description written in the EPCs, so some missing data and double counting may exist. That means this data must be seen as indicative rather than conclusive.
+For this tool, we took an extract of the EPC database from 2020 and summarised the results for each <abbr title="Lower Super Output Area">LSOA</abbr>. In cases where a property had more than on EPC, only the most recent EPC was considered. Some of the data presented here are scraped from the text description written in the EPCs, so some missing data and double counting may exist. That means this data must be seen as indicative rather than conclusive.
 </p>
     
   	<div class="wrapper">
   	  <div class="chart-text">
   	    <h4>EPC Overview</h4>
-  	    <p>This chart indicates what proportion of homes have an EPC. This is not a perfect measure as the EPC’s defection of a property is different from the 2011 Census’s definition of a dwelling, and homes may have been constructed or demolished since 2011. However,  it gives a rough measure of whether the EPC data represents a high or low proportion of all the homes in this LSOA.</p>
+  	    <p>This chart indicates what proportion of homes have an EPC. This is not a perfect measure as the EPC’s defection of a property is different from the 2011 Census’s definition of a dwelling, and homes may have been constructed or demolished since 2011. However,  it gives a rough measure of whether the EPC data represents a high or low proportion of all the homes in this <abbr title="Lower Super Output Area">LSOA</abbr>.</p>
   	    </div>
   	  <div class="chart-container" >
     		<canvas id="epcoverviewChart"></canvas>
@@ -633,7 +633,7 @@ For this tool, we took an extract of the EPC database from 2020 and summarised t
   	<div class="wrapper">
   	  <div class="chart-text">
   	    <h4>Main Heating System Rating</h4>
-  	    <p>This chart shows the efficiency rating of heating systems. An efficient heating system used less energy than an inefficient system to provide the same amount of heating. Note that a very efficient heating system may not be low carbon. For example a modern condensing gas boiler has an efficiency of over 90% yet is it still a high carbon heating source as it is fuelled by gas.  </p>
+  	    <p>This chart shows the efficiency rating of heating systems. An efficient heating system uses less energy than an inefficient system to provide the same amount of heating. Note that a very efficient heating system may not be low carbon. For example a modern condensing gas boiler has an efficiency of over 90% yet is it still a high carbon heating source as it is fuelled by gas.  </p>
   	  </div>
   	  <div class="chart-container" >
     		<canvas id="mainheatscoreChart"></canvas>
@@ -658,7 +658,7 @@ For this tool, we took an extract of the EPC database from 2020 and summarised t
   	<div class="wrapper">
   	  <div class="chart-text">
   	    <h4>Building Types</h4>
-  	    <p>This chart shows the mix of building types based on the EPC data and should be compared with the similar chart based on the 2011 census in the housing tab. The EPC data is more up to date but does not cover all homes within an LSOA.</p>
+  	    <p>This chart shows the mix of building types based on the EPC data and should be compared with the similar chart based on the 2011 census in the housing tab. The EPC data is more up to date but does not cover all homes within an <abbr title="Lower Super Output Area">LSOA</abbr>.</p>
   	  </div>
   	  <div class="chart-container" >
     		<canvas id="epcbuildingtypeChart"></canvas>
@@ -671,8 +671,8 @@ For this tool, we took an extract of the EPC database from 2020 and summarised t
   
   <div id="Consumption" class="tabcontent">
     <h3>Consumption</h3>
-    <p>We don’t have good local data on all parts of our carbon footprint. A significant portion of our carbon footprint comes from the goods and services we consume. We turn to big national surveys about how people spend their money for these parts of our footprint, such as the Living Costs and Food Survey. Previous research has studied these surveys in detail, working out each respondent’s carbon footprint and then analysing the results to understand why people have different carbon footprints.  This research has found that income is a major predictor of consumption and thus, carbon footprint. However, this does vary depending on the type of consumption. For example, a rich person might fly ten times more than a poor person, but they will be unlikely to eat ten times as much food.
-As we have some data on how incomes vary around the country, we can fill in the gaps in our knowledge but by its nature, this method is less detailed than having actual local data. However, it does provide a representative view of the whole carbon footprint of each LSOA.
+    <p>We don’t have good local data on all parts of our carbon footprint. A significant portion of our carbon footprint comes from the goods and services we consume. We turn to big national surveys about how people spend their money for these parts of our footprint, such as the <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances/incomeandwealth/methodologies/livingcostsandfoodsurvey">Living Costs and Food Survey</a>. Previous <a href="https://www.tandfonline.com/doi/full/10.1080/14693062.2020.1773754">research</a> has studied these surveys in detail, working out each respondent’s carbon footprint and then analysing the results to understand why people have different carbon footprints.  This research has found that income is a major predictor of consumption and thus, carbon footprint. However, this does vary depending on the type of consumption. For example, a rich person might fly ten times more than a poor person, but they will be unlikely to eat ten times as much food.</p>
+<p>As we have some data on how incomes vary around the country, we can fill in the gaps in our knowledge but by its nature, this method is less detailed than having actual local data. However, it does provide a representative view of the whole carbon footprint of each <abbr title="Lower Super Output Area">LSOA</abbr>.
 </p>
   </div>
   
@@ -723,7 +723,7 @@ As we have some data on how incomes vary around the country, we can fill in the 
     
     <div>
       <h4>ONS pen portrait</h4>
-    <p>The Office for National Statistics Area Classifications group LSOA based on sociodemographic characteristics. Each LSOA is grouped into a supergroup and some supergroups are further split into subgroups.</p>
+    <p>The Office for National Statistics Area Classifications group <abbr title="Lower Super Output Area">LSOA</abbr> based on sociodemographic characteristics. Each <abbr title="Lower Super Output Area">LSOA</abbr> is grouped into a supergroup and some supergroups are further split into subgroups.</p>
     <p><b>Supergroup Description</b></p>
     <div id="penportsup"></div>
     <p><b>Subgroup Description</b></p>
