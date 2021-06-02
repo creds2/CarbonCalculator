@@ -9,7 +9,6 @@ function switchLALayer() {
     return obj.LAD17NM === "England";
   });
   
-	
 	// Define Charts
 	makeChartsOverview(null,la, england, null);
 	
