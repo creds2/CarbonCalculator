@@ -1,3 +1,5 @@
+var ladata;
+
 function switchLALayer() {
   var layerId = document.getElementById("lainput").value;
   
@@ -11,15 +13,10 @@ function switchLALayer() {
   
 	// Define Charts
 	makeChartsOverview(null,la, england, null);
-	
-	// EPC Score Chart
 	makeChartsEPC(la);
-	
-	// Transport Charts
 	makeChartsTransport(la, null, england);
-	
-	// Housing Charts
 	makeChartsHousing(la, null, england);
+	makeChartsPopulation(la);
 }
 
 
@@ -45,4 +42,24 @@ function openCity(evt, tabName) {
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
-} 
+}
+
+
+jQuery.ajaxSetup({
+    beforeSend: function() {
+       $('#loader').show();
+    },
+    success: function() {}
+  });
+  
+  $.getJSON("data/la_averages.json", function (json) {
+    console.log( "downloaded la json" );
+    ladata = json;
+})
+  .done(function() {
+    $('#loader').hide();
+    switchLALayer();
+  })
+  .fail(function() {
+    alert("Failed to LA get JSON");
+  });

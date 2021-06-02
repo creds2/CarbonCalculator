@@ -17,10 +17,7 @@
 
 <!-- Third Party Scrips -->
 <script src="https://kit.fontawesome.com/1f7357bc14.js" crossorigin="anonymous"></script>
-<script id="jquery" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" async></script>
-
-<!-- Before Anything Else, Get the Massive JSON File  -->
-<script type="text/javascript" src="js/get_json.js"></script>
+<script id="jquery" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- Set Up Other JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4" async></script>
@@ -60,7 +57,7 @@
 
 <!-- Main Content -->
 <div class="content">
-<p>Select a Local Authority or Region</p>
+<p>Select a Local Authority or Region 
 <select id="lainput" name="lainput" onchange="switchLALayer()">
     <option value="England">England</option>
 <option value="Adur">Adur</option>
@@ -390,7 +387,7 @@
 <option value="Wyre">Wyre</option>
 <option value="Wyre Forest">Wyre Forest</option>
 <option value="York">York</option>
-</select>
+</select></p>
 
 
 <!-- Tab links -->
@@ -407,78 +404,15 @@
   
   <!-- Tab content -->
   <div id="Overview" class="tabcontent">
+    <div class="chart-text">
     <h3>Overall Carbon Footprint</h3>
+    <p>This page gives a modified version of the report card in the main tool showing summary statistics for Local Authority areas. Use the menu at the top to select an area of interest. Not all data provided for LSOAs, such as the grades, is available for Local Authorities areas.</p>
+    </div>
+    
     <div style="min-height:300px">
       <div class="chart-container" style="height:400px">
     			<canvas id="overallChart"></canvas>
     	</div>
-      <table>
-    		  <tr>
-    			<th>Name</th>
-    			<th>Grade</th>
-    			<th>kgCO<sub>2</sub>e per person</th>
-    			</tr>
-    		  <tr>
-    			<td>Total</td>
-    			
-    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_total_emissions_grade" alt = "Grade Image"></td>
-    			<td align='right' id="data_total_emissions_percap">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>Electricity</td>
-    			
-    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_elec_emissions_grade" alt = "Grade Image"></td>
-    			<td align='right' id="data_elec_emissions_household">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>Gas</td>
-    			
-    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_gas_emissions_grade" alt = "Grade Image"></td>
-    			<td align='right' id="data_gas_emissions_household">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>Other Heating</td>
-    			
-    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_other_heating_emissions_grade" alt = "Grade Image"></td>
-    			<td align='right' id="data_other_heating_emissions">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>Car Driving</td>
-    			
-    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_car_emissions_grade" alt = "Grade Image"></td>
-    			<td align='right' id="data_car_emissions">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>Van Driving</td>
-    			
-    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_van_emissions_grade" alt = "Grade Image"></td>
-    			<td align='right' id="data_van_emissions">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>Flights</td>
-    			
-    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_flights_emissions_grade" alt = "Grade Image"></td>
-    			<td align='right' id="data_flights_emissions">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>Consumption of goods and services</td>
-    			
-    			<td><img src="images/grades/undefined.jpg" width = 50 height = 50 id = "data_consumption_emissions_grade" alt = "Grade Image"></td>
-    			<td align='right' id="data_consumption_emissions">NA</td>
-    		  </tr>
-    		</table>
-    </div>
-    <div>
-      <p>This report card is customised for each Lower Super Output Area (LSOA) on the map. The title at the top gives the       <abbr title="Lower Super Output Area">LSOA</abbr>'s unique ID, the Office for National Statistics area classification, and the Ward name. Wards are usually            larger than <abbr title="Lower Super Output Area">LSOA</abbr>s, but unlike <abbr title="Lower Super Output Area">LSOA</abbr>s have recognisable local names.
-      This tab gives and overview of the <abbr title="Lower Super Output Area">LSOA</abbr>s total carbon footprint, while other tabs give more detail and additional         context about parts of the carbon footprint.
-      </p>
-      <p>The bar chart shows the total carbon footprint per person in units of kilogrammes of carbon dioxide equivalent.        The first column shows the footprint of the selected <abbr title="Lower Super Output Area">LSOA</abbr>. The second column shows the average footprint of <abbr title="Lower Super Output Area">LSOA</abbr>s in       the same local authority. The third column shows the average footprint of all <abbr title="Lower Super Output Area">LSOA</abbr>s in England. The fourth column         shows the average footprint of <abbr title="Lower Super Output Area">LSOA</abbr>s with the same area classification. The Office for National Statistics (ONS)          produced the area classifications which group areas into one of 24 categories based on social, economic, geographic,       and demographic factors.  Thus, this column represents the average of similar areas with similar people.
-      The horizontal black line represents the UK's target footprint per person set out in the Committee on Climate             Change's <a href="https://www.theccc.org.uk/publication/sixth-carbon-budget/" target="_blank" rel="noopener">6th Carbon Budget</a>, covering 2032 to 2037. It is intended to provide an indication of how far we must go in the next ten years if we are to have any chance of reaching net-zero by 2050.
-      </p>
-      <h3>Understanding the grades</h3>
-      <p><img src="images/grades.webp" style="width:100%; max-width:700px" alt="How grades are calculated"></p>
-      <p>Many values have been given a grade from A+ to F- to help you understand how this <abbr title="Lower Super Output Area">LSOA</abbr> compares to others. The         grades are relative to the average <abbr title="Lower Super Output Area">LSOA</abbr>, so areas with an A+ to C- grade are better than average, while areas with a       D+ to F- grade are worse than average. Most areas are close to the average, so theses grade bands are wide,               representing 7% of <abbr title="Lower Super Output Area">LSOA</abbr>s. Towards the extremes, the grade bands narrow, so only the best 1% of <abbr title="Lower Super Output Area">LSOA</abbr>s get an A+ grade       . In some cases, it is not possible to calculate a grade due to missing data, so a NA value will be shown.</p>
-      
       
     </div>
   </div>
@@ -797,8 +731,6 @@ For this tool, we took an extract of the EPC database from 2020 and summarised t
   </div>
   
   <div id="General" class="tabcontent">
-    <h3>Context</h3>
-    
     <div class="wrapper">
 		  
 		  <div class="chart-text">
@@ -809,57 +741,17 @@ For this tool, we took an extract of the EPC database from 2020 and summarised t
   			<canvas id="popChart"></canvas>
   		</div>
 		</div>
-    
-    <div class="wrapper">
-      <h4>LSOA Characteristics</h4>
-      <table>
-    		  <tr>
-    			<th>Name</th>
-    			<th>Value</th>
-    		  </tr>
-    		  <tr>
-    			<td>LSOA Code</td>
-    			<td id="data_LSOA11">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>LSOA Name</td>
-    			<td id="data_LSOA11NM">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>LSOA Classification</td>
-    			<td id="data_SOAC11NM">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>Local Authority Code</td>
-    			<td id="data_LAD17CD">NA</td>
-    		  </tr>
-    		  <tr>
-    			<td>Local Authority Name</td>
-    			<td id="data_LAD17NM">NA</td>
-    		  </tr>
-    		</table>
-    </div>
-    
-    
-    <div>
-      <h4>ONS pen portrait</h4>
-    <p>The Office for National Statistics Area Classifications group <abbr title="Lower Super Output Area">LSOA</abbr> based on sociodemographic characteristics. Each <abbr title="Lower Super Output Area">LSOA</abbr> is grouped into a supergroup and some supergroups are further split into subgroups.</p>
-    <p><b>Supergroup Description</b></p>
-    <div id="penportsup"></div>
-    <p><b>Subgroup Description</b></p>
-    <div id="penportsub"></div>
-    </div>
-    
+
   </div>
 
 </div>
 
 <!-- Scripts -->
-<script type="text/javascript" src="js/la_report.js"></script>
 <script type="text/javascript" src="js/modal_overview.js"></script>
 <script type="text/javascript" src="js/modal_housing.js"></script>
 <script type="text/javascript" src="js/modal_epc.js"></script>
 <script type="text/javascript" src="js/modal_transport.js"></script>
-<script>switchLALayer()</script>
+<script type="text/javascript" src="js/modal_general.js"></script>
+<script type="text/javascript" src="js/la_report.js"></script>
 </body>
 </html>

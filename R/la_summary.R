@@ -1,6 +1,6 @@
 library(dplyr)
 library(jsonlite)
-all <- readRDS("data/data_with_grades_v4.Rds")
+all <- readRDS("data/data_with_grades_v5.Rds")
 
 foo <- names(all)
 message(paste(paste0(foo," = mean(",foo,", na.rm = TRUE)"), collapse = ",\n"))
@@ -71,6 +71,14 @@ all_la <- all %>%
             AvgCO2_cars_2016 = mean(AvgCO2_cars_2016, na.rm = TRUE),
             AvgCO2_cars_2017 = mean(AvgCO2_cars_2017, na.rm = TRUE),
             AvgCO2_cars_2018 = mean(AvgCO2_cars_2018, na.rm = TRUE),
+            pop_2011 = sum(pop_2011, na.rm = TRUE),
+            pop_2012 = sum(pop_2012, na.rm = TRUE),
+            pop_2013 = sum(pop_2013, na.rm = TRUE),
+            pop_2014 = sum(pop_2014, na.rm = TRUE),
+            pop_2015 = sum(pop_2015, na.rm = TRUE),
+            pop_2016 = sum(pop_2016, na.rm = TRUE),
+            pop_2017 = sum(pop_2017, na.rm = TRUE),
+            pop_2018 = sum(pop_2018, na.rm = TRUE),
             pP1900 = sum(pP1900, na.rm = TRUE),
             p1900_18 = sum(p1900_18, na.rm = TRUE),
             p1919_29 = sum(p1919_29, na.rm = TRUE),
@@ -117,6 +125,7 @@ all_la <- all %>%
             floor_average = sum(floor_average, na.rm = TRUE),
             floor_poor = sum(floor_poor, na.rm = TRUE),
             floor_verypoor = sum(floor_verypoor, na.rm = TRUE),
+            floor_below = sum(floor_below, na.rm = TRUE),
             floor_other = sum(floor_other, na.rm = TRUE),
             window_verygood = sum(window_verygood, na.rm = TRUE),
             window_good = sum(window_good, na.rm = TRUE),
@@ -136,6 +145,7 @@ all_la <- all %>%
             roof_poor = sum(roof_poor, na.rm = TRUE),
             roof_verypoor = sum(roof_verypoor, na.rm = TRUE),
             roof_other = sum(roof_other, na.rm = TRUE),
+            roof_above = sum(roof_above, na.rm = TRUE),
             mainheat_verygood = sum(mainheat_verygood, na.rm = TRUE),
             mainheat_good = sum(mainheat_good, na.rm = TRUE),
             mainheat_average = sum(mainheat_average, na.rm = TRUE),
@@ -264,6 +274,14 @@ england <- all %>%
             AvgCO2_cars_2016 = mean(AvgCO2_cars_2016, na.rm = TRUE),
             AvgCO2_cars_2017 = mean(AvgCO2_cars_2017, na.rm = TRUE),
             AvgCO2_cars_2018 = mean(AvgCO2_cars_2018, na.rm = TRUE),
+            pop_2011 = sum(pop_2011, na.rm = TRUE),
+            pop_2012 = sum(pop_2012, na.rm = TRUE),
+            pop_2013 = sum(pop_2013, na.rm = TRUE),
+            pop_2014 = sum(pop_2014, na.rm = TRUE),
+            pop_2015 = sum(pop_2015, na.rm = TRUE),
+            pop_2016 = sum(pop_2016, na.rm = TRUE),
+            pop_2017 = sum(pop_2017, na.rm = TRUE),
+            pop_2018 = sum(pop_2018, na.rm = TRUE),
             pP1900 = sum(pP1900, na.rm = TRUE),
             p1900_18 = sum(p1900_18, na.rm = TRUE),
             p1919_29 = sum(p1919_29, na.rm = TRUE),
@@ -311,6 +329,7 @@ england <- all %>%
             floor_poor = sum(floor_poor, na.rm = TRUE),
             floor_verypoor = sum(floor_verypoor, na.rm = TRUE),
             floor_other = sum(floor_other, na.rm = TRUE),
+            floor_below = sum(floor_below, na.rm = TRUE),
             window_verygood = sum(window_verygood, na.rm = TRUE),
             window_good = sum(window_good, na.rm = TRUE),
             window_average = sum(window_average, na.rm = TRUE),
@@ -329,6 +348,7 @@ england <- all %>%
             roof_poor = sum(roof_poor, na.rm = TRUE),
             roof_verypoor = sum(roof_verypoor, na.rm = TRUE),
             roof_other = sum(roof_other, na.rm = TRUE),
+            roof_above = sum(roof_above, na.rm = TRUE),
             mainheat_verygood = sum(mainheat_verygood, na.rm = TRUE),
             mainheat_good = sum(mainheat_good, na.rm = TRUE),
             mainheat_average = sum(mainheat_average, na.rm = TRUE),
