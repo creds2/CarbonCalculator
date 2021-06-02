@@ -61,9 +61,6 @@ const mapboxglSearchControl = {
     },
     getDefaultPosition: () => {
         return 'top-right';
-    },
-    onRemove: () => {
-        map.off('moveend', updateLatLon);
     }
 };
 
