@@ -46,7 +46,7 @@ const returnButton = createButton('Search', (ev) => {
     
     
 });
-const mapboxglLatLngControl = {
+const mapboxglSearchControl = {
     onAdd: (map) => {
         const seachbox = document.createElement('div');
         seachbox.classList.add('custom-control', 'mapboxgl-ctrl');
@@ -57,8 +57,6 @@ const mapboxglLatLngControl = {
         i.className = 'custom-control-search-input';
         seachbox.appendChild(i);
         seachbox.appendChild(returnButton);
-        //map.on('moveend', updateLatLon);
-        //updateLatLon();
         return seachbox;
     },
     getDefaultPosition: () => {
@@ -139,7 +137,7 @@ map.addLayer(
 },  'waterlines'/*'roads' /* /*'landcover_grass'*/
 );
 
-map.addControl(mapboxglLatLngControl);
+map.addControl(mapboxglSearchControl);
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 map.addControl(new mapboxgl.AttributionControl({
 customAttribution: 'Contains OS data © Crown copyright 2021'
