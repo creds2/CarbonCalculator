@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://www.carbon.place/sitemap.txt
+Sitemap: https://www.carbon.place/sitemap.txt

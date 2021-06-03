@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <title>PBCC</title>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="Description" content="An iterative map showing the carbon footprint of each neighbourhood in England">
   <!-- PWA support -->
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="/images/creds192.png">
   <meta name="apple-mobile-web-app-status-bar" content="#AC1A40">
   <meta name="theme-color" content="#AC1A40">
@@ -30,7 +31,7 @@
   <link rel="stylesheet" href="css/modal.css" async>
   <link rel="stylesheet" href="css/welcome.css">
   <link rel="stylesheet" href="css/map_ledgend.css" async>
-  <link rel="preload" href="fonts/Raleway/Raleway-VariableFont_wght.ttf" as="font">
+  <link rel="preload" href="fonts/Raleway/Raleway-VariableFont_wght.ttf" as="font" crossOrigin="anonymous">
   
   <!-- Set Up Icon -->
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -60,7 +61,7 @@
 		   <a href="data.html" title="Data">Data</a>
 		   <a href="la.html" title="Local authorities">Local Authorities</a>
 		   <a class="smaller" href="privacy.html">Privacy &amp; accessibility</a>
-		   <a href="javascript:void(0);" class="icon" onclick="expandtopnav()">
+		   <a href="javascript:void(0);" class="icon" onclick="expandtopnav()" aria-label="Expand Menu">
     <i class="fa fa-bars"></i>
   </a>
 	</div>
@@ -110,7 +111,7 @@
 
 <button class="accordion">Areas</button>
 <div class="panel">
-  <p><input type="checkbox" id="carboncheckbox" value="true" onclick="toggleLayer('carbon')" checked> Show Layer</p>
+  <p><label><input type="checkbox" id="carboncheckbox" value="true" onclick="toggleLayer('carbon')" checked>Show Layer</label></p>
   <select id="layerinput" name="layerinput" onchange="switchLayer()">
       <option value="total_emissions_grade" selected>Total Emission Grade</option>
       <option value="car_emissions_grade">Car Emissions Grade</option>
@@ -169,16 +170,16 @@
 <button class="accordion">Administrative boundaries</button>
 <div class="panel">
   <p>Show Administrative boundaries</p>
-  <p><input type="checkbox" id="lacheckbox" value="true" onclick="toggleLayer('la')"> Lower Tier/Unitary Local Authority</p>
-  <p><input type="checkbox" id="wardscheckbox" value="true" onclick="toggleLayer('wards')"> Wards</p>
-  <p><input type="checkbox" id="constituenciescheckbox" value="true" onclick="toggleLayer('constituencies')"> Westminster Constituencies</p>
-  <p><input type="checkbox" id="parishcheckbox" value="true" onclick="toggleLayer('parish')"> Parishes</p>
+  <p><label><input type="checkbox" id="lacheckbox" value="true" onclick="toggleLayer('la')"> Lower Tier/Unitary Local Authority</label></p>
+  <p><label><input type="checkbox" id="wardscheckbox" value="true" onclick="toggleLayer('wards')"> Wards</label></p>
+  <p><label><input type="checkbox" id="constituenciescheckbox" value="true" onclick="toggleLayer('constituencies')"> Westminster Constituencies</label></p>
+  <p><label><input type="checkbox" id="parishcheckbox" value="true" onclick="toggleLayer('parish')"> Parishes</label></p>
 </div>
 
 
 <button class="accordion">Transport stops </button>
 <div class="panel">
-  <p><input type="checkbox" id="transitstopscheckbox" value="true" onclick="toggleLayer('transitstops')"> Show Layer</p>
+  <p><label><input type="checkbox" id="transitstopscheckbox" value="true" onclick="toggleLayer('transitstops')"> Show Layer</label></p>
   <p>Shows public transport stops and frequency of service. Stops are coloured using the A+ (most) to F- (least) frequent grades. Click on stops for more details, and zoom in to see more stops.</p>
   
   <div>
@@ -208,7 +209,7 @@
 
 <button class="accordion">15-minute neighbourhoods</button>
 <div class="panel">
-  <p><input type="checkbox" id="centroidscheckbox" value="true" onclick="toggleLayer('centroids')"> Show centroids</p>
+  <p><label><input type="checkbox" id="centroidscheckbox" value="true" onclick="toggleLayer('centroids')"> Show centroids</label></p>
   <button onclick="removeisochrones()">Clear isochrones</button>
   <p>Click on the population weighted centroid of an <abbr title="Lower Super Output Area">LSOA</abbr> to show 15-minute isochrones for different modes of travel</p>
   <div>
@@ -227,7 +228,7 @@
 
 <button class="accordion">PCT Route Network </button>
 <div class="panel">
-  <p><input type="checkbox" id="pctcheckbox" value="true" onclick="toggleLayer('pct')"> Show Layer</p>
+  <p><label><input type="checkbox" id="pctcheckbox" value="true" onclick="toggleLayer('pct')"> Show Layer</label></p>
   <p>The <abbr title="Propensity to Cycle Tool">PCT</abbr> shows roads where there could be more cycling in the future. This layer shows the combined peak number of daily cyclists for commuting and travel to school under three scenarios. See <a href="https://www.pct.bike" target="_blank" rel="noopener">PCT website</a> or <a href="https://www.jtlu.org/index.php/jtlu/article/view/862" target="_blank" rel="noopener">Lovelace et al 2017</a> for details.</p>
   
   <select id="pctinput" name="pctinput" onchange="switchPCT()">
