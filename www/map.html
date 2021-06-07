@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>PBCC</title>
   <meta charset="utf-8">
   <meta http-equiv="content-type" content="text/html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="Description" content="An iterative map showing the carbon footprint of each neighbourhood in England">
+  
+  <title>PBCC</title>
   <!-- PWA support -->
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="/images/creds192.png">
@@ -112,7 +113,7 @@
 <button class="accordion">Areas</button>
 <div class="panel">
   <p><label><input type="checkbox" id="carboncheckbox" value="true" onclick="toggleLayer('carbon')" checked>Show Layer</label></p>
-  <select id="layerinput" name="layerinput" onchange="switchLayer()">
+  <select id="layerinput" name="layerinput" onchange="switchLayer()" aria-label="LSOA Layer">
       <option value="total_emissions_grade" selected>Total Emission Grade</option>
       <option value="car_emissions_grade">Car Emissions Grade</option>
       <option value="gas_emissions_grade">Gas Emissions Grade</option>
@@ -137,7 +138,7 @@
 <button class="accordion">Filter Areas</button>
 <div class="panel">
   <p>Filter <abbr title="Lower Super Output Areas">LSOAs</abbr> by <abbr title="Office for National Statistics">ONS</abbr> classification</p>
-  <select id="layerfilter" name="layerfilter" onchange="switchLayer()">
+  <select id="layerfilter" name="layerfilter" onchange="switchLayer()" aria-label="LSOA Filter">
       <option value="all" selected>All</option>
       <option value="Cosmopolitan student neighbourhoods">Cosmopolitan student nbhd.</option>
       <option value="Ageing rural neighbourhoods">Ageing rural neighbourhoods</option>
@@ -231,7 +232,7 @@
   <p><label><input type="checkbox" id="pctcheckbox" value="true" onclick="toggleLayer('pct')"> Show Layer</label></p>
   <p>The <abbr title="Propensity to Cycle Tool">PCT</abbr> shows roads where there could be more cycling in the future. This layer shows the combined peak number of daily cyclists for commuting and travel to school under three scenarios. See <a href="https://www.pct.bike" target="_blank" rel="noopener">PCT website</a> or <a href="https://www.jtlu.org/index.php/jtlu/article/view/862" target="_blank" rel="noopener">Lovelace et al 2017</a> for details.</p>
   
-  <select id="pctinput" name="pctinput" onchange="switchPCT()">
+  <select id="pctinput" name="pctinput" onchange="switchPCT()" aria-label="PCT Scenarios">
       <option value="bicycle" selected>Baseline (2011)</option>
       <option value="govtarget_slc">Government Target (2025)</option>
       <option value="dutch_slc">Go Dutch</option>

@@ -22,6 +22,35 @@
   AddOutputFilterByType DEFLATE text/javascript
   AddOutputFilterByType DEFLATE text/plain
   AddOutputFilterByType DEFLATE text/xml
+  
+  
 </IfModule>
 
 Header set Cache-Control "max-age=31536000, public"
+
+AddDefaultCharset utf-8
+
+<IfModule mod_mime.c>
+    AddCharset utf-8 .appcache \
+                     .atom \
+                     .css \
+                     .js \
+                     .json \
+                     .manifest \
+                     .map \
+                     .mjs \
+                     .rdf \
+                     .rss \
+                     .vtt \
+                     .webmanifest \
+                     .xml
+</IfModule>
+
+<IfModule mod_headers.c>
+	Header always set X-Content-Type-Options nosniff
+	#https://webhint.io/docs/user-guide/hints/hint-http-cache/?source=devtools
+    Header merge Cache-Control immutable
+    <FilesMatch "\.(appcache|cur|ico|x?html?|topojson|xml)$">
+        Header edit Cache-Control immutable ""
+    </FilesMatch>
+</IfModule>
