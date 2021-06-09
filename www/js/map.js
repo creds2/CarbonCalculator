@@ -133,6 +133,14 @@ map.addLayer(
 );
 
 map.addControl(mapboxglSearchControl);
+document.getElementById("searchid")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("searchbutton").click();
+    }
+});
+
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 map.addControl(new mapboxgl.AttributionControl({
 customAttribution: 'Contains OS data © Crown copyright 2021'
