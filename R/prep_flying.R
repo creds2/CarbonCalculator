@@ -5,11 +5,11 @@ tmap_mode("view")
 
 secure_path <- "D:/OneDrive - University of Leeds/Data/CREDS Data/"
 
-pass_od <- sf::read_sf("../LDT/data/clean/od_flights_pass.gpkg")
+pass_od <- sf::read_sf("../LDT/data/clean/od_flights_pass_v2.gpkg")
 pass_od <- sf::st_drop_geometry(pass_od[,c("airport1","airport1_country","airport2","airport2_country","pass_km_2018")])
 pass_od <- pass_od[!is.na(pass_od$pass_km_2018),]
 
-airports <- sf::read_sf("../LDT/data/clean/airports_clean_second_pass.gpkg")
+airports <- sf::read_sf("../LDT/data/clean/airports_clean_second_pass_v2.gpkg")
 #Drop flights not from England
 # Half flights between England and rest of UK
 airports_wsni <- c("Aberdeen","Alderney","Anglesey (Valley)","Barra",
@@ -63,12 +63,12 @@ pass_od$pass_km_2018_mod <- ifelse(pass_od$keep == "yes", pass_od$pass_km_2018, 
 
 # Add Emissions
 # From Defra emissions factors 2020
-# Well to Trank emissions with radiative forcing
+# Well to Tank emissions with radiative forcing
 # domestic     0.2443  kg CO2e per pass KM
 # short hall   0.15553 
 # long hall    0.19085 
 
-# CO2 (not e) wihtout RF
+# CO2 (not e) without RF
 # domestic   0.24298 
 # short haul   0.15475 
 # long haul   0.18989  
@@ -121,8 +121,6 @@ y = 1.02 * x **2 - 0.02 *x
 y[y<0] <- 0
 z = c(y[1],diff(y))
 
-
-
 percentile <- function(dat){
   pt1 <- quantile(dat, probs = seq(0, 1, by = 0.01), type = 7, na.rm = TRUE)
   pt2 <- unique(as.data.frame(pt1), fromLast = TRUE)
@@ -173,7 +171,7 @@ match_table$x <- round(match_table$x, 2)
 income$emissions_share <- match_table$z[match(income$centile, match_table$x)] /324
 income$flight_emissions <- income$emissions_share * emissions_total
 
-sum(income$flight_emissions)/emissions_total # Shoudl equal 1
+sum(income$flight_emissions)/emissions_total # Should equal 1
 
 income <- income[,c("LSOA11","flight_emissions","centile")]
 income <- income[!is.na(income$LSOA11),]

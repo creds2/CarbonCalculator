@@ -1,8 +1,8 @@
-# Task Add on Geomeotrys at different levels of detail
+# Task Add on Geometry at different levels of detail
 # For each zoom level
 
 # ZOOM Level notes
-# Zoom 12 is about 1:150000 and difference between full and generalised lsoa boundaires is very subtle
+# Zoom 12 is about 1:150000 and difference between full and generalised lsoa boundaries is very subtle
 # Zoom 14 is 1:35000 all LSOA visible, difference between full and generalised boundaries is clear
 # Zoom 16 is 1:8000 is about the maximum needed to let a single LSOA full most of the screen
 

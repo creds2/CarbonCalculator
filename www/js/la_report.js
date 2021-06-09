@@ -52,7 +52,7 @@ jQuery.ajaxSetup({
     success: function() {}
   });
   
-  $.getJSON("data/la_averages.json", function (json) {
+  $.getJSON("/data/la_averages.json", function (json) {
     console.log( "downloaded la json" );
     ladata = json;
 })

@@ -2,7 +2,7 @@ var ladata;
 var oacdata;
 
 get_json = function(){
-  $.getJSON("data/la_averages.json", function (json) {
+  $.getJSON("/data/la_averages.json", function (json) {
     console.log( "downloaded la json" );
     ladata = json;
 })
@@ -14,7 +14,7 @@ get_json = function(){
   });
 
 
-$.getJSON("data/oac_averages.json", function (json) {
+$.getJSON("/data/oac_averages.json", function (json) {
     console.log( "downloaded oac json" );
     oacdata = json;
 })
@@ -31,9 +31,6 @@ document.getElementById('jquery').addEventListener('load', function () {
     beforeSend: function() {
        $('#loader').show();
     },
-    //complete: function(){
-    //   $('#loader').hide();
-    //},
     success: function() {}
   });
   get_json();
