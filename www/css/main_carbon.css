@@ -9,6 +9,7 @@ body, html{
     position:relative;
     height:100%;
     font-family: Raleway, sans-serif;
+    overflow: hidden;
 }
 body {
 	line-height: 1.4;
@@ -25,7 +26,8 @@ a:hover {
 }
 .content{
     width:calc(100% - 1px);
-    height:calc(100% - 52px);
+    height:calc(100% - 50px);
+    overflow: hidden;
 }
 h1{
 	font-size:45px;
@@ -73,6 +75,7 @@ h1{
   overflow: hidden;
   background-color: #545454;
   z-index: 1100;
+  height: 48px;
 }
 .topnav a {
   float: left;
@@ -138,9 +141,6 @@ a.smaller {
 		position: absolute;
 		top: 8px;
 		right: 16px;
-	}
-	.topnav {
-		height: 48px;
 	}
 	.topnav a:first-child {
 		margin-right: 0.5em;
