@@ -4,7 +4,7 @@ var map = new mapboxgl.Map({
 container: 'map',
 style: 'tiles/oszoom/style_light.json' ,
 center: [-0.151, 51.482],
-zoom: 7,
+zoom: 8,
 maxZoom: 13,
 minZoom: 4
 });

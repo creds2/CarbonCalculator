@@ -1,6 +1,7 @@
 https://www.carbon.place/index.html
-https://www.carbon.place/map.html
-https://www.carbon.place/la.html
-https://www.carbon.place/data.html
-https://www.carbon.place/about.html
-https://www.carbon.place/datawarnings.html
+https://www.carbon.place/map/index.html
+https://www.carbon.place/la/index.html
+https://www.carbon.place/data/index.html
+https://www.carbon.place/about/index.html
+https://www.carbon.place/datawarnings/index.html
+https://www.carbon.place/privacy/index.html
