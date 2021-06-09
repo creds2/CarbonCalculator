@@ -5,11 +5,11 @@ makeChartsOverview = function(lsoadata, la, england, oac){
   
   if(lsoadata === null){
     var overallgas = [
-    la.gas_percap_2017, england.gas_percap_2017
+    la.gas_percap_2018, england.gas_percap_2018
     ];
     
     var overallelec = [
-      la.elec_percap_2017, england.elec_percap_2017
+      la.elec_percap_2018, england.elec_percap_2018
     ];
     
     var overallcar = [
@@ -48,11 +48,11 @@ makeChartsOverview = function(lsoadata, la, england, oac){
     ];
   } else {
     var overallgas = [
-    lsoadata.gas_percap_2017, la.gas_percap_2017, england.gas_percap_2017, oac.gas_percap_2017
+    lsoadata.gas_percap_2018, la.gas_percap_2018, england.gas_percap_2018, oac.gas_percap_2018
     ];
     
     var overallelec = [
-      lsoadata.elec_percap_2017, la.elec_percap_2017, england.elec_percap_2017, oac.elec_percap_2017
+      lsoadata.elec_percap_2018, la.elec_percap_2018, england.elec_percap_2018, oac.elec_percap_2018
     ];
     
     var overallcar = [
@@ -95,14 +95,14 @@ makeChartsOverview = function(lsoadata, la, england, oac){
     document.getElementById("modal-title").innerHTML = "<h2>" + lsoadata.LSOA11 + " a '" +
   	lsoadata.SOAC11NM + "' LSOA in " +  lsoadata.WD18NM +"</h2>";
   	
-  	document.getElementById("data_total_emissions_percap").innerHTML = lsoadata.total_percap;
-  	document.getElementById("data_elec_emissions_household").innerHTML = lsoadata.elec_percap_2017;
-  	document.getElementById("data_gas_emissions_household").innerHTML = lsoadata.gas_percap_2017;
+  	document.getElementById("data_total_emissions_percap").innerHTML = lsoadata.total_kgco2e_percap;
+  	document.getElementById("data_elec_emissions_household").innerHTML = lsoadata.elec_percap_2018;
+  	document.getElementById("data_gas_emissions_household").innerHTML = lsoadata.gas_percap_2018;
   	document.getElementById("data_other_heating_emissions").innerHTML = lsoadata.other_heat_percap_2011;
   	document.getElementById("data_car_emissions").innerHTML = lsoadata.car_percap_2018;
   	document.getElementById("data_van_emissions").innerHTML = lsoadata.van_percap_2018;
   	document.getElementById("data_flights_emissions").innerHTML = lsoadata.flights_percap_2018;
-  	document.getElementById("data_consumption_emissions").innerHTML = lsoadata.consumption_emissions;
+  	document.getElementById("data_consumption_emissions").innerHTML = lsoadata.consumption_all_kgco2e_percap;
   	
   	document.getElementById("data_LSOA11").innerHTML = lsoadata.LSOA11;
   	document.getElementById("data_LSOA11NM").innerHTML = lsoadata.LSOA11NM;
