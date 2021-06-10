@@ -1,7 +1,7 @@
 {
   "name": "Place-Based Carbon Calculator",
   "short_name": "PBCC",
-  "start_url": "./map.html",
+  "start_url": "./",
   "scope": "./",
   "icons": [
     {
