@@ -113,14 +113,14 @@ a.smaller {
 .logo {
 	display: none;
 }
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 760px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
   }
 }
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 760px) {
  .topnav.responsive {position: relative;}
  .topnav.responsive .icon {
     position: absolute;
