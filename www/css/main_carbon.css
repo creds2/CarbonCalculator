@@ -75,7 +75,6 @@ h1{
   overflow: hidden;
   background-color: #545454;
   z-index: 1100;
-  height: 48px;
 }
 .topnav a {
   float: left;
