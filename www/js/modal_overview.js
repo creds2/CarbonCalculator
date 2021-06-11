@@ -110,21 +110,21 @@ makeChartsOverview = function(lsoadata, la, england, oac){
   	document.getElementById("data_LAD17CD").innerHTML = lsoadata.LAD17CD;
   	document.getElementById("data_LAD17NM").innerHTML = lsoadata.LAD17NM;
   	
-  	document.getElementById("data_total_emissions_grade").src = "images/grades/" + lsoadata.total_emissions_grade + ".jpg";
+  	document.getElementById("data_total_emissions_grade").src = "images/grades/" + lsoadata.total_emissions_grade + ".webp";
   	document.getElementById("data_total_emissions_grade").alt = "Grade " + lsoadata.total_emissions_grade;
-  	document.getElementById("data_elec_emissions_grade").src  = "images/grades/" + lsoadata.elec_emissions_grade + ".jpg";
+  	document.getElementById("data_elec_emissions_grade").src  = "images/grades/" + lsoadata.elec_emissions_grade + ".webp";
   	document.getElementById("data_elec_emissions_grade").alt = "Grade " + lsoadata.data_elec_emissions_grade;
-  	document.getElementById("data_gas_emissions_grade").src   = "images/grades/" + lsoadata.gas_emissions_grade + ".jpg";
+  	document.getElementById("data_gas_emissions_grade").src   = "images/grades/" + lsoadata.gas_emissions_grade + ".webp";
   	document.getElementById("data_gas_emissions_grade").alt = "Grade " + lsoadata.data_gas_emissions_grade;
-  	document.getElementById("data_other_heating_emissions_grade").src   = "images/grades/" + lsoadata.other_heating_grade + ".jpg";
+  	document.getElementById("data_other_heating_emissions_grade").src   = "images/grades/" + lsoadata.other_heating_grade + ".webp";
   	document.getElementById("data_other_heating_emissions_grade").alt = "Grade " + lsoadata.data_other_heating_emissions_grade;
-  	document.getElementById("data_car_emissions_grade").src   = "images/grades/" + lsoadata.car_emissions_grade + ".jpg";
+  	document.getElementById("data_car_emissions_grade").src   = "images/grades/" + lsoadata.car_emissions_grade + ".webp";
   	document.getElementById("data_car_emissions_grade").alt = "Grade " + lsoadata.data_car_emissions_grade;
-  	document.getElementById("data_van_emissions_grade").src   = "images/grades/" + lsoadata.van_grade + ".jpg";
+  	document.getElementById("data_van_emissions_grade").src   = "images/grades/" + lsoadata.van_grade + ".webp";
   	document.getElementById("data_van_emissions_grade").alt = "Grade " + lsoadata.data_van_emissions_grade;
-  	document.getElementById("data_flights_emissions_grade").src   = "images/grades/" + lsoadata.flights_grade + ".jpg";
+  	document.getElementById("data_flights_emissions_grade").src   = "images/grades/" + lsoadata.flights_grade + ".webp";
   	document.getElementById("data_flights_emissions_grade").alt = "Grade " + lsoadata.data_flights_emissions_grade;
-  	document.getElementById("data_consumption_emissions_grade").src   = "images/grades/" + lsoadata.consumption_grade + ".jpg";
+  	document.getElementById("data_consumption_emissions_grade").src   = "images/grades/" + lsoadata.consumption_grade + ".webp";
   	document.getElementById("data_consumption_emissions_grade").alt = "Grade " + lsoadata.data_consumption_emissions_grade;
   	
   	//Show waning Box
