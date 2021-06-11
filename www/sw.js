@@ -1,42 +1,10 @@
-const staticCacheName = 'site-static-v1';
+const staticCacheName = 'site-static-v2';
 const assets = [
-  '/',
-  '/index.html',
   '/la/index.html',
   '/data/index.html',
   '/about/index.html',
   '/datawarnings/index.html',
-  '/privacy/index.html',
-  '/css/main_carbon.css',
-  '/css/map_ledgend.css',
-  '/css/modal.css',
-  '/fonts/fonts.json',
-  "/js/accordion.js",
-  "/js/ga_optout.js",
-  "/js/get_json.js",
-  "/js/la_report.js",
-  "/js/layer_control.js",
-  "/js/lib/mapbox-gl-js-1.13/mapbox-gl.js",
-  "/js/lib/mapbox-gl-js-1.13/mapbox-gl.css",
-  "/js/map.js",
-  "/js/map_later.js",
-  "/js/map_layerdesc.js",
-  "/js/modal.js",
-  "/js/modal_epc.js",
-  "/js/modal_general.js",
-  "/js/modal_housing.js",
-  "/js/modal_overview.js",
-  "/js/modal_transport.js",
-  "/js/welcome.js",
-  "/data/la_averages.json",
-  "/data/oac_averages.json",
-  "/sprites/sprites.json",
-  "/sprites/sprites.png",
-  "/sprites/sprites@2x.json",
-  "/sprites/sprites@2x.png",
-  "/sprites/sprites@3x.json",
-  "/sprites/sprites@3x.png"
-  
+  '/privacy/index.html'
 ];
 
 // install event
