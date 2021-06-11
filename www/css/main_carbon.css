@@ -9,7 +9,6 @@ body, html{
     position:relative;
     height:100%;
     font-family: Raleway, sans-serif;
-    overflow: hidden;
 }
 body {
 	line-height: 1.4;
@@ -27,7 +26,6 @@ a:hover {
 .content{
     width:calc(100% - 1px);
     height:calc(100% - 50px);
-    overflow: hidden;
 }
 h1{
 	font-size:45px;
