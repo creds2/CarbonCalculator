@@ -36,9 +36,9 @@ iso_transit <- otp_isochrone(otpcon,
                           mode = c("WALK","TRANSIT"),
                           cutoffSec = 15*60,
                           ncores = 30,
-                          date_time = lubridate::ymd_hms("2020-03-01 08:30:00"))
+                          date_time = lubridate::ymd_hms("2020-05-01 08:30:00"))
 
-saveRDS(iso_transit, "data-prepared/isochones_transit_v3.Rds")
+saveRDS(iso_transit, "data-prepared/isochones_transit_v4.Rds")
 
 
 iso_biketransit <- otp_isochrone(otpcon, 
@@ -47,7 +47,9 @@ iso_biketransit <- otp_isochrone(otpcon,
                              mode = c("BICYCLE","TRANSIT"),
                              cutoffSec = 15*60,
                              ncores = 30,
-                             date_time = lubridate::ymd_hms("2020-03-01 08:30:00"),
+                             date_time = lubridate::ymd_hms("2020-05-01 08:30:00"),
                              maxWalkDistance = 3000)
 
-saveRDS(iso_biketransit, "data-prepared/isochones_biketransit_v3.Rds")
+saveRDS(iso_biketransit, "data-prepared/isochones_biketransit_v4.Rds")
+
+
