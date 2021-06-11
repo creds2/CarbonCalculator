@@ -108,7 +108,7 @@ function showwarnbox(lsoaID){
   'E01026860','E01029576','E01033749','E01007862','E01033561','E01010257','E01003016'];
   
   if(badlsoa.includes(lsoaID)){
-    document.getElementById("datawarning").innerHTML = `<p><b>Warning</b>: This LSOA has been identifed by the PBCC team as having data issue <a href="datawarnings.html">click here for details</a></p>`;
+    document.getElementById("datawarning").innerHTML = `<p><b>Warning</b>: This LSOA has been identifed by the PBCC team as having data issue <a href="/datawarnings">click here for details</a></p>`;
   } else {
     document.getElementById("datawarning").innerHTML = ``;
   }
