@@ -1,2 +1,3 @@
 Header set Content-Encoding: gzip
+Header set Cache-Control "no-transform, max-age=2592000, public"
 
