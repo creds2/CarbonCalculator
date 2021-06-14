@@ -19,8 +19,8 @@ unlink("tmp", recursive = TRUE)
 
 iso_bike <- readRDS("data-prepared/isochones_bike_v2.Rds")
 iso_walk <- readRDS("data-prepared/isochones_walk_v2.Rds")
-iso_transit <- readRDS("data-prepared/isochones_transit_v3.Rds")
-iso_biketransit <- readRDS("data-prepared/isochones_biketransit_v3.Rds")
+iso_transit <- readRDS("data-prepared/isochones_transit_v4.Rds")
+iso_biketransit <- readRDS("data-prepared/isochones_biketransit_v4.Rds")
 
 iso_bike$mode <- "BIKE"
 iso_walk$mode <- "WALK"
