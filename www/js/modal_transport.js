@@ -625,7 +625,7 @@ makeChartsTransport = function(sub, la, england){
 			
 			labels: ['Bicycle','Walk','Bus','Tram/Underground/Metro','Train',
 			'Motorbike','Car or Van','Car passenger','Taxi',
-			'Other','Work from home']
+			'Other Mode','Work from home']
 		},
 		options: {
 			responsive: true,
@@ -668,7 +668,7 @@ makeChartsTransport = function(sub, la, england){
 			
 			labels: ['Bicycle','Walk','Bus','Tram/Underground/Metro','Train',
 			'Motorbike','Car or Van','Car passenger','Taxi',
-			'Other']
+			'Other Mode']
 		},
 		options: {
 			responsive: true,
@@ -713,7 +713,7 @@ makeChartsTransport = function(sub, la, england){
 				
 			}],
 			
-			labels: ['Bicycle','Foot','Car','Other']
+			labels: ['Bicycle','Foot','Car','Other Mode']
 		},
 		options: {
 			responsive: true,
