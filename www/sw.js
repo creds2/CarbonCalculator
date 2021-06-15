@@ -1,10 +1,10 @@
 const staticCacheName = 'site-static-v2';
 const assets = [
-  '/la/index.html',
-  '/data/index.html',
-  '/about/index.html',
-  '/datawarnings/index.html',
-  '/privacy/index.html'
+  '/la',
+  '/data',
+  '/about',
+  '/datawarnings',
+  '/privacy'
 ];
 
 // install event
