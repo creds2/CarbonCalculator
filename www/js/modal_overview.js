@@ -134,7 +134,11 @@ makeChartsOverview = function(lsoadata, la, england, oac){
 	// Overall Chart
 	
 	if(overallChart){
-		overallChart.destroy();
+	  if(isNaN(overallChart[Object.keys(overallChart)[0]])){
+	    console.log("Safari Sucks");
+	  } else {
+	    overallChart.destroy();
+	  }
 	}
 	
 	if(lsoadata !== null){
