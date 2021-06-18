@@ -235,9 +235,11 @@ var pp7 = `<p>The population of this supergroup are represented in the larger ur
 
 <p>Unemployment rates are higher than the national average and employed residents are more likely to work in the transport or storage industries, to work part-time and to use public transport to travel to work (just under one-third of all workers).  </p>`;
 
-var pp8 = `<p>This group has the joint-highest median age (47 years) of all the groups and a higher proportion of persons living in communal establishments than with the parent supergroup, and aged 90 years or over.</p>
+var pp8 = `<p>The population of this supergroup typically live largely in areas within or close proximity to larger urban areas across the UK.</p>
 
-<p>There is a higher proportion of all non-White ethnic groups compared with the parent supergroup. Households are more likely to live in a detached property (over half of all households), more likely to live in a flat and marginally more likely to own or have shared ownership of a property. Workers are more likely to use public transport to get to work (though only 9.0% do so) and to work in the information and communication or professional-related industries </p>`;
+<p>Residents are much more likely to live in a detached property (46.5% of all households) and to own their own property (88.7% of all households). The supergroup has a below-average ethnic mix and a higher proportion of UK and Irish born residents than nationally. Residents are far more likely to be represented in older age groups than nationally and there is a relatively high median age of 45 years (compared with 39 years nationally). The proportion of persons aged 16 years and over with higher qualifications is above the national average, as is car ownership (nearly half of all households have two or more cars).</p>
+
+<p>Unemployment rates are noticeably below the national average (at 2.5% the lowest for any supergroup) and for employed residents, they are more likely to work in financial-related industries,and to use private transport to travel to work (three-quarters of all workers used private transport – the highest percentage for any supergroup).</p>`;
   
   var pp = "No Desc";
   switch(SOAC11NM) {
