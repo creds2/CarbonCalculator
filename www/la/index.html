@@ -438,7 +438,7 @@
 		<div class="wrapper">
 		  <div class="chart-text">
 		    <h4>Van emissions</h4>
-		    <p>Van use is a bit more complicated than car use as they are more likely to be used for work rather than personal transport. Some <abbr title="Lower Super Output Area">LSOA</abbr>s have exceptionally high numbers of vans. This is because the data we have is based on the registered keeper's address.  So, a company that reports all its vans to be at a single address will bias the results for the <abbr title="Lower Super Output Area">LSOA</abbr> as a whole.</p></div>
+		    <p>Van use is a bit more complicated than car use as they are more likely to be used for work rather than personal transport. Some areass have exceptionally high numbers of vans. This is because the data we have is based on the registered keeper's address.  So, a company that reports all its vans to be at a single address will bias the results for the area as a whole.</p></div>
 		  <div class="chart-container" >
   			<canvas id="vanChart"></canvas>
   		</div>
@@ -492,7 +492,7 @@ This data comes from the 2011 census.
 		    <p>The number of cars per person is strongly correlated with the amount people drive. Making new cars also has a large carbon footprint. 2% of the UK's total carbon footprint comes from purchasing new cars and other vehicles. Cars are an extraordinarily inefficient form of transport. Private cars spend more than 95% of their time parked, and many are scrapped within ten years. So, the high carbon footprint of construction is distributed over relatively few useful journeys. In contrast, a train may be in operation for more than 12 hours a day and have a lifespan of over 40 years. High car ownership also creates other problems. The average car on the road only has one person in it, and there must be a safe distance between moving cars. This means that roads take up a lot of land. Think about the difference in the size of a typical six-lane motorway compared to a two-track railway. Yet the railway can move many more people per hour than the motorway. Once the cars reach their destination, they need parking spaces, which takes up even more land. All this paved over land for cars contributes to flooding and the urban heat island effect. It also creates land shortages and urban sprawl. </p>
 		  <p>To meet our carbon targets, we will need to move away from private car ownership. More people will use walking, cycling, and using public transport as their primary modes of transport. When people do need a car, they will hire one from a car club or get a rideshare with somebody travelling in the same direction.
 </p>
-<p>This data comes from the Department of Transport and is based on the location of the registered keeper of the vehicle. The number of cars has been divided by the <abbr title="Office for National Statistics">LSOA</abbr> mid-year population estimates to give the number of cars per person.</p>
+<p>This data comes from the Department of Transport and is based on the location of the registered keeper of the vehicle. The number of cars has been divided by the <abbr title="Office for National Statistics">ONS</abbr> mid-year population estimates to give the number of cars per person.</p>
 		  </div>
 		  <div class="chart-container" >
   			<canvas id="carpercapChart"></canvas>
@@ -597,13 +597,13 @@ This data comes from the 2011 Census.
     <h3>Energy Performance Certificates</h3>
     <p>Since 2008 houses in the UK have had to get an Energy Performance Certificate (EPC) when they are sold or rented. An EPC requires a qualified assessor to visit the dwelling and take measurements of the building's construction and energy efficiency, which makes EPCs a valuable tool for understanding the energy use and carbon emissions from our homes. However, EPCs have significant problems. Research has shown that the EPC grades are not great at predicting real-world energy use and that as many as 80% of EPCs contain at least one error. EPCs are also not a representative sample of houses as they are only required under specific circumstances (e.g., when a house is sold). EPCs are likely to under-estimate the uptake of retrofit measures, as many people make home improvements just after buying a house. Thus, the EPC may be out of date shortly after it is issued.
 For all these reasons, EPC data should be treated with care. We have chosen to include it here as it is the best available data and helps draw attention to the low quality of housing data in the UK.
-For this tool, we took an extract of the EPC database from 2020 and summarised the results for each <abbr title="Lower Super Output Area">LSOA</abbr>. In cases where a property had more than on EPC, only the most recent EPC was considered. Some of the data presented here are scraped from the text description written in the EPCs, so some missing data and double counting may exist. That means this data must be seen as indicative rather than conclusive.
+For this tool, we took an extract of the EPC database from 2020 and summarised the results for each area. In cases where a property had more than on EPC, only the most recent EPC was considered. Some of the data presented here are scraped from the text description written in the EPCs, so some missing data and double counting may exist. That means this data must be seen as indicative rather than conclusive.
 </p>
     
   	<div class="wrapper">
   	  <div class="chart-text">
   	    <h4>EPC Overview</h4>
-  	    <p>This chart indicates what proportion of homes have an EPC. This is not a perfect measure as the EPC's defection of a property is different from the 2011 Census's definition of a dwelling, and homes may have been constructed or demolished since 2011. However,  it gives a rough measure of whether the EPC data represents a high or low proportion of all the homes in this <abbr title="Lower Super Output Area">LSOA</abbr>.</p>
+  	    <p>This chart indicates what proportion of homes have an EPC. This is not a perfect measure as the EPC's defection of a property is different from the 2011 Census's definition of a dwelling, and homes may have been constructed or demolished since 2011. However,  it gives a rough measure of whether the EPC data represents a high or low proportion of all the homes in this area.</p>
   	    </div>
   	  <div class="chart-container" >
     		<canvas id="epcoverviewChart"></canvas>
@@ -713,7 +713,7 @@ For this tool, we took an extract of the EPC database from 2020 and summarised t
   	<div class="wrapper">
   	  <div class="chart-text">
   	    <h4>Building Types</h4>
-  	    <p>This chart shows the mix of building types based on the EPC data and should be compared with the similar chart based on the 2011 census in the housing tab. The EPC data is more up to date but does not cover all homes within an <abbr title="Lower Super Output Area">LSOA</abbr>.</p>
+  	    <p>This chart shows the mix of building types based on the EPC data and should be compared with the similar chart based on the 2011 census in the housing tab. The EPC data is more up to date but does not cover all homes within an area.</p>
   	  </div>
   	  <div class="chart-container" >
     		<canvas id="epcbuildingtypeChart"></canvas>
@@ -727,7 +727,7 @@ For this tool, we took an extract of the EPC database from 2020 and summarised t
   <div id="Consumption" class="tabcontent">
     <h3>Consumption</h3>
     <p>We don't have good local data on all parts of our carbon footprint. A significant portion of our carbon footprint comes from the goods and services we consume. We turn to big national surveys about how people spend their money for these parts of our footprint, such as the <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances/incomeandwealth/methodologies/livingcostsandfoodsurvey">Living Costs and Food Survey</a>. Previous <a href="https://www.tandfonline.com/doi/full/10.1080/14693062.2020.1773754">research</a> has studied these surveys in detail, working out each respondent's carbon footprint and then analysing the results to understand why people have different carbon footprints.  This research has found that income is a major predictor of consumption and thus, carbon footprint. However, this does vary depending on the type of consumption. For example, a rich person might fly ten times more than a poor person, but they will be unlikely to eat ten times as much food.</p>
-<p>As we have some data on how incomes vary around the country, we can fill in the gaps in our knowledge but by its nature, this method is less detailed than having actual local data. However, it does provide a representative view of the whole carbon footprint of each <abbr title="Lower Super Output Area">LSOA</abbr>.
+<p>As we have some data on how incomes vary around the country, we can fill in the gaps in our knowledge but by its nature, this method is less detailed than having actual local data. However, it does provide a representative view of the whole carbon footprint of each area.
 </p>
   </div>
   
