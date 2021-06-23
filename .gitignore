@@ -43,7 +43,7 @@ data/data_with_grades.Rds
 *.geojson
 *.zip
 
-data/
+
 serverlog/$_wisemove_http-access.log.10.log
 serverlog/$_wisemove_http-access.log.11.log
 serverlog/$_wisemove_http-access.log.12.log
