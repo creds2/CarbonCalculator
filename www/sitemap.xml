@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>https://www.carbon.place/</loc>
+  <lastmod>2021-06-23T14:31:50+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.carbon.place/about/</loc>
+  <lastmod>2021-06-17T11:11:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.carbon.place/data/</loc>
+  <lastmod>2021-06-23T17:11:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.carbon.place/la/</loc>
+  <lastmod>2021-06-23T14:31:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.carbon.place/privacy/</loc>
+  <lastmod>2021-06-14T15:26:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.carbon.place/datawarnings/</loc>
+  <lastmod>2021-06-14T15:26:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+</urlset>

@@ -72,3 +72,6 @@ serverlog/wisemove_http-access.log.6.gz
 serverlog/wisemove_http-access.log.7.gz
 serverlog/wisemove_http-access.log.8.gz
 serverlog/wisemove_http-access.log.9.gz
+data/Consumption_emissions_March_21_final_accessible.ods
+data/LSOA11_to_Ward2020_LAD2020_EW_V2.csv
+data/parish-all-consumption-per-household.csv

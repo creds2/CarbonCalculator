@@ -1,7 +1,0 @@
-https://www.carbon.place
-https://www.carbon.place/map
-https://www.carbon.place/la
-https://www.carbon.place/data
-https://www.carbon.place/about
-https://www.carbon.place/datawarnings
-https://www.carbon.place/privacy
