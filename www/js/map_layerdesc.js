@@ -8,11 +8,20 @@ function switchLayerDesc(layer) {
   case "car_emissions_grade":
     document.getElementById("layerdesc").innerHTML = `<p>Estimated average carbon footprint per person from driving cars. Each area has a grade from A+ (low emissions) to F- (high emissions) in comparison to the England average. See the popup report for more details.</p>`;
     break;
+  case "van_grade":
+    document.getElementById("layerdesc").innerHTML = `<p>Estimated average carbon footprint per person from driving vans. Each area has a grade from A+ (low emissions) to F- (high emissions) in comparison to the England average. See the popup report for more details.</p>`;
+    break;
   case "gas_emissions_grade":
     document.getElementById("layerdesc").innerHTML = `<p>Estimated average carbon footprint per person from domestic gas consumption. Each area has a grade from A+ (low emissions) to F- (high emissions) in comparison to the England average. See the popup report for more details.</p>`;
     break;
   case "elec_emissions_grade":
     document.getElementById("layerdesc").innerHTML = `<p>Estimated average carbon footprint per person from domestic electricity consumption. Each area has a grade from A+ (low emissions) to F- (high emissions) in comparison to the England average. See the popup report for more details.</p>`;
+    break;
+  case "other_heating_grade":
+    document.getElementById("layerdesc").innerHTML = `<p>Estimated average carbon footprint per person from domestic heating which does not use mains gas or electricity, e.g. coal, oil, wood. Each area has a grade from A+ (low emissions) to F- (high emissions) in comparison to the England average. See the popup report for more details.</p>`;
+    break;
+  case "consumption_grade":
+    document.getElementById("layerdesc").innerHTML = `<p>Estimated average carbon footprint per person from consumption of goods and services. Each area has a grade from A+ (low emissions) to F- (high emissions) in comparison to the England average. See the popup report for more details.</p>`;
     break;
   case "cars_percap_grade":
     document.getElementById("layerdesc").innerHTML = `<p>The number of cars per person in 2018. Each area has a grade from A+ (low car ownership) to F- (high car ownership) in comparison to the England average. See the popup report for more details.</p>`;
