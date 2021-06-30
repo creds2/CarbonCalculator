@@ -494,7 +494,7 @@ all_class <- all %>%
 #all_class[2:ncol(all_class)] <- lapply(all_class[2:ncol(all_class)], signif, digits = 3)
 
 write_json(all_class, "www/data/oac_averages.json")
-write.csv(all_la, "data/bulk_export/oac_averages.csv", row.names = FALSE)
+write.csv(all_class, "data/bulk_export/oac_averages.csv", row.names = FALSE)
 
 #foo <- all_la$LAD17NM
 #message(paste(paste0('<option value="',foo,'">',foo,'</option>'), collapse = "\n"))
