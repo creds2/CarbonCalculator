@@ -2,18 +2,18 @@
 library(zip)
 library(sf)
 
-all <- readRDS("data/data_with_grades_v5.Rds")
-dir.create("tmp")
+all <- readRDS("data/data_with_grades_v6.Rds")
+# dir.create("tmp")
 
-write.csv(all, "tmp/PBCC_LSOA_data.csv", row.names = FALSE)
+write.csv(all, "data/bulk_export/PBCC_LSOA_data.csv", row.names = FALSE)
 
-zip("data/bulk_export/PBCC_LSOA_data.zip", 
-    files = "tmp/PBCC_LSOA_data.csv", 
-    include_directories = FALSE, 
-    compression_level = 9.9,
-    mode = "cherry-pick"
-    )
-unlink("tmp", recursive = TRUE)
+# zip("data/bulk_export/PBCC_LSOA_data.zip", 
+#     files = "tmp/PBCC_LSOA_data.csv", 
+#     include_directories = FALSE, 
+#     compression_level = 9.9,
+#     mode = "cherry-pick"
+#     )
+# unlink("tmp", recursive = TRUE)
 
 # Isochrones
 

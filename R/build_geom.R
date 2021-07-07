@@ -9,7 +9,7 @@
 library(sf)
 library(dplyr)
 
-all <- readRDS("data/data_with_grades_v5.Rds")
+all <- readRDS("data/data_with_grades_v6.Rds")
 
 # Split data from geom
 nms <- c("LSOA11","SOAC11NM","LAD17NM","cars_percap_grade","km_percap_grade","T2W_Car_grade",

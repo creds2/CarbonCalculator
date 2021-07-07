@@ -149,5 +149,5 @@ rm(elec, gas, age, heating, population, school, cars_emissions,
    cars_km, non_gas, flights, lsoa_classif, epc, t2w, consumption,
    btype, t2w_trip, t2wpct, wards)
 
-saveRDS(all,"data/base_data_v5.Rds")
+saveRDS(all,"data/base_data_v6.Rds")
 

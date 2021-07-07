@@ -1,7 +1,7 @@
 library(sf)
 library(dplyr)
 
-all <- readRDS("data/base_data_v5.Rds")
+all <- readRDS("data/base_data_v6.Rds")
 
 #TODO: get population for 2010
 # gas
@@ -235,7 +235,7 @@ supp_tot <- c("E01028521","E01025690","E01026860","E01013378","E01006747","E0103
 "E01008068","E01005284","E01005231","E01033554","E01025105","E01033762","E01033561",
 "E01011670","E01017140","E01033724","E01026133","E01009284","E01013648","E01033556")
 supp_van <- c("E01016281","E01016767","E01015503","E01019556","E01010151","E01033484",
-"E01009320")
+"E01009320","E01011470")
 
 all$total_emissions_grade[all$LSOA11 %in% c(supp_tot,supp_van)] <- NA
 all$van_grade[all$LSOA11 %in% c(supp_van)] <- NA
@@ -305,4 +305,4 @@ for(i in 1:ncol(all)){
 }
 
 
-saveRDS(all, "data/data_with_grades_v5.Rds")
+saveRDS(all, "data/data_with_grades_v6.Rds")

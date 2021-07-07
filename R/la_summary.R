@@ -1,6 +1,6 @@
 library(dplyr)
 library(jsonlite)
-all <- readRDS("data/data_with_grades_v5.Rds")
+all <- readRDS("data/data_with_grades_v6.Rds")
 
 foo <- names(all)
 message(paste(paste0(foo," = mean(",foo,", na.rm = TRUE)"), collapse = ",\n"))
