@@ -20,9 +20,9 @@ function cookiebutton(x) {
     setCookie('true');
   } else if (x === false){
     // Cookies rejected
-    alert("Tracking Op-Out Disabled");
-    //gaOptout();
-    //setCookie('false');
+    //alert("Tracking Op-Out Disabled");
+    gaOptout();
+    setCookie('false');
   }
   
   var cookiewarning = document.getElementById("cookiewarning");
