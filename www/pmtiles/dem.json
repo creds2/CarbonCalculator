@@ -1,0 +1,16 @@
+{
+  "tiles":["pmtiles://https://www.wisemover.co.uk/pmtiles/dem/dem.pmtiles/{z}/{x}/{y}"],
+  "name":"",
+  "format":"png",
+  "basename":"dem.mbtiles",
+  "id":"dem",
+  "description":"",
+  "version":"1",
+  "type":"baselayer",
+  "minzoom":6,
+  "maxzoom":9,
+  "bounds":[-9.3504980286687918,49.7666569800092944,2.7882735744866931,60.9525424913648877],
+  "center":[0,52,6],
+  "tilejson":"2.0.0"
+  
+}

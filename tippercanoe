@@ -61,19 +61,66 @@ cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson
 
 tippecanoe --output-to-directory=OSzoomStackCustom  --attribution=OS --maximum-zoom=13 --drop-smallest-as-needed --simplification=10 --force  airports.geojson boundaries.geojson district_buildings.geojson foreshore.geojson greenspace.geojson land.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads_local.geojson roads_national.geojson roads_regional.geojson sites.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
 
-### OS Zoomstack low
+### OS Zoomstack
 
-cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson/low
+cd /mnt/c/tiles/oszoom/low
 
-tippecanoe --output-to-directory=OSzoomStackSeaLow  --attribution=OS --maximum-zoom=8 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+tippecanoe --output-to-directory=OSzoomLow  --attribution=OS --maximum-zoom=8 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson national_parks.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
 
-cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson/med
 
-tippecanoe --output-to-directory=OSzoomStackSeamMed  --attribution=OS --minimum-zoom=9 --maximum-zoom=11 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+cd /mnt/c/tiles/oszoom/med
 
-cd /mnt/d/GitHub/creds2/CarbonCalculator/data/zoomstackgeojson/high
+tippecanoe --output-to-directory=OSzoomMed  --attribution=OS --minimum-zoom=9 --maximum-zoom=11 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson national_parks.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
 
-tippecanoe --output-to-directory=OSzoomStackSeaHigh  --attribution=OS --minimum-zoom=12 --maximum-zoom=14 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+cd /mnt/c/tiles/oszoom/high
+
+tippecanoe --output-to-directory=OSzoomHigh  --attribution=OS --minimum-zoom=12 --maximum-zoom=13 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson national_parks.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+
+cd /mnt/c/tiles/oszoom/veryhigh
+
+tippecanoe --output-to-directory=OSzoomVeryHigh  --attribution=OS --minimum-zoom=14 --maximum-zoom=15 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson woodland.geojson buildings.geojson
+
+cd /mnt/c/tiles/oszoom/ultrahigh
+
+tippecanoe --output-to-directory=OSzoomUltraHigh  --attribution=OS --minimum-zoom=16 --maximum-zoom=17 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson woodland.geojson buildings.geojson
+
+
+### pmTiles experiments
+cd /mnt/c/tiles/oszoom/low
+tippecanoe -o oslow.mbtiles  --attribution=OS --maximum-zoom=8 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson national_parks.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+
+cd /mnt/c/tiles/oszoom/med
+tippecanoe -o osmed.mbtiles  --attribution=OS --minimum-zoom=9 --maximum-zoom=11 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson rail.geojson national_parks.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson
+
+cd /mnt/c/tiles/oszoom/high
+tippecanoe -o oshigh.mbtiles  --attribution=OS --minimum-zoom=12 --maximum-zoom=12 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson urban_areas.geojson woodland.geojson sites.geojson airports.geojson
+
+cd /mnt/c/tiles/oszoom/veryhigh
+tippecanoe -o osveryhigh.mbtiles  --attribution=OS --minimum-zoom=13 --maximum-zoom=13 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson woodland.geojson sites.geojson airports.geojson buildings.geojson
+
+cd /mnt/c/tiles/oszoom/ultrahigh
+tippecanoe -o osultrahigh.mbtiles  --attribution=OS --minimum-zoom=14 --maximum-zoom=14 --drop-smallest-as-needed --simplification=10 --force boundaries.geojson foreshore.geojson greenspace.geojson sea.geojson names.geojson rail.geojson railway_stations.geojson roads.geojson surfacewater.geojson woodland.geojson sites.geojson airports.geojson buildings.geojson
+
+
+
+
+cd /mnt/c/tiles/oszoom
+tile-join -o oszoom3.mbtiles low/oslow.mbtiles med/osmed.mbtiles high/oshigh.mbtiles veryhigh/osveryhigh.mbtiles ultrahigh/osultrahigh.mbtiles
+pmtiles-convert oszoom3.mbtiles oszoom3.pmtiles
+
+
+cd ..
+tile-join -o oslowmed.mbtiles low/oslow.mbtiles med/osmed.mbtiles
+tile-join -o osmedhigh.mbtiles oslowmed.mbtiles high/oshigh.mbtiles
+pmtiles-convert osmedhigh.mbtiles osmedhigh.pmtiles
+
+
+### Terrain
+
+rio rgbify -b -10000 -i 0.1 -j 20 --format png --max-z 9 --min-z 0 UK-dem-50m-4326.tif dem.mbtiles
+mb-util dem.mbtiles tiles
+pmtiles-convert dem.mbtiles dem.pmtiles
+
 
 
 ### PCT route network
@@ -94,6 +141,25 @@ tippecanoe --output-to-directory=Travel2Work  --attribution=MALCOLMMORGAN --maxi
 COVID
 cd /mnt/d/GitHub/ITSleeds/covid/data
 tippecanoe -z13 --output-to-directory=tiles --coalesce-smallest-as-needed --simplification=5 --detect-shared-borders covid.geojson
+
+
+### Postcodes
+
+cd /mnt/d/GitHub/creds2/EnergyCrisis/data/tiles
+
+tippecanoe --output-to-directory=postcode --name=postcode --layer=postcode --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=6  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --maximum-tile-bytes=5000000 --buffer=5 --force  gas_postcodes.geojson
+
+
+tippecanoe -o postcode.mbtiles --name=postcode --layer=postcode --attribution=MALCOLMMORGAN -zg --minimum-zoom=6 --extend-zooms-if-still-dropping --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --maximum-tile-bytes=5000000 --buffer=5 --force  gas_electric_postcodes.geojson
+
+### EPC Points
+cd /mnt/d/GitHub/creds2/EnergyCrisis/data/tiles
+
+tippecanoe --output-to-directory=epc --name=epc --layer=epc --attribution=MALCOLMMORGAN --maximum-zoom=16 --minimum-zoom=6  --drop-densest-as-needed -rg4 --force  epc.geojson 
+
+tippecanoe -o epc.mbtiles --name=epc --layer=epc --attribution=MALCOLMMORGAN -zg --minimum-zoom=6  --extend-zooms-if-still-dropping --drop-densest-as-needed -rg4 --force  epc.geojson 
+
+pmtiles-convert epc.mbtiles epc.pmtiles
 
 
 ZOOM Level notes

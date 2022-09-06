@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Display a map</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+<link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+<script src="https://unpkg.com/pmtiles@1.1.0/dist/index.js"></script>
+<style>
+	body { margin: 0; padding: 0; }
+	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+let cache = new pmtiles.ProtocolCache();
+maplibregl.addProtocol("pmtiles", cache.protocol);
+var map = new maplibregl.Map({
+container: 'map', // container id
+style: 'style_pbcc.json', // style URL
+center: [0, 52], // starting position [lng, lat]
+zoom: 7, // starting zoom
+maxZoom: 18,
+maxPitch: 85,
+hash: true,
+});
+
+map.addControl(
+new maplibregl.TerrainControl({
+source: 'terrainSource',
+exaggeration: 1
+})
+);
+
+map.on('load', function() {
+
+map.addSource('postcode', {
+	'type': 'vector',
+	'tiles': ["pmtiles://https://www.wisemover.co.uk/pmtiles/postcode.pmtiles/{z}/{x}/{y}"],
+	'minzoom': 6,
+	'maxzoom': 13
+});
+
+map.addSource('epc', {
+	'type': 'vector',
+	'tiles': ["pmtiles://https://www.wisemover.co.uk/pmtiles/epc.pmtiles/{z}/{x}/{y}"],
+	'minzoom': 6,
+	'maxzoom': 14
+});
+
+ map.addLayer({
+            'id': 'postcode',
+            'type': 'fill',
+            'source': 'postcode',
+            'source-layer': 'postcode',
+            'paint': {
+              'fill-color': [
+              'interpolate',
+              ['linear'],
+              ['get', 'gas_kwh_median'],
+              0,
+              '#4575b4',
+              7528,
+              '#74add1',
+              9185 ,
+              '#abd9e9',
+              11507 ,
+              '#e0f3f8',
+              13777 ,
+              '#ffffbf',
+              15199  ,
+              '#fee090',
+              17143 ,
+              '#fdae61',
+              20553,
+              '#f46d43',
+              30000 ,
+              '#d73027'
+              ],
+              'fill-opacity': 0.7
+            }
+        });
+
+map.addLayer({
+            'id': 'epc',
+            'type': 'circle',
+            'source': 'epc',
+            'source-layer': 'epc',
+            'paint': {
+              // make circles larger as the user zooms from z12 to z22
+              'circle-radius': {
+                'base': 2.5,
+                'stops': [
+                  [8, 3],
+                  [22, 180]
+                ]
+              },
+              // color circles by ethnicity, using a match expression
+              // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-match
+              'circle-stroke-width': 1,
+              "circle-color": [
+          			'match',
+          			['get', 'cur_rate'],
+          			        'G','#e31d3e',
+                        'F','#f17e23',
+                        'E','#f2a867',
+                        'D','#f6cc15',
+                        'C','#8cbc42',
+                        'B','#2aa45b',
+                        'A','#0e7e58',
+          			/* other */ '#e0e0e0'
+          			]
+            }
+        });
+});
+</script>
+
+</body>
+</html>
