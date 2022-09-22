@@ -1,13 +1,12 @@
 // Setup Map
 
-var map = new maplibregl.Map({
+var map = new mapboxgl.Map({
 container: 'map',
 style: 'pmtiles/style_pbcc_mb.json' ,
 center: [-0.151, 51.482],
 zoom: 8,
 maxZoom: 19,
-minZoom: 4,
-hash: true
+minZoom: 4
 });
 
 const createButton = (text, onclick) => {
@@ -47,10 +46,10 @@ const returnButton = createButton('Search', (ev) => {
     
     
 });
-const maplibreglSearchControl = {
+const mapboxglSearchControl = {
     onAdd: (map) => {
         const seachbox = document.createElement('div');
-        seachbox.classList.add('custom-control', 'maplibregl-ctrl');
+        seachbox.classList.add('custom-control', 'mapboxgl-ctrl');
         seachbox.classList.add('custom-control-search');
         const i = document.createElement('input');
         i.type = 'text';
@@ -134,7 +133,7 @@ map.addLayer(
 },  'roads 0 Restricted Road'
 );
 
-map.addControl(maplibreglSearchControl);
+map.addControl(mapboxglSearchControl);
 document.getElementById("searchid")
     .addEventListener("keyup", function(event) {
     event.preventDefault();
@@ -143,13 +142,13 @@ document.getElementById("searchid")
     }
 });
 
-map.addControl(new maplibregl.NavigationControl(), 'top-left');
-map.addControl(new maplibregl.AttributionControl({
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+map.addControl(new mapboxgl.AttributionControl({
 customAttribution: 'Contains OS data © Crown copyright 2021'
 }));
 
 // Add geolocate control to the map.
-map.addControl(new maplibregl.GeolocateControl({
+map.addControl(new mapboxgl.GeolocateControl({
 positionOptions: {
 enableHighAccuracy: true
 },
@@ -157,17 +156,8 @@ trackUserLocation: true
 })
 ,'top-left');
 
-/*
-map.addControl(
-new maplibregl.TerrainControl({
-source: 'terrainSource',
-exaggeration: 1.5
-})
-,'top-left');
-*/
-
 // Add Scale bar
-map.addControl(new maplibregl.ScaleControl({
+map.addControl(new mapboxgl.ScaleControl({
   maxWidth: 80,
   unit: 'metric'
 }),'bottom-right');
@@ -238,7 +228,7 @@ map.addSource('pct', {
 map.addSource('postcode', {
 	'type': 'vector',
 	'tiles': ["https://www.carbon.place/tiles/postcode/{z}/{x}/{y}.pbf"],
-	'minzoom': 6,
+	'minzoom': 10,
 	'maxzoom': 12
 });
 
@@ -249,31 +239,23 @@ map.addSource('epc', {
 	'maxzoom': 14
 });
 
-map.addSource('terrainSource', {
+/*
+map.addSource('dem', {
   'type': 'raster-dem',
-  'tiles': ["https://www.carbon.place/rastertiles/demwebp/{z}/{x}/{y}.webp"],
-  'tileSize': 512,
-  'minzoom': 0,
-	'maxzoom': 9
-});
-
-map.addSource('hillshadeSource', {
-  'type': 'raster-dem',
-  'tiles': ["https://www.carbon.place/rastertiles/demwebp/{z}/{x}/{y}.webp"],
-  'tileSize': 512,
-  'minzoom': 0,
+  'tiles': ["https://www.carbon.place/tiles/dem/{z}/{x}/{y}.png"],
+  'minzoom': 6,
 	'maxzoom': 9
 });
 
 map.addLayer(
 {
 'id': 'hillshading',
-'source': 'hillshadeSource',
+'source': 'dem',
 'type': 'hillshade'
 },
 'sea'
 );
-
+*/
 
 });
 

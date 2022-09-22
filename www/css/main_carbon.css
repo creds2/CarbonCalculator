@@ -279,3 +279,10 @@ p.welcome-end {
   text-decoration: none;
   cursor: pointer;
 }
+
+
+/* Style the EPC popup */
+.epcbox p {
+    margin-top:2px;
+    margin-bottom: 2px;
+}

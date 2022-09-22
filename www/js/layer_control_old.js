@@ -759,8 +759,3 @@ function switchLayer(layer) {
   
   map.triggerRepaint();
 }
-
-
-
-
-

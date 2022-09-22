@@ -116,12 +116,14 @@ pmtiles-convert osmedhigh.mbtiles osmedhigh.pmtiles
 
 
 ### Terrain
+cd /mnt/c/tiles/dem
 
 rio rgbify -b -10000 -i 0.1 -j 20 --format png --max-z 9 --min-z 0 UK-dem-50m-4326.tif dem.mbtiles
 mb-util dem.mbtiles tiles
 pmtiles-convert dem.mbtiles dem.pmtiles
 
-
+rio rgbify -b -10000 -i 0.1 -j 20 --format webp --max-z 9 --min-z 0 UK-dem-50m-4326.tif demwebp.mbtiles
+mb-util demwebp.mbtiles tileswebp
 
 ### PCT route network
 
@@ -150,14 +152,33 @@ cd /mnt/d/GitHub/creds2/EnergyCrisis/data/tiles
 tippecanoe --output-to-directory=postcode --name=postcode --layer=postcode --attribution=MALCOLMMORGAN --maximum-zoom=13 --minimum-zoom=6  --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --maximum-tile-bytes=5000000 --buffer=5 --force  gas_postcodes.geojson
 
 
-tippecanoe -o postcode.mbtiles --name=postcode --layer=postcode --attribution=MALCOLMMORGAN -zg --minimum-zoom=6 --extend-zooms-if-still-dropping --coalesce-smallest-as-needed --simplification=10 --detect-shared-borders --maximum-tile-bytes=5000000 --buffer=5 --force  gas_electric_postcodes.geojson
+tippecanoe -o postcode.mbtiles --name=postcode --layer=postcode --attribution=MALCOLMMORGAN -zg --minimum-zoom=8 --extend-zooms-if-still-dropping --drop-smallest-as-needed --simplification=10 --detect-shared-borders --force  --maximum-tile-bytes=5000000 gas_electric_postcodes.geojson
+
+mb-util postcodelow.mbtiles --image_format=pbf postcodelow
+
+pmtiles-convert postcode.mbtiles postcode.pmtiles --overwrite
 
 ### EPC Points
 cd /mnt/d/GitHub/creds2/EnergyCrisis/data/tiles
 
 tippecanoe --output-to-directory=epc --name=epc --layer=epc --attribution=MALCOLMMORGAN --maximum-zoom=16 --minimum-zoom=6  --drop-densest-as-needed -rg4 --force  epc.geojson 
 
-tippecanoe -o epc.mbtiles --name=epc --layer=epc --attribution=MALCOLMMORGAN -zg --minimum-zoom=6  --extend-zooms-if-still-dropping --drop-densest-as-needed -rg4 --force  epc.geojson 
+tippecanoe -o epc.mbtiles --name=epc --layer=epc --attribution=MALCOLMMORGAN -zg --minimum-zoom=6  --extend-zooms-if-still-dropping --drop-densest-as-needed -rg4 --force  epc.geojson
+
+tippecanoe -o epc4.mbtiles --name=epc --layer=epc --attribution=MALCOLMMORGAN -zg --minimum-zoom=8  --extend-zooms-if-still-dropping --drop-densest-as-needed --force -P epc.geojson
+
+cd /mnt/c/tiles/epc
+
+
+tippecanoe -o epc_wiggle_high.mbtiles --name=epc --layer=epc --attribution=MALCOLMMORGAN --minimum-zoom=6 --maximum-zoom=14 --drop-densest-as-needed --force --extend-zooms-if-still-dropping -P epc_wiggle2.geojson
+
+tippecanoe -o epc_wiggle_low.mbtiles --name=epc --layer=epc --attribution=MALCOLMMORGAN --minimum-zoom=6 --maximum-zoom=12 --drop-densest-as-needed --force -P epc_wiggle_sample2.geojson
+
+
+
+mb-util epc_wiggle_low.mbtiles --image_format=pbf epclow2
+mb-util epc_wiggle_high.mbtiles --image_format=pbf epchigh2
+
 
 pmtiles-convert epc.mbtiles epc.pmtiles
 

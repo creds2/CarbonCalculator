@@ -1,6 +1,6 @@
 // Popup LSOA ID
 // Create a popup, but don't add it to the map yet.
-var centpopup = new maplibregl.Popup({
+var centpopup = new mapboxgl.Popup({
 closeButton: false,
 closeOnClick: false
 });
@@ -38,7 +38,7 @@ var description = '<p><b>' + stop_name + '</b></p>' +
 '<p> Stops per week: ' + stops_per_week + '</p>' +
 '<p> Stops total: ' + stops_total + '</p>';
  
-new maplibregl.Popup()
+new mapboxgl.Popup()
 .setLngLat(coordinates)
 .setHTML(description)
 .addTo(map);
@@ -56,15 +56,15 @@ var gas_kwh_total = Number(e.features[0].properties.gas_kwh_total);
 var elec_kwh_mean = Number(e.features[0].properties.elec_kwh_mean);
 var elec_kwh_median = Number(e.features[0].properties.elec_kwh_median);
 var elec_kwh_total = Number(e.features[0].properties.elec_kwh_total);
-var cost_gas_2023 = Math.round(103.99 + gas_kwh_median * 0.0936);
+var cost_gas_2023 = Math.round(103.99 + gas_kwh_median * 0.1476);
 var cost_gas_2022 = Math.round(99.35 + gas_kwh_median * 0.0737);
-var cost_elec_2023 = Math.round(169.21 + elec_kwh_median * 0.3599);
+var cost_elec_2023 = Math.round(169.21 + elec_kwh_median * 0.5189);
 var cost_elec_2022 = Math.round(165.49 + elec_kwh_median * 0.2834);
 
 var description = '<div class="epcbox"><p> Postcode: ' + POSTCODE + '</p>' +
 '<p><b>Number of meters</b></p>' +
 '<p> Gas: ' + gas_meters + '</p>' +
-'<p> Electricity: ' + elec_meters + '</p>' +
+'<p> Electric ' + elec_meters + '</p>' +
 '<p><b>Annual gas consumption</b></p>' +
 '<p> Median: ' + gas_kwh_median + ' kWh</p>' +
 '<p> Mean: ' + gas_kwh_mean + ' kWh</p>' +
@@ -74,13 +74,14 @@ var description = '<div class="epcbox"><p> Postcode: ' + POSTCODE + '</p>' +
 '<p> Mean: ' + elec_kwh_mean + ' kWh</p>' +
 '<p> Total: ' + elec_kwh_total + ' kWh</p>' +
 '<p><b>Typical annual bills</b></p>' +
-'<p>Before/After October 2022</p>' +
-'<p> Gas: £' + cost_gas_2022 + ' / £' + cost_gas_2023 + '</p>' +
-'<p> Electricity: £' + cost_elec_2022 + ' / £' + cost_elec_2023 + '</p></div>';
+'<p> Gas before Sep 2022 £' + cost_gas_2022 + '</p>' +
+'<p> Gas after Oct 2022 £' + cost_gas_2023 + '</p>' +
+'<p> Electricity before Sep 2022 £' + cost_elec_2022 + '</p>' +
+'<p> Electricity after Oct 2022 £' + cost_elec_2023 + '</p></div>';
 
  
 
-new maplibregl.Popup()
+new mapboxgl.Popup()
 .setLngLat(coordinates)
 .setHTML(description)
 .addTo(map);
@@ -134,7 +135,7 @@ var description = '<div class="epcbox"><p><b>Address:</b> ' + addr + '</p>' +
 '<p><b>Lighting:</b> ' + light_ee + '</p></div>';
  
 
-new maplibregl.Popup()
+new mapboxgl.Popup()
 .setLngLat(coordinates)
 .setHTML(description)
 .addTo(map);
