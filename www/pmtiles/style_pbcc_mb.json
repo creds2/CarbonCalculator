@@ -12,19 +12,9 @@
     "light": {"intensity": 0.25, "color": "hsl(0, 0%, 100%)"},
     "sources": {
         "composite": {
-            "tiles": ["pmtiles://https://www.carbon.place/pmtiles/oszoom.pmtiles/{z}/{x}/{y}"],
+            "tiles": ["https://www.carbon.place/tiles/oszoom/{z}/{x}/{y}.pbf"],
             "type": "vector",
             "maxzoom": 14
-        },
-        "terrainSource": {
-          "type": "raster-dem",
-          "url": "https://www.carbon.place/pmtiles/dem.json",
-          "tileSize": 512
-        },
-          "hillshadeSource": {
-          "type": "raster-dem",
-          "url": "https://www.carbon.place/pmtiles/dem.json",
-          "tileSize": 512
         }
     },
     "sprite": "https://www.carbon.place/sprites/sprites",
@@ -34,13 +24,6 @@
             "id": "background",
             "type": "background",
             "paint": {"background-color": "#f1efec"}
-        },
-        {
-          "id": "hills",
-          "type": "hillshade",
-          "source": "hillshadeSource",
-          "layout": { "visibility": "visible" },
-          "paint": { "hillshade-shadow-color": "#473B24" }
         },
         {
             "id": "sea",
@@ -2621,10 +2604,6 @@
             }
         }
     ],
-    "terrain": {
-        "source": "terrainSource",
-        "exaggeration": 1.5
-    },
     "created": "2019-01-18T21:07:08.282Z",
     "id": "cjr2jbmg63wtu2rp9uyq82fkb",
     "modified": "2019-01-21T11:08:06.120Z",

@@ -1,5 +1,5 @@
 {
-  "tiles":["pmtiles://https://www.carbon.place/pmtiles/dem.pmtiles/{z}/{x}/{y}"],
+  "tiles":["pmtiles://https://www.wisemover.co.uk/pmtiles/dem/dem.pmtiles/{z}/{x}/{y}"],
   "name":"",
   "format":"png",
   "basename":"dem.mbtiles",

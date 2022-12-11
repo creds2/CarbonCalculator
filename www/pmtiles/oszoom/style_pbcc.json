@@ -12,23 +12,23 @@
     "light": {"intensity": 0.25, "color": "hsl(0, 0%, 100%)"},
     "sources": {
         "composite": {
-            "tiles": ["pmtiles://https://www.carbon.place/pmtiles/oszoom.pmtiles/{z}/{x}/{y}"],
+            "tiles": ["pmtiles://https://www.wisemover.co.uk/pmtiles/oszoom/oszoom3.pmtiles/{z}/{x}/{y}"],
             "type": "vector",
             "maxzoom": 14
         },
         "terrainSource": {
           "type": "raster-dem",
-          "url": "https://www.carbon.place/pmtiles/dem.json",
+          "url": "https://www.wisemover.co.uk/pmtiles/dem/dem.json",
           "tileSize": 512
         },
           "hillshadeSource": {
           "type": "raster-dem",
-          "url": "https://www.carbon.place/pmtiles/dem.json",
+          "url": "https://www.wisemover.co.uk/pmtiles/dem/dem.json",
           "tileSize": 512
         }
     },
-    "sprite": "https://www.carbon.place/sprites/sprites",
-    "glyphs": "https://www.carbon.place/fonts/{fontstack}/{range}.pbf",
+    "sprite": "https://www.wisemover.co.uk/sprites/sprites",
+    "glyphs": "https://www.wisemover.co.uk/fonts/{fontstack}/{range}.pbf",
     "layers": [
         {
             "id": "background",

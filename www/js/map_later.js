@@ -56,9 +56,9 @@ var gas_kwh_total = Number(e.features[0].properties.gas_kwh_total);
 var elec_kwh_mean = Number(e.features[0].properties.elec_kwh_mean);
 var elec_kwh_median = Number(e.features[0].properties.elec_kwh_median);
 var elec_kwh_total = Number(e.features[0].properties.elec_kwh_total);
-var cost_gas_2023 = Math.round(103.99 + gas_kwh_median * 0.0936);
+var cost_gas_2023 = Math.round(103.99 + gas_kwh_median * 0.103);
 var cost_gas_2022 = Math.round(99.35 + gas_kwh_median * 0.0737);
-var cost_elec_2023 = Math.round(169.21 + elec_kwh_median * 0.3599);
+var cost_elec_2023 = Math.round(169.21 + elec_kwh_median * 0.34);
 var cost_elec_2022 = Math.round(165.49 + elec_kwh_median * 0.2834);
 
 var description = '<div class="epcbox"><p> Postcode: ' + POSTCODE + '</p>' +

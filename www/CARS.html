@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Description" content="CARS">
+<title>CARS OA Data</title>
+
+<style type="text/css">
+
+      html,body { height: 100%; margin: 0px; padding: 0px; }
+      #full { background: #0f0; height: 100% }
+
+</style>
+
+<!-- Set Up Mapbox -->
+<script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+<link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+</head>
+<body style="overflow:hidden;">
+  
+<content style='  width: calc(100% - 1px);  height: calc(100% - 50px);'>
+ <!-- layer select -->
+<div style="position: absolute; top: 10px; left: 10px; z-index: 9; opacity: 0.8; background-color: #EBEBEB;">
+  <p><select id="layerinput" name="layerinput" onchange="switchLayer()" aria-label="Cars Layer">
+      <option value="cars" selected>Cars</option>
+      <option value="motorcycles">Motorcycles</option>
+      <option value="other">Other</option>
+  </select></p>
+</div>
+
+
+<!-- map -->
+<div id="map" class="map" style='width: 100%; height: 100%;'></div>
+  
+</content>
+  
+
+
+
+<script>
+// Setup Map
+const map = new maplibregl.Map({
+container: 'map', 
+style: 'https://www.carbon.place/pmtiles/style_pbcc_mb.json',
+center: [0, 52], 
+zoom: 8,
+maxZoom: 18,
+minZoom: 6,
+attributionControl: false,
+hash: true
+
+});
+ 
+// Add controls to the map.
+map.addControl(new maplibregl.NavigationControl());
+map.addControl(new maplibregl.AttributionControl({
+customAttribution: 'Contains DfT Data'
+}));
+map.addControl(new maplibregl.GeolocateControl({
+positionOptions: {
+enableHighAccuracy: true
+},
+trackUserLocation: true
+})
+,'top-right');
+map.addControl(new maplibregl.ScaleControl({
+  maxWidth: 80,
+  unit: 'metric'
+}),'bottom-right');
+
+
+map.addControl(
+new maplibregl.TerrainControl({
+source: 'terrainSource',
+exaggeration: 1.5
+})
+,'top-right');
+
+    
+map.on('load', function() {
+map.addSource('oa', {
+	'type': 'vector',
+	'tiles': [
+	'https://www.carbon.place/tiles/oa/{z}/{x}/{y}.pbf'
+	],
+	'minzoom': 8,
+	'maxzoom': 13
+});
+
+map.addSource('hillshadeSource', {
+  'type': 'raster-dem',
+  'tiles': ["https://www.carbon.place/rastertiles/demwebp/{z}/{x}/{y}.webp"],
+  'tileSize': 512,
+  'minzoom': 0,
+	'maxzoom': 9
+});
+
+map.addLayer(
+{
+'id': 'hillshading',
+'source': 'hillshadeSource',
+'type': 'hillshade'
+},
+'sea'
+);
+
+switchLayer('oa');
+
+
+});
+
+// Click on inspire
+map.on('click', 'oa', function (e) {
+var coordinates = e.lngLat;
+var geo_code = e.features[0].properties.geo_code;
+var cars = e.features[0].properties.cars;
+var motorcycles = e.features[0].properties.motorcycles;
+var other = e.features[0].properties.other;
+
+var description = '<p> OA ID: ' + geo_code + '</p>' +
+'<p> Cars: ' + cars + '</p>' +
+'<p> Motorcycles: ' + motorcycles + '</p>' +
+'<p> Other: ' + other + '</p>';
+ 
+
+new maplibregl.Popup()
+.setLngLat(coordinates)
+.setHTML(description)
+.addTo(map);
+});
+ 
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'oa', function () {
+map.getCanvas().style.cursor = 'pointer';
+});
+ 
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'oa', function () {
+map.getCanvas().style.cursor = '';
+});
+
+
+function switchLayer(layer) {
+  
+  var layerId = document.getElementById("layerinput").value;
+  if (map.getLayer('oa')) map.removeLayer('oa');
+  
+  map.addLayer({
+            'id': 'oa',
+            'type': 'fill',
+            'source': 'oa',
+            'source-layer': 'oa',
+            'paint': {
+              'fill-color': [
+              'interpolate',
+              ['linear'],
+              ['get', layerId],
+              0,
+              '#4575b4',
+              42,
+              '#74add1',
+              64 ,
+              '#abd9e9',
+              87 ,
+              '#e0f3f8',
+              108 ,
+              '#ffffbf',
+              127  ,
+              '#fee090',
+              145 ,
+              '#fdae61',
+              163,
+              '#f46d43',
+              220 ,
+              '#d73027'
+              ],
+              'fill-opacity': 0.7,
+              'fill-outline-color': 'rgba(0, 0, 0, 0.2)'
+            }
+            }, 'roads 0 Restricted Road'
+        );
+  
+}
+</script>
+
+
+</body>
+</html>

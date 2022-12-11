@@ -182,6 +182,16 @@ mb-util epc_wiggle_high.mbtiles --image_format=pbf epchigh2
 
 pmtiles-convert epc.mbtiles epc.pmtiles
 
+### OAS
+
+cd /mnt/d/GitHub/creds2/CarbonCalculator/data/tiles
+
+tippecanoe -o oa.mbtiles --name=oa --layer=oa --attribution=MALCOLMMORGAN -zg --minimum-zoom=8 --extend-zooms-if-still-dropping --drop-smallest-as-needed --simplification=10 --detect-shared-borders --force  --maximum-tile-bytes=5000000 cars_oa.geojson
+
+mb-util oa.mbtiles --image_format=pbf oatiles
+
+
+
 
 ZOOM Level notes
 

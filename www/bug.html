@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>3D Terrain</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl-dev.js"></script>
+<link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+<style>
+	body { margin: 0; padding: 0; }
+	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="toggle" style="position:absolute; left:10px; top:10px;">
+  <p>Toggle data layer: <input type="checkbox" id="datacheckbox" value="true" onclick="toggleLayer('data')"></p>
+</div>
+
+<script>
+var map = new maplibregl.Map({
+  container: 'map',
+  style: 'pmtiles/style_pbcc_mb.json' ,
+  center: [-0.151, 51.482],
+  zoom: 8,
+  maxZoom: 19,
+  minZoom: 4
+});
+
+map.addControl(
+  new maplibregl.TerrainControl({
+  source: 'terrainSource',
+  exaggeration: 1
+  })
+);
+
+map.on('load', function() {
+  map.addSource('terrainSource', {
+    'type': 'raster-dem',
+    'tiles': ["https://www.carbon.place/rastertiles/dem/{z}/{x}/{y}.png"],
+    'tileSize': 512,
+    'minzoom': 0,
+  	'maxzoom': 9
+  });
+  
+  map.addSource('hillshadeSource', {
+    'type': 'raster-dem',
+    'tiles': ["https://www.carbon.place/rastertiles/dem/{z}/{x}/{y}.png"],
+    'tileSize': 512,
+    'minzoom': 0,
+  	'maxzoom': 9
+  });
+  
+  map.addSource('data', {
+  	'type': 'vector',
+  	'tiles': ['https://www.carbon.place/tiles/carbon/{z}/{x}/{y}.pbf'],
+  	'minzoom': 4,
+  	'maxzoom': 13
+  });
+  
+  map.addLayer(
+  {
+  'id': 'hillshading',
+  'source': 'hillshadeSource',
+  'type': 'hillshade'
+  },
+  'sea'
+);
+});
+
+function toggleLayer(layerName){
+  var checkBox = document.getElementById(layerName.concat('checkbox'));
+  if (checkBox.checked === true){
+    map.addLayer({
+          'id': 'data',
+          'type': 'fill',
+          'source': 'data',
+          'source-layer': 'carbon',
+          "paint": {
+            'fill-color': '#4d9221',
+            "fill-opacity": 0.5,
+            'fill-outline-color': 'rgba(0, 0, 0, 0.5)'
+          }
+          },  'roads 0 Restricted Road' // Sink the new layer into the base map
+          );
+  } else {
+    if (map.getLayer(layerName)) map.removeLayer(layerName);
+  }
+}
+
+
+</script>
+ 
+</body>
+</html>

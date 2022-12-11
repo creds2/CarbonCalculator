@@ -38,14 +38,14 @@ map.on('load', function() {
 
 map.addSource('postcode', {
 	'type': 'vector',
-	'tiles': ["pmtiles://https://www.wisemover.co.uk/pmtiles/postcode.pmtiles/{z}/{x}/{y}"],
+	'tiles': ["pmtiles://https://www.carbon.place/pmtiles/postcode.pmtiles/{z}/{x}/{y}"],
 	'minzoom': 6,
-	'maxzoom': 13
+	'maxzoom': 12
 });
 
 map.addSource('epc', {
 	'type': 'vector',
-	'tiles': ["pmtiles://https://www.wisemover.co.uk/pmtiles/epc.pmtiles/{z}/{x}/{y}"],
+	'tiles': ["pmtiles://https://www.carbon.place/pmtiles/epc.pmtiles/{z}/{x}/{y}"],
 	'minzoom': 6,
 	'maxzoom': 14
 });
